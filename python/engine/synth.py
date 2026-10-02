@@ -100,3 +100,20 @@ FOOTWORK_DEMO = {
     "KICK": [1, 4, 7, 11, 16], "CLAP": [5, 13], "SNARE": [8, 15],
     "CLOSED_HAT": [1, 3, 5, 7, 9, 11, 13, 15], "OPEN_HAT": [], "PERCUSSION": [2, 6, 10, 14],
 }
+
+
+def render_bass(notes: list[tuple[int, int, float]], bpm: float, bars: int = 4, lead_in: float = 0.0, sr=SR) -> np.ndarray:
+    """notes: (midi, 1-based step, length in steps) repeated every bar. Saw+sine bass voice."""
+    step = 60.0 / bpm / 4
+    y = np.zeros(int((lead_in + bars * 16 * step + 0.5) * sr))
+    for b in range(bars):
+        for midi, s, ln in notes:
+            f = 440.0 * 2 ** ((midi - 69) / 12)
+            t0 = lead_in + (b * 16 + s - 1) * step
+            n = int(ln * step * sr)
+            t = np.arange(n) / sr
+            ph = (f * t) % 1.0
+            v = (0.6 * np.sin(2 * np.pi * f * t) + 0.25 * (2 * ph - 1)) * np.minimum(1, t / 0.005) * np.minimum(1, (n / sr - t) / 0.01)
+            i = int(t0 * sr)
+            y[i:i + n] += v[: max(0, len(y) - i)]
+    return y.astype(np.float32)

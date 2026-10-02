@@ -100,6 +100,8 @@ export const halveBpm = () => { const a = getState().analysis; if (a) void setGr
 export const doubleBpm = () => { const a = getState().analysis; if (a) void setGrid({ bpm: a.grid.bpm * 2 }); };
 /** Shift which beat counts as step 1 (downbeat) by whole beats. */
 export const nudgeDownbeat = (beats: number) => { const a = getState().analysis; if (a) void setGrid({ origin: a.grid.origin + beats * 60 / a.grid.bpm }); };
+/** Shift the grid by 16th-note steps (fixes a grid that is right on tempo but starts on the wrong step). */
+export const nudgeStep = (steps: number) => { const a = getState().analysis; if (a) void setGrid({ origin: a.grid.origin + steps * 60 / a.grid.bpm / 4 }); };
 
 export function setPatternStep(pattern: string, voice: string, step: number) {
   const { recipe, patternEdits } = getState();

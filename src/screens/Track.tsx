@@ -1,5 +1,5 @@
 import { Waveform } from "../components/Waveform";
-import { doubleBpm, halveBpm, nudgeDownbeat, setGrid } from "../state/actions";
+import { doubleBpm, halveBpm, nudgeDownbeat, nudgeStep, setGrid } from "../state/actions";
 import { setState, useStore } from "../state/store";
 
 const fmt = (t: number) => `${Math.floor(t / 60)}:${String(Math.floor(t % 60)).padStart(2, "0")}`;
@@ -22,10 +22,12 @@ export function Track() {
         <button className="btn" onClick={() => {
           const v = window.prompt("BPM", a.grid.bpm.toFixed(2)); const n = v ? parseFloat(v) : NaN;
           if (n >= 40 && n <= 260) void setGrid({ bpm: n });
-        }}>EDIT</button>
+        }}>Edit</button>
         <span className="k">DOWNBEAT</span>
-        <button className="btn sm" title="Move step 1 a beat earlier" onClick={() => nudgeDownbeat(-1)}>◀ BEAT</button>
-        <button className="btn sm" title="Move step 1 a beat later" onClick={() => nudgeDownbeat(1)}>BEAT ▶</button>
+        <button className="btn sm" title="Move step 1 a beat earlier" onClick={() => nudgeDownbeat(-1)}>◀ Beat</button>
+        <button className="btn sm" title="Move step 1 a beat later" onClick={() => nudgeDownbeat(1)}>Beat ▶</button>
+        <button className="btn sm" title="Move step 1 one 16th earlier" onClick={() => nudgeStep(-1)}>◀ Step</button>
+        <button className="btn sm" title="Move step 1 one 16th later" onClick={() => nudgeStep(1)}>Step ▶</button>
         <span className="k">QUANTIZE</span>
         <div className="seg">{[4, 8, 16, 32].map((r) => (
           <button key={r} className={`btn sm ${a.resolution === r ? "on" : ""}`} onClick={() => setGrid({}, r)}>1/{r}</button>
@@ -36,7 +38,7 @@ export function Track() {
         <button key={c} className="link" onClick={() => setGrid({ bpm: c })}>{c}</button>))}</p>}
       <div className="grid2">
         <section className="panel">
-          <h2>CHARACTERISTICS</h2>
+          <h2>Characteristics</h2>
           <table className="kv"><tbody>
             {[["Kick / bar", c.kick_density], ["Snare+clap / bar", c.snare_density], ["Hat / bar", c.hat_density], ["Perc / bar", c.perc_density],
               ["Syncopation", c.syncopation, true], ["Four-on-floor", c.four_on_floor, true], ["Timing variation ms", c.timing_variation_ms]]
@@ -44,7 +46,7 @@ export function Track() {
           </tbody></table>
         </section>
         <section className="panel">
-          <h2>LIKELY STYLE <small>hint, not a verdict</small></h2>
+          <h2>Likely style <small>hint, not a verdict</small></h2>
           {a.likely_styles.map((s) => (
             <div key={s.style} className="style"><span>{s.style}</span><div className="meter"><i style={{ width: `${s.score * 100}%` }} /></div><small>{s.why}</small></div>
           ))}

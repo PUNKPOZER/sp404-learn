@@ -81,6 +81,18 @@ fn read_text_file(path: String) -> Result<String, String> {
     std::fs::read_to_string(&path).map_err(|e| format!("{path}: {e}"))
 }
 
+/// Raw bytes of a stem WAV for in-app playback. Only files under the analysis cache are readable.
+#[tauri::command]
+fn read_stem_file(app: AppHandle, path: String) -> Result<tauri::ipc::Response, String> {
+    let cache = app.path().app_cache_dir().map_err(|e| e.to_string())?.join("analysis");
+    let canon = std::fs::canonicalize(&path).map_err(|e| format!("{path}: {e}"))?;
+    let root = std::fs::canonicalize(&cache).map_err(|e| e.to_string())?;
+    if !canon.starts_with(&root) || canon.extension().and_then(|e| e.to_str()) != Some("wav") {
+        return Err("not a stem file".into());
+    }
+    std::fs::read(&canon).map(tauri::ipc::Response::new).map_err(|e| e.to_string())
+}
+
 #[tauri::command]
 fn write_text_file(path: String, contents: String) -> Result<(), String> {
     std::fs::write(&path, contents).map_err(|e| format!("{path}: {e}"))
@@ -102,7 +114,7 @@ pub fn run() {
         .plugin(tauri_plugin_dialog::init())
         .manage(Sidecar::default())
         .invoke_handler(tauri::generate_handler![
-            sidecar_start, sidecar_send, read_text_file, write_text_file, path_exists, autotest_path
+            sidecar_start, sidecar_send, read_text_file, write_text_file, path_exists, autotest_path, read_stem_file
         ])
         .build(tauri::generate_context!())
         .expect("error while building SP-404 LEARN")

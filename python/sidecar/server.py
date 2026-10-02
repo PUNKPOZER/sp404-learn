@@ -75,6 +75,18 @@ class Server:
     def m_cache_info(self, p, rid):
         return {"bytes": self.cache.size(), "path": str(self.cache.root)}
 
+    def m_models_status(self, p, rid):
+        from engine.stems import demucs_sep as d
+        rt = d.runtime_present()
+        return {"runtime": rt, "weights": rt and d.weights_present(), "name": d.MODEL_NAME, "size_mb": d.MODEL_SIZE_MB,
+                "host": d.MODEL_URL_HOST, "path": str(d.models_dir()), "device": d.device_name() if rt else "n/a",
+                "bytes": sum(f.stat().st_size for f in d.models_dir().rglob("*") if f.is_file())}
+
+    def m_models_download(self, p, rid):
+        from engine.stems import demucs_sep as d
+        d.download_model()
+        return self.m_models_status(p, rid)
+
     def m_cache_clear(self, p, rid):
         self.cache.clear()
         return {"ok": True}

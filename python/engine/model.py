@@ -97,6 +97,8 @@ class TrackAnalysis:
     warnings: list[str] = field(default_factory=list)
     stages: list[dict[str, Any]] = field(default_factory=list)
     resolution: int = 16          # steps per bar used for quantizing
+    stems: dict[str, dict[str, Any]] = field(default_factory=dict)   # part → {path, peaks, activity}
+    stems_model: str = ""
     schema: int = SCHEMA_VERSION
 
     @property
@@ -120,6 +122,7 @@ class TrackAnalysis:
             "warnings": self.warnings,
             "stages": self.stages,
             "resolution": self.resolution,
+            "stems": self.stems, "stems_model": self.stems_model,
         }
 
     @staticmethod
@@ -136,5 +139,6 @@ class TrackAnalysis:
             warnings=d.get("warnings", []),
             stages=d.get("stages", []),
             resolution=d.get("resolution", 16),
+            stems=d.get("stems", {}), stems_model=d.get("stems_model", ""),
             schema=d.get("schema", SCHEMA_VERSION),
         )

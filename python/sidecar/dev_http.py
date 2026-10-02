@@ -22,6 +22,17 @@ class H(BaseHTTPRequestHandler):
     def do_OPTIONS(self):
         self.send_response(204); self._cors(); self.end_headers()
 
+    def do_GET(self):   # dev only: serve stem WAVs from the cache dir so the browser can play them
+        from urllib.parse import urlparse, parse_qs
+        q = parse_qs(urlparse(self.path).query)
+        path = os.path.realpath((q.get("path") or [""])[0])
+        if not path.startswith(os.path.realpath(CACHE)) or not os.path.isfile(path):
+            self.send_response(404); self._cors(); self.end_headers(); return
+        data = open(path, "rb").read()
+        self.send_response(200); self._cors()
+        self.send_header("Content-Type", "audio/wav"); self.send_header("Content-Length", str(len(data)))
+        self.end_headers(); self.wfile.write(data)
+
     def do_POST(self):
         body = self.rfile.read(int(self.headers.get("Content-Length", 0)))
         if self.path == "/upload":

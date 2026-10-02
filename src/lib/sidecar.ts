@@ -1,6 +1,6 @@
 // Transport to the local Python engine. In the desktop app this is Tauri IPC → child process
 // (JSON lines). In a plain browser (dev only) it talks to python/sidecar/dev_http.py on localhost.
-import type { TrackAnalysis, Recipe, Course, StageInfo } from "./types";
+import type { TrackAnalysis, Recipe, Course, StageInfo, ModelStatus } from "./types";
 
 export const isTauri = typeof window !== "undefined" && "__TAURI_INTERNALS__" in window;
 const DEV_BRIDGE = "http://127.0.0.1:8404";
@@ -62,6 +62,17 @@ export const api = {
   recipe: (analysis: TrackAnalysis, kit: Record<number, string>, overrides: object, min_confidence: number) =>
     rpc<Recipe>("recipe", { analysis, kit, overrides, min_confidence }),
   course: (kit?: Record<number, string>) => rpc<Course>("course", { name: "footwork", kit }),
+  modelsStatus: () => rpc<ModelStatus>("models_status"),
+  modelsDownload: () => rpc<ModelStatus>("models_download"),
   cacheInfo: () => rpc<{ bytes: number; path: string }>("cache_info"),
   cacheClear: () => rpc("cache_clear"),
 };
+
+/** Raw bytes of a stem WAV (desktop: Rust command limited to the cache dir; dev: localhost bridge). */
+export async function readStem(path: string): Promise<ArrayBuffer> {
+  if (isTauri) {
+    const { invoke } = await import("@tauri-apps/api/core");
+    return invoke<ArrayBuffer>("read_stem_file", { path });
+  }
+  return (await fetch(`${DEV_BRIDGE}/file?path=${encodeURIComponent(path)}`)).arrayBuffer();
+}

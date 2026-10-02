@@ -24,7 +24,7 @@ export function Tutorial() {
         <h1>{step.title}</h1>
         <div className="grow" />
         <span className="mono">{t.index + 1} / {t.steps.length}</span>
-        <button className="btn sm" onClick={exit}>EXIT</button>
+        <button className="btn sm" onClick={exit}>Exit</button>
       </header>
       <div className="progress"><i style={{ width: `${((t.index + 1) / t.steps.length) * 100}%` }} /></div>
       <div className="tut-body">
@@ -39,8 +39,8 @@ export function Tutorial() {
       </div>
       <p className="lesson-text">{step.text}</p>
       <div className="tut-nav">
-        <button className="btn big" disabled={t.index === 0} onClick={() => tutorialGo(-1)}>◀ BACK</button>
-        {last ? <button className="btn acid big" onClick={exit}>DONE ✓</button> : <button className="btn acid big" onClick={() => tutorialGo(1)}>NEXT ▶</button>}
+        <button className="btn big" disabled={t.index === 0} onClick={() => tutorialGo(-1)}>◀ Back</button>
+        {last ? <button className="btn acid big" onClick={exit}>Done ✓</button> : <button className="btn acid big" onClick={() => tutorialGo(1)}>Next ▶</button>}
       </div>
     </div>
   );

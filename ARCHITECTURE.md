@@ -27,6 +27,10 @@ warnings instead of failing the run. Results are cached by audio content hash + 
   `timing_offset`, bar and step. Resolutions 1/4–1/32.
 - **structure** – bar features (band energy, density, per-voice step occupancy) → novelty peaks → similarity clusters
   → rough labels (INTRO/BREAK/DROP/OUTRO). Approximate by design.
+- **stems** – `engine/stems`: HT-Demucs at 44.1 kHz stereo → four mono parts (other → “lead”), saved as WAV in the cache and
+  summarised (peaks, activity). Drums are transcribed from the drum stem plus low-confidence full-mix hits the stem pass missed;
+  the grid is always fitted on full-mix hits.
+- **bass** – `engine/bass/pitch.py`: YIN → median smoothing → note segmentation → amplitude-onset timing → grid step.
 - **seams** – `engine/stems`, `engine/bass`, `engine/drums/classifier.py` define protocols with null/heuristic
   implementations so a real model can be dropped in.
 

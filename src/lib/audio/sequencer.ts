@@ -12,7 +12,7 @@ export class Sequencer {
   onStep: (step: number) => void = () => {};
   onStop: () => void = () => {};
 
-  constructor(private getPattern: () => StepMap, private getBpm: () => number) {}
+  constructor(private getPattern: () => StepMap, private getBpm: () => number, private getNotes: () => Record<string, Record<string, number>> = () => ({})) {}
 
   start() {
     if (this.playing) return;
@@ -29,7 +29,7 @@ export class Sequencer {
     while (this.nextTime < c.currentTime + 0.12) {
       const pat = this.getPattern();
       const s = this.step;
-      for (const [voice, steps] of Object.entries(pat)) if (steps.includes(s + 1)) trigger(voice, this.nextTime, 0.9, c);
+      for (const [voice, steps] of Object.entries(pat)) if (steps.includes(s + 1)) trigger(voice, this.nextTime, 0.9, c, this.getNotes()[voice]?.[String(s + 1)]);
       const delay = Math.max(0, (this.nextTime - c.currentTime) * 1000);
       window.setTimeout(() => this.onStep(s), delay);
       this.nextTime += 60 / this.getBpm() / 4;

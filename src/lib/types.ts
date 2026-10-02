@@ -15,9 +15,12 @@ export interface TrackAnalysis {
   audio_hash: string; grid: Grid; events: DrumEvent[]; sections: Section[]; bass: BassNote[];
   characteristics: Record<string, number>; likely_styles: { style: string; score: number; why: string }[];
   warnings: string[]; stages: StageInfo[]; resolution: number;
+  stems: Record<string, StemInfo>; stems_model: string;
 }
+export interface StemInfo { path: string; peaks: number[][]; activity: number[]; duration: number; rms: number }
+export interface ModelStatus { runtime: boolean; weights: boolean; name: string; size_mb: number; host: string; path: string; device: string; bytes: number }
 export type StepMap = Record<Voice, number[]>; // 1-based steps
-export interface Pattern { name: string; bars: number; steps: StepMap; label?: string; source_bars?: number; edited?: boolean }
+export interface Pattern { name: string; bars: number; steps: StepMap; notes?: { BASS?: Record<string, number> }; label?: string; source_bars?: number; edited?: boolean }
 export interface Recipe {
   title: string; bpm: number; kit: Record<string, { voice: string; label: string }>;
   patterns: Pattern[]; arrangement: { label: string; start: number; end: number; start_bar: number; end_bar: number; pattern: string }[];

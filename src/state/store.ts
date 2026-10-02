@@ -2,7 +2,7 @@ import { useSyncExternalStore } from "react";
 import type { Course, Recipe, StageInfo, StepMap, TrackAnalysis, TutorialStep } from "../lib/types";
 import { DEFAULT_KIT } from "../lib/voices";
 
-export type Screen = "home" | "analyzing" | "track" | "drums" | "bass" | "structure" | "recipe" | "learn" | "tutorial" | "settings";
+export type Screen = "home" | "analyzing" | "track" | "stems" | "drums" | "bass" | "structure" | "recipe" | "learn" | "tutorial" | "settings";
 
 export interface AppState {
   screen: Screen;
@@ -29,6 +29,11 @@ export interface AppState {
   playStep: number;
   loop: boolean;
   resumeIndex: number;
+  stemMute: Record<string, boolean>;
+  stemSolo: string | null;
+  stemTime: number;
+  stemPlaying: boolean;
+  stemLoading: boolean;
   previewBpm: number | null;
   /** what the transport plays when the user presses PLAY */
   previewSource: "bar" | "pattern" | "tutorial";
@@ -38,7 +43,7 @@ const initial: AppState = {
   screen: "home", busy: null, error: null, trackPath: null, trackName: null, peaks: [], analysis: null, stages: [],
   recipe: null, kit: { ...DEFAULT_KIT }, patternEdits: {}, minConfidence: 0.3, selectedEventId: null, selectedPad: null,
   currentBar: 0, activePattern: "A", tutorial: null, course: null, projectPath: null, dirty: false,
-  playing: false, playStep: -1, loop: true, resumeIndex: 0, previewBpm: null, previewSource: "pattern",
+  playing: false, playStep: -1, loop: true, resumeIndex: 0, stemMute: {}, stemSolo: null, stemTime: 0, stemPlaying: false, stemLoading: false, previewBpm: null, previewSource: "pattern",
 };
 
 let state: AppState = initial;

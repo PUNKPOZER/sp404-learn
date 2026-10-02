@@ -1,19 +1,19 @@
-"""Stem separation seam. No ML model is bundled yet: ``NullSeparator`` reports itself
-unavailable so the pipeline falls back to analysing the full mix."""
+"""Stem separation seam. ``separate`` takes stereo float32 at 44.1 kHz, shape (2, n)."""
 from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import Protocol
+from typing import Callable, Protocol
 
 import numpy as np
+
+# Part names shown to the user ("other" is the lead/harmony part)
+PARTS = ["drums", "bass", "lead", "vocals"]
+Progress = Callable[[float], None]
 
 
 @dataclass
 class StemResult:
-    drums: np.ndarray | None
-    bass: np.ndarray | None
-    vocals: np.ndarray | None
-    other: np.ndarray | None
+    stems: dict[str, np.ndarray]   # part → mono float32 at ``sample_rate``
     sample_rate: int
 
 
@@ -21,18 +21,22 @@ class StemSeparator(Protocol):
     name: str
 
     def available(self) -> tuple[bool, str]: ...
-    def separate(self, audio: np.ndarray, sample_rate: int) -> StemResult: ...
+    def separate(self, audio: np.ndarray, sample_rate: int, progress: Progress | None = None) -> StemResult: ...
 
 
 class NullSeparator:
     name = "none"
 
     def available(self) -> tuple[bool, str]:
-        return False, "No stem-separation model installed — analysing the full mix (hats under snares/kicks are less reliable)."
+        return False, "Stem model not installed — analysing the full mix (hats under snares/kicks and bass notes are less reliable)."
 
-    def separate(self, audio, sample_rate):
+    def separate(self, audio, sample_rate, progress=None):
         raise RuntimeError("no separator available")
 
 
 def default_separator() -> StemSeparator:
-    return NullSeparator()
+    try:
+        from engine.stems.demucs_sep import DemucsSeparator
+        return DemucsSeparator()
+    except Exception:
+        return NullSeparator()

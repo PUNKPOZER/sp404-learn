@@ -4,7 +4,7 @@ from __future__ import annotations
 # Physical layout, top row first. Pads are numbered from bottom-left.
 PAD_ROWS = [[13, 14, 15, 16], [9, 10, 11, 12], [5, 6, 7, 8], [1, 2, 3, 4]]
 
-VOICES = ["KICK", "SNARE", "CLAP", "CLOSED_HAT", "OPEN_HAT", "PERCUSSION"]
+VOICES = ["KICK", "SNARE", "CLAP", "CLOSED_HAT", "OPEN_HAT", "PERCUSSION", "BASS"]
 LABELS = {"KICK": "KICK", "SNARE": "SNARE", "CLAP": "CLAP", "CLOSED_HAT": "CLOSED HAT",
           "OPEN_HAT": "OPEN HAT", "PERCUSSION": "PERC", "BASS": "BASS", "VOCAL": "VOCAL",
           "CHOP": "CHOP", "FX": "FX", "FILL": "FILL", "TEXTURE": "TEXTURE", "RESAMPLE": "RESAMPLE"}

@@ -3,7 +3,7 @@ from __future__ import annotations
 
 from collections import defaultdict
 
-from engine.model import DrumEvent, Section
+from engine.model import BassNote, DrumEvent, Section
 
 VOICES = ["KICK", "SNARE", "CLAP", "CLOSED_HAT", "OPEN_HAT", "PERCUSSION"]
 
@@ -28,8 +28,27 @@ def consensus_bar(events: list[DrumEvent], bars: list[int], min_conf: float = 0.
             for v in VOICES}
 
 
+def consensus_bass(bass: list[BassNote], bars: list[int], min_conf: float = 0.35, presence: float = 0.4,
+                   resolution: int = 16) -> dict[int, int]:
+    """step(1-based) → midi note, for bass notes present in >= ``presence`` of the bars (modal pitch)."""
+    if not bars:
+        return {}
+    bar_set = set(bars)
+    seen: dict[int, dict[int, set[int]]] = defaultdict(lambda: defaultdict(set))   # step → midi → bars
+    for b in bass:
+        if b.bar in bar_set and b.confidence >= min_conf:
+            seen[b.step * 16 // resolution + 1][b.midi].add(b.bar)
+    need = max(1, round(presence * len(bars)))
+    out: dict[int, int] = {}
+    for step, by_note in seen.items():
+        midi, bs = max(by_note.items(), key=lambda kv: len(kv[1]))
+        if len(bs) >= need and step <= 16:
+            out[step] = midi
+    return dict(sorted(out.items()))
+
+
 def build_patterns(events: list[DrumEvent], sections: list[Section], n_bars: int,
-                   max_patterns: int = 4, resolution: int = 16) -> tuple[list[dict], list[dict]]:
+                   max_patterns: int = 4, resolution: int = 16, bass: list[BassNote] | None = None) -> tuple[list[dict], list[dict]]:
     """Returns (patterns, arrangement). Patterns A..D come from section similarity clusters."""
     names = "ABCD"
     if not sections:
@@ -42,8 +61,13 @@ def build_patterns(events: list[DrumEvent], sections: list[Section], n_bars: int
     for i, c in enumerate(order):
         bars = [b for s in clusters[c] for b in range(s.start_bar, s.end_bar)]
         steps = consensus_bar(events, bars, resolution=resolution)
-        patterns.append({"name": names[i], "bars": 1, "steps": steps,
-                         "source_bars": len(bars), "label": clusters[c][0].label})
+        pat = {"name": names[i], "bars": 1, "steps": steps, "notes": {},
+               "source_bars": len(bars), "label": clusters[c][0].label}
+        bn = consensus_bass(bass or [], bars, resolution=resolution)
+        if bn:
+            steps["BASS"] = list(bn)
+            pat["notes"]["BASS"] = {str(k): v for k, v in bn.items()}
+        patterns.append(pat)
         cmap[c] = names[i]
     arrangement = [{"label": s.label, "start": s.start, "end": s.end,
                     "start_bar": s.start_bar, "end_bar": s.end_bar,

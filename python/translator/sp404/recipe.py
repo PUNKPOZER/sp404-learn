@@ -42,10 +42,18 @@ def build_recipe(a: TrackAnalysis, kit_map: dict[int, str] | None = None,
     kit_map = kit_map or pads.DEFAULT_KIT
     pads.validate_kit(kit_map)
     evs = [e for e in a.events if e.confidence >= min_confidence]
-    pats, arr = patterns.build_patterns(evs, a.sections, a.n_bars, resolution=a.resolution)
+    pats, arr = patterns.build_patterns(evs, a.sections, a.n_bars, resolution=a.resolution, bass=a.bass)
     for p in pats:   # manual pattern edits win over the automatic consensus
         if overrides and p["name"] in overrides:
             p["steps"] = {v: sorted(int(x) for x in st) for v, st in overrides[p["name"]].items()}
+            keep = {k: n for k, n in p.get("notes", {}).get("BASS", {}).items() if int(k) in p["steps"].get("BASS", [])}
+            if p["steps"].get("BASS"):     # steps the user added get the pattern's most common pitch
+                from collections import Counter
+                base = Counter(list(p.get("notes", {}).get("BASS", {}).values())).most_common(1)
+                dflt = base[0][0] if base else 29            # F1 when nothing was detected
+                for st in p["steps"]["BASS"]:
+                    keep.setdefault(str(st), dflt)
+            p["notes"] = {"BASS": keep} if keep else {}
             p["edited"] = True
     notes = []
     if a.grid.confidence < 0.4:
@@ -53,8 +61,9 @@ def build_recipe(a: TrackAnalysis, kit_map: dict[int, str] | None = None,
     low = [e for e in a.events if e.confidence < min_confidence]
     if low:
         notes.append(f"{len(low)} событий с низкой уверенностью исключены из паттернов.")
-    if a.bass:
-        notes.append("Басовые ноты определены приблизительно — проверь на слух.")
+    if any(p.get("notes") for p in pats):
+        notes.append("Басовые ноты определены приблизительно — проверь на слух." +
+                     ("" if a.stems_model else " Стемы не использовались: бас взят из полного микса."))
     r = SP404Recipe(bpm=round(a.grid.bpm, 2), kit=make_kit(kit_map), patterns=pats,
                     arrangement=arr, notes=notes, title=a.filename)
     r.tutorial_steps = tutorial.build_steps(r, kit_map)

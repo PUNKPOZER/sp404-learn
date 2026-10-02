@@ -53,3 +53,14 @@ def test_wav_decode_without_ffmpeg(tmp_path, monkeypatch):
     monkeypatch.setattr(decode, "find_tool", lambda n: (_ for _ in ()).throw(decode.AudioError("x")))
     y = decode.decode(wav, 22050)
     assert abs(len(y) / 22050 - decode.probe(wav).duration) < 0.01 and y.dtype == np.float32
+
+
+def test_bass_notes_recovered():
+    from engine.bass import pitch
+    from engine.model import Grid
+    notes = [(29, 1, 5), (29, 7, 3), (27, 12, 4)]     # F1, F1, Eb1
+    y = synth.render_bass(notes, 160, bars=4, lead_in=0.5)
+    got = pitch.analyze(y, Grid(bpm=160, origin=0.5))
+    first_bar = [(n.midi, n.step + 1) for n in got if n.bar == 1]
+    assert first_bar == [(29, 1), (29, 7), (27, 12)], first_bar
+    assert all(n.confidence > 0.6 for n in got)

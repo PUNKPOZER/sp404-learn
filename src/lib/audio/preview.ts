@@ -1,6 +1,7 @@
 import { getState, setState } from "../../state/store";
 import { Sequencer } from "./sequencer";
 import type { StepMap } from "../types";
+import { toggleStems } from "./stemPlayer";
 
 /** What the transport plays depends on the screen: the current bar on DRUMS, the selected
  *  pattern on RECIPE, and the visible step-grid state in a tutorial. */
@@ -24,10 +25,19 @@ export function currentBpm(): number {
   return s.previewBpm ?? s.analysis?.grid.bpm ?? s.recipe?.bpm ?? 160;
 }
 
-export const sequencer = new Sequencer(currentPattern, currentBpm);
+export function currentNotes(): Record<string, Record<string, number>> {
+  const s = getState();
+  if (s.screen === "tutorial" || s.screen === "drums") return {};
+  const n = s.recipe?.patterns.find((p) => p.name === s.activePattern)?.notes;
+  return (n as Record<string, Record<string, number>>) ?? {};
+}
+
+export const sequencer = new Sequencer(currentPattern, currentBpm, currentNotes);
 sequencer.onStep = (step) => setState({ playStep: step, playing: true });
 sequencer.onStop = () => setState({ playing: false, playStep: -1 });
 
-export function togglePlay() { if (sequencer.playing) sequencer.stop(); else sequencer.start(); setState({ playing: sequencer.playing }); }
+export function togglePlay() {
+  if (getState().screen === "stems") { void toggleStems(); return; }
+  if (sequencer.playing) sequencer.stop(); else sequencer.start(); setState({ playing: sequencer.playing }); }
 export function stopPlay() { if (sequencer.playing) sequencer.stop(); }
 export function setLoop(v: boolean) { sequencer.loop = v; setState({ loop: v }); }

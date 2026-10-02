@@ -1,8 +1,13 @@
 export const VOICE_COLORS: Record<string, string> = {
-  KICK: "#ff6a1a", SNARE: "#ff3d8b", CLAP: "#ffb020", CLOSED_HAT: "#3dd6ff", OPEN_HAT: "#c6ff3d",
-  PERCUSSION: "#b79cff", UNKNOWN: "#8a8a8a", BASS: "#ff6a1a", VOCAL: "#ff3d8b", CHOP: "#c6ff3d",
-  FX: "#3dd6ff", FILL: "#ffb020", TEXTURE: "#b79cff", RESAMPLE: "#8a8a8a",
+  KICK: "#ff7a6b", SNARE: "#ff6fae", CLAP: "#ffc15e", CLOSED_HAT: "#5cc8ff", OPEN_HAT: "#5ef2c0",
+  PERCUSSION: "#a89bff", UNKNOWN: "#8b91a3", BASS: "#ff9a5c", VOCAL: "#ff6fae", CHOP: "#5ef2c0",
+  FX: "#5cc8ff", FILL: "#ffc15e", TEXTURE: "#a89bff", RESAMPLE: "#8b91a3",
 };
+export const STEM_COLORS: Record<string, string> = { drums: "#ff7a6b", bass: "#ff9a5c", lead: "#a89bff", vocals: "#ff6fae" };
+export const STEM_LABELS: Record<string, string> = { drums: "DRUMS", bass: "BASS", lead: "LEAD", vocals: "VOCALS" };
+export const STEM_ORDER = ["drums", "bass", "lead", "vocals"];
+const NOTE_NAMES = ["C", "C#", "D", "Eb", "E", "F", "F#", "G", "Ab", "A", "Bb", "B"];
+export const noteName = (m: number) => `${NOTE_NAMES[((m % 12) + 12) % 12]}${Math.floor(m / 12) - 1}`;
 export const VOICE_LABELS: Record<string, string> = {
   KICK: "KICK", SNARE: "SNARE", CLAP: "CLAP", CLOSED_HAT: "CLOSED HAT", OPEN_HAT: "OPEN HAT",
   PERCUSSION: "PERC", UNKNOWN: "UNKNOWN", BASS: "BASS", VOCAL: "VOCAL", CHOP: "CHOP", FX: "FX",

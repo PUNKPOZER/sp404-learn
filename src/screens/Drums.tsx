@@ -30,7 +30,7 @@ export function Drums() {
       if ((e.key === "Delete" || e.key === "Backspace") && sel && (e.target as HTMLElement).tagName !== "INPUT") deleteEvent(sel.id);
     }}>
       <header className="screen-head">
-        <h1>DRUMS</h1>
+        <h1>Drums</h1>
         <div className="bar-nav">
           <button className="btn sm" disabled={currentBar === 0} onClick={() => setState({ currentBar: currentBar - 1 })}>◀</button>
           <b className="mono">BAR {currentBar + 1} / {nBars}</b>
@@ -51,8 +51,8 @@ export function Drums() {
         <b> ?</b> = low confidence.{hidden > 0 && ` ${hidden} event(s) in this bar are below the confidence threshold (not played or used in the recipe).`}</p>
       {sel && (
         <div className="move-row"><span className="k">MOVE SELECTED</span>
-          <button className="btn sm" onClick={() => moveEvent(sel.id, Math.max(0, sel.step - 1))}>◀ STEP</button>
-          <button className="btn sm" onClick={() => moveEvent(sel.id, Math.min(res - 1, sel.step + 1))}>STEP ▶</button></div>
+          <button className="btn sm" onClick={() => moveEvent(sel.id, Math.max(0, sel.step - 1))}>◀ Step</button>
+          <button className="btn sm" onClick={() => moveEvent(sel.id, Math.min(res - 1, sel.step + 1))}>Step ▶</button></div>
       )}
       {menu && (
         <div className="ctx" style={{ left: menu.x, top: menu.y }} onClick={(e) => e.stopPropagation()}>

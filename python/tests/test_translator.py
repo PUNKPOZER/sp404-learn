@@ -55,3 +55,25 @@ def test_recipe_and_analysis_serialization_roundtrip():
     r = build_recipe(a)
     r2 = SP404Recipe.from_dict(json.loads(json.dumps(r.to_dict())))
     assert r2.to_dict() == r.to_dict()
+
+
+def test_bass_notes_flow_into_pattern_and_tutorial():
+    from engine.model import BassNote
+    a = _analysis()
+    for bar in range(4):
+        for st, midi in ((0, 29), (6, 29), (11, 27)):
+            a.bass.append(BassNote(time=bar * 1.5, duration=.2, midi=midi, confidence=.9, bar=bar, step=st))
+    r = build_recipe(a)
+    p = r.patterns[0]
+    assert p["steps"]["BASS"] == [1, 7, 12] and p["notes"]["BASS"] == {"1": 29, "7": 29, "12": 27}
+    bass = [s for s in r.tutorial_steps if s["voice"] == "BASS" and s["highlight"]]
+    assert bass and bass[0]["pad"] == 7 and "F1: шаг 1 / 7" in bass[0]["text"] and "Eb1: шаг 12" in bass[0]["text"]
+
+
+def test_user_added_bass_step_gets_default_note():
+    from engine.model import BassNote
+    a = _analysis()
+    for bar in range(4):
+        a.bass.append(BassNote(time=bar * 1.5, duration=.2, midi=27, confidence=.9, bar=bar, step=0))
+    r = build_recipe(a, overrides={"A": {"KICK": [1], "BASS": [1, 9]}})
+    assert r.patterns[0]["notes"]["BASS"] == {"1": 27, "9": 27}

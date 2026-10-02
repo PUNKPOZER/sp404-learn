@@ -10,7 +10,21 @@ from typing import Any
 from translator.sp404 import pads, text
 
 VOICE_RU = {"KICK": "бочку (kick)", "SNARE": "снейр", "CLAP": "клэп", "CLOSED_HAT": "закрытый хэт",
-            "OPEN_HAT": "открытый хэт", "PERCUSSION": "перкуссию"}
+            "OPEN_HAT": "открытый хэт", "PERCUSSION": "перкуссию", "BASS": "бас"}
+
+
+NAMES = ["C", "C#", "D", "Eb", "E", "F", "F#", "G", "Ab", "A", "Bb", "B"]
+
+
+def note_name(midi: int) -> str:
+    return f"{NAMES[midi % 12]}{midi // 12 - 1}"
+
+
+def bass_text(steps: list[int], notes: dict) -> str:
+    by: dict[str, list[int]] = {}
+    for s in steps:
+        by.setdefault(note_name(notes[str(s)]), []).append(s) if str(s) in notes else None
+    return "; ".join(f"{n}: шаг {' / '.join(map(str, st))}" for n, st in by.items())
 
 
 def _fmt_steps(steps: list[int]) -> str:
@@ -61,9 +75,12 @@ def build_steps(recipe, kit_map: dict[int, str]) -> list[dict[str, Any]]:
             add(section=f"PATTERN {p['name']}", title=f"{pads.LABELS[v]}: выбери пэд", voice=v, pad=pad,
                 grid=dict(grid), text=f"Выбери {VOICE_RU.get(v, v)} на PAD {pad}.")
             grid[v] = list(st)
+            bn = p.get("notes", {}).get("BASS") if v == "BASS" else None
+            body = (f"Поставь бас на шаги: {_fmt_steps(st)}. Ноты — {bass_text(st, bn)}. "
+                    "Высоту задай питчем сэмпла на пэде (клавиатурный режим пэдов или подстройка Pitch)."
+                    if bn else f"Поставь {VOICE_RU.get(v, v)} на шаги: {_fmt_steps(st)}.")
             add(section=f"PATTERN {p['name']}", title=f"{pads.LABELS[v]}: расставь шаги", voice=v, pad=pad,
-                grid=dict(grid), highlight=list(st),
-                text=f"Поставь {VOICE_RU.get(v, v)} на шаги: {_fmt_steps(st)}.")
+                grid=dict(grid), highlight=list(st), text=body)
         add(section=f"PATTERN {p['name']}", title=f"Проверь Pattern {p['name']}", grid=dict(grid),
             text="Включи воспроизведение и сравни по слуху. Если что-то не так — вернись к нужному инструменту.")
 

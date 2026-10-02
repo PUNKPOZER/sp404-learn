@@ -7,6 +7,7 @@ import { isAudioPath, openProject, openTrack, pickTrack, saveProject } from "./s
 import { setState, useStore } from "./state/store";
 import { Analyzing } from "./screens/Analyzing";
 import { Bass } from "./screens/Bass";
+import { Stems } from "./screens/Stems";
 import { Drums } from "./screens/Drums";
 import { Home } from "./screens/Home";
 import { Learn } from "./screens/Learn";
@@ -16,15 +17,17 @@ import { Structure } from "./screens/Structure";
 import { Track } from "./screens/Track";
 import { Tutorial } from "./screens/Tutorial";
 import { stopPlay } from "./lib/audio/preview";
+import { stopStems } from "./lib/audio/stemPlayer";
 
-const SCREENS = { home: Home, analyzing: Analyzing, track: Track, drums: Drums, bass: Bass, structure: Structure, recipe: Recipe,
+const SCREENS = { home: Home, analyzing: Analyzing, track: Track, stems: Stems, drums: Drums, bass: Bass, structure: Structure, recipe: Recipe,
   learn: Learn, tutorial: Tutorial, settings: Settings };
 
 export function App() {
   const { screen, error, analysis, dirty, projectPath, busy } = useStore((s) => s);
   const Screen = SCREENS[screen];
 
-  useEffect(() => { stopPlay(); }, [screen]);
+  useEffect(() => { stopPlay(); stopStems(); }, [screen]);
+  const inspector = ["track", "drums", "recipe", "bass", "stems", "structure"].includes(screen) && !!analysis;
 
   useEffect(() => {
     if (isTauri) {
@@ -53,24 +56,26 @@ export function App() {
   }, []);
 
   return (
-    <div className="app">
+    <div className={`app ${inspector ? "" : "no-inspector"}`}>
       <Sidebar />
       <main className="main">
         <div className="topbar">
-          <button className="btn sm" onClick={pickTrack}>OPEN TRACK</button>
-          <button className="btn sm" onClick={() => openProject()}>OPEN PROJECT</button>
-          <button className="btn sm" disabled={!analysis} onClick={() => saveProject(false)}>SAVE{dirty ? " ●" : ""}</button>
-          <button className="btn sm" disabled={!analysis} onClick={() => saveProject(true)}>SAVE AS</button>
+          <button className="btn sm" onClick={pickTrack}>Open track</button>
+          <button className="btn sm" onClick={() => openProject()}>Open project</button>
+          <button className="btn sm" disabled={!analysis} onClick={() => saveProject(false)}>Save{dirty ? " ●" : ""}</button>
+          <button className="btn sm" disabled={!analysis} onClick={() => saveProject(true)}>Save as</button>
           <span className="mono dim">{projectPath ?? ""}</span>
           <div className="grow" />
           {busy === "regrid" && <span className="mono dim">re-quantizing…</span>}
-          {!isTauri && <span className="chip">BROWSER DEV MODE</span>}
+          {!isTauri && <span className="chip">browser dev mode</span>}
         </div>
+        <div className="content">
         {error && screen !== "analyzing" && <div className="err" role="alert">{error}<button className="link" onClick={() => setState({ error: null })}>dismiss</button></div>}
-        <div className="content"><Screen /></div>
-        <Transport />
+          <Screen />
+        </div>
+        {!["home", "analyzing", "learn", "settings"].includes(screen) ? <Transport /> : <div />}
       </main>
-      <Inspector />
+      {inspector && <Inspector />}
     </div>
   );
 }

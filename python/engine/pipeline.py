@@ -12,10 +12,12 @@ import numpy as np
 from engine.audio import decode, spectro
 from engine.bass import base as bass_base
 from engine.cache import Cache
+from engine.stems import io as stems_io
 from engine.drums import transcribe
 from engine.model import TrackAnalysis, Grid
 from engine.stems import base as stems_base
 from engine.structure import segment
+from engine.stems.base import PARTS
 from engine.tempo import tempo
 from engine.transcription import characteristics
 
@@ -64,8 +66,11 @@ class Analyzer:
             raise decode.AudioError(f"File not found: {path}")
         info = decode.probe(path)
         h = decode.file_hash(path)
+        sep = stems_base.default_separator()
+        sep_ok, sep_msg = sep.available()
+        tag = "stems" if sep_ok else "mix"
         if self.cache and use_cache:
-            hit = self.cache.get(h, resolution)
+            hit = self.cache.get(h, resolution, tag)
             if hit:
                 a = TrackAnalysis.from_dict(hit)
                 a.path, a.filename = path, os.path.basename(path)
@@ -86,27 +91,52 @@ class Analyzer:
         self._check()
 
         t = time.time(); stage("stems", "running")
-        sep = stems_base.default_separator()
-        ok, msg = sep.available()
         analysis_S = S
-        stems = None
-        if ok:
+        stems_y: dict[str, np.ndarray] = {}
+        stem_meta: dict[str, dict] = {}
+        if sep_ok:
             try:
-                stems = sep.separate(y, spectro.SR)
-                if stems.drums is not None:
-                    analysis_S = spectro.magnitude(stems.drums)
-                stage("stems", "done", sep.name, time.time() - t)
+                x = decode.decode(path, 44100, mono=False)
+                last = [-1.0]
+
+                def prog(f: float):
+                    if f - last[0] >= 0.05:
+                        last[0] = f
+                        stage("stems", "running", f"{int(f * 100)}%", time.time() - t)
+                res = sep.separate(x, 44100, prog)
+                self._check()
+                from scipy.signal import resample_poly
+                for part in PARTS:
+                    if part in res.stems:
+                        stems_y[part] = resample_poly(res.stems[part], 1, 2).astype(np.float32)
+                        if self.cache:
+                            stem_meta[part] = stems_io.save(self.cache.stems_dir(h), part, res.stems[part], 44100)
+                analysis_S = spectro.magnitude(stems_y["drums"]) if "drums" in stems_y else S
+                stage("stems", "done", f"{sep.name} · {len(stems_y)} parts", time.time() - t)
+            except Cancelled:
+                raise
             except Exception as e:  # optional stage: degrade, don't die
                 warnings.append(f"Stem separation failed ({e}); analysing full mix.")
                 stage("stems", "warn", str(e), time.time() - t)
+                stems_y, stem_meta, sep_ok = {}, {}, False
         else:
-            warnings.append(msg)
-            stage("stems", "skipped", msg, time.time() - t)
+            warnings.append(sep_msg)
+            stage("stems", "skipped", sep_msg, time.time() - t)
         self._check()
 
         t = time.time(); stage("drums", "running")
-        raw = transcribe.raw_events(analysis_S)
-        kicks = np.array([r[0] for r in raw if r[1] in ("KICK", "SNARE", "CLAP") and r[2] > 0.5])
+        raw_mix = transcribe.raw_events(S)
+        raw = list(raw_mix) if analysis_S is S else transcribe.raw_events(analysis_S)
+        if analysis_S is not S:
+            # Separation can drop quiet hits. Keep the stem result, and add full-mix hits (never kicks:
+            # bass bleeds into the low band) that the stem pass missed, at reduced confidence.
+            have = [(t, ty) for t, ty, *_ in raw]
+            for t, ty, c, v in raw_mix:
+                if ty != "KICK" and not any(ty == ty2 and abs(t - t2) < 0.03 for t2, ty2 in have):
+                    raw.append((t, ty, c * 0.7, v))
+            raw.sort()
+        # grid fitting always uses the full-mix hits: timing there is not affected by separation artefacts
+        kicks = np.array([r[0] for r in raw_mix if r[1] in ("KICK", "SNARE", "CLAP") and r[2] > 0.5])
         grid = tempo.refine_with_onsets(grid, kicks)
         grid = tempo.pick_downbeat(grid, S)
         events = transcribe.to_events(raw, grid, resolution)
@@ -123,17 +153,17 @@ class Analyzer:
 
         t = time.time(); stage("bass", "running")
         ba = bass_base.default_analyzer()
-        ok, msg = ba.available()
         bass = []
-        if ok:
-            try:
-                bass = ba.analyze(stems.bass if stems and stems.bass is not None else y, spectro.SR)
-                stage("bass", "done", f"{len(bass)} notes", time.time() - t)
-            except Exception as e:
-                warnings.append(f"Bass analysis failed ({e}).")
-                stage("bass", "warn", str(e), time.time() - t)
-        else:
-            stage("bass", "skipped", msg, time.time() - t)
+        try:
+            src = stems_y.get("bass")
+            bass = ba.analyze(src if src is not None else y, grid, resolution, from_stem=src is not None)
+            detail = f"{len(bass)} notes" + ("" if src is not None else " (from full mix — low confidence)")
+            if src is None:
+                warnings.append("Bass notes come from the full mix (no stems) and are approximate.")
+            stage("bass", "done", detail, time.time() - t)
+        except Exception as e:
+            warnings.append(f"Bass analysis failed ({e}).")
+            stage("bass", "warn", str(e), time.time() - t)
         self._check()
 
         t = time.time(); stage("structure", "running")
@@ -149,12 +179,15 @@ class Analyzer:
         a = TrackAnalysis(path=path, filename=os.path.basename(path), duration=info.duration,
                           sample_rate=info.sample_rate, channels=info.channels, audio_hash=h,
                           grid=grid, events=events, sections=sections, bass=bass,
-                          warnings=warnings, resolution=resolution)
+                          warnings=warnings, resolution=resolution, stems=stem_meta,
+                          stems_model=sep.name if stem_meta else "")
         n_bars = max(1, int((info.duration - grid.origin) / (grid.beat * 4)))
         a.characteristics = characteristics.measure(events, grid, n_bars)
+        if "vocals" in stems_y:
+            a.characteristics["vocal_activity"] = stems_io.activity_fraction(stems_y["vocals"], grid, n_bars)
         a.likely_styles = characteristics.likely_styles(a.characteristics)
         stage("recipe", "done", "", 0.0)
         a.stages = list(stages)
         if self.cache:
-            self.cache.put(h, a.to_dict(), resolution)
+            self.cache.put(h, a.to_dict(), resolution, tag)
         return a

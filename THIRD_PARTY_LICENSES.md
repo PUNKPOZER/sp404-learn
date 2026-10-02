@@ -12,6 +12,9 @@ Licenses were read from each project's published package metadata when the depen
 | @tauri-apps/api, plugin-dialog (JS) | IPC / dialogs | Apache-2.0 OR MIT |
 | NumPy | analysis engine | BSD-3-Clause |
 | SciPy | analysis engine (STFT, filters, peak picking) | BSD-3-Clause |
+| PyTorch | stem-separation runtime (CPU/MPS/CUDA) | BSD-3-Clause |
+| Demucs (code) | HT-Demucs stem separation | MIT |
+| einops, julius, PyYAML, tqdm, certifi | Demucs / TLS helpers | MIT, MIT, MIT, MPL-2.0/MIT, MPL-2.0 |
 | CPython | runtime inside the frozen sidecar | PSF-2.0 |
 
 ## Build/dev tooling (not shipped)
@@ -32,5 +35,9 @@ included. Tests generate their own audio. Footwork course patterns are original 
 
 ## ML models
 
-None bundled. Before adding one (e.g. a stem separator or drum classifier) record its license and weights
+- **HT-Demucs (`htdemucs`)** — Meta's published weights, released under the MIT license with the Demucs repo
+  (verify on each update). **Not bundled**: downloaded once by the user (~80 MB, `dl.fbaipublicfiles.com`) from
+  Settings → Model storage.
+
+No other models. Before adding another, record its license and weights
 license here — code and weights are often licensed differently.

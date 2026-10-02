@@ -31,7 +31,7 @@ function burst(c: AudioContext, t: number, kind: BiquadFilterType, freq: number,
   env(g, t, peak, dur); s.connect(f).connect(g).connect(c.destination); s.start(t, Math.random() * 0.5); s.stop(t + dur + 0.02);
 }
 
-export function trigger(voice: string, t: number, vel = 0.9, c: AudioContext = audio()) {
+export function trigger(voice: string, t: number, vel = 0.9, c: AudioContext = audio(), midi?: number) {
   const v = Math.max(0.1, Math.min(1, vel));
   switch (voice) {
     case "KICK": osc(c, t, 160, 42, 0.32, 1.0 * v); break;
@@ -40,7 +40,7 @@ export function trigger(voice: string, t: number, vel = 0.9, c: AudioContext = a
     case "CLOSED_HAT": burst(c, t, "highpass", 7500, 0.04, 0.35 * v); break;
     case "OPEN_HAT": burst(c, t, "highpass", 7000, 0.3, 0.35 * v); break;
     case "PERCUSSION": osc(c, t, 700, 600, 0.1, 0.5 * v); break;
-    case "BASS": osc(c, t, 43.65, 43.65, 0.35, 0.9 * v, "sawtooth"); osc(c, t, 43.65, 43.65, 0.35, 0.6 * v); break; // F1
+    case "BASS": { const f = 440 * 2 ** (((midi ?? 29) - 69) / 12); osc(c, t, f, f, 0.4, 0.55 * v, "sawtooth"); osc(c, t, f, f, 0.4, 0.8 * v); break; }
     case "VOCAL": osc(c, t, 520, 480, 0.18, 0.3 * v, "square"); burst(c, t, "bandpass", 1100, 0.18, 0.3 * v, 4); break;
     case "CHOP": osc(c, t, 330, 330, 0.15, 0.3 * v, "triangle"); break;
     default: burst(c, t, "bandpass", 3000, 0.1, 0.2 * v, 2);

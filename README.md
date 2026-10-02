@@ -9,6 +9,8 @@ detected hit and full manual correction.
 
 ## What it does
 - Tempo / beat grid / downbeat (with ÷2, ×2, edit), waveform from the real audio
+- Stems: drums / bass / lead / vocals via HT-Demucs (one-time ~80 MB model download, then offline); audition with mute/solo
+- Bass notes (pitch, step, length) → piano roll, pattern and tutorial
 - Drum events: kick, snare, clap, closed/open hat, perc — shown on a 16-step grid with confidence
 - Manual correction: add, delete, move, retype, velocity; quantize 1/4–1/32 without losing original timing
 - Rough structure → patterns A–D → SP-404 recipe (pad mapping, which steps on which pad)
@@ -43,14 +45,14 @@ Output: `src-tauri/target/release/bundle/macos/SP-404 LEARN.app` (unsigned; righ
 Not yet tested. Same steps with `.venv\Scripts\python`; the Rust shell already looks for `sp404-sidecar.exe`.
 
 ## Models
-None bundled. Stem separation / learned classifiers are optional future modules behind interfaces in `python/engine`.
+None bundled. Stem separation uses HT-Demucs; download the weights from Settings → Model storage (the only network request the app makes, on your click). Dev setup: `.venv/bin/pip install torch torchaudio certifi einops julius pyyaml tqdm && .venv/bin/pip install --no-deps demucs`.
 
 ## Privacy
 Everything runs locally; the only child process is the bundled analysis engine, talking over stdin/stdout.
 
 ## Limitations
-- Without stem separation, hats under snares/claps/kicks are often missed; low-confidence hits are marked `?`.
-- Constant tempo only; no swing/triplet analysis; no bass or vocal analysis yet.
+- Stems/bass were verified on synthetic audio only — report how they behave on real tracks. Without stems, hats under snares/claps/kicks are often missed; low-confidence hits are marked `?`.
+- Constant tempo only; no swing/triplet analysis; bass is monophonic, lead/vocals are not transcribed.
 - Style labels are hints derived from measured characteristics, not a classification.
 - SP-404MKII button names in the tutorial should be checked against your firmware manual.
 

@@ -36,6 +36,10 @@
       "icons/icon.icns",
       "icons/icon.ico"
     ],
-    "category": "Music"
+    "category": "Music",
+    "macOS": {
+      "signingIdentity": "-",
+      "minimumSystemVersion": "12.0"
+    }
   }
 }

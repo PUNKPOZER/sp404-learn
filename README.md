@@ -23,8 +23,14 @@ _(placeholder)_
 ## Architecture
 See [ARCHITECTURE.md](ARCHITECTURE.md) and [ROADMAP.md](ROADMAP.md).
 
-## Installation
-Build from source (below). Needs FFmpeg for MP3/FLAC/M4A/AIFF: `brew install ffmpeg` (WAV works without it).
+## Installation (macOS, Apple Silicon)
+1. Download `SP-404-LEARN-arm64.dmg` from the repository's **Releases** page, open it and drag the app to **Applications**.
+2. The app is not notarized (no paid Apple Developer ID), so macOS will refuse the first launch. Either right-click the app →
+   **Open** → **Open**, or run `xattr -cr "/Applications/SP-404 LEARN.app"` once.
+3. MP3/FLAC/M4A/AIFF need FFmpeg: `brew install ffmpeg` (WAV works without it).
+4. For stems, open **Settings → Model storage → Download** (~80 MB, one time).
+
+Or build from source (below). Needs FFmpeg for MP3/FLAC/M4A/AIFF: `brew install ffmpeg` (WAV works without it).
 
 ## Development
 ```bash
@@ -37,9 +43,10 @@ npm run tauri dev
 ## Build macOS
 ```bash
 npm run dist            # freezes the Python engine (PyInstaller) and builds the .app
-scripts/make-dmg.sh     # optional plain DMG
+scripts/make-dmg.sh     # drag-to-Applications DMG next to the .app
 ```
-Output: `src-tauri/target/release/bundle/macos/SP-404 LEARN.app` (unsigned; right-click → Open the first time).
+Output: `src-tauri/target/release/bundle/macos/SP-404 LEARN.app` (ad-hoc signed, not notarized). Releases are built by
+`.github/workflows/release-macos.yml` on every `v*` tag (or run it manually from the Actions tab).
 
 ## Build Windows
 Not yet tested. Same steps with `.venv\Scripts\python`; the Rust shell already looks for `sp404-sidecar.exe`.

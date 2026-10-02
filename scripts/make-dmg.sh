@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
-# Plain (undecorated) DMG from the built .app — Tauri's styled DMG needs Finder scripting.
+# Drag-to-Applications DMG from the built .app (plain hdiutil: no Finder scripting, works headless/CI).
 set -euo pipefail
 cd "$(dirname "$0")/../src-tauri/target/release/bundle"
-hdiutil create -volname "SP-404 LEARN" -srcfolder macos -ov -format UDZO "SP-404-LEARN-aarch64.dmg"
-echo "$(pwd)/SP-404-LEARN-aarch64.dmg"
+ARCH="$(uname -m)"; OUT="SP-404-LEARN-${ARCH}.dmg"
+rm -rf dmg-stage "$OUT" && mkdir dmg-stage
+cp -R "macos/SP-404 LEARN.app" dmg-stage/
+ln -s /Applications dmg-stage/Applications
+hdiutil create -volname "SP-404 LEARN" -srcfolder dmg-stage -ov -format UDZO "$OUT"
+rm -rf dmg-stage
+echo "$(pwd)/$OUT"

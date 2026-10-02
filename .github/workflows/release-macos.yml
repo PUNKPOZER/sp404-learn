@@ -1,0 +1,63 @@
+name: Build macOS app
+
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  macos:
+    runs-on: macos-14   # Apple Silicon
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with: { node-version: 22, cache: npm }
+
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.13" }
+
+      - uses: dtolnay/rust-toolchain@stable
+
+      - name: Python engine dependencies
+        run: |
+          python -m venv .venv
+          .venv/bin/pip install --upgrade pip
+          .venv/bin/pip install numpy scipy pytest certifi einops julius pyyaml tqdm torch torchaudio
+          .venv/bin/pip install --no-deps demucs
+
+      - run: npm ci
+      - name: Checks
+        run: |
+          npm run typecheck
+          npm run lint
+          npm test
+          .venv/bin/python -m pytest python/tests -q -k "not sidecar"
+
+      - name: Freeze the analysis engine
+        run: npm run sidecar
+
+      - name: Build app
+        run: npx tauri build --config '{"bundle":{"resources":["resources/sp404-sidecar/**/*"]}}'
+
+      - name: Make DMG
+        run: scripts/make-dmg.sh
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: SP-404-LEARN-macos-arm64
+          path: src-tauri/target/release/bundle/SP-404-LEARN-*.dmg
+          retention-days: 14
+
+      - name: Attach to GitHub Release
+        if: startsWith(github.ref, 'refs/tags/v')
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "$GITHUB_REF_NAME" --generate-notes \
+            --title "SP-404 LEARN $GITHUB_REF_NAME" \
+            src-tauri/target/release/bundle/SP-404-LEARN-*.dmg

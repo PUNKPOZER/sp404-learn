@@ -1,0 +1,12 @@
+.venv/
+__pycache__/
+*.pyc
+node_modules/
+dist/
+target/
+.DS_Store
+*.sp404learn.cache
+/python/build/
+/python/dist/
+src-tauri/resources/
+build/

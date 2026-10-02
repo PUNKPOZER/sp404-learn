@@ -1,0 +1,187 @@
+import { api, isTauri } from "../lib/sidecar";
+import type { DrumEvent, DrumType, StepMap, TrackAnalysis } from "../lib/types";
+import { getState, setState } from "./store";
+
+// ---- file helpers (desktop: Tauri dialog + Rust fs; browser dev: not supported) -------------
+async function invoke<T>(cmd: string, args: object): Promise<T> {
+  const { invoke } = await import("@tauri-apps/api/core");
+  return invoke<T>(cmd, args as Record<string, unknown>);
+}
+const AUDIO_EXT = ["wav", "aif", "aiff", "mp3", "flac", "m4a"];
+export const isAudioPath = (p: string) => AUDIO_EXT.includes(p.split(".").pop()?.toLowerCase() ?? "");
+
+export async function pickTrack() {
+  if (!isTauri) { setState({ error: "Open Track needs the desktop app (browser dev mode: drop a file instead)." }); return; }
+  const { open } = await import("@tauri-apps/plugin-dialog");
+  const p = await open({ multiple: false, filters: [{ name: "Audio", extensions: AUDIO_EXT }] });
+  if (typeof p === "string") await openTrack(p);
+}
+
+// ---- analysis ------------------------------------------------------------------------------
+export async function openTrack(path: string, useCache = true) {
+  if (!isAudioPath(path)) { setState({ error: `Unsupported file type. Use ${AUDIO_EXT.join(", ").toUpperCase()}.` }); return; }
+  const name = path.split(/[\\/]/).pop() ?? path;
+  setState({ screen: "analyzing", error: null, trackPath: path, trackName: name, stages: [], analysis: null, recipe: null,
+    patternEdits: {}, selectedEventId: null, currentBar: 0, projectPath: null, dirty: false, busy: "analyze" });
+  try {
+    const info = await api.probe(path);
+    setState({ peaks: info.peaks });
+    const analysis = await api.analyze(path, (s) =>
+      setState((st) => ({ stages: [...st.stages.filter((x) => x.id !== s.id), s].sort(order) })), useCache);
+    setState({ analysis, busy: null, screen: "track", dirty: true, stages: analysis.stages });
+    await refreshRecipe();
+  } catch (e) {
+    const err = e as Error & { cancelled?: boolean };
+    setState({ busy: null, screen: err.cancelled ? "home" : "analyzing", error: err.cancelled ? null : err.message });
+  }
+}
+const STAGE_ORDER = ["prepare", "tempo", "stems", "drums", "bass", "structure", "recipe"];
+const order = (a: { id: string }, b: { id: string }) => STAGE_ORDER.indexOf(a.id) - STAGE_ORDER.indexOf(b.id);
+
+export async function cancelAnalysis() { try { await api.cancel(); } catch { /* engine already gone */ } }
+
+// ---- recipe --------------------------------------------------------------------------------
+let recipeSeq = 0;
+export async function refreshRecipe() {
+  const { analysis, kit, patternEdits, minConfidence } = getState();
+  if (!analysis) return;
+  const seq = ++recipeSeq;
+  try {
+    const recipe = await api.recipe(analysis, kit, patternEdits, minConfidence);
+    if (seq === recipeSeq) setState({ recipe });
+  } catch (e) { setState({ error: (e as Error).message }); }
+}
+
+// ---- manual corrections --------------------------------------------------------------------
+const stepDur = (a: TrackAnalysis) => 60 / a.grid.bpm / (a.resolution / 4);
+const slotTime = (a: TrackAnalysis, bar: number, step: number) => a.grid.origin + (bar * a.resolution + step) * stepDur(a);
+
+function edit(fn: (a: TrackAnalysis) => TrackAnalysis) {
+  const a = getState().analysis;
+  if (!a) return;
+  setState({ analysis: fn(a), dirty: true });
+  void refreshRecipe();
+}
+export function addEvent(bar: number, step: number, type: DrumType) {
+  edit((a) => {
+    const t = slotTime(a, bar, step);
+    const ev: DrumEvent = { id: `m${Date.now().toString(36)}${Math.random().toString(36).slice(2, 5)}`, time: t, type, confidence: 1,
+      velocity: 0.8, bar, step, quantized_time: t, timing_offset: 0, manual: true };
+    setState({ selectedEventId: ev.id });
+    return { ...a, events: [...a.events, ev].sort((x, y) => x.time - y.time) };
+  });
+}
+export function deleteEvent(id: string) {
+  edit((a) => ({ ...a, events: a.events.filter((e) => e.id !== id) }));
+  if (getState().selectedEventId === id) setState({ selectedEventId: null });
+}
+export function updateEvent(id: string, patch: Partial<DrumEvent>) {
+  edit((a) => ({ ...a, events: a.events.map((e) => (e.id === id ? { ...e, ...patch, manual: true, confidence: patch.type ? 1 : e.confidence } : e)) }));
+}
+export function moveEvent(id: string, step: number) {
+  edit((a) => ({ ...a, events: a.events.map((e) => {
+    if (e.id !== id) return e;
+    const t = slotTime(a, e.bar, step);
+    return { ...e, step, time: t, quantized_time: t, timing_offset: 0, manual: true };
+  }) }));
+}
+
+export async function setGrid(g: { bpm?: number; origin?: number }, resolution?: number) {
+  const a = getState().analysis;
+  if (!a) return;
+  setState({ busy: "regrid" });
+  try {
+    const next = await api.regrid(a, g, resolution);
+    setState({ analysis: next, dirty: true, busy: null, currentBar: 0 });
+    await refreshRecipe();
+  } catch (e) { setState({ busy: null, error: (e as Error).message }); }
+}
+export const halveBpm = () => { const a = getState().analysis; if (a) void setGrid({ bpm: a.grid.bpm / 2 }); };
+export const doubleBpm = () => { const a = getState().analysis; if (a) void setGrid({ bpm: a.grid.bpm * 2 }); };
+/** Shift which beat counts as step 1 (downbeat) by whole beats. */
+export const nudgeDownbeat = (beats: number) => { const a = getState().analysis; if (a) void setGrid({ origin: a.grid.origin + beats * 60 / a.grid.bpm }); };
+
+export function setPatternStep(pattern: string, voice: string, step: number) {
+  const { recipe, patternEdits } = getState();
+  const base = patternEdits[pattern] ?? recipe?.patterns.find((p) => p.name === pattern)?.steps;
+  if (!base) return;
+  const next: StepMap = Object.fromEntries(Object.entries(base).map(([k, v]) => [k, [...v]]));
+  const cur = next[voice] ?? [];
+  next[voice] = cur.includes(step) ? cur.filter((s) => s !== step) : [...cur, step].sort((x, y) => x - y);
+  setState({ patternEdits: { ...patternEdits, [pattern]: next }, dirty: true });
+  void refreshRecipe();
+}
+export function resetPattern(pattern: string) {
+  const { [pattern]: _drop, ...rest } = getState().patternEdits; void _drop;
+  setState({ patternEdits: rest, dirty: true });
+  void refreshRecipe();
+}
+export function setPadVoice(pad: number, voice: string) {
+  setState((s) => ({ kit: { ...s.kit, [pad]: voice }, dirty: true }));
+  void refreshRecipe();
+}
+
+// ---- tutorial ------------------------------------------------------------------------------
+export function learnThisTrack() {
+  const r = getState().recipe;
+  if (!r || !r.tutorialSteps.length) return;
+  setState({ tutorial: { mode: "track", steps: r.tutorialSteps, index: Math.min(getState().resumeIndex, r.tutorialSteps.length - 1), title: r.title }, screen: "tutorial", previewSource: "tutorial" });
+}
+export async function startCourse() {
+  try {
+    const course = getState().course ?? (await api.course(getState().kit));
+    setState({ course, tutorial: { mode: "course", steps: course.steps, index: 0, title: course.title }, screen: "tutorial", previewSource: "tutorial", previewBpm: course.bpm });
+  } catch (e) { setState({ error: (e as Error).message }); }
+}
+export function tutorialGo(delta: number) {
+  setState((s) => s.tutorial ? { tutorial: { ...s.tutorial, index: Math.max(0, Math.min(s.tutorial.steps.length - 1, s.tutorial.index + delta)) }, dirty: true } : {});
+}
+
+// ---- project files -------------------------------------------------------------------------
+interface ProjectFile {
+  format: "sp404learn"; version: 1; trackPath: string; peaks: number[][]; analysis: TrackAnalysis;
+  kit: Record<number, string>; patternEdits: Record<string, StepMap>; minConfidence: number;
+  tutorialIndex: number; settings: { currentBar: number; activePattern: string };
+}
+
+export async function saveProject(saveAs = false) {
+  const s = getState();
+  if (!s.analysis || !s.trackPath) return;
+  if (!isTauri) { setState({ error: "Saving projects needs the desktop app." }); return; }
+  let path = s.projectPath;
+  if (!path || saveAs) {
+    const { save } = await import("@tauri-apps/plugin-dialog");
+    const def = (s.trackName ?? "project").replace(/\.[^.]+$/, "") + ".sp404learn";
+    path = await save({ defaultPath: def, filters: [{ name: "SP-404 LEARN project", extensions: ["sp404learn"] }] });
+    if (!path) return;
+  }
+  const file: ProjectFile = { format: "sp404learn", version: 1, trackPath: s.trackPath, peaks: s.peaks, analysis: s.analysis, kit: s.kit,
+    patternEdits: s.patternEdits, minConfidence: s.minConfidence, tutorialIndex: s.tutorial?.index ?? 0,
+    settings: { currentBar: s.currentBar, activePattern: s.activePattern } };
+  try {
+    await invoke("write_text_file", { path, contents: JSON.stringify(file) });
+    setState({ projectPath: path, dirty: false, error: null });
+  } catch (e) { setState({ error: String(e) }); }
+}
+
+export async function openProject(path?: string) {
+  if (!isTauri) { setState({ error: "Opening projects needs the desktop app." }); return; }
+  if (!path) {
+    const { open } = await import("@tauri-apps/plugin-dialog");
+    const p = await open({ multiple: false, filters: [{ name: "SP-404 LEARN project", extensions: ["sp404learn"] }] });
+    if (typeof p !== "string") return;
+    path = p;
+  }
+  try {
+    const f = JSON.parse(await invoke<string>("read_text_file", { path })) as ProjectFile;
+    if (f.format !== "sp404learn") throw new Error("Not an SP-404 LEARN project file.");
+    const exists = await invoke<boolean>("path_exists", { path: f.trackPath });
+    setState({ trackPath: f.trackPath, trackName: f.trackPath.split(/[\\/]/).pop() ?? f.trackPath, peaks: f.peaks,
+      analysis: f.analysis, kit: f.kit, patternEdits: f.patternEdits, minConfidence: f.minConfidence, projectPath: path,
+      currentBar: f.settings.currentBar, activePattern: f.settings.activePattern, screen: "track", dirty: false, error: null,
+      stages: f.analysis.stages, selectedEventId: null, resumeIndex: f.tutorialIndex, tutorial: null,
+    });
+    if (!exists) setState({ error: `Original audio not found at ${f.trackPath} — analysis loaded from the project.` });
+    await refreshRecipe();
+  } catch (e) { setState({ error: String(e instanceof Error ? e.message : e) }); }
+}

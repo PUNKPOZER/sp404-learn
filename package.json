@@ -12,7 +12,7 @@
     "tauri": "tauri",
     "py:test": ".venv/bin/python -m pytest python/tests -q",
     "sidecar": "scripts/build-sidecar.sh",
-    "dist": "npm run sidecar && tauri build"
+    "dist": "npm run sidecar && tauri build --config '{\"bundle\":{\"resources\":[\"resources/sp404-sidecar/**/*\"]}}'"
   },
   "dependencies": {
     "@tauri-apps/api": "^2.0.0",

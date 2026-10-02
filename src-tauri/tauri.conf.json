@@ -36,9 +36,6 @@
       "icons/icon.icns",
       "icons/icon.ico"
     ],
-    "category": "Music",
-    "resources": [
-      "resources/sp404-sidecar/**/*"
-    ]
+    "category": "Music"
   }
 }

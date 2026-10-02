@@ -17,7 +17,10 @@ struct Sidecar {
 /// dev builds run the repo's Python package from its virtualenv.
 fn sidecar_command(app: &AppHandle) -> Result<Command, String> {
     let exe = if cfg!(windows) { "sp404-sidecar.exe" } else { "sp404-sidecar" };
-    if let Ok(res) = app.path().resource_dir() {
+    // debug builds always run the repo's Python so engine edits are picked up
+    if cfg!(debug_assertions) {
+        // fall through to the virtualenv below
+    } else if let Ok(res) = app.path().resource_dir() {
         let bundled = res.join("resources").join("sp404-sidecar").join(exe);
         if bundled.exists() {
             return Ok(Command::new(bundled));

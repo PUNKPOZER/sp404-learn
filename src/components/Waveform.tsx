@@ -2,9 +2,10 @@ import { useEffect, useRef } from "react";
 import { sectionColor } from "../lib/sections";
 import type { Section, TrackAnalysis } from "../lib/types";
 
-interface Props { peaks: number[][]; analysis: TrackAnalysis | null; currentBar?: number; onBar?: (bar: number) => void; onSeek?: (t: number) => void; playTime?: number | null; height?: number }
+interface Props { peaks: number[][]; analysis: TrackAnalysis | null; currentBar?: number; onBar?: (bar: number) => void; onSeek?: (t: number) => void; playTime?: number | null; height?: number;
+  /** time marks (s) drawn as ticks, e.g. where each bass note starts */ markers?: number[]; markerColor?: string }
 
-export function Waveform({ peaks, analysis, currentBar, onBar, onSeek, playTime, height = 160 }: Props) {
+export function Waveform({ peaks, analysis, currentBar, onBar, onSeek, playTime, height = 160, markers, markerColor = "#ff9a5c" }: Props) {
   const ref = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -41,11 +42,15 @@ export function Waveform({ peaks, analysis, currentBar, onBar, onSeek, playTime,
         const x = (i / n) * w;
         g.fillRect(x, mid - hi * mid * 0.95, Math.max(1, w / n), Math.max(1, (hi - lo) * mid * 0.95));
       }
+      if (markers && analysis) {
+        g.fillStyle = markerColor;
+        for (const m of markers) g.fillRect(Math.round((m / dur) * w) - 1, 0, 2, h);
+      }
     };
     draw();
     const ro = new ResizeObserver(draw); ro.observe(cv);
     return () => ro.disconnect();
-  }, [peaks, analysis, currentBar]);
+  }, [peaks, analysis, currentBar, markers, markerColor]);
 
   return (
     <div className="wave-wrap" data-tour="waveform">

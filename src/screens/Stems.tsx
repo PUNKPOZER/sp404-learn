@@ -1,10 +1,11 @@
-import { useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { ChopPanel, type Region } from "../components/ChopPanel";
 import type { StemInfo, TrackAnalysis } from "../lib/types";
 import { STEM_COLORS, STEM_LABELS, STEM_ORDER } from "../lib/voices";
 import { applyGains, seekStems } from "../lib/audio/stemPlayer";
 import { setState, useStore } from "../state/store";
 
-function Lane({ part, info, a, time }: { part: string; info: StemInfo; a: TrackAnalysis; time: number }) {
+function Lane({ part, info, a, time, regions, off }: { part: string; info: StemInfo; a: TrackAnalysis; time: number; regions: Region[]; off: Set<number> }) {
   const ref = useRef<HTMLCanvasElement>(null);
   const { stemMute, stemSolo } = useStore((s) => s);
   const dim = stemSolo ? stemSolo !== part : stemMute[part];
@@ -33,6 +34,8 @@ function Lane({ part, info, a, time }: { part: string; info: StemInfo; a: TrackA
     const ro = new ResizeObserver(draw); ro.observe(cv); return () => ro.disconnect();
   }, [info, a, part]);
 
+  const dur = a.duration;
+
   return (
     <div className={`lane ${dim ? "off" : ""}`} style={{ ["--c" as string]: STEM_COLORS[part] }}>
       <div className="lane-head">
@@ -44,6 +47,9 @@ function Lane({ part, info, a, time }: { part: string; info: StemInfo; a: TrackA
       </div>
       <div className="lane-body" onClick={(e) => { const r = e.currentTarget.getBoundingClientRect(); seekStems(((e.clientX - r.left) / r.width) * a.duration); }}>
         <canvas ref={ref} />
+        {regions.length > 1 && regions.map((r, i) => (
+          <i key={i} className={`region ${off.has(i) ? "off" : ""}`} style={{ left: `${(r.start / dur) * 100}%`, width: `${((r.end - r.start) / dur) * 100}%` }}><em>{i + 1}</em></i>
+        ))}
         <i className="playhead" style={{ left: `${(time / a.duration) * 100}%` }} />
       </div>
     </div>
@@ -52,6 +58,9 @@ function Lane({ part, info, a, time }: { part: string; info: StemInfo; a: TrackA
 
 export function Stems() {
   const { analysis: a, stemTime, stemLoading } = useStore((s) => s);
+  const [part, setPart] = useState("vocals");
+  const [plan, setPlan] = useState<{ regions: Region[]; off: Set<number> }>({ regions: [], off: new Set() });
+  const onRegions = useCallback((regions: Region[], off: Set<number>) => setPlan({ regions, off }), []);
   if (!a) return null;
   const have = STEM_ORDER.filter((p) => a.stems[p]);
   if (!have.length) {
@@ -77,8 +86,9 @@ export function Stems() {
         {stemLoading && <span className="mono dim">загрузка…</span>}
       </header>
       <section className="panel lanes" data-tour="lanes">
-        {have.map((p) => <Lane key={p} part={p} info={a.stems[p]} a={a} time={stemTime} />)}
+        {have.map((p) => <Lane key={p} part={p} info={a.stems[p]} a={a} time={stemTime} regions={p === part ? plan.regions : []} off={plan.off} />)}
       </section>
+      <ChopPanel analysis={a} part={have.includes(part) ? part : have[0]} onPart={setPart} onRegions={onRegions} />
       <p className="hint">Нажми «Играть», чтобы послушать партии вместе; M — выключить, S — солировать. Клик по дорожке — перемотка. Стемы — это твой файл, обработанный и воспроизводимый локально.
         «Лид» — всё, что не ударные, бас и вокал (клавиши, гитары, синтезаторы, сэмплы).</p>
     </div>

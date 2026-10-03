@@ -223,3 +223,25 @@ label.inline { display: inline-flex; align-items: center; gap: 10px; font: 600 1
 .tour-tip p { margin: 0 0 16px; color: #cdd2e2; font-size: 13.5px; line-height: 1.55; }
 .tour-count { font: 600 10.5px var(--sans); letter-spacing: .08em; color: var(--mint); text-transform: uppercase; }
 .tour-nav { display: flex; gap: 8px; align-items: center; }
+
+/* chop / export */
+.chop-parts, .chop-modes { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin-bottom: 12px; }
+.chop-parts .btn { display: inline-flex; align-items: center; gap: 8px; } .chop-parts .btn .dot { margin: 0; }
+.chop-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 6px; max-height: 220px; overflow: auto; padding: 4px; margin-bottom: 14px; background: var(--surface2); border-radius: 12px; }
+.chop-item { display: flex; align-items: center; gap: 8px; padding: 6px 10px; border-radius: 9px; background: var(--surface); } .chop-item.off { opacity: .4; }
+.chop-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.chop-status { margin-top: 12px; padding: 10px 14px; border-radius: 10px; font-size: 12.5px; user-select: text; word-break: break-all; }
+.chop-status.ok { background: rgba(94, 242, 192, .1); color: var(--mint); } .chop-status.err { background: rgba(255, 111, 174, .1); color: #ffb0cf; } .chop-status.busy { background: var(--surface2); color: var(--dim); }
+.region { position: absolute; top: 0; bottom: 0; background: rgba(255, 255, 255, .08); border-left: 1px solid rgba(255, 255, 255, .5); pointer-events: none; }
+.region.off { background: rgba(0, 0, 0, .45); } .region em { font: 600 9px var(--mono); color: #fff; padding: 2px 3px; font-style: normal; }
+
+/* structure overflow: nothing may push past the panel edge */
+.screen > *, .panel, .card { min-width: 0; }
+.panel { overflow: hidden; }
+.arr-track { min-width: 0; }
+.arr-seg { min-width: 0; padding: 8px 8px; }
+.arr-top { min-width: 0; } .arr-time { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.arr-seg.tiny .arr-name, .arr-seg.tiny .arr-time { display: none; } .arr-seg.tiny { padding: 6px 4px; justify-items: center; }
+.cards { grid-template-columns: repeat(auto-fill, minmax(min(250px, 100%), 1fr)); }
+.card-top b { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; }
+.legend { row-gap: 6px; }

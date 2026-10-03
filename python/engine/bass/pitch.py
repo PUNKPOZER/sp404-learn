@@ -102,7 +102,8 @@ def analyze(y: np.ndarray, grid: Grid | None = None, resolution: int = 16, conf_
             if grid is not None:
                 q = quantize_time(bn.time, grid.bpm, grid.origin, resolution, grid.beats_per_bar)
                 bn.bar, bn.step = q.bar, q.step
-            notes.append(bn)
+            if bn.bar >= 0:            # notes before the first bar of the grid are dropped
+                notes.append(bn)
         i = max(j, i + 1)
     # merge same-pitch fragments separated by tiny gaps
     merged: list[BassNote] = []

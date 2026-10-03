@@ -64,6 +64,10 @@ export const api = {
   course: (kit?: Record<number, string>) => rpc<Course>("course", { name: "footwork", kit }),
   modelsStatus: () => rpc<ModelStatus>("models_status"),
   modelsDownload: () => rpc<ModelStatus>("models_download"),
+  chopPlan: (p: { path: string; mode: string; bars?: number; grid: { bpm: number; origin: number }; sensitivity?: number }) =>
+    rpc<{ regions: { start: number; end: number }[]; duration: number }>("chop_plan", p),
+  exportChops: (p: { path: string; regions: { start: number; end: number }[]; outdir: string; basename: string; normalize: boolean }) =>
+    rpc<{ files: string[]; outdir: string }>("export_chops", p),
   cacheInfo: () => rpc<{ bytes: number; path: string }>("cache_info"),
   cacheClear: () => rpc("cache_clear"),
 };

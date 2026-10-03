@@ -40,3 +40,20 @@ def test_end_to_end_via_sidecar_protocol_and_cache(tmp_path):
         assert len(c["result"]["lessons"]) == 18
     finally:
         p.kill()
+
+
+def test_chop_plan_and_export_through_sidecar(tmp_path):
+    import numpy as np
+    from scipy.io import wavfile
+    from sidecar.server import Server
+    srv = Server(str(tmp_path / "cache"))
+    d = tmp_path / "cache" / "stems" / "x"; d.mkdir(parents=True)
+    y = np.zeros(44100 * 4, dtype=np.int16); y[44100:44100 * 2] = (8000 * np.sin(np.arange(44100) / 20)).astype(np.int16)
+    wavfile.write(str(d / "vocals.wav"), 44100, y)
+    plan = srv.m_chop_plan({"path": str(d / "vocals.wav"), "mode": "phrases"}, 1)
+    assert len(plan["regions"]) == 1
+    out = srv.m_export_chops({"path": str(d / "vocals.wav"), "regions": plan["regions"], "outdir": str(tmp_path / "out"), "basename": "v"}, 2)
+    assert len(out["files"]) == 1 and wavfile.read(out["files"][0])[0] == 48000
+    import pytest
+    with pytest.raises(ValueError):
+        srv.m_chop_plan({"path": "/etc/hosts", "mode": "whole"}, 3)

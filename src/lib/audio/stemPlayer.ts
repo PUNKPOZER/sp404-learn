@@ -5,8 +5,8 @@ import { audio } from "./synth";
 
 // Plays the user's own audio locally: the whole-track copy, the four stems, or a single stem,
 // optionally limited to a time range (a section or one bar) that loops.
-export type PlayMode = "mix" | "stems" | "bass" | "drums";
-const PARTS: Record<PlayMode, string[]> = { mix: ["mix"], stems: STEM_ORDER, bass: ["bass"], drums: ["drums"] };
+export type PlayMode = "mix" | "stems" | "bass" | "drums" | "lead" | "vocals";
+const PARTS: Record<PlayMode, string[]> = { mix: ["mix"], stems: STEM_ORDER, bass: ["bass"], drums: ["drums"], lead: ["lead"], vocals: ["vocals"] };
 
 interface Track { buf: AudioBuffer; gain: GainNode; src?: AudioBufferSourceNode }
 let bufs: Record<string, AudioBuffer> = {};

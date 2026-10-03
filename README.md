@@ -10,6 +10,7 @@ detected hit and full manual correction.
 ## What it does
 - Tempo / beat grid / downbeat (with ÷2, ×2, edit), waveform from the real audio
 - Stems: drums / bass / lead / vocals via HT-Demucs (one-time ~80 MB model download, then offline); audition with mute/solo
+- Stem export & chopping for the SP-404MKII: whole stems or numbered chops (by bars, phrases or hits) as 16-bit/48 kHz mono WAV
 - Bass notes (pitch, step, length) → piano roll, pattern and tutorial
 - Drum events: kick, snare, clap, closed/open hat, perc — shown on a 16-step grid with confidence
 - Manual correction: add, delete, move, retype, velocity; quantize 1/4–1/32 without losing original timing

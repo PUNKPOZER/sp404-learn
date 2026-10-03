@@ -72,6 +72,31 @@ class Server:
     def m_course(self, p, rid):
         return learn.build_course(p.get("name", "footwork"), pads.normalize_kit(p["kit"]) if p.get("kit") else None)
 
+    def _stem_path(self, path: str) -> str:
+        real = os.path.realpath(path)
+        if not real.startswith(os.path.realpath(self.cache.root)) or not real.endswith(".wav") or not os.path.isfile(real):
+            raise ValueError("not a stem file")
+        return real
+
+    def m_chop_plan(self, p, rid):
+        """Regions of a stem for the chosen chop mode (whole / bars / phrases / hits)."""
+        from engine.stems import chop
+        y, sr = chop.load(self._stem_path(p["path"]))
+        g = p.get("grid", {})
+        regs = chop.plan(y, sr, p.get("mode", "whole"), float(g.get("bpm", 120)), float(g.get("origin", 0)),
+                         bars=p.get("bars", 2), gap=p.get("gap", 0.35), sensitivity=p.get("sensitivity", 1.0))
+        return {"regions": [{"start": float(a), "end": float(b)} for a, b in regs], "duration": len(y) / sr}
+
+    def m_export_chops(self, p, rid):
+        """Write regions of a stem as 16-bit/48 kHz mono WAV files into ``outdir``."""
+        from engine.stems import chop
+        y, sr = chop.load(self._stem_path(p["path"]))
+        regs = [(float(r["start"]), float(r["end"])) for r in p["regions"]]
+        if not regs:
+            raise ValueError("nothing to export")
+        files = chop.export_regions(y, sr, regs, p["outdir"], p["basename"], bool(p.get("normalize", False)))
+        return {"files": files, "outdir": p["outdir"]}
+
     def m_cache_info(self, p, rid):
         return {"bytes": self.cache.size(), "path": str(self.cache.root)}
 

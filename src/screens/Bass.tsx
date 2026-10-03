@@ -1,11 +1,14 @@
 import { useMemo } from "react";
+import { Waveform } from "../components/Waveform";
+import { mmss } from "../lib/sections";
 import { setState, useStore } from "../state/store";
 import { noteName } from "../lib/voices";
 import { toggleAudio } from "../lib/audio/stemPlayer";
 import { togglePlay } from "../lib/audio/preview";
 
 export function Bass() {
-  const { analysis: a, currentBar, playing, stemPlaying, audioTag } = useStore((s) => s);
+  const { analysis: a, currentBar, playing, stemPlaying, audioTag, peaks, stemTime } = useStore((s) => s);
+  const marks = useMemo(() => (a ? a.bass.map((b) => b.time) : []), [a]);
   const notes = useMemo(() => (a ? a.bass.filter((b) => b.bar === currentBar) : []), [a, currentBar]);
   if (!a) return null;
   const nBars = Math.max(1, a.bass.reduce((m, b) => Math.max(m, b.bar), 0) + 1);
@@ -31,6 +34,15 @@ export function Bass() {
           onClick={() => { const bar = (60 / a.grid.bpm) * 4, t0 = Math.max(0, a.grid.origin + currentBar * bar); void toggleAudio("bass", { from: t0, to: t0 + bar, tag: `bass-bar:${currentBar}` }); }}>
           {stemPlaying && audioTag === `bass-bar:${currentBar}` ? "■ Оригинал баса" : "▶ Оригинал баса"}</button>
       </header>
+      {a.bass.length > 0 && (
+        <section className="panel">
+          <h2>Где бас в треке <small>полоски — начало каждой ноты · клик по волне — перейти к такту</small></h2>
+          <Waveform peaks={a.stems.bass?.peaks?.length ? a.stems.bass.peaks : peaks} analysis={a} currentBar={currentBar}
+            markers={marks} markerColor="#ff9a5c" height={92} onBar={(b) => setState({ currentBar: b })}
+            playTime={stemPlaying && audioTag?.startsWith("bass-bar") ? stemTime : null} />
+          <p className="hint">Бас входит в такте <b>{a.bass[0].bar + 1}</b> ({mmss(a.bass[0].time)}) · нот в треке: <b>{a.bass.length}</b>.</p>
+        </section>
+      )}
       {a.bass.length === 0 ? (
         <section className="panel"><h2>Басовые ноты не найдены</h2><p>В басовом регистре ничего не найдено. Если в треке есть бас, скачай модель стемов в Настройках и проанализируй заново.</p></section>
       ) : (

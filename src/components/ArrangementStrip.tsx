@@ -25,7 +25,7 @@ export function SectionStrip({ analysis, recipe, activePattern, onPick, playingI
         const dim = activePattern != null && pat !== activePattern;
         const prog = playing ? Math.min(1, Math.max(0, (time - s.start) / (s.end - s.start))) : 0;
         return (
-          <button key={i} role="listitem" className={`arr-seg ${playing ? "playing" : ""} ${dim ? "dim" : ""} ${activePattern && !dim ? "on" : ""}`}
+          <button key={i} role="listitem" className={`arr-seg ${playing ? "playing" : ""} ${dim ? "dim" : ""} ${(s.end - s.start) / total < 0.07 ? "tiny" : ""} ${activePattern && !dim ? "on" : ""}`}
             style={{ flexGrow: Math.max(0.08, (s.end - s.start) / total), flexBasis: 0, ["--c" as string]: sectionColor(s) }}
             onClick={() => onPick?.(i)} title={`${s.label} · ${mmss(s.start)}–${mmss(s.end)} · такты ${s.start_bar + 1}–${s.end_bar}`}>
             {playing && <i className="arr-prog" style={{ width: `${prog * 100}%` }} />}

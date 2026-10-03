@@ -1,6 +1,6 @@
 // Transport to the local Python engine. In the desktop app this is Tauri IPC → child process
 // (JSON lines). In a plain browser (dev only) it talks to python/sidecar/dev_http.py on localhost.
-import type { TrackAnalysis, Recipe, Course, StageInfo, ModelStatus } from "./types";
+import type { TrackAnalysis, Recipe, Course, CourseMeta, StageInfo, ModelStatus } from "./types";
 
 export const isTauri = typeof window !== "undefined" && "__TAURI_INTERNALS__" in window;
 const DEV_BRIDGE = "http://127.0.0.1:8404";
@@ -61,7 +61,8 @@ export const api = {
     rpc<TrackAnalysis>("regrid", { analysis, grid, resolution }),
   recipe: (analysis: TrackAnalysis, kit: Record<number, string>, overrides: object, min_confidence: number) =>
     rpc<Recipe>("recipe", { analysis, kit, overrides, min_confidence }),
-  course: (kit?: Record<number, string>) => rpc<Course>("course", { name: "footwork", kit }),
+  courses: () => rpc<CourseMeta[]>("courses"),
+  course: (name: string, kit?: Record<number, string>) => rpc<Course>("course", { name, kit }),
   modelsStatus: () => rpc<ModelStatus>("models_status"),
   modelsDownload: () => rpc<ModelStatus>("models_download"),
   chopPlan: (p: { path: string; mode: string; bars?: number; grid: { bpm: number; origin: number }; sensitivity?: number }) =>

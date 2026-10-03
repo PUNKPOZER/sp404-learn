@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 160" role="img" aria-label="SP-404 LEARN">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#232a3d"/><stop offset="1" stop-color="#0c0e13"/></linearGradient>
+    <linearGradient id="pill" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#5ef2c0"/><stop offset="1" stop-color="#5cc8ff"/></linearGradient>
+  </defs>
+  <rect x="4" y="4" width="152" height="152" rx="38" fill="url(#bg)" stroke="#333a4e" stroke-width="2"/>
+  <g>
+    <rect x="30" y="30" width="22" height="22" rx="7" fill="#2a3042"/><rect x="56" y="30" width="22" height="22" rx="7" fill="#2a3042"/><rect x="82" y="30" width="22" height="22" rx="7" fill="#a89bff"/><rect x="108" y="30" width="22" height="22" rx="7" fill="#2a3042"/>
+    <rect x="30" y="56" width="22" height="22" rx="7" fill="#ff7a6b"/><rect x="56" y="56" width="22" height="22" rx="7" fill="#2a3042"/><rect x="82" y="56" width="22" height="22" rx="7" fill="#2a3042"/><rect x="108" y="56" width="22" height="22" rx="7" fill="#ffc15e"/>
+    <rect x="30" y="82" width="22" height="22" rx="7" fill="#2a3042"/><rect x="56" y="82" width="22" height="22" rx="7" fill="#5ef2c0"/><rect x="82" y="82" width="22" height="22" rx="7" fill="#2a3042"/><rect x="108" y="82" width="22" height="22" rx="7" fill="#2a3042"/>
+    <rect x="30" y="108" width="22" height="22" rx="7" fill="#ff7a6b"/><rect x="56" y="108" width="22" height="22" rx="7" fill="#2a3042"/><rect x="82" y="108" width="22" height="22" rx="7" fill="#5cc8ff"/><rect x="108" y="108" width="22" height="22" rx="7" fill="#2a3042"/>
+  </g>
+  <text x="184" y="94" font-family="-apple-system, 'SF Pro Rounded', 'Helvetica Neue', Arial, sans-serif" font-size="78" font-weight="800" letter-spacing="-2" fill="#eef0f6">SP-404</text>
+  <rect x="186" y="106" width="196" height="40" rx="20" fill="url(#pill)"/>
+  <text x="284" y="135" text-anchor="middle" font-family="-apple-system, 'SF Pro Rounded', 'Helvetica Neue', Arial, sans-serif" font-size="25" font-weight="800" letter-spacing="9" fill="#06231d">LEARN</text>
+  <circle cx="404" cy="126" r="9" fill="#ff7a6b"/><circle cx="430" cy="126" r="9" fill="#ffc15e"/><circle cx="456" cy="126" r="9" fill="#5ef2c0"/>
+</svg>

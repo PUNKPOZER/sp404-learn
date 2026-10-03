@@ -129,9 +129,14 @@ export function learnThisTrack() {
   if (!r || !r.tutorialSteps.length) return;
   setState({ tutorial: { mode: "track", steps: r.tutorialSteps, index: Math.min(getState().resumeIndex, r.tutorialSteps.length - 1), title: r.title }, screen: "tutorial", previewSource: "tutorial" });
 }
-export async function startCourse() {
+export async function loadCourses() {
+  if (getState().courseList.length) return;
+  try { setState({ courseList: await api.courses() }); } catch (e) { setState({ error: (e as Error).message }); }
+}
+export async function startCourse(name = "footwork") {
   try {
-    const course = getState().course ?? (await api.course(getState().kit));
+    const cached = getState().course;
+    const course = cached && cached.name === name ? cached : await api.course(name, getState().kit);
     setState({ course, tutorial: { mode: "course", steps: course.steps, index: 0, title: course.title }, screen: "tutorial", previewSource: "tutorial", previewBpm: course.bpm });
   } catch (e) { setState({ error: (e as Error).message }); }
 }

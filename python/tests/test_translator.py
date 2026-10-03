@@ -77,3 +77,22 @@ def test_user_added_bass_step_gets_default_note():
         a.bass.append(BassNote(time=bar * 1.5, duration=.2, midi=27, confidence=.9, bar=bar, step=0))
     r = build_recipe(a, overrides={"A": {"KICK": [1], "BASS": [1, 9]}})
     assert r.patterns[0]["notes"]["BASS"] == {"1": 27, "9": 27}
+
+
+def test_every_course_builds_and_is_consistent():
+    from translator.sp404 import learn
+    from translator.sp404.courses import COURSES
+    assert len(learn.list_courses()) >= 9
+    for name, spec in COURSES.items():
+        c = learn.build_course(name)
+        assert c["available"] and c["steps"] and len(c["lessons"]) == len(spec["lessons"])
+        assert {p["name"] for p in c["patterns"]} == {"A", "B", "C", "D"}
+        for st in c["steps"]:
+            assert 1 <= st["lesson"] <= len(c["lessons"]) and st["lessonsTotal"] == len(c["lessons"])
+            assert all(1 <= s <= 16 for v in st["grid"].values() for s in v) and all(1 <= s <= 16 for s in st["highlight"])
+            if st["voice"]:
+                assert st["pad"] is not None, (name, st["title"])
+        for p in c["patterns"]:
+            assert all(1 <= s <= 16 for v in p["steps"].values() for s in v)
+    assert len(learn.build_course("footwork")["lessons"]) == 18
+    assert not learn.build_course("nope")["available"]

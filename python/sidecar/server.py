@@ -69,6 +69,9 @@ class Server:
         kit = pads.normalize_kit(p["kit"]) if p.get("kit") else None
         return build_recipe(a, kit, p.get("min_confidence", 0.3), p.get("overrides") or None).to_dict()
 
+    def m_courses(self, p, rid):
+        return learn.list_courses()
+
     def m_course(self, p, rid):
         return learn.build_course(p.get("name", "footwork"), pads.normalize_kit(p["kit"]) if p.get("kit") else None)
 

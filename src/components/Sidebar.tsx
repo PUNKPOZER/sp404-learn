@@ -1,3 +1,4 @@
+import { Logo } from "./Logo";
 import { setState, useStore, type Screen } from "../state/store";
 
 const ITEMS: { id: Screen; label: string; needsTrack: boolean }[] = [
@@ -12,7 +13,7 @@ export function Sidebar() {
   const name = useStore((s) => s.trackName);
   return (
     <nav className="sidebar" data-tour="sidebar">
-      <button className="logo" onClick={() => setState({ screen: "home" })}>SP-404<br /><span>LEARN</span></button>
+      <button className="logo" aria-label="На главную" onClick={() => setState({ screen: "home" })}><Logo /></button>
       {name && <div className="trackname" title={name}>{name}</div>}
       {ITEMS.map((i) => (
         <button key={i.id} data-tour={`nav-${i.id}`} className={`nav ${screen === i.id || (i.id === "learn" && screen === "tutorial") ? "on" : ""}`}

@@ -1,5 +1,5 @@
 import { useSyncExternalStore } from "react";
-import type { Course, Recipe, StageInfo, StepMap, TrackAnalysis, TutorialStep } from "../lib/types";
+import type { Course, CourseMeta, Recipe, StageInfo, StepMap, TrackAnalysis, TutorialStep } from "../lib/types";
 import { DEFAULT_KIT } from "../lib/voices";
 
 export type Screen = "home" | "analyzing" | "track" | "stems" | "drums" | "bass" | "structure" | "recipe" | "learn" | "tutorial" | "settings";
@@ -23,6 +23,7 @@ export interface AppState {
   activePattern: string;
   tutorial: { mode: "track" | "course"; steps: TutorialStep[]; index: number; title: string } | null;
   course: Course | null;
+  courseList: CourseMeta[];
   projectPath: string | null;
   dirty: boolean;
   playing: boolean;
@@ -44,7 +45,7 @@ export interface AppState {
 const initial: AppState = {
   screen: "home", busy: null, error: null, trackPath: null, trackName: null, peaks: [], analysis: null, stages: [],
   recipe: null, kit: { ...DEFAULT_KIT }, patternEdits: {}, minConfidence: 0.3, selectedEventId: null, selectedPad: null,
-  currentBar: 0, activePattern: "A", tutorial: null, course: null, projectPath: null, dirty: false,
+  currentBar: 0, activePattern: "A", tutorial: null, course: null, courseList: [], projectPath: null, dirty: false,
   playing: false, playStep: -1, loop: true, resumeIndex: 0, stemMute: {}, stemSolo: null, stemTime: 0, stemPlaying: false, stemLoading: false, audioTag: null, tour: null, previewBpm: null, previewSource: "pattern",
 };
 

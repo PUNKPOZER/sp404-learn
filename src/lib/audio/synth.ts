@@ -41,6 +41,7 @@ export function trigger(voice: string, t: number, vel = 0.9, c: AudioContext = a
     case "OPEN_HAT": burst(c, t, "highpass", 7000, 0.3, 0.35 * v); break;
     case "PERCUSSION": osc(c, t, 700, 600, 0.1, 0.5 * v); break;
     case "BASS": { const f = 440 * 2 ** (((midi ?? 29) - 69) / 12); osc(c, t, f, f, 0.4, 0.55 * v, "sawtooth"); osc(c, t, f, f, 0.4, 0.8 * v); break; }
+    case "TEXTURE": burst(c, t, "lowpass", 2500, 0.5, 0.12 * v, 0.5); break;
     case "VOCAL": osc(c, t, 520, 480, 0.18, 0.3 * v, "square"); burst(c, t, "bandpass", 1100, 0.18, 0.3 * v, 4); break;
     case "CHOP": osc(c, t, 330, 330, 0.15, 0.3 * v, "triangle"); break;
     default: burst(c, t, "bandpass", 3000, 0.1, 0.2 * v, 2);

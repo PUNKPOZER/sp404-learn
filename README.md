@@ -1,3 +1,5 @@
+<p align="center"><img src="docs/logo.svg" width="360" alt="SP-404 LEARN"></p>
+
 # SP-404 LEARN
 
 Drop a reference track; get a practical, step-by-step way to rebuild its rhythm on a Roland SP-404MKII.
@@ -15,7 +17,7 @@ detected hit and full manual correction.
 - Drum events: kick, snare, clap, closed/open hat, perc — shown on a 16-step grid with confidence
 - Manual correction: add, delete, move, retype, velocity; quantize 1/4–1/32 without losing original timing
 - Rough structure → patterns A–D → SP-404 recipe (pad mapping, which steps on which pad)
-- “LEARN THIS TRACK” walks through the recipe pad by pad; a built-in 18-lesson Footwork course needs no track
+- “LEARN THIS TRACK” walks through the recipe pad by pad; built-in genre courses need no track — Footwork, Jungle, Breakbeat, House, Hip-Hop, Techno, Trip-Hop, Lo-Fi House, Lo-Fi Hip-Hop (original educational patterns)
 - Synth-based preview (no copyrighted audio is ever played back)
 
 ## Screenshots

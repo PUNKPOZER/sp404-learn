@@ -29,8 +29,9 @@ export interface Recipe {
 export interface TutorialStep {
   id: number; total: number; section: string; title: string; text: string;
   voice: Voice | null; pad: number | null; highlight: number[]; grid: StepMap;
-  lesson?: number; lessonTitle?: string;
+  lesson?: number; lessonTitle?: string; lessonsTotal?: number;
 }
+export interface CourseMeta { id: string; title: string; bpm: number; short: string; summary: string; lessons: { n: number; title: string; summary: string }[] }
 export interface Course {
   name: string; available: boolean; message?: string; bpm: number; title: string;
   steps: TutorialStep[]; lessons: { n: number; title: string; summary: string }[]; patterns: Pattern[];

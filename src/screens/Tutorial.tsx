@@ -4,7 +4,7 @@ import { tutorialGo } from "../state/actions";
 import { setState, useStore } from "../state/store";
 import { stopPlay } from "../lib/audio/preview";
 
-const VOICES = ["KICK", "SNARE", "CLAP", "CLOSED_HAT", "OPEN_HAT", "PERCUSSION", "BASS", "VOCAL"];
+const VOICES = ["KICK", "SNARE", "CLAP", "CLOSED_HAT", "OPEN_HAT", "PERCUSSION", "BASS", "VOCAL", "CHOP", "TEXTURE", "FX"];
 
 export function Tutorial() {
   const { tutorial: t, kit, playStep, course, recipe } = useStore((s) => s);
@@ -20,7 +20,7 @@ export function Tutorial() {
   return (
     <div className="screen tutorial">
       <header className="screen-head">
-        <span className="chip">{step.lesson ? `УРОК ${String(step.lesson).padStart(2, "0")} / 18` : step.section}</span>
+        <span className="chip">{step.lesson ? `УРОК ${String(step.lesson).padStart(2, "0")} / ${String(step.lessonsTotal ?? 18).padStart(2, "0")}` : step.section}</span>
         <h1>{step.title}</h1>
         <div className="grow" />
         <span className="mono">{t.index + 1} / {t.steps.length}</span>

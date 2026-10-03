@@ -52,7 +52,7 @@ def build_patterns(events: list[DrumEvent], sections: list[Section], n_bars: int
     """Returns (patterns, arrangement). Patterns A..D come from section similarity clusters."""
     names = "ABCD"
     if not sections:
-        sections = [Section("SECTION A", 0.0, 0.0, 0, max(1, n_bars), "A")]
+        sections = [Section("СЕКЦИЯ A", 0.0, 0.0, 0, max(1, n_bars), "A")]
     clusters: dict[str, list[Section]] = defaultdict(list)
     for s in sections:
         clusters[s.cluster].append(s)

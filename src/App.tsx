@@ -38,12 +38,12 @@ export function App() {
           const p = e.payload.paths.find(isAudioPath);
           const proj = e.payload.paths.find((x) => x.endsWith(".sp404learn"));
           if (p) void openTrack(p); else if (proj) void openProject(proj);
-          else setState({ error: "Unsupported file. Drop WAV, AIFF, MP3, FLAC or M4A." });
+          else setState({ error: "Неподдерживаемый файл. Перетащи WAV, AIFF, MP3, FLAC или M4A." });
         });
       });
       return () => un?.();
     }
-    // browser dev mode: upload dropped file to the localhost dev bridge
+    // режим разработки в браузере: upload dropped file to the localhost dev bridge
     const over = (e: DragEvent) => e.preventDefault();
     const drop = async (e: DragEvent) => {
       e.preventDefault();
@@ -60,17 +60,17 @@ export function App() {
       <Sidebar />
       <main className="main">
         <div className="topbar">
-          <button className="btn sm" onClick={pickTrack}>Open track</button>
-          <button className="btn sm" onClick={() => openProject()}>Open project</button>
-          <button className="btn sm" disabled={!analysis} onClick={() => saveProject(false)}>Save{dirty ? " ●" : ""}</button>
-          <button className="btn sm" disabled={!analysis} onClick={() => saveProject(true)}>Save as</button>
+          <button className="btn sm" onClick={pickTrack}>Открыть трек</button>
+          <button className="btn sm" onClick={() => openProject()}>Открыть проект</button>
+          <button className="btn sm" disabled={!analysis} onClick={() => saveProject(false)}>Сохранить{dirty ? " ●" : ""}</button>
+          <button className="btn sm" disabled={!analysis} onClick={() => saveProject(true)}>Сохранить как</button>
           <span className="mono dim">{projectPath ?? ""}</span>
           <div className="grow" />
-          {busy === "regrid" && <span className="mono dim">re-quantizing…</span>}
-          {!isTauri && <span className="chip">browser dev mode</span>}
+          {busy === "regrid" && <span className="mono dim">пересчёт сетки…</span>}
+          {!isTauri && <span className="chip">режим разработки в браузере</span>}
         </div>
         <div className="content">
-        {error && screen !== "analyzing" && <div className="err" role="alert">{error}<button className="link" onClick={() => setState({ error: null })}>dismiss</button></div>}
+        {error && screen !== "analyzing" && <div className="err" role="alert">{error}<button className="link" onClick={() => setState({ error: null })}>закрыть</button></div>}
           <Screen />
         </div>
         {!["home", "analyzing", "learn", "settings"].includes(screen) ? <Transport /> : <div />}

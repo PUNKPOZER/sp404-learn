@@ -5,7 +5,7 @@ import json
 import shutil
 from pathlib import Path
 
-PIPELINE_VERSION = "2"
+PIPELINE_VERSION = "3"
 
 
 class Cache:

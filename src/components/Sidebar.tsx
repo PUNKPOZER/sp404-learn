@@ -1,9 +1,9 @@
 import { setState, useStore, type Screen } from "../state/store";
 
 const ITEMS: { id: Screen; label: string; needsTrack: boolean }[] = [
-  { id: "track", label: "Track", needsTrack: true }, { id: "stems", label: "Stems", needsTrack: true }, { id: "drums", label: "Drums", needsTrack: true },
-  { id: "bass", label: "Bass", needsTrack: true }, { id: "structure", label: "Structure", needsTrack: true },
-  { id: "recipe", label: "SP Recipe", needsTrack: true }, { id: "learn", label: "Learn", needsTrack: false },
+  { id: "track", label: "Трек", needsTrack: true }, { id: "stems", label: "Стемы", needsTrack: true }, { id: "drums", label: "Ударные", needsTrack: true },
+  { id: "bass", label: "Бас", needsTrack: true }, { id: "structure", label: "Структура", needsTrack: true },
+  { id: "recipe", label: "Рецепт SP", needsTrack: true }, { id: "learn", label: "Обучение", needsTrack: false },
 ];
 
 export function Sidebar() {
@@ -19,8 +19,8 @@ export function Sidebar() {
           disabled={i.needsTrack && !has} onClick={() => setState({ screen: i.id })}>{i.label}</button>
       ))}
       <div className="grow" />
-      <button className={`nav ${screen === "settings" ? "on" : ""}`} onClick={() => setState({ screen: "settings" })}>Settings</button>
-      <div className="local">● Local processing</div>
+      <button className={`nav ${screen === "settings" ? "on" : ""}`} onClick={() => setState({ screen: "settings" })}>Настройки</button>
+      <div className="local">● Локальная обработка</div>
     </nav>
   );
 }

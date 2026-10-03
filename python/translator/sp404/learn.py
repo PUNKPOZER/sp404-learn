@@ -21,24 +21,24 @@ KICK_B = [1, 4, 7, 10, 12, 16]
 FILL = {"KICK": [1, 4, 7, 10, 12, 14, 15, 16], "SNARE": [9, 11, 13, 14, 15, 16], "CLOSED_HAT": list(range(1, 17))}
 
 LESSONS = [
-    (1, "Drum kit", "Раскладываем пэды"),
-    (2, "Kick", "Синкопированная бочка"),
-    (3, "Clap", "Клэп на 5 и 13"),
-    (4, "Snare", "Снейр между клэпами"),
-    (5, "Closed hats", "Восьмые хэты"),
-    (6, "Open hats", "Акцент открытого хэта"),
-    (7, "Percussion", "Перкуссия на «и»"),
-    (8, "Syncopation", "Почему footwork «спотыкается»"),
-    (9, "Ghost hits", "Тихие призрачные удары"),
-    (10, "Substeps", "Деление шага"),
-    (11, "Bass", "Саб-бас под бочку"),
-    (12, "Vocal chops", "Вокальные нарезки"),
-    (13, "Pattern variation", "Pattern B"),
-    (14, "Fill", "Филл перед сменой"),
-    (15, "Break", "Брейк: убрать барабаны"),
-    (16, "Arrangement", "Порядок паттернов"),
-    (17, "FX", "Эффекты и переходы"),
-    (18, "Final track", "Собираем и играем"),
+    (1, "Драм-кит", "Раскладываем пэды"),
+    (2, "Бочка", "Синкопированная бочка"),
+    (3, "Клэп", "Клэп на 5 и 13"),
+    (4, "Снейр", "Снейр между клэпами"),
+    (5, "Закрытые хэты", "Восьмые хэты"),
+    (6, "Открытые хэты", "Акцент открытого хэта"),
+    (7, "Перкуссия", "Перкуссия на «и»"),
+    (8, "Синкопа", "Почему footwork «спотыкается»"),
+    (9, "Призрачные удары", "Тихие призрачные удары"),
+    (10, "Деление шага", "Деление шага"),
+    (11, "Бас", "Саб-бас под бочку"),
+    (12, "Вокальные нарезки", "Вокальные нарезки"),
+    (13, "Вариация паттерна", "Паттерн B"),
+    (14, "Филл", "Филл перед сменой"),
+    (15, "Брейк", "Брейк: убрать барабаны"),
+    (16, "Аранжировка", "Порядок паттернов"),
+    (17, "Эффекты", "Эффекты и переходы"),
+    (18, "Финальный трек", "Собираем и играем"),
 ]
 
 
@@ -54,7 +54,7 @@ def build_course(name: str = "footwork", kit_map: dict[int, str] | None = None) 
         return pads.pad_for(v, kit)
 
     def add(lesson, title, body, voice=None, highlight=None, snapshot=True):
-        steps.append({"id": len(steps), "lesson": lesson, "lessonTitle": title_of[lesson], "section": f"LESSON {lesson:02d}",
+        steps.append({"id": len(steps), "lesson": lesson, "lessonTitle": title_of[lesson], "section": f"УРОК {lesson:02d}",
                       "title": title, "text": body, "voice": voice, "pad": pad(voice) if voice else None,
                       "highlight": highlight or [], "grid": {k: list(v) for k, v in grid.items()}})
 
@@ -83,15 +83,15 @@ def build_course(name: str = "footwork", kit_map: dict[int, str] | None = None) 
 
     base = {k: list(v) for k, v in grid.items()}
     grid["KICK"] = list(KICK_B)
-    add(13, "Pattern B", "Сделай вариацию: создай Pattern B, скопируй A и измени бочку.", voice="KICK", highlight=KICK_B)
+    add(13, "Паттерн B", "Сделай вариацию: создай паттерн B, скопируй A и измени бочку.", voice="KICK", highlight=KICK_B)
     fill_grid = {**base, **FILL}
     grid.clear(); grid.update(fill_grid)
-    add(14, "Филл", "Pattern C — филл на один такт: плотные бочки справа, снейры подряд, хэты на каждом шаге.", highlight=FILL["KICK"])
+    add(14, "Филл", "Паттерн C — филл на один такт: плотные бочки справа, снейры подряд, хэты на каждом шаге.", highlight=FILL["KICK"])
     grid.clear(); grid.update({"BASS": BASS, "VOCAL": VOCAL})
-    add(15, "Брейк", "Pattern D — брейк: убери барабаны, оставь бас и вокал. Контраст делает возвращение бита сильнее.", highlight=VOCAL)
+    add(15, "Брейк", "Паттерн D — брейк: убери барабаны, оставь бас и вокал. Контраст делает возвращение бита сильнее.", highlight=VOCAL)
     grid.clear(); grid.update(base)
     add(16, "Аранжировка", "Порядок: A, A, B, B, C (филл), D (брейк), A, B, C. Переключай паттерны в конце каждого такта-цикла.")
-    add(17, "FX", f"Пэды 13–16 — эффекты, филл, текстура и ресэмпл. Запиши один эффект-переход в конец филла.", voice=None)
+    add(17, "Эффекты", f"Пэды 13–16 — эффекты, филл, текстура и ресэмпл. Запиши один эффект-переход в конец филла.", voice=None)
     add(18, "Финал", "Играй цепочку A → B → C → D → A. Это твой первый законченный footwork-трек: сохрани проект и запиши его.")
     for s in steps:
         s["total"] = len(steps)

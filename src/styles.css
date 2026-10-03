@@ -22,12 +22,12 @@ h2 small { color: var(--faint); font-weight: 500; margin-left: 8px; letter-spaci
 .note { color: var(--amber); font-size: 12.5px; margin: 10px 0 0; }
 .dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 8px; vertical-align: 1px; }
 
-.app { display: grid; grid-template-columns: 196px minmax(0, 1fr) 280px; height: 100%; }
+.app { display: grid; grid-template-columns: 196px minmax(0, 1fr) 280px; grid-template-rows: minmax(0, 1fr); height: 100%; }
 .app.no-inspector { grid-template-columns: 196px minmax(0, 1fr); }
-.main { display: grid; grid-template-rows: auto minmax(0, 1fr) auto; min-width: 0; }
+.main { display: grid; grid-template-rows: auto minmax(0, 1fr) auto; min-width: 0; min-height: 0; }
 .content { overflow: auto; min-height: 0; }
 .topbar { display: flex; align-items: center; gap: 8px; padding: 12px 20px; }
-.sidebar { display: flex; flex-direction: column; padding: 18px 12px; gap: 3px; background: linear-gradient(180deg, #11141c, #0d1017); border-right: 1px solid var(--line); }
+.sidebar { min-height: 0; overflow-y: auto; display: flex; flex-direction: column; padding: 18px 12px; gap: 3px; background: linear-gradient(180deg, #11141c, #0d1017); border-right: 1px solid var(--line); }
 .logo { all: unset; cursor: pointer; font: 800 19px/1.05 var(--sans); letter-spacing: -.01em; margin: 2px 8px 18px; }
 .logo span { background: linear-gradient(90deg, var(--mint), var(--sky)); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .trackname { font: 11.5px var(--mono); color: var(--dim); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; margin: 0 8px 12px; padding: 6px 10px; background: var(--surface); border-radius: 8px; }
@@ -185,3 +185,11 @@ table.kv th { font: 600 10.5px var(--sans); letter-spacing: .08em; color: var(--
 .padcall, .stepcall { font-size: 22px; font-weight: 800; color: var(--mint); margin: 12px 0 0; }
 .lesson-text { font-size: 19px; line-height: 1.5; max-width: 780px; margin: 4px 0; user-select: text; }
 .tut-nav { display: flex; gap: 12px; }
+
+.wave-wrap { position: relative; }
+.wave-wrap .playhead { top: 0; bottom: 0; }
+
+.transport { flex-wrap: wrap; row-gap: 8px; }
+.transport .mono, .transport .k, .transport .chip { white-space: nowrap; }
+table.kv td.mono { white-space: nowrap; }
+@media (max-width: 1180px) { .app { grid-template-columns: 176px minmax(0, 1fr) 240px; } .app.no-inspector { grid-template-columns: 176px minmax(0, 1fr); } }

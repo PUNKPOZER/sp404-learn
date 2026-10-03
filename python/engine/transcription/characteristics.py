@@ -35,11 +35,11 @@ def likely_styles(c: dict[str, float]) -> list[dict]:
     def add(name, score, why):
         cand.append({"style": name, "score": round(float(max(0, min(1, score))), 2), "why": why})
     foot = (0.5 if 145 <= bpm <= 175 else 0.0) + 0.35 * min(1, sync * 1.5) + (0.15 if hats >= 6 else 0)
-    add("Footwork / Juke", foot, f"{bpm:.0f} BPM, syncopation {sync:.0%}")
-    add("House", (0.5 if 115 <= bpm <= 132 else 0.0) + 0.5 * ff, f"four-on-floor {ff:.0%}")
-    add("Techno", (0.4 if 125 <= bpm <= 150 else 0.0) + 0.5 * ff, f"four-on-floor {ff:.0%}")
+    add("Footwork / Juke", foot, f"{bpm:.0f} BPM, синкопа {sync:.0%}")
+    add("House", (0.5 if 115 <= bpm <= 132 else 0.0) + 0.5 * ff, f"четыре в пол {ff:.0%}")
+    add("Techno", (0.4 if 125 <= bpm <= 150 else 0.0) + 0.5 * ff, f"четыре в пол {ff:.0%}")
     add("Jungle / DnB", (0.5 if 160 <= bpm <= 182 else 0.0) + 0.3 * min(1, sync * 1.5) + 0.2 * min(1, hats / 12),
-        f"{bpm:.0f} BPM, busy hats")
-    add("Hip-Hop", (0.5 if 70 <= bpm <= 100 else 0.0) + 0.3 * c["snare_on_backbeat"], "slow tempo, backbeat")
-    add("Breakbeat", (0.4 if 110 <= bpm <= 140 else 0.0) + 0.4 * min(1, sync * 1.5), "syncopated mid tempo")
+        f"{bpm:.0f} BPM, частые хэты")
+    add("Хип-хоп", (0.5 if 70 <= bpm <= 100 else 0.0) + 0.3 * c["snare_on_backbeat"], "медленный темп, бэкбит")
+    add("Breakbeat", (0.4 if 110 <= bpm <= 140 else 0.0) + 0.4 * min(1, sync * 1.5), "синкопированный средний темп")
     return sorted(cand, key=lambda d: -d["score"])[:3]

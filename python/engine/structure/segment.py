@@ -41,7 +41,7 @@ def segment(S, grid: Grid, events: list[DrumEvent], duration: float, sr: int = s
     bar = grid.beat * grid.beats_per_bar
     n_bars = int((duration - grid.origin) / bar)
     if n_bars < MIN_BARS * 2:
-        return [Section("SECTION A", max(0, grid.origin), duration, 0, max(1, n_bars), "A")]
+        return [Section("СЕКЦИЯ A", max(0, grid.origin), duration, 0, max(1, n_bars), "A")]
     F = bar_features(S, grid, n_bars, events, sr)
     Z = (F - F.mean(0)) / (F.std(0) + 1e-6)
     Z[:, 4:] *= 0.35          # pattern columns: many dims, so keep their total weight comparable
@@ -53,7 +53,7 @@ def segment(S, grid: Grid, events: list[DrumEvent], duration: float, sr: int = s
     bounds = [0] + [int(p) for p in pk] + [n_bars]
     segs = [(a, b) for a, b in zip(bounds[:-1], bounds[1:]) if b > a]
     if not segs:
-        return [Section("SECTION A", grid.origin, duration, 0, n_bars, "A")]
+        return [Section("СЕКЦИЯ A", grid.origin, duration, 0, n_bars, "A")]
     means = np.array([Z[a:b].mean(0) for a, b in segs])
     # similarity clusters (greedy, threshold on distance)
     clusters: list[int] = []
@@ -72,15 +72,15 @@ def segment(S, grid: Grid, events: list[DrumEvent], duration: float, sr: int = s
     letters = "ABCD"
     for i, ((a, b), c) in enumerate(zip(segs, clusters)):
         if i == 0 and energy[i] < np.median(energy) * 0.9 and len(segs) > 2:
-            label = "INTRO"
+            label = "ИНТРО"
         elif i == len(segs) - 1 and energy[i] < np.median(energy) * 0.9 and len(segs) > 2:
-            label = "OUTRO"
+            label = "АУТРО"
         elif np.expm1(density[i]) < 0.6 * np.expm1(density).mean() and len(segs) > 2:
-            label = "BREAK"
+            label = "БРЕЙК"
         elif energy[i] >= np.percentile(energy, 75) and len(segs) > 3:
-            label = "DROP"
+            label = "ДРОП"
         else:
-            label = f"SECTION {letters[min(c, 3)]}"
+            label = f"СЕКЦИЯ {letters[min(c, 3)]}"
         out.append(Section(label, grid.origin + a * bar, grid.origin + b * bar, a, b,
                            letters[min(c, 3)], float(energy[i])))
     return out

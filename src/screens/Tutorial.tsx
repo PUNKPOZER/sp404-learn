@@ -20,27 +20,27 @@ export function Tutorial() {
   return (
     <div className="screen tutorial">
       <header className="screen-head">
-        <span className="chip">{step.lesson ? `LESSON ${String(step.lesson).padStart(2, "0")} / 18` : step.section}</span>
+        <span className="chip">{step.lesson ? `УРОК ${String(step.lesson).padStart(2, "0")} / 18` : step.section}</span>
         <h1>{step.title}</h1>
         <div className="grow" />
         <span className="mono">{t.index + 1} / {t.steps.length}</span>
-        <button className="btn sm" onClick={exit}>Exit</button>
+        <button className="btn sm" onClick={exit}>Выйти</button>
       </header>
       <div className="progress"><i style={{ width: `${((t.index + 1) / t.steps.length) * 100}%` }} /></div>
       <div className="tut-body">
         <div className="tut-pads">
           <SP404PadGrid kit={kitMap} highlighted={step.pad} />
-          {step.pad && <p className="padcall mono">PAD {step.pad}</p>}
+          {step.pad && <p className="padcall mono">ПЭД {step.pad}</p>}
         </div>
         <div className="tut-seq">
           <StepSequencer voices={voices} cells={cells} readOnly playStep={playStep} highlight={step.highlight} focusVoice={step.voice} />
-          {step.highlight.length > 0 && <p className="stepcall mono">STEPS {step.highlight.join(" / ")}</p>}
+          {step.highlight.length > 0 && <p className="stepcall mono">ШАГИ {step.highlight.join(" / ")}</p>}
         </div>
       </div>
       <p className="lesson-text">{step.text}</p>
       <div className="tut-nav">
-        <button className="btn big" disabled={t.index === 0} onClick={() => tutorialGo(-1)}>◀ Back</button>
-        {last ? <button className="btn acid big" onClick={exit}>Done ✓</button> : <button className="btn acid big" onClick={() => tutorialGo(1)}>Next ▶</button>}
+        <button className="btn big" disabled={t.index === 0} onClick={() => tutorialGo(-1)}>◀ Назад</button>
+        {last ? <button className="btn acid big" onClick={exit}>Готово ✓</button> : <button className="btn acid big" onClick={() => tutorialGo(1)}>Далее ▶</button>}
       </div>
     </div>
   );

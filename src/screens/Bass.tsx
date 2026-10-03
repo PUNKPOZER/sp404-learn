@@ -14,16 +14,16 @@ export function Bass() {
   return (
     <div className="screen">
       <header className="screen-head">
-        <h1>Bass</h1>
+        <h1>Бас</h1>
         <div className="bar-nav">
           <button className="btn sm" disabled={currentBar === 0} onClick={() => setState({ currentBar: currentBar - 1 })}>◀</button>
-          <b className="mono">Bar {currentBar + 1} / {nBars}</b>
+          <b className="mono">Такт {currentBar + 1} / {nBars}</b>
           <button className="btn sm" disabled={currentBar >= nBars - 1} onClick={() => setState({ currentBar: currentBar + 1 })}>▶</button>
         </div>
-        <span className="chip">{a.stems_model ? "from bass stem" : "from full mix · approximate"}</span>
+        <span className="chip">{a.stems_model ? "из стема баса" : "из полного микса · приблизительно"}</span>
       </header>
       {a.bass.length === 0 ? (
-        <section className="panel"><h2>No bass notes found</h2><p>Nothing pitched was detected in the bass register. If the track has bass, download the stem model in Settings and re-analyze.</p></section>
+        <section className="panel"><h2>Басовые ноты не найдены</h2><p>В басовом регистре ничего не найдено. Если в треке есть бас, скачай модель стемов в Настройках и проанализируй заново.</p></section>
       ) : (
         <>
           <section className="panel">
@@ -34,7 +34,7 @@ export function Bass() {
                   <div className="roll-lane">
                     {notes.filter((n) => n.midi === m).map((n, i) => (
                       <i key={i} className="roll-note" style={{ left: `${(n.step / 16) * 100}%`, width: `${Math.max(3, (n.duration / (stepDur * 16)) * 100)}%`, opacity: 0.45 + n.confidence * 0.55 }}
-                        title={`${noteName(n.midi)} · step ${n.step + 1} · ${(n.confidence * 100).toFixed(0)}%`}>{noteName(n.midi)}</i>
+                        title={`${noteName(n.midi)} · шаг ${n.step + 1} · ${(n.confidence * 100).toFixed(0)}%`}>{noteName(n.midi)}</i>
                     ))}
                   </div>
                 </div>
@@ -43,9 +43,9 @@ export function Bass() {
             </div>
           </section>
           <section className="panel">
-            <h2>Notes in this bar</h2>
-            {notes.length === 0 ? <p className="hint">Silent bar.</p> : (
-              <table className="kv"><thead><tr><th>Note</th><th>Step</th><th>Length</th><th>Confidence</th></tr></thead><tbody>
+            <h2>Ноты в этом такте</h2>
+            {notes.length === 0 ? <p className="hint">Тихий такт.</p> : (
+              <table className="kv"><thead><tr><th>Нота</th><th>Шаг</th><th>Длина</th><th>Уверенность</th></tr></thead><tbody>
                 {notes.map((n, i) => <tr key={i}><td className="mono">{noteName(n.midi)}</td><td className="mono">{n.step + 1}</td>
                   <td className="mono">{(n.duration * 1000).toFixed(0)} ms</td><td className={`mono ${n.confidence < 0.5 ? "warn" : ""}`}>{(n.confidence * 100).toFixed(0)}%</td></tr>)}
               </tbody></table>

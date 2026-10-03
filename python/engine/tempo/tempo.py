@@ -65,7 +65,7 @@ def estimate_grid(y: np.ndarray, S: np.ndarray | None = None, sr: int = spectro.
     env = onset_envelope(S)
     fps = sr / spectro.HOP
     if len(env) < fps * 4:
-        raise ValueError("Track too short to estimate tempo (need at least 4 s).")
+        raise ValueError("Трек слишком короткий для определения темпа (нужно минимум 4 с).")
 
     bpms, score = _autocorr_scores(env, fps, 60.0, 200.0)
     # local maxima → candidate tempi

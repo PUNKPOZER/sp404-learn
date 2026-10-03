@@ -31,7 +31,7 @@ def test_end_to_end_via_sidecar_protocol_and_cache(tmp_path):
         assert "tempo" in ids and "drums" in ids
         assert len([e for e in a["events"] if e["type"] == "KICK"]) >= 40
         r2, ev2 = _rpc(p, 3, "analyze", {"path": wav})   # second run hits the cache
-        assert all(e["data"]["detail"] == "cached" for e in ev2 if e["data"]["status"] == "done")
+        assert all(e["data"]["detail"] == "из кэша" for e in ev2 if e["data"]["status"] == "done")
         rec, _ = _rpc(p, 4, "recipe", {"analysis": a})
         assert rec["result"]["tutorialSteps"] and rec["result"]["patterns"][0]["steps"]["KICK"]
         reg, _ = _rpc(p, 5, "regrid", {"analysis": a, "grid": {"bpm": a["grid"]["bpm"] * 2}})

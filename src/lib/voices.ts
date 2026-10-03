@@ -4,14 +4,14 @@ export const VOICE_COLORS: Record<string, string> = {
   FX: "#5cc8ff", FILL: "#ffc15e", TEXTURE: "#a89bff", RESAMPLE: "#8b91a3",
 };
 export const STEM_COLORS: Record<string, string> = { drums: "#ff7a6b", bass: "#ff9a5c", lead: "#a89bff", vocals: "#ff6fae" };
-export const STEM_LABELS: Record<string, string> = { drums: "DRUMS", bass: "BASS", lead: "LEAD", vocals: "VOCALS" };
+export const STEM_LABELS: Record<string, string> = { drums: "УДАРНЫЕ", bass: "БАС", lead: "ЛИД", vocals: "ВОКАЛ" };
 export const STEM_ORDER = ["drums", "bass", "lead", "vocals"];
 const NOTE_NAMES = ["C", "C#", "D", "Eb", "E", "F", "F#", "G", "Ab", "A", "Bb", "B"];
 export const noteName = (m: number) => `${NOTE_NAMES[((m % 12) + 12) % 12]}${Math.floor(m / 12) - 1}`;
 export const VOICE_LABELS: Record<string, string> = {
-  KICK: "KICK", SNARE: "SNARE", CLAP: "CLAP", CLOSED_HAT: "CLOSED HAT", OPEN_HAT: "OPEN HAT",
-  PERCUSSION: "PERC", UNKNOWN: "UNKNOWN", BASS: "BASS", VOCAL: "VOCAL", CHOP: "CHOP", FX: "FX",
-  FILL: "FILL", TEXTURE: "TEXTURE", RESAMPLE: "RESAMPLE",
+  KICK: "БОЧКА", SNARE: "СНЕЙР", CLAP: "КЛЭП", CLOSED_HAT: "ХЭТ ЗАКР.", OPEN_HAT: "ХЭТ ОТКР.",
+  PERCUSSION: "ПЕРК.", UNKNOWN: "НЕИЗВ.", BASS: "БАС", VOCAL: "ВОКАЛ", CHOP: "ЧОП", FX: "FX",
+  FILL: "ФИЛЛ", TEXTURE: "ТЕКСТУРА", RESAMPLE: "РЕСЭМПЛ",
 };
 export const DRUM_ROWS = ["KICK", "SNARE", "CLAP", "CLOSED_HAT", "OPEN_HAT", "PERCUSSION"];
 export const PAD_ROWS = [[13, 14, 15, 16], [9, 10, 11, 12], [5, 6, 7, 8], [1, 2, 3, 4]];

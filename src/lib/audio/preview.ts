@@ -1,7 +1,7 @@
 import { getState, setState } from "../../state/store";
 import { Sequencer } from "./sequencer";
 import type { StepMap } from "../types";
-import { toggleStems } from "./stemPlayer";
+import { toggleMix, toggleStems } from "./stemPlayer";
 
 /** What the transport plays depends on the screen: the current bar on DRUMS, the selected
  *  pattern on RECIPE, and the visible step-grid state in a tutorial. */
@@ -38,6 +38,7 @@ sequencer.onStop = () => setState({ playing: false, playStep: -1 });
 
 export function togglePlay() {
   if (getState().screen === "stems") { void toggleStems(); return; }
+  if (getState().screen === "track") { void toggleMix(); return; }
   if (sequencer.playing) sequencer.stop(); else sequencer.start(); setState({ playing: sequencer.playing }); }
 export function stopPlay() { if (sequencer.playing) sequencer.stop(); }
 export function setLoop(v: boolean) { sequencer.loop = v; setState({ loop: v }); }

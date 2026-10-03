@@ -65,9 +65,9 @@ class DemucsSeparator:
 
     def available(self) -> tuple[bool, str]:
         if not runtime_present():
-            return False, "Stem separation runtime (PyTorch + Demucs) is not installed."
+            return False, "Среда разделения на стемы (PyTorch + Demucs) не установлена."
         if not weights_present():
-            return False, "Stem model not downloaded yet (Settings → Model storage → Download, ~80 MB) — analysing the full mix."
+            return False, "Модель стемов ещё не скачана (Настройки → Хранилище моделей → Скачать, ~80 МБ) — анализирую полный микс."
         return True, ""
 
     def _load(self):

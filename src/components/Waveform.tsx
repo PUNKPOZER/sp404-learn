@@ -3,9 +3,9 @@ import type { Section, TrackAnalysis } from "../lib/types";
 
 const SECTION_COLORS = ["#c6ff3d", "#3dd6ff", "#ff6a1a", "#ff3d8b"];
 
-interface Props { peaks: number[][]; analysis: TrackAnalysis | null; currentBar?: number; onBar?: (bar: number) => void; height?: number }
+interface Props { peaks: number[][]; analysis: TrackAnalysis | null; currentBar?: number; onBar?: (bar: number) => void; onSeek?: (t: number) => void; playTime?: number | null; height?: number }
 
-export function Waveform({ peaks, analysis, currentBar, onBar, height = 160 }: Props) {
+export function Waveform({ peaks, analysis, currentBar, onBar, onSeek, playTime, height = 160 }: Props) {
   const ref = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -49,12 +49,16 @@ export function Waveform({ peaks, analysis, currentBar, onBar, height = 160 }: P
   }, [peaks, analysis, currentBar]);
 
   return (
-    <canvas ref={ref} className="waveform" style={{ height }} aria-label="Waveform"
-      onClick={(e) => {
-        if (!analysis || !onBar) return;
-        const r = e.currentTarget.getBoundingClientRect();
-        const t = ((e.clientX - r.left) / r.width) * analysis.duration;
-        onBar(Math.max(0, Math.floor((t - analysis.grid.origin) / ((60 / analysis.grid.bpm) * 4))));
-      }} />
+    <div className="wave-wrap">
+      <canvas ref={ref} className="waveform" style={{ height }} aria-label="Волна"
+        onClick={(e) => {
+          if (!analysis) return;
+          const r = e.currentTarget.getBoundingClientRect();
+          const t = ((e.clientX - r.left) / r.width) * analysis.duration;
+          onSeek?.(t);
+          onBar?.(Math.max(0, Math.floor((t - analysis.grid.origin) / ((60 / analysis.grid.bpm) * 4))));
+        }} />
+      {playTime != null && analysis && <i className="playhead" style={{ left: `${(playTime / analysis.duration) * 100}%` }} />}
+    </div>
   );
 }

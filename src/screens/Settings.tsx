@@ -16,36 +16,36 @@ export function Settings() {
   useEffect(refresh, []);
   return (
     <div className="screen narrow">
-      <header className="screen-head"><h1>Settings</h1></header>
-      <section className="panel privacy"><h2>● Local processing</h2><p>Your audio stays on this computer. Nothing is uploaded; there is no telemetry and no account.</p></section>
+      <header className="screen-head"><h1>Настройки</h1></header>
+      <section className="panel privacy"><h2>● Локальная обработка</h2><p>Твоё аудио остаётся на этом компьютере. Ничего не загружается, нет телеметрии и аккаунта.</p></section>
       <section className="panel">
-        <h2>Model storage · stem separation</h2>
-        {!model ? <p className="hint">Engine not reachable.</p> : !model.runtime ? (
-          <p>The separation runtime (PyTorch + Demucs) isn’t part of this build. The app still works on the full mix.</p>
+        <h2>Хранилище моделей · разделение на стемы</h2>
+        {!model ? <p className="hint">Движок недоступен.</p> : !model.runtime ? (
+          <p>Среда разделения (PyTorch + Demucs) не входит в эту сборку. Приложение работает по полному миксу.</p>
         ) : (
           <>
-            <div className="row2"><span>HT-Demucs <span className="dim">· drums / bass / lead / vocals</span></span>
-              <span className={`chip ${model.weights ? "" : "soft"}`}>{model.weights ? "installed" : "not downloaded"}</span></div>
-            <p className="mono dim">{model.path} · {mb(model.bytes)} · runs on {model.device.toUpperCase()}</p>
+            <div className="row2"><span>HT-Demucs <span className="dim">· ударные / бас / лид / вокал</span></span>
+              <span className={`chip ${model.weights ? "" : "soft"}`}>{model.weights ? "установлена" : "не скачана"}</span></div>
+            <p className="mono dim">{model.path} · {mb(model.bytes)} · работает на {model.device.toUpperCase()}</p>
             {!model.weights && (
               <>
-                <p className="hint">One-time download of ~{model.size_mb} MB from {model.host}. This is the only network request the app ever makes, and only when you press the button.
-                  After that, separation runs fully offline.</p>
+                <p className="hint">Разовая загрузка ~{model.size_mb} МБ с {model.host}. Это единственный сетевой запрос приложения, и только по нажатию кнопки.
+                  После этого разделение работает полностью офлайн.</p>
                 <button className="btn primary" disabled={dl === "busy"} onClick={async () => {
                   setDl("busy"); setErr("");
                   try { setModel(await api.modelsDownload()); setDl("idle"); } catch (e) { setErr((e as Error).message); setDl("err"); }
-                }}>{dl === "busy" ? "Downloading…" : `Download model (${model.size_mb} MB)`}</button>
+                }}>{dl === "busy" ? "Загрузка…" : `Скачать модель (${model.size_mb} МБ)`}</button>
                 {dl === "err" && <div className="err">{err}</div>}
               </>
             )}
-            {model.weights && <p className="hint">New analyses will separate stems automatically. Tracks analyzed earlier without stems are re-analyzed the next time you open them.</p>}
+            {model.weights && <p className="hint">Новые анализы будут делить трек на стемы автоматически. Треки, проанализированные раньше без стемов, пересчитаются при следующем открытии.</p>}
           </>
         )}
       </section>
-      <section className="panel"><h2>Cache</h2>
-        <p className="mono">{cache ? `${mb(cache.bytes)} · ${cache.path}` : "engine not reachable"}</p>
-        <button className="btn" onClick={async () => { await api.cacheClear(); refresh(); }}>Clear cache</button>
-        <p className="hint">Cached analyses and stems are keyed by the audio file’s content hash, so re-opening a track skips the work.</p></section>
+      <section className="panel"><h2>Кэш</h2>
+        <p className="mono">{cache ? `${mb(cache.bytes)} · ${cache.path}` : "движок недоступен"}</p>
+        <button className="btn" onClick={async () => { await api.cacheClear(); refresh(); }}>Очистить кэш</button>
+        <p className="hint">Кэш анализа и стемов привязан к хэшу содержимого файла, поэтому повторное открытие трека не пересчитывает его.</p></section>
     </div>
   );
 }

@@ -31,3 +31,10 @@ def activity_fraction(y: np.ndarray, grid: Grid, n_bars: int, sr: int = 22050) -
                     for b in range(n_bars)])
     gate = max(0.15 * np.percentile(rms, 95), 0.01)   # absolute floor: an empty stem is not "active"
     return float((rms > gate).mean()) if rms.max() > 0.01 else 0.0
+
+
+def save_mix(dirpath: Path, x: np.ndarray, sr: int = 44100) -> dict:
+    """Playback copy of the whole track (stereo, 16-bit) so the UI can play it without touching the original file."""
+    path = dirpath / "mix.wav"
+    wavfile.write(str(path), sr, (np.clip(x.T, -1, 1) * 32767).astype(np.int16))
+    return {"path": str(path), "peaks": [], "activity": [], "duration": x.shape[1] / sr, "rms": 0.0}

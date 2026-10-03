@@ -57,12 +57,12 @@ export function Stems() {
   if (!have.length) {
     return (
       <div className="screen">
-        <header className="screen-head"><h1>Stems</h1></header>
+        <header className="screen-head"><h1>Стемы</h1></header>
         <section className="panel empty">
-          <h2>No stems for this track</h2>
-          <p>Stems split the track into <b>drums, bass, lead and vocals</b>. They make drum and bass detection much more reliable.
-            The separation model (~80 MB) isn’t downloaded yet — it is fetched once, then everything runs locally.</p>
-          <button className="btn primary" onClick={() => setState({ screen: "settings" })}>Open Settings → Model storage</button>
+          <h2>Для этого трека нет стемов</h2>
+          <p>Стемы делят трек на <b>ударные, бас, лид и вокал</b> и сильно повышают точность определения ударных и баса.
+            Модель разделения (~80 МБ) ещё не скачана — она загружается один раз, дальше всё работает локально.</p>
+          <button className="btn primary" onClick={() => setState({ screen: "settings" })}>Открыть Настройки → Хранилище моделей</button>
         </section>
       </div>
     );
@@ -71,16 +71,16 @@ export function Stems() {
   return (
     <div className="screen">
       <header className="screen-head">
-        <h1>Stems</h1>
+        <h1>Стемы</h1>
         <span className="chip">{a.stems_model}</span>
-        {vocal != null && <span className="chip soft">vocals in {(vocal * 100).toFixed(0)}% of bars</span>}
-        {stemLoading && <span className="mono dim">loading…</span>}
+        {vocal != null && <span className="chip soft">вокал в {(vocal * 100).toFixed(0)}% тактов</span>}
+        {stemLoading && <span className="mono dim">загрузка…</span>}
       </header>
       <section className="panel lanes">
         {have.map((p) => <Lane key={p} part={p} info={a.stems[p]} a={a} time={stemTime} />)}
       </section>
-      <p className="hint">Press Play to audition the parts together; M mutes, S solos. Click a lane to jump. Stems are your own file, processed and played locally.
-        “Lead” is everything that isn’t drums, bass or vocals (keys, guitars, synths, samples).</p>
+      <p className="hint">Нажми «Играть», чтобы послушать партии вместе; M — выключить, S — солировать. Клик по дорожке — перемотка. Стемы — это твой файл, обработанный и воспроизводимый локально.
+        «Лид» — всё, что не ударные, бас и вокал (клавиши, гитары, синтезаторы, сэмплы).</p>
     </div>
   );
 }

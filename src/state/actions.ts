@@ -11,7 +11,7 @@ const AUDIO_EXT = ["wav", "aif", "aiff", "mp3", "flac", "m4a"];
 export const isAudioPath = (p: string) => AUDIO_EXT.includes(p.split(".").pop()?.toLowerCase() ?? "");
 
 export async function pickTrack() {
-  if (!isTauri) { setState({ error: "Open Track needs the desktop app (browser dev mode: drop a file instead)." }); return; }
+  if (!isTauri) { setState({ error: "Открытие трека работает в десктоп-приложении (в режиме браузера — перетащи файл)." }); return; }
   const { open } = await import("@tauri-apps/plugin-dialog");
   const p = await open({ multiple: false, filters: [{ name: "Audio", extensions: AUDIO_EXT }] });
   if (typeof p === "string") await openTrack(p);
@@ -19,7 +19,7 @@ export async function pickTrack() {
 
 // ---- analysis ------------------------------------------------------------------------------
 export async function openTrack(path: string, useCache = true) {
-  if (!isAudioPath(path)) { setState({ error: `Unsupported file type. Use ${AUDIO_EXT.join(", ").toUpperCase()}.` }); return; }
+  if (!isAudioPath(path)) { setState({ error: `Неподдерживаемый тип файла. Подходят: ${AUDIO_EXT.join(", ").toUpperCase()}.` }); return; }
   const name = path.split(/[\\/]/).pop() ?? path;
   setState({ screen: "analyzing", error: null, trackPath: path, trackName: name, stages: [], analysis: null, recipe: null,
     patternEdits: {}, selectedEventId: null, currentBar: 0, projectPath: null, dirty: false, busy: "analyze" });
@@ -149,7 +149,7 @@ interface ProjectFile {
 export async function saveProject(saveAs = false) {
   const s = getState();
   if (!s.analysis || !s.trackPath) return;
-  if (!isTauri) { setState({ error: "Saving projects needs the desktop app." }); return; }
+  if (!isTauri) { setState({ error: "Сохранение проектов работает в десктоп-приложении." }); return; }
   let path = s.projectPath;
   if (!path || saveAs) {
     const { save } = await import("@tauri-apps/plugin-dialog");
@@ -167,7 +167,7 @@ export async function saveProject(saveAs = false) {
 }
 
 export async function openProject(path?: string) {
-  if (!isTauri) { setState({ error: "Opening projects needs the desktop app." }); return; }
+  if (!isTauri) { setState({ error: "Открытие проектов работает в десктоп-приложении." }); return; }
   if (!path) {
     const { open } = await import("@tauri-apps/plugin-dialog");
     const p = await open({ multiple: false, filters: [{ name: "SP-404 LEARN project", extensions: ["sp404learn"] }] });
@@ -176,14 +176,14 @@ export async function openProject(path?: string) {
   }
   try {
     const f = JSON.parse(await invoke<string>("read_text_file", { path })) as ProjectFile;
-    if (f.format !== "sp404learn") throw new Error("Not an SP-404 LEARN project file.");
+    if (f.format !== "sp404learn") throw new Error("Это не файл проекта SP-404 LEARN.");
     const exists = await invoke<boolean>("path_exists", { path: f.trackPath });
     setState({ trackPath: f.trackPath, trackName: f.trackPath.split(/[\\/]/).pop() ?? f.trackPath, peaks: f.peaks,
       analysis: f.analysis, kit: f.kit, patternEdits: f.patternEdits, minConfidence: f.minConfidence, projectPath: path,
       currentBar: f.settings.currentBar, activePattern: f.settings.activePattern, screen: "track", dirty: false, error: null,
       stages: f.analysis.stages, selectedEventId: null, resumeIndex: f.tutorialIndex, tutorial: null,
     });
-    if (!exists) setState({ error: `Original audio not found at ${f.trackPath} — analysis loaded from the project.` });
+    if (!exists) setState({ error: `Исходное аудио не найдено: ${f.trackPath} — анализ загружен из проекта.` });
     await refreshRecipe();
   } catch (e) { setState({ error: String(e instanceof Error ? e.message : e) }); }
 }

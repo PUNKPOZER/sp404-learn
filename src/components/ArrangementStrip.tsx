@@ -16,7 +16,7 @@ export function ArrangementStrip({ analysis, recipe }: { analysis: TrackAnalysis
           const c = pat ? COL[pat] : "#8b91a3";
           return (
             <button key={i} className={`arr-seg ${pat === active ? "on" : ""}`} style={{ flexGrow: Math.max(0.08, (s.end - s.start) / total), flexBasis: 0, ["--c" as string]: c }}
-              onClick={() => pat && setState({ activePattern: pat })} title={`${s.label} · bars ${s.start_bar + 1}–${s.end_bar}`}>
+              onClick={() => pat && setState({ activePattern: pat })} title={`${s.label} · такты ${s.start_bar + 1}–${s.end_bar}`}>
               <span className="arr-pat">{pat ?? "–"}</span>
               <span className="arr-name">{s.label}</span>
               <span className="arr-time">{fmt(s.start)}</span>

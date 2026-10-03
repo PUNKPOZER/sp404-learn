@@ -28,7 +28,7 @@ class NullSeparator:
     name = "none"
 
     def available(self) -> tuple[bool, str]:
-        return False, "Stem model not installed — analysing the full mix (hats under snares/kicks and bass notes are less reliable)."
+        return False, "Модель стемов не установлена — анализирую полный микс (хэты под снейром/бочкой и ноты баса менее надёжны)."
 
     def separate(self, audio, sample_rate, progress=None):
         raise RuntimeError("no separator available")

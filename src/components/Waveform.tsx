@@ -1,7 +1,6 @@
 import { useEffect, useRef } from "react";
+import { sectionColor } from "../lib/sections";
 import type { Section, TrackAnalysis } from "../lib/types";
-
-const SECTION_COLORS = ["#c6ff3d", "#3dd6ff", "#ff6a1a", "#ff3d8b"];
 
 interface Props { peaks: number[][]; analysis: TrackAnalysis | null; currentBar?: number; onBar?: (bar: number) => void; onSeek?: (t: number) => void; playTime?: number | null; height?: number }
 
@@ -15,13 +14,13 @@ export function Waveform({ peaks, analysis, currentBar, onBar, onSeek, playTime,
       cv.width = w * dpr; cv.height = h * dpr;
       const g = cv.getContext("2d")!; g.scale(dpr, dpr);
       const css = getComputedStyle(cv);
-      const fg = css.getPropertyValue("--fg") || "#eee", dim = css.getPropertyValue("--line") || "#333", acc = css.getPropertyValue("--acid") || "#c6ff3d";
+      const fg = css.getPropertyValue("--fg") || "#eee", dim = css.getPropertyValue("--line") || "#333";
       g.clearRect(0, 0, w, h);
       const dur = analysis?.duration ?? 1;
       if (analysis) {
         const bar = (60 / analysis.grid.bpm) * 4;
         analysis.sections.forEach((s: Section) => {
-          g.fillStyle = SECTION_COLORS["ABCD".indexOf(s.cluster)] + "22";
+          g.fillStyle = sectionColor(s) + "26";
           g.fillRect((s.start / dur) * w, 0, ((s.end - s.start) / dur) * w, h);
         });
         const nBars = Math.floor((dur - analysis.grid.origin) / bar);
@@ -32,7 +31,7 @@ export function Waveform({ peaks, analysis, currentBar, onBar, onSeek, playTime,
         }
         if (currentBar != null) {
           const x0 = ((analysis.grid.origin + currentBar * bar) / dur) * w;
-          g.fillStyle = acc + "33"; g.fillRect(x0, 0, (bar / dur) * w, h);
+          g.fillStyle = "rgba(255,255,255,.22)"; g.fillRect(x0, 0, Math.max(3, (bar / dur) * w), h); g.strokeStyle = "#fff"; g.lineWidth = 2; g.strokeRect(x0 + 1, 1, Math.max(3, (bar / dur) * w) - 2, h - 2);
         }
       }
       g.fillStyle = fg.trim() || "#eee";
@@ -49,7 +48,7 @@ export function Waveform({ peaks, analysis, currentBar, onBar, onSeek, playTime,
   }, [peaks, analysis, currentBar]);
 
   return (
-    <div className="wave-wrap">
+    <div className="wave-wrap" data-tour="waveform">
       <canvas ref={ref} className="waveform" style={{ height }} aria-label="Волна"
         onClick={(e) => {
           if (!analysis) return;

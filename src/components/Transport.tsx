@@ -7,11 +7,11 @@ export function Transport() {
   const s = useStore((x) => x);
   const bpm = s.previewBpm ?? s.analysis?.grid.bpm ?? s.recipe?.bpm ?? 160;
   const audioMode = s.screen === "stems" || s.screen === "track";   // plays your audio, not the synth preview
-  const patterns = audioMode || s.screen === "tutorial" || s.screen === "drums" ? [] : s.recipe?.patterns ?? [];
+  const patterns = audioMode || s.screen === "tutorial" || s.screen === "drums" || s.screen === "bass" ? [] : s.recipe?.patterns ?? [];
   const label = s.screen === "stems" ? `СТЕМЫ ${mmss(s.stemTime)}` : s.screen === "track" ? `ТРЕК ${mmss(s.stemTime)}`
-    : s.screen === "drums" ? `ТАКТ ${s.currentBar + 1}` : s.screen === "tutorial" ? "ШАГ УРОКА" : `ПАТТЕРН ${s.activePattern}`;
+    : s.screen === "bass" ? `БАС · ТАКТ ${s.currentBar + 1}` : s.screen === "drums" ? `ТАКТ ${s.currentBar + 1}` : s.screen === "tutorial" ? "ШАГ УРОКА" : `ПАТТЕРН ${s.activePattern}`;
   return (
-    <footer className="transport">
+    <footer className="transport" data-tour="transport">
       <button className={`btn big ${s.playing ? "on" : ""}`} onClick={togglePlay}>{s.playing ? "■ Стоп" : "▶ Играть"}</button>
       {!audioMode && <button className={`btn ${s.loop ? "on" : ""}`} aria-pressed={s.loop} onClick={() => setLoop(!s.loop)}>Повтор</button>}
       {!audioMode && (

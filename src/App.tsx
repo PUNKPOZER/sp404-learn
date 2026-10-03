@@ -4,7 +4,7 @@ import { Sidebar } from "./components/Sidebar";
 import { Transport } from "./components/Transport";
 import { isTauri } from "./lib/sidecar";
 import { isAudioPath, openProject, openTrack, pickTrack, saveProject } from "./state/actions";
-import { setState, useStore } from "./state/store";
+import { getState, setState, useStore } from "./state/store";
 import { Analyzing } from "./screens/Analyzing";
 import { Bass } from "./screens/Bass";
 import { Stems } from "./screens/Stems";
@@ -18,6 +18,8 @@ import { Track } from "./screens/Track";
 import { Tutorial } from "./screens/Tutorial";
 import { stopPlay } from "./lib/audio/preview";
 import { stopStems } from "./lib/audio/stemPlayer";
+import { Tour } from "./components/Tour";
+import { seenTours, tourForScreen } from "./lib/tours";
 
 const SCREENS = { home: Home, analyzing: Analyzing, track: Track, stems: Stems, drums: Drums, bass: Bass, structure: Structure, recipe: Recipe,
   learn: Learn, tutorial: Tutorial, settings: Settings };
@@ -27,7 +29,15 @@ export function App() {
   const Screen = SCREENS[screen];
 
   useEffect(() => { stopPlay(); stopStems(); }, [screen]);
-  const inspector = ["track", "drums", "recipe", "bass", "stems", "structure"].includes(screen) && !!analysis;
+
+  // first visit to a screen → a short spotlight tour (once; replay with the "? Подсказки" button)
+  useEffect(() => {
+    const id = tourForScreen(screen);
+    if (!id || seenTours().includes(id) || (id !== "welcome" && !analysis)) return;
+    const t = window.setTimeout(() => { if (!getState().tour) setState({ tour: { id, i: 0 } }); }, 700);
+    return () => window.clearTimeout(t);
+  }, [screen, analysis]);
+  const inspector = screen === "drums" && !!analysis;
 
   useEffect(() => {
     if (isTauri) {
@@ -66,6 +76,7 @@ export function App() {
           <button className="btn sm" disabled={!analysis} onClick={() => saveProject(true)}>Сохранить как</button>
           <span className="mono dim">{projectPath ?? ""}</span>
           <div className="grow" />
+          <button className="btn sm" title="Показать подсказки по этому экрану" onClick={() => { const id = tourForScreen(screen) ?? "welcome"; setState({ tour: { id, i: 0 } }); }}>? Подсказки</button>
           {busy === "regrid" && <span className="mono dim">пересчёт сетки…</span>}
           {!isTauri && <span className="chip">режим разработки в браузере</span>}
         </div>
@@ -73,9 +84,10 @@ export function App() {
         {error && screen !== "analyzing" && <div className="err" role="alert">{error}<button className="link" onClick={() => setState({ error: null })}>закрыть</button></div>}
           <Screen />
         </div>
-        {!["home", "analyzing", "learn", "settings"].includes(screen) ? <Transport /> : <div />}
+        {!["home", "analyzing", "learn", "settings", "structure"].includes(screen) ? <Transport /> : <div />}
       </main>
       {inspector && <Inspector />}
+      <Tour />
     </div>
   );
 }

@@ -3,34 +3,28 @@ import { getState, setState } from "../../state/store";
 import { STEM_ORDER } from "../voices";
 import { audio } from "./synth";
 
-// Plays the separated stems — or the whole-track copy — of the user's own file, locally, in sync, with mute / solo per part.
-interface Loaded { buf: AudioBuffer; gain: GainNode; src?: AudioBufferSourceNode }
-let loaded: Record<string, Loaded> = {};
-let loadedFor = "";
-export type PlayMode = "stems" | "mix";
-let mode: PlayMode = "stems";
-let startedAt = 0;
-let offset = 0;
-let raf = 0;
+// Plays the user's own audio locally: the whole-track copy, the four stems, or a single stem,
+// optionally limited to a time range (a section or one bar) that loops.
+export type PlayMode = "mix" | "stems" | "bass" | "drums";
+const PARTS: Record<PlayMode, string[]> = { mix: ["mix"], stems: STEM_ORDER, bass: ["bass"], drums: ["drums"] };
 
-async function load() {
+interface Track { buf: AudioBuffer; gain: GainNode; src?: AudioBufferSourceNode }
+let bufs: Record<string, AudioBuffer> = {};
+let bufsFor = "";
+let active: Record<string, Track> = {};
+let startedAt = 0, offset = 0, raf = 0;
+let range: { from: number; to: number } | null = null;
+
+async function ensure(parts: string[]): Promise<boolean> {
   const a = getState().analysis;
   if (!a) return false;
-  const tag = `${a.audio_hash}:${mode}`;
-  if (loadedFor === tag && Object.keys(loaded).length) return true;
+  if (bufsFor !== a.audio_hash) { bufs = {}; bufsFor = a.audio_hash; }
   const c = audio();
-  setState({ stemLoading: true });
+  const missing = parts.filter((p) => !bufs[p] && a.stems[p]);
+  if (missing.length) setState({ stemLoading: true });
   try {
-    const next: Record<string, Loaded> = {};
-    for (const part of mode === "mix" ? ["mix"] : STEM_ORDER) {
-      const info = a.stems[part];
-      if (!info) continue;
-      const buf = await c.decodeAudioData(await readStem(info.path));
-      const gain = c.createGain(); gain.connect(c.destination);
-      next[part] = { buf, gain };
-    }
-    loaded = next; loadedFor = tag;
-    return true;
+    for (const p of missing) bufs[p] = await c.decodeAudioData(await readStem(a.stems[p].path));
+    return parts.some((p) => bufs[p]);
   } catch (e) {
     setState({ error: `Не удалось загрузить аудио: ${e instanceof Error ? e.message : String(e)}` });
     return false;
@@ -39,46 +33,66 @@ async function load() {
 
 export function applyGains() {
   const { stemMute, stemSolo } = getState();
-  for (const [part, l] of Object.entries(loaded)) {
+  for (const [part, l] of Object.entries(active)) {
     const on = stemSolo ? stemSolo === part : !stemMute[part];
-    l.gain.gain.value = on ? 1 : 0;
+    l.gain.gain.value = on || part === "mix" ? 1 : 0;
   }
 }
 
 function tick() {
   const c = audio();
-  const t = offset + (c.currentTime - startedAt);
-  const dur = Math.max(...Object.values(loaded).map((l) => l.buf.duration), 0);
+  let t = offset + (c.currentTime - startedAt);
+  if (range && t >= range.to) { void startAt(range.from); return; }          // loop the range
+  const dur = Math.max(...Object.values(active).map((l) => l.buf.duration), 0);
   if (t >= dur) { stopStems(); setState({ stemTime: 0 }); return; }
+  t = Math.max(0, t);
   setState({ stemTime: t });
   raf = requestAnimationFrame(tick);
 }
 
-export async function playStems(from = getState().stemTime, m: PlayMode = mode) {
-  if (m !== mode) { stopSources(); loaded = {}; mode = m; }
-  if (!(await load())) return;
+function stopSources() {
+  for (const l of Object.values(active)) { try { l.src?.stop(); } catch { /* already stopped */ } l.src?.disconnect(); }
+  active = {};
+}
+
+async function startAt(from: number) {
   stopSources();
   const c = audio();
   offset = Math.max(0, from); startedAt = c.currentTime + 0.03;
-  for (const l of Object.values(loaded)) {
-    const src = c.createBufferSource(); src.buffer = l.buf; src.connect(l.gain);
-    src.start(startedAt, offset); l.src = src;
+  for (const [part, buf] of Object.entries(currentParts)) {
+    const gain = c.createGain(); gain.connect(c.destination);
+    const src = c.createBufferSource(); src.buffer = buf; src.connect(gain); src.start(startedAt, offset);
+    active[part] = { buf, gain, src };
   }
   applyGains();
-  setState({ stemPlaying: true, playing: true });
   cancelAnimationFrame(raf); raf = requestAnimationFrame(tick);
 }
 
-function stopSources() {
-  for (const l of Object.values(loaded)) { try { l.src?.stop(); } catch { /* already stopped */ } l.src = undefined; }
+let currentParts: Record<string, AudioBuffer> = {};
+let beforePlay: () => void = () => {};
+/** The synth sequencer registers itself here so the two never play over each other. */
+export function onBeforePlay(fn: () => void) { beforePlay = fn; }
+
+/** Start playback. `tag` identifies what is playing so screens can show a ▶/■ state on the right element. */
+export async function play(mode: PlayMode, opts: { from?: number; to?: number; tag?: string } = {}) {
+  beforePlay();
+  if (!(await ensure(PARTS[mode]))) return;
+  currentParts = Object.fromEntries(PARTS[mode].filter((p) => bufs[p]).map((p) => [p, bufs[p]]));
+  range = opts.to != null ? { from: opts.from ?? 0, to: opts.to } : null;
+  await startAt(opts.from ?? getState().stemTime);
+  setState({ stemPlaying: true, playing: true, audioTag: opts.tag ?? mode });
 }
 export function stopStems() {
-  cancelAnimationFrame(raf); stopSources();
-  setState({ stemPlaying: false, playing: false });
+  cancelAnimationFrame(raf); stopSources(); range = null;
+  setState({ stemPlaying: false, playing: false, audioTag: null });
 }
-export async function toggleStems() { if (getState().stemPlaying) stopStems(); else await playStems(getState().stemTime, "stems"); }
-export async function toggleMix() { if (getState().stemPlaying) stopStems(); else await playStems(getState().stemTime, "mix"); }
+export async function toggleAudio(mode: PlayMode, opts: { from?: number; to?: number; tag?: string } = {}) {
+  const tag = opts.tag ?? mode;
+  if (getState().stemPlaying && getState().audioTag === tag) stopStems(); else await play(mode, opts);
+}
+export const toggleStems = () => toggleAudio("stems");
+export const toggleMix = () => toggleAudio("mix");
 export function seekStems(t: number) {
   setState({ stemTime: t });
-  if (getState().stemPlaying) void playStems(t, mode);
+  if (getState().stemPlaying) { const m = getState().audioTag; void startAt(t); void m; }
 }

@@ -1,29 +1,39 @@
+import { mmss, sectionColor } from "../lib/sections";
 import type { Recipe, TrackAnalysis } from "../lib/types";
-import { setState, useStore } from "../state/store";
+import { useStore } from "../state/store";
 
-const COL: Record<string, string> = { A: "#5ef2c0", B: "#5cc8ff", C: "#ffc15e", D: "#ff6fae" };
-const fmt = (t: number) => `${Math.floor(t / 60)}:${String(Math.floor(t % 60)).padStart(2, "0")}`;
+interface Props {
+  analysis: TrackAnalysis;
+  recipe?: Recipe | null;
+  /** pattern whose sections should stand out (Recipe screen) */
+  activePattern?: string | null;
+  onPick?: (index: number) => void;
+  playingIndex?: number | null;
+  showPlay?: boolean;
+  height?: number;
+}
 
-/** Song order: sections laid out proportionally to their length, each tagged with the pattern to play. */
-export function ArrangementStrip({ analysis, recipe }: { analysis: TrackAnalysis; recipe: Recipe | null }) {
-  const active = useStore((s) => s.activePattern);
+/** The song as colored blocks (width = duration): INTRO / DROP / BREAK / OUTRO / SECTION, each tagged with its pattern. */
+export function SectionStrip({ analysis, recipe, activePattern, onPick, playingIndex, showPlay, height = 74 }: Props) {
+  const time = useStore((s) => s.stemTime);
   const total = analysis.sections.reduce((m, s) => Math.max(m, s.end), 0) || analysis.duration;
   return (
-    <div className="arr">
-      <div className="arr-track">
-        {analysis.sections.map((s, i) => {
-          const pat = recipe?.arrangement[i]?.pattern;
-          const c = pat ? COL[pat] : "#8b91a3";
-          return (
-            <button key={i} className={`arr-seg ${pat === active ? "on" : ""}`} style={{ flexGrow: Math.max(0.08, (s.end - s.start) / total), flexBasis: 0, ["--c" as string]: c }}
-              onClick={() => pat && setState({ activePattern: pat })} title={`${s.label} · такты ${s.start_bar + 1}–${s.end_bar}`}>
-              <span className="arr-pat">{pat ?? "–"}</span>
-              <span className="arr-name">{s.label}</span>
-              <span className="arr-time">{fmt(s.start)}</span>
-            </button>
-          );
-        })}
-      </div>
+    <div className="arr-track" style={{ height }} role="list">
+      {analysis.sections.map((s, i) => {
+        const pat = recipe?.arrangement[i]?.pattern;
+        const playing = playingIndex === i;
+        const dim = activePattern != null && pat !== activePattern;
+        const prog = playing ? Math.min(1, Math.max(0, (time - s.start) / (s.end - s.start))) : 0;
+        return (
+          <button key={i} role="listitem" className={`arr-seg ${playing ? "playing" : ""} ${dim ? "dim" : ""} ${activePattern && !dim ? "on" : ""}`}
+            style={{ flexGrow: Math.max(0.08, (s.end - s.start) / total), flexBasis: 0, ["--c" as string]: sectionColor(s) }}
+            onClick={() => onPick?.(i)} title={`${s.label} · ${mmss(s.start)}–${mmss(s.end)} · такты ${s.start_bar + 1}–${s.end_bar}`}>
+            {playing && <i className="arr-prog" style={{ width: `${prog * 100}%` }} />}
+            <span className="arr-top"><span className="arr-name">{showPlay ? (playing ? "■ " : "▶ ") : ""}{s.label}</span>{pat && <span className="arr-pat">{pat}</span>}</span>
+            <span className="arr-time">{mmss(s.start)} – {mmss(s.end)}</span>
+          </button>
+        );
+      })}
     </div>
   );
 }

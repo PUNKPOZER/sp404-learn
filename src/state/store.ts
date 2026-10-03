@@ -34,6 +34,8 @@ export interface AppState {
   stemTime: number;
   stemPlaying: boolean;
   stemLoading: boolean;
+  audioTag: string | null;
+  tour: { id: string; i: number } | null;
   previewBpm: number | null;
   /** what the transport plays when the user presses PLAY */
   previewSource: "bar" | "pattern" | "tutorial";
@@ -43,7 +45,7 @@ const initial: AppState = {
   screen: "home", busy: null, error: null, trackPath: null, trackName: null, peaks: [], analysis: null, stages: [],
   recipe: null, kit: { ...DEFAULT_KIT }, patternEdits: {}, minConfidence: 0.3, selectedEventId: null, selectedPad: null,
   currentBar: 0, activePattern: "A", tutorial: null, course: null, projectPath: null, dirty: false,
-  playing: false, playStep: -1, loop: true, resumeIndex: 0, stemMute: {}, stemSolo: null, stemTime: 0, stemPlaying: false, stemLoading: false, previewBpm: null, previewSource: "pattern",
+  playing: false, playStep: -1, loop: true, resumeIndex: 0, stemMute: {}, stemSolo: null, stemTime: 0, stemPlaying: false, stemLoading: false, audioTag: null, tour: null, previewBpm: null, previewSource: "pattern",
 };
 
 let state: AppState = initial;

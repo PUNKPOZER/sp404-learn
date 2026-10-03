@@ -1,24 +1,31 @@
-import { ArrangementStrip } from "../components/ArrangementStrip";
+import { SectionStrip } from "../components/ArrangementStrip";
+import { SECTION_LEGEND, mmss, sectionColor } from "../lib/sections";
+import { playingSection, toggleSection } from "../lib/sectionPlay";
 import { setState, useStore } from "../state/store";
 
-const fmt = (t: number) => `${Math.floor(t / 60)}:${String(Math.floor(t % 60)).padStart(2, "0")}`;
-const COL: Record<string, string> = { A: "#5ef2c0", B: "#5cc8ff", C: "#ffc15e", D: "#ff6fae" };
-
 export function Structure() {
-  const { analysis: a, recipe } = useStore((s) => s);
+  const { analysis: a, recipe, audioTag, stemPlaying } = useStore((s) => s);
   if (!a) return null;
+  const playing = stemPlaying ? playingSection(audioTag) : null;
+  const canPlay = !!a.stems.mix;
   return (
     <div className="screen">
-      <header className="screen-head"><h1>Структура</h1><span className="hint">Приблизительно — по энергии и плотности ударных по тактам. Клик по блоку выбирает его паттерн.</span></header>
-      <section className="panel"><h2>Порядок в треке</h2><ArrangementStrip analysis={a} recipe={recipe} /></section>
+      <header className="screen-head"><h1>Структура</h1>
+        <span className="hint">Приблизительно — по энергии и плотности ударных. {canPlay ? "Нажми на блок — он заиграет по кругу." : ""}</span></header>
+      <section className="panel" data-tour="struct">
+        <h2>Порядок в треке</h2>
+        <SectionStrip analysis={a} recipe={recipe} showPlay={canPlay} playingIndex={playing}
+          onPick={(i) => canPlay && void toggleSection(a.sections[i], i)} height={84} />
+        <div className="legend" style={{ marginTop: 12 }}>{SECTION_LEGEND.map(([n, c]) => <span key={n}><i style={{ background: c }} />{n}</span>)}</div>
+      </section>
       <div className="cards">
         {a.sections.map((s, i) => {
           const pat = recipe?.arrangement[i]?.pattern;
           const steps = recipe?.patterns.find((p) => p.name === pat)?.steps;
           return (
-            <div key={i} className="card" style={{ ["--c" as string]: pat ? COL[pat] : "#8b91a3" }}>
-              <div className="card-top"><b>{s.label}</b><span className="chip solid">{pat ? `Паттерн ${pat}` : "—"}</span></div>
-              <div className="mono dim">{fmt(s.start)} – {fmt(s.end)} · такты {s.start_bar + 1}–{s.end_bar}</div>
+            <div key={i} className={`card ${playing === i ? "playing" : ""}`} style={{ ["--c" as string]: sectionColor(s) }}>
+              <div className="card-top"><b>{s.label}</b>{pat && <span className="chip solid">Паттерн {pat}</span>}</div>
+              <div className="mono dim">{mmss(s.start)} – {mmss(s.end)} · такты {s.start_bar + 1}–{s.end_bar}</div>
               {steps && (
                 <div className="mini-steps" aria-hidden>
                   {["KICK", "SNARE", "CLAP", "CLOSED_HAT"].map((v) => (
@@ -26,7 +33,11 @@ export function Structure() {
                   ))}
                 </div>
               )}
-              <button className="btn sm" disabled={!pat} onClick={() => pat && setState({ activePattern: pat, screen: "recipe" })}>Открыть паттерн</button>
+              <div className="card-actions">
+                <button className="btn sm primary" disabled={!canPlay} onClick={() => void toggleSection(s, i)}>{playing === i ? "■ Стоп" : "▶ Слушать"}</button>
+                <button className="btn sm" title="Открыть ударные с первого такта этой секции" onClick={() => setState({ currentBar: s.start_bar, screen: "drums" })}>Провалиться ↓</button>
+                <button className="btn sm" disabled={!pat} onClick={() => pat && setState({ activePattern: pat, screen: "recipe" })}>Паттерн</button>
+              </div>
             </div>
           );
         })}

@@ -76,7 +76,7 @@ export function Stems() {
         {vocal != null && <span className="chip soft">вокал в {(vocal * 100).toFixed(0)}% тактов</span>}
         {stemLoading && <span className="mono dim">загрузка…</span>}
       </header>
-      <section className="panel lanes">
+      <section className="panel lanes" data-tour="lanes">
         {have.map((p) => <Lane key={p} part={p} info={a.stems[p]} a={a} time={stemTime} />)}
       </section>
       <p className="hint">Нажми «Играть», чтобы послушать партии вместе; M — выключить, S — солировать. Клик по дорожке — перемотка. Стемы — это твой файл, обработанный и воспроизводимый локально.

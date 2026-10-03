@@ -1,4 +1,7 @@
 import { seekStems } from "../lib/audio/stemPlayer";
+import { SectionStrip } from "../components/ArrangementStrip";
+import { SECTION_LEGEND } from "../lib/sections";
+import { playingSection, toggleSection } from "../lib/sectionPlay";
 import { Waveform } from "../components/Waveform";
 import { doubleBpm, halveBpm, nudgeDownbeat, nudgeStep, setGrid } from "../state/actions";
 import { setState, useStore } from "../state/store";
@@ -6,7 +9,7 @@ import { setState, useStore } from "../state/store";
 const fmt = (t: number) => `${Math.floor(t / 60)}:${String(Math.floor(t % 60)).padStart(2, "0")}`;
 
 export function Track() {
-  const { analysis: a, peaks, currentBar, stemTime } = useStore((s) => s);
+  const { analysis: a, peaks, currentBar, stemTime, audioTag, stemPlaying, recipe } = useStore((s) => s);
   if (!a) return null;
   const c = a.characteristics;
   return (
@@ -17,8 +20,14 @@ export function Track() {
       </header>
       <Waveform peaks={peaks} analysis={a} currentBar={currentBar} playTime={a.stems.mix ? stemTime : null}
         onBar={(b) => setState({ currentBar: b })} onSeek={(t) => a.stems.mix && seekStems(t)} />
+      <section className="panel" data-tour="sections">
+        <h2>Структура трека <small>нажми на блок — он заиграет</small></h2>
+        <SectionStrip analysis={a} recipe={recipe} showPlay={!!a.stems.mix} playingIndex={stemPlaying ? playingSection(audioTag) : null}
+          onPick={(i) => a.stems.mix && void toggleSection(a.sections[i], i)} />
+        <div className="legend" style={{ marginTop: 10 }}>{SECTION_LEGEND.map(([n, c]) => <span key={n}><i style={{ background: c }} />{n}</span>)}</div>
+      </section>
       {!a.stems.mix && <p className="hint">Воспроизведение недоступно для этого анализа — открой трек заново.</p>}
-      <div className="bpm-panel">
+      <div className="bpm-panel" data-tour="bpm">
         <div className="bpm-big"><span className="k">BPM</span><b>{a.grid.bpm.toFixed(1)}</b></div>
         <button className="btn" onClick={halveBpm}>÷2</button>
         <button className="btn" onClick={doubleBpm}>×2</button>

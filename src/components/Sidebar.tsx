@@ -11,15 +11,15 @@ export function Sidebar() {
   const has = useStore((s) => !!s.analysis);
   const name = useStore((s) => s.trackName);
   return (
-    <nav className="sidebar">
+    <nav className="sidebar" data-tour="sidebar">
       <button className="logo" onClick={() => setState({ screen: "home" })}>SP-404<br /><span>LEARN</span></button>
       {name && <div className="trackname" title={name}>{name}</div>}
       {ITEMS.map((i) => (
-        <button key={i.id} className={`nav ${screen === i.id || (i.id === "learn" && screen === "tutorial") ? "on" : ""}`}
+        <button key={i.id} data-tour={`nav-${i.id}`} className={`nav ${screen === i.id || (i.id === "learn" && screen === "tutorial") ? "on" : ""}`}
           disabled={i.needsTrack && !has} onClick={() => setState({ screen: i.id })}>{i.label}</button>
       ))}
       <div className="grow" />
-      <button className={`nav ${screen === "settings" ? "on" : ""}`} onClick={() => setState({ screen: "settings" })}>Настройки</button>
+      <button data-tour="nav-settings" className={`nav ${screen === "settings" ? "on" : ""}`} onClick={() => setState({ screen: "settings" })}>Настройки</button>
       <div className="local">● Локальная обработка</div>
     </nav>
   );

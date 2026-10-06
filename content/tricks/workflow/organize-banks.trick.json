@@ -1,0 +1,83 @@
+{
+  "id": "organize-banks",
+  "type": "trick",
+  "title": {
+    "ru": "Банки по порядку",
+    "en": "Organize banks"
+  },
+  "summary": {
+    "ru": "Одинаковая раскладка во всех проектах.",
+    "en": "The same layout in every project."
+  },
+  "category": "workflow",
+  "categoryGroup": "workflow",
+  "topic": "organize banks",
+  "tags": [
+    "trick",
+    "group:workflow"
+  ],
+  "difficulty": "beginner",
+  "durationMin": 4,
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Copying the sample from a pad",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7917249178483339.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — Exchanging (swapping) samples between pads",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7916737178482571.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — Selecting a sample bank",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7885249178448779.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  "steps": [
+    {
+      "kind": "concept",
+      "text": {
+        "ru": "Придумай схему: A — ударные, B — бас, C — мелодии, D — вокал, E — FX. Держись её в каждом проекте.",
+        "en": "Make a scheme: A drums, B bass, C melodies, D vocals, E FX. Keep it in every project."
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "[COPY] → пэд источника → пэд назначения переносит сэмпл (в другой банк — выбери банк до пэда назначения).",
+        "en": "[COPY] → source pad → destination pad moves a copy (for another bank, pick the bank before the destination pad)."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "COPY",
+          "A/F"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "[SHIFT] + пэд [5] — EXCHANGE: поменять два пэда местами.",
+        "en": "[SHIFT] + pad [5] — EXCHANGE: swap two pads."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "SHIFT"
+        ],
+        "pads": [
+          5
+        ]
+      },
+      "tryIt": {
+        "ru": "Наведи порядок в одном банке за 5 минут.",
+        "en": "Tidy one bank in five minutes."
+      }
+    }
+  ]
+}

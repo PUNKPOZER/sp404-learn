@@ -1,0 +1,76 @@
+{
+  "id": "rolls-trick",
+  "type": "trick",
+  "title": {
+    "ru": "Роллы",
+    "en": "Rolls"
+  },
+  "summary": {
+    "ru": "Дробь одним пальцем.",
+    "en": "A roll with one finger."
+  },
+  "category": "rhythm",
+  "categoryGroup": "rhythm",
+  "topic": "rolls",
+  "tags": [
+    "trick",
+    "group:rhythm"
+  ],
+  "difficulty": "beginner",
+  "durationMin": 3,
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Playing back samples in detailed steps (ROLL)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7889831578454155.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — Setting the roll interval",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7890497178454923.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  "steps": [
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Удерживай [ROLL] и нажимай пэды — сэмпл играет дробью.",
+        "en": "Hold [ROLL] and press pads — the sample plays as a roll."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "ROLL"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "[SHIFT] + [ROLL] меняет интервал (от четвертных до 64-х триолей). Удерживая [ROLL], вращай [VALUE] по часовой — интервал короче.",
+        "en": "[SHIFT] + [ROLL] changes the interval (quarter notes to 64th triplets). Holding [ROLL], turn [VALUE] clockwise — the interval shortens."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "SHIFT",
+          "ROLL",
+          "VALUE"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Одновременно может играть ролл до четырёх сэмплов.",
+        "en": "Up to four samples can roll at the same time."
+      },
+      "tryIt": {
+        "ru": "Сделай ролл снейра, ускоряя его поворотом [VALUE].",
+        "en": "Roll a snare and speed it up by turning [VALUE]."
+      }
+    }
+  ]
+}

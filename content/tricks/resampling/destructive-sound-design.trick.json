@@ -1,0 +1,79 @@
+{
+  "id": "destructive-sound-design",
+  "type": "trick",
+  "title": {
+    "ru": "Деструктивный саунд-дизайн",
+    "en": "Destructive sound design"
+  },
+  "summary": {
+    "ru": "Много ресэмплов — новый звук.",
+    "en": "Many resamples — a new sound."
+  },
+  "category": "resampling",
+  "categoryGroup": "resampling",
+  "topic": "destructive sound design",
+  "tags": [
+    "trick",
+    "group:resampling"
+  ],
+  "difficulty": "advanced",
+  "durationMin": 5,
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Resampling a sample (RESAMPLE)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7907213978473355.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — Using the MFX effects",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7900737178465675.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  "steps": [
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Включи тяжёлый эффект (например MFX → Lo-fi: [MFX] + [VALUE]).",
+        "en": "Turn on a heavy effect (for example MFX → Lo-fi: [MFX] + [VALUE])."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "MFX",
+          "VALUE"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Ресэмпли на новый пэд ([RESAMPLE], ROUTING = Mix).",
+        "en": "Resample onto a new pad ([RESAMPLE], ROUTING = Mix)."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "RESAMPLE"
+        ]
+      }
+    },
+    {
+      "kind": "concept",
+      "text": {
+        "ru": "Повтори 2–3 раза, меняя эффект. Каждое поколение теряет «чистоту», но обретает характер.",
+        "en": "Repeat 2–3 times, changing the effect. Each generation loses cleanliness and gains character."
+      },
+      "why": {
+        "ru": "Копия копии звучит иначе, чем оригинал.",
+        "en": "A copy of a copy sounds different from the original."
+      },
+      "tryIt": {
+        "ru": "Сделай три поколения: чисто → Lo-fi → Reverb.",
+        "en": "Make three generations: clean → Lo-fi → Reverb."
+      }
+    }
+  ]
+}

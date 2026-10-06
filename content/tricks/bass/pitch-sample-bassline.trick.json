@@ -1,0 +1,70 @@
+{
+  "id": "pitch-sample-bassline",
+  "type": "trick",
+  "title": {
+    "ru": "Басовая линия питчем",
+    "en": "A bassline by pitching"
+  },
+  "summary": {
+    "ru": "PITCH на каждом шаге.",
+    "en": "PITCH per step."
+  },
+  "category": "bass",
+  "categoryGroup": "bass",
+  "topic": "pitch a sample into a bassline",
+  "tags": [
+    "trick",
+    "group:bass"
+  ],
+  "difficulty": "intermediate",
+  "durationMin": 5,
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Creating a new pattern (TR-REC)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7921805978489483.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  "steps": [
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "В TR-REC выбери басовый сэмпл ([SUB PAD] + пэд).",
+        "en": "In TR-REC pick the bass sample ([SUB PAD] + pad)."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "SUB PAD"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "[CTRL 2] — PITCH (−12…+12) для шага; кнопка [PITCH/SPEED] переключает PITCH MODE CHROMATIC / PAD.",
+        "en": "[CTRL 2] is PITCH (−12…+12) for the step; [PITCH/SPEED] switches PITCH MODE CHROMATIC / PAD."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "CTRL 2",
+          "PITCH/SPEED"
+        ]
+      }
+    },
+    {
+      "kind": "concept",
+      "text": {
+        "ru": "Три разных питча на 4 тактах — уже мелодия баса. Держи одну тональность.",
+        "en": "Three different pitches over four bars is already a bassline. Stay in one key."
+      },
+      "tryIt": {
+        "ru": "Запиши 3-нотную басовую линию на шагах 1, 7, 11.",
+        "en": "Record a three-note bassline on steps 1, 7, 11."
+      }
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "id": "live-resampling",
+  "type": "trick",
+  "title": {
+    "ru": "Ресэмплинг вживую",
+    "en": "Live resampling"
+  },
+  "summary": {
+    "ru": "Слои на лету через Looper.",
+    "en": "Layers on the fly with the Looper."
+  },
+  "category": "performance",
+  "categoryGroup": "performance",
+  "topic": "live resampling",
+  "tags": [
+    "trick",
+    "group:performance"
+  ],
+  "difficulty": "advanced",
+  "durationMin": 4,
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Recording samples by looping (LOOPER)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/8584103589852939.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  "steps": [
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "MARK Function = Looper (System), затем [MARK].",
+        "en": "MARK Function = Looper (System), then [MARK]."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "MARK"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "[REC] — запись, [RESAMPLE] — овердаб, [COPY] — назначить результат на пэды.",
+        "en": "[REC] records, [RESAMPLE] overdubs, [COPY] assigns the result to pads."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "REC",
+          "RESAMPLE",
+          "COPY"
+        ]
+      },
+      "tryIt": {
+        "ru": "Накопи 2-тактовый луп из трёх слоёв и сохрани на пэд.",
+        "en": "Build a two-bar loop from three layers and save it to a pad."
+      }
+    }
+  ]
+}

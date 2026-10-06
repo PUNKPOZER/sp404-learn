@@ -1,0 +1,70 @@
+{
+  "id": "off-grid-feel",
+  "type": "trick",
+  "title": {
+    "ru": "Ноты мимо сетки",
+    "en": "Off-grid feel"
+  },
+  "summary": {
+    "ru": "Сдвинь ноту на долю шага.",
+    "en": "Nudge a note by a fraction of a step."
+  },
+  "category": "rhythm",
+  "categoryGroup": "rhythm",
+  "topic": "off-grid feel",
+  "tags": [
+    "trick",
+    "group:rhythm"
+  ],
+  "difficulty": "advanced",
+  "durationMin": 4,
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Editing patterns note by note (Microscope)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/8596903593591435.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  "steps": [
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "В TR-REC удерживай [PATTERN EDIT] и нажми пэд ноты — откроется Microscope.",
+        "en": "In TR-REC hold [PATTERN EDIT] and press a note's pad — Microscope opens."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "PATTERN EDIT"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Вращай [VALUE] — это смещение времени ноты. [EXIT] — выход.",
+        "en": "Turn [VALUE] — it shifts the note's timing. [EXIT] leaves."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "VALUE",
+          "EXIT"
+        ]
+      }
+    },
+    {
+      "kind": "concept",
+      "text": {
+        "ru": "Сдвигай снейр чуть позже сетки — получается «ленивый» грув; кик чуть раньше — «напористый».",
+        "en": "Pushing a snare slightly behind the grid gives a lazy groove; a kick slightly ahead feels driving."
+      },
+      "tryIt": {
+        "ru": "Сдвинь один снейр на малую долю и сравни.",
+        "en": "Move one snare by a small fraction and compare."
+      }
+    }
+  ]
+}

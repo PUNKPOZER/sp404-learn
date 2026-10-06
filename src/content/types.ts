@@ -38,6 +38,8 @@ export interface FxEntry {
 
 export interface Trick {
   id: string;
+  /** Learning Library 2.0 metadata (optional for legacy data) */
+  group?: string; difficulty?: "beginner" | "intermediate" | "advanced"; durationMin?: number;
   title: string;
   topic: string;
   status: Status;

@@ -1,0 +1,108 @@
+{
+  "id": "zero-03-importing-samples",
+  "type": "lesson",
+  "title": {
+    "ru": "Импорт сэмплов",
+    "en": "Importing samples"
+  },
+  "summary": {
+    "ru": "Как загрузить свои звуки на пэды с SD-карты.",
+    "en": "How to load your own sounds onto pads from an SD card."
+  },
+  "category": "zero",
+  "tags": [
+    "lesson",
+    "path:sp404-from-zero"
+  ],
+  "difficulty": "beginner",
+  "durationMin": 7,
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Importing samples (IMPORT SAMPLE)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7958977178537867.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  "objectives": [
+    {
+      "ru": "Перенести WAV с компьютера на пэд",
+      "en": "Move audio from a computer to a pad"
+    }
+  ],
+  "steps": [
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "На компьютере положи файлы в папку IMPORT на SD-карте и вставь карту в прибор.",
+        "en": "On your computer, put the files in the IMPORT folder of the SD card and insert the card into the unit."
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Удерживая [SHIFT], нажми пэд [13] — откроется UTILITY MENU. Ручкой [VALUE] выбери IMPORT и нажми её.",
+        "en": "Hold [SHIFT] and press pad [13] to open the UTILITY MENU. Turn [VALUE] to IMPORT and press it."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "SHIFT",
+          "VALUE"
+        ],
+        "pads": [
+          13
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Выбери IMPORT from SD-CARD, затем SAMPLE (всё ручкой [VALUE]).",
+        "en": "Choose IMPORT from SD-CARD, then SAMPLE (all with the [VALUE] knob)."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "VALUE"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Нажми пэд [1]–[16], куда положить сэмпл, выбери файл ручкой [VALUE] и нажми её — сэмпл импортирован на пэд.",
+        "en": "Press the pad [1]–[16] to receive the sample, pick the file with [VALUE] and press it — the sample is imported to that pad."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "VALUE"
+        ],
+        "pads": [
+          1
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Прослушать файл до импорта можно, вращая [VALUE] или нажав [SUB PAD]. Пока на экране «Working…», не выключай прибор и не вынимай карту.",
+        "en": "You can audition a file before importing by turning [VALUE] or pressing [SUB PAD]. While the screen says “Working…”, don't power off or remove the card."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "SUB PAD",
+          "VALUE"
+        ]
+      },
+      "tryIt": {
+        "ru": "Импортируй один короткий звук (бочку) на пэд [1] и сыграй его.",
+        "en": "Import one short sound (a kick) onto pad [1] and play it."
+      }
+    }
+  ],
+  "prerequisites": [
+    "zero-02-pads-and-banks"
+  ]
+}

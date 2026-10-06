@@ -1,0 +1,65 @@
+{
+  "id": "resample-several-pads",
+  "type": "trick",
+  "title": {
+    "ru": "Ресэмпл нескольких пэдов вместе",
+    "en": "Resample several pads together"
+  },
+  "summary": {
+    "ru": "SAMPLE MERGE склеивает до четырёх.",
+    "en": "SAMPLE MERGE joins up to four."
+  },
+  "category": "resampling",
+  "categoryGroup": "resampling",
+  "topic": "resample several pads",
+  "tags": [
+    "trick",
+    "group:resampling"
+  ],
+  "difficulty": "intermediate",
+  "durationMin": 4,
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Merging multiple samples into a single sample (SAMPLE MERGE)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/8563623593603339.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  "steps": [
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "[SHIFT] + [RESAMPLE], выбери до четырёх пэдов.",
+        "en": "[SHIFT] + [RESAMPLE], choose up to four pads."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "SHIFT",
+          "RESAMPLE"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "[CTRL 1] — метод SUM или MUL, [CTRL 3] — громкость пэда, [VALUE] — выполнить; затем пэд назначения и [VALUE].",
+        "en": "[CTRL 1] is the method SUM or MUL, [CTRL 3] the pad's volume, [VALUE] executes; then the destination pad and [VALUE]."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "CTRL 1",
+          "CTRL 3",
+          "VALUE"
+        ]
+      },
+      "tryIt": {
+        "ru": "Склей бочку и саб в один сэмпл.",
+        "en": "Merge a kick and a sub into one sample."
+      }
+    }
+  ]
+}

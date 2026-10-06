@@ -14,11 +14,12 @@ const lesson = (over: Partial<Lesson> = {}): Lesson => ({
 describe("shipped content (data files under /content)", () => {
   it("loads every item and passes all content rules", () => {
     expect(ITEMS.length).toBeGreaterThan(30);
-    expect(validateAll(ITEMS)).toEqual([]);
+    expect(validateAll(ITEMS).join("\n")).toBe("");
   });
   it("legacy FX / TRICKS / REFERENCE survive the move to data (ids, counts, bilingual)", () => {
     expect(fxEntries().map((f) => f.id).sort()).toEqual(["djfx-looper", "filter-drive", "isolator", "resonator"]);
-    expect(trickEntries().map((t) => t.id).sort()).toEqual(["mute-group", "pattern-chain", "resample-pattern", "skip-back", "tr-rec"]);
+    const tricks = trickEntries().map((t) => t.id);
+    for (const id of ["mute-group", "pattern-chain", "resample-pattern", "skip-back", "tr-rec"]) expect(tricks).toContain(id);
     expect(referenceEntries().length).toBe(itemsOf("reference").length);
     for (const i of ITEMS) { expect(i.title.ru && i.title.en).toBeTruthy(); }
   });
@@ -41,9 +42,11 @@ describe("validator rules (each rule has a failing example)", () => {
     expect(validateItem(lesson({ title: { ru: "Урок", en: "" } }), all).join()).toMatch(/ru and en/);
   });
   it("requires verification evidence for verified items (Roland URL + date)", () => {
-    expect(validateItem(lesson({ verification: { status: "verified" } }), all).join()).toMatch(/verifiedAgainst/);
-    expect(validateItem(lesson({ verification: { status: "verified", verifiedAgainst: [{ title: "x", url: "https://example.com/a" }], verifiedOn: "2026-10-07" } }), all).join()).toMatch(/not a Roland/);
-    expect(validateItem(lesson({ verification: { status: "verified", verifiedAgainst: [{ title: "x", url: "https://static.roland.com/a" }], verifiedOn: "2026-10-07" } }), all)).toEqual([]);
+    const hw = [{ kind: "hardware" as const, text: { ru: "Нажми [REC]", en: "Press [REC]" }, tryIt: { ru: "а", en: "a" } }];
+    expect(validateItem(lesson({ steps: hw, verification: { status: "verified" } }), all).join()).toMatch(/verifiedAgainst/);
+    expect(validateItem(lesson({ steps: hw, verification: { status: "verified", verifiedAgainst: [{ title: "x", url: "https://example.com/a" }], verifiedOn: "2026-10-07" } }), all).join()).toMatch(/not a Roland/);
+    expect(validateItem(lesson({ steps: hw, verification: { status: "verified", verifiedAgainst: [{ title: "x", url: "https://static.roland.com/a" }], verifiedOn: "2026-10-07" } }), all)).toEqual([]);
+    expect(validateItem(lesson({ verification: { status: "verified" } }), all)).toEqual([]);      // concept-only advice needs no hardware source
   });
   it("blocks hardware steps in items that are not verified", () => {
     const l = lesson({ steps: [{ kind: "hardware", text: { ru: "Нажми [REC]", en: "Press [REC]" }, tryIt: { ru: "а", en: "a" } }] });

@@ -1,0 +1,80 @@
+{
+  "id": "bounce-pattern",
+  "type": "trick",
+  "title": {
+    "ru": "BOUNCE: паттерн → сэмпл",
+    "en": "BOUNCE: pattern to sample"
+  },
+  "summary": {
+    "ru": "Чистая запись паттерна без эффектов.",
+    "en": "A clean render of a pattern without effects."
+  },
+  "category": "resampling",
+  "categoryGroup": "resampling",
+  "topic": "resample a pattern into one pad",
+  "tags": [
+    "trick",
+    "group:resampling"
+  ],
+  "difficulty": "intermediate",
+  "durationMin": 4,
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Converting patterns to samples (BOUNCE)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7924109978491787.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — Copying the pattern of a pad",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7932327578503307.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  "steps": [
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Выбери паттерн, как в [COPY] (нажми [COPY], затем пэд паттерна).",
+        "en": "Select the pattern as with [COPY] (press [COPY], then the pattern's pad)."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "COPY"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Нажми [PATTERN SELECT], затем пэд, куда сохранить сэмпл (занятый пэд будет перезаписан).",
+        "en": "Press [PATTERN SELECT], then the pad to save the sample to (an occupied pad is overwritten)."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "PATTERN SELECT"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Нажми [VALUE] или [COPY] — паттерн превращается в сэмпл; эффекты BUS 1–4 при этом отключены.",
+        "en": "Press [VALUE] or [COPY] — the pattern becomes a sample; BUS 1–4 effects are bypassed."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "VALUE",
+          "COPY"
+        ]
+      },
+      "tryIt": {
+        "ru": "Сделай BOUNCE бита и нарежь результат маркерами.",
+        "en": "BOUNCE a beat and chop the result with markers."
+      }
+    }
+  ]
+}

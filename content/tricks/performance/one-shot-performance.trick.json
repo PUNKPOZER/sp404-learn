@@ -1,0 +1,75 @@
+{
+  "id": "one-shot-performance",
+  "type": "trick",
+  "title": {
+    "ru": "One-shot вживую",
+    "en": "One-shot performance"
+  },
+  "summary": {
+    "ru": "Удар целиком, без обрезания.",
+    "en": "A hit plays through, never cut."
+  },
+  "category": "performance",
+  "categoryGroup": "performance",
+  "topic": "one-shot performance",
+  "tags": [
+    "trick",
+    "group:performance"
+  ],
+  "difficulty": "beginner",
+  "durationMin": 3,
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Playing back samples only one time (One-shot Playback)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7887911578451851.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — Pausing the sound of a sample (PAUSE)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7897050778461067.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — Shortcuts that use the [SHIFT] button",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/8003597978584715.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  "steps": [
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Удерживая [VALUE], нажми [GATE]: пэд играет сэмпл один раз целиком.",
+        "en": "Hold [VALUE] and press [GATE]: the pad plays the sample once, fully."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "VALUE",
+          "GATE"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Чтобы остановить звучащие сэмплы: [SHIFT] + [EXIT]; пауза — [SHIFT] + [HOLD].",
+        "en": "To stop sounding samples: [SHIFT] + [EXIT]; pause with [SHIFT] + [HOLD]."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "SHIFT",
+          "EXIT",
+          "HOLD"
+        ]
+      },
+      "tryIt": {
+        "ru": "Сделай one-shot на длинном риз-ударе и сыграй им фразу.",
+        "en": "Set one-shot on a long riser hit and play a phrase with it."
+      }
+    }
+  ]
+}

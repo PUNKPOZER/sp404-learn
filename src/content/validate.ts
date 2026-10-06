@@ -1,7 +1,7 @@
 import { CONTROL_GROUPS } from "../components/DeviceDiagram";
 import { DIFFICULTIES, MAX_STEP_CHARS, type ContentItem, type Lesson, type LessonStep, type Loc } from "./schema";
 
-export const KNOWN_CONTROLS = new Set<string>([...CONTROL_GROUPS.knobs, ...CONTROL_GROUPS.fx, ...CONTROL_GROUPS.keys, "EXT SOURCE"]);
+export const KNOWN_CONTROLS = new Set<string>([...CONTROL_GROUPS.knobs, ...CONTROL_GROUPS.fx, ...CONTROL_GROUPS.keys, ...CONTROL_GROUPS.edit, ...CONTROL_GROUPS.bank]);
 const ROLAND = /^https:\/\/(static|articles)\.roland\.com\//;
 const ISO = /^\d{4}-\d{2}-\d{2}$/;
 
@@ -37,9 +37,10 @@ export function validateItem(item: ContentItem, all: ContentItem[]): string[] {
   const v = item.verification;
   if (!v || !["verified", "needs_review"].includes(v.status)) p.push(`${id}: verification.status`);
   else if (v.status === "verified") {
-    if (!v.verifiedAgainst?.length) p.push(`${id}: verified item needs verifiedAgainst`);
+    const hasHardware = stepsOf(item).some((x) => x.kind === "hardware") || item.type === "fx" || item.type === "reference";
+    if (hasHardware && !v.verifiedAgainst?.length) p.push(`${id}: verified item needs verifiedAgainst`);
     for (const s of v.verifiedAgainst ?? []) if (!ROLAND.test(s.url)) p.push(`${id}: ${s.url} is not a Roland documentation URL`);
-    if (!v.verifiedOn || !ISO.test(v.verifiedOn)) p.push(`${id}: verifiedOn (ISO date) required`);
+    if (hasHardware && (!v.verifiedOn || !ISO.test(v.verifiedOn))) p.push(`${id}: verifiedOn (ISO date) required`);
   }
   // 3. controls exist on the device diagram (no invented buttons) + 4. step shape + length
   for (const [i, s] of stepsOf(item).entries()) {

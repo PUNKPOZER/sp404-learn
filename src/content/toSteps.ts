@@ -3,7 +3,12 @@ import type { Step } from "./types";
 import type { LessonStep } from "./schema";
 import { loc } from "./load";
 
-const shortTitle = (t: string) => { const first = t.split(/(?<=[.!?])\s/)[0].replace(/[[\]]/g, ""); return first.length > 46 ? `${first.slice(0, 44).trimEnd()}…` : first; };
+const shortTitle = (t: string) => {
+  const first = t.split(/(?<=[.!?])\s/)[0].replace(/[[\]]/g, "");
+  const colon = first.indexOf(":");
+  const head = colon >= 6 && colon <= 46 ? first.slice(0, colon) : first;      // "Turn the unit on: …" → "Turn the unit on"
+  return head.length > 46 ? `${head.slice(0, 44).trimEnd()}…` : head;
+};
 
 /** Adapt verified FX/TRICKS steps to the shared lesson renderer (same TutorialStep shape as courses and track tutorials). */
 export function stepsFromContent(title: string, steps: Step[]): TutorialStep[] {

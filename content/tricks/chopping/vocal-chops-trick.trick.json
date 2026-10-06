@@ -1,0 +1,82 @@
+{
+  "id": "vocal-chops-trick",
+  "type": "trick",
+  "title": {
+    "ru": "Вокальные чопы",
+    "en": "Vocal chops"
+  },
+  "summary": {
+    "ru": "Слог — это нота.",
+    "en": "A syllable is a note."
+  },
+  "category": "chopping",
+  "categoryGroup": "chopping",
+  "topic": "vocal chops",
+  "tags": [
+    "trick",
+    "group:chopping"
+  ],
+  "difficulty": "intermediate",
+  "durationMin": 5,
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Marking and splitting samples (MARK)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7911540378477195.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — Using a marker to split and assign a sample to a pad (CHOP)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7912513178477963.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — Playing back only while a pad is pressed (GATE)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7887245978451083.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  "steps": [
+    {
+      "kind": "concept",
+      "text": {
+        "ru": "Найди в вокале 3–4 коротких слога или вдоха — они хорошо звучат отдельно.",
+        "en": "Find 3–4 short syllables or breaths in the vocal — they sound good on their own."
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Поставь маркеры ([SHIFT] + [START/END] → [MARK]) и назначь куски на пэды: [VALUE] → ASSIGN TO PAD.",
+        "en": "Place markers ([SHIFT] + [START/END] → [MARK]) and assign the pieces to pads: [VALUE] → ASSIGN TO PAD."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "SHIFT",
+          "START/END",
+          "MARK",
+          "VALUE"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Включи [GATE] на кусках, чтобы они звучали только пока нажат пэд.",
+        "en": "Turn [GATE] on for the pieces so they sound only while the pad is held."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "GATE"
+        ]
+      },
+      "tryIt": {
+        "ru": "Составь из трёх слогов ритмичную фразу из 4 шагов.",
+        "en": "Build a 4-step rhythmic phrase from three syllables."
+      }
+    }
+  ]
+}

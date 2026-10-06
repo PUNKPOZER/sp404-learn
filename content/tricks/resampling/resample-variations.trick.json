@@ -1,0 +1,75 @@
+{
+  "id": "resample-variations",
+  "type": "trick",
+  "title": {
+    "ru": "Вариации через ресэмпл",
+    "en": "Create variations by resampling"
+  },
+  "summary": {
+    "ru": "Ресэмпли с другой высотой и скоростью.",
+    "en": "Resample at a different pitch and speed."
+  },
+  "category": "resampling",
+  "categoryGroup": "resampling",
+  "topic": "create variations",
+  "tags": [
+    "trick",
+    "group:resampling"
+  ],
+  "difficulty": "intermediate",
+  "durationMin": 4,
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Changing the pitch or playback speed of a sample (PITCH/SPEED)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7914381978479499.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — Resampling a sample (RESAMPLE)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7907213978473355.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  "steps": [
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Измени [PITCH/SPEED] сэмпла (SPEED — [CTRL 1]).",
+        "en": "Change the sample's [PITCH/SPEED] (SPEED is [CTRL 1])."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "PITCH/SPEED",
+          "CTRL 1"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Запиши результат через [RESAMPLE] (ROUTING = Mix) на новый пэд.",
+        "en": "Record the result with [RESAMPLE] (ROUTING = Mix) onto a new pad."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "RESAMPLE"
+        ]
+      }
+    },
+    {
+      "kind": "concept",
+      "text": {
+        "ru": "Теперь у тебя два разных звука из одного: оригинал и «тяжёлая» версия.",
+        "en": "Now you have two different sounds from one: the original and a heavier version."
+      },
+      "tryIt": {
+        "ru": "Сделай «медленную» версию вокала и положи её на соседний пэд.",
+        "en": "Make a slowed vocal version and put it on the next pad."
+      }
+    }
+  ]
+}

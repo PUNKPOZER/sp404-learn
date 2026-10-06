@@ -1,0 +1,69 @@
+{
+  "id": "filter-sweep",
+  "type": "trick",
+  "title": {
+    "ru": "Фильтр-свип",
+    "en": "Filter sweep"
+  },
+  "summary": {
+    "ru": "Плавно открой/закрой фильтр.",
+    "en": "Open or close the filter smoothly."
+  },
+  "category": "fx",
+  "categoryGroup": "fx",
+  "topic": "filter sweep",
+  "tags": [
+    "trick",
+    "group:fx"
+  ],
+  "difficulty": "beginner",
+  "durationMin": 3,
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Adding effects to a sample (BUS FX)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7899047578463371.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — Editing the effects",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7901249178466443.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  "steps": [
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Нажми [FILTER+DRIVE], играй луп.",
+        "en": "Press [FILTER+DRIVE] and play a loop."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "FILTER+DRIVE"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Крути [CTRL 1]–[CTRL 3], глядя на экран, и найди CUTOFF; двигай его медленно.",
+        "en": "Turn [CTRL 1]–[CTRL 3] while watching the screen, find CUTOFF and move it slowly."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "CTRL 1",
+          "CTRL 2",
+          "CTRL 3"
+        ]
+      },
+      "tryIt": {
+        "ru": "Открывай фильтр восемь тактов — получится нарастание.",
+        "en": "Open the filter over eight bars — that's a build."
+      }
+    }
+  ]
+}

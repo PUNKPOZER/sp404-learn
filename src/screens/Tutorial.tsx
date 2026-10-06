@@ -1,7 +1,7 @@
 import { DeviceDiagram } from "../components/DeviceDiagram";
 import { StepSequencer, type Cell } from "../components/StepSequencer";
 import { GenreArt } from "../components/GenreArt";
-import { tutorialGo } from "../state/actions";
+import { finishTutorial, tutorialGo } from "../state/actions";
 import { setState, useStore } from "../state/store";
 import { stopPlay } from "../lib/audio/preview";
 import type { TutorialStep } from "../lib/types";
@@ -36,8 +36,8 @@ export function Tutorial() {
         <button className="btn sm" onClick={exit}>{tx("← Выйти", "← Exit")}</button>
         {t.mode === "course" && t.courseId && <GenreArt id={t.courseId} className="lesson-art" />}
         <div className="lesson-titles">
-          <span className="k">{step.lesson ? `${t.title} · ${tx("урок", "lesson")} ${String(step.lesson).padStart(2, "0")} / ${String(step.lessonsTotal ?? "").padStart(2, "0")}` : t.mode === "fx" || t.mode === "trick" ? `${tx("Шаг", "Step")} ${t.index + 1} ${tx("из", "of")} ${total}` : `${t.title} · ${step.section}`}</span>
-          <h1>{step.lessonTitle ?? (t.mode === "fx" || t.mode === "trick" ? t.title : step.title)}</h1>
+          <span className="k">{step.lesson ? `${t.title} · ${tx("урок", "lesson")} ${String(step.lesson).padStart(2, "0")} / ${String(step.lessonsTotal ?? "").padStart(2, "0")}` : (t.mode === "fx" || t.mode === "trick" || t.mode === "lesson") ? `${tx("Шаг", "Step")} ${t.index + 1} ${tx("из", "of")} ${total}` : `${t.title} · ${step.section}`}</span>
+          <h1>{step.lessonTitle ?? ((t.mode === "fx" || t.mode === "trick" || t.mode === "lesson") ? t.title : step.title)}</h1>
         </div>
         <div className="grow" />
         <span className="mono" aria-live="polite">{t.index + 1} / {total}</span>
@@ -78,7 +78,7 @@ export function Tutorial() {
 
       <div className="tut-nav">
         <button className="btn big" disabled={t.index === 0} onClick={() => tutorialGo(-1)}>{tx("← Назад", "← Back")}</button>
-        {last ? <button className="btn primary big" onClick={exit}>{tx("Готово ✓", "Done ✓")}</button> : <button className="btn primary big" onClick={() => tutorialGo(1)}>{tx("Далее →", "Next →")}</button>}
+        {last ? <button className="btn primary big" onClick={() => { finishTutorial(); exit(); }}>{tx("Готово ✓", "Done ✓")}</button> : <button className="btn primary big" onClick={() => tutorialGo(1)}>{tx("Далее →", "Next →")}</button>}
       </div>
     </div>
   );

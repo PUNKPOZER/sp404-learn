@@ -417,3 +417,20 @@ h1 { font-weight: 800; letter-spacing: -.005em; }
 .genre-details { margin-top: var(--sp-space-3); font-size: var(--sp-text-xs); } .genre-details summary { cursor: pointer; font-weight: 700; }
 .lesson-why, .lesson-try, .paramcall { margin: var(--sp-space-3) 0 0; font-size: var(--sp-text-md); }
 .lesson-try { border-left: 3px solid var(--sp-blue); padding-left: var(--sp-space-3); }
+.dev-btn.bank { background: var(--sp-paper-3); }
+.dev-row.edit .dev-btn, .dev-row.bank .dev-btn { padding: 4px 6px; }
+
+/* learning paths + library filters */
+.chip.diff { text-transform: uppercase; letter-spacing: .06em; } .chip.diff-beginner { border-color: var(--sp-green-ink); color: var(--sp-green-ink); }
+.chip.diff-intermediate { border-color: var(--sp-blue-hover); color: var(--sp-blue-hover); } .chip.diff-advanced { border-color: var(--sp-red-ink); color: var(--sp-red-ink); }
+.tabs { margin-bottom: var(--sp-space-3); } .paths { display: flex; flex-direction: column; gap: var(--sp-space-4); }
+.path-head { display: flex; justify-content: space-between; gap: var(--sp-space-4); flex-wrap: wrap; } .path-head h2 { margin: 0 0 var(--sp-space-1); }
+.path-side { display: flex; flex-direction: column; gap: var(--sp-space-2); min-width: 190px; align-items: flex-start; }
+.path-lessons { list-style: none; margin: var(--sp-space-4) 0 0; padding: 0; display: flex; flex-direction: column; }
+.path-lessons li button { all: unset; box-sizing: border-box; width: 100%; cursor: pointer; display: grid; grid-template-columns: 34px 1fr auto 28px; gap: var(--sp-space-3); align-items: center; padding: 10px var(--sp-space-2); border-top: 1px solid var(--sp-card-line); }
+.path-lessons li button:hover { background: var(--sp-paper-2); } .path-lessons li button:focus-visible { outline: 3px solid var(--sp-focus); outline-offset: -3px; }
+.path-lessons .n { font: 700 var(--sp-text-sm) var(--sp-font-mono); color: var(--sp-ink-3); } .path-lessons .lt { display: flex; flex-direction: column; } .path-lessons small { color: var(--sp-ink-2); font-size: var(--sp-text-xs); }
+.path-lessons .chk { font-weight: 800; color: var(--sp-green-ink); text-align: center; } .path-lessons button.done .lt b { color: var(--sp-ink-2); }
+.filters { display: flex; flex-direction: column; gap: var(--sp-space-2); margin-bottom: var(--sp-space-3); } .filters input[type=search] { max-width: 360px; }
+.path-home { display: flex; justify-content: space-between; align-items: center; gap: var(--sp-space-4); flex-wrap: wrap; } .path-home h2 { margin: var(--sp-space-1) 0; font: 800 var(--sp-text-xl) var(--sp-font-ui); text-transform: uppercase; }
+.path-home-side { display: flex; align-items: center; gap: var(--sp-space-3); min-width: 280px; } .path-home-side .progress { flex: 1; height: 6px; }

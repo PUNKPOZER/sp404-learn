@@ -1,0 +1,80 @@
+{
+  "id": "zero-15-mute-groups",
+  "type": "lesson",
+  "title": {
+    "ru": "Mute Groups",
+    "en": "Mute groups"
+  },
+  "summary": {
+    "ru": "Не давай сэмплам звучать одновременно.",
+    "en": "Stop samples from sounding at the same time."
+  },
+  "category": "zero",
+  "tags": [
+    "lesson",
+    "path:sp404-from-zero"
+  ],
+  "difficulty": "beginner",
+  "durationMin": 5,
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Preventing samples from playing back at the same time (MUTE GROUP)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7895796378459531.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  "objectives": [
+    {
+      "ru": "Сгруппировать закрытый и открытый хэт",
+      "en": "Group a closed and an open hat"
+    }
+  ],
+  "steps": [
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Удерживая [SHIFT], нажми пэд [8] — откроется экран MUTE GROUP.",
+        "en": "Hold [SHIFT] and press pad [8] — the MUTE GROUP screen opens."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "SHIFT"
+        ],
+        "pads": [
+          8
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Ручкой [VALUE] выбери группу (A–J), нажми пэды [1]–[16] с сэмплами для группы и [EXIT], чтобы сохранить.",
+        "en": "Choose a group (A–J) with [VALUE], press the pads [1]–[16] to join it and [EXIT] to save."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "VALUE",
+          "EXIT"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Из пэдов одной группы звучит только последний сыгранный. Всего до 10 групп, в группе до 16 сэмплов.",
+        "en": "Of the pads in a group only the last one played sounds. Up to 10 groups, up to 16 samples per group."
+      },
+      "tryIt": {
+        "ru": "Объедини закрытый и открытый хэт и сыграй их попеременно.",
+        "en": "Group the closed and open hat and play them alternately."
+      }
+    }
+  ],
+  "prerequisites": [
+    "zero-04-playing-samples"
+  ]
+}

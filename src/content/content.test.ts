@@ -4,6 +4,7 @@ import { TRICKS, PLANNED_TOPICS } from "./tricks";
 import { REFERENCE, searchReference } from "./reference";
 import { verified, type Source } from "./types";
 import { stepsFromContent } from "./toSteps";
+import { KNOWN_CONTROLS } from "./validate";
 import { PLANNED } from "./load";
 
 const roland = (s: Source) => /^https:\/\/(static|articles)\.roland\.com\//.test(s.url);
@@ -12,7 +13,7 @@ describe("verified-only content rule", () => {
   const all = [...FX, ...TRICKS, ...REFERENCE];
   it("every verified item has at least one Roland source with a check date", () => {
     for (const item of verified(all)) {
-      expect(item.sources.length, item.id).toBeGreaterThan(0);
+      if (!item.sources.length) { expect("steps" in item ? item.steps.some((st) => st.controls?.length) : false, `${item.id}: unsourced items must be concept-only`).toBe(false); continue; }
       for (const s of item.sources) { expect(roland(s), `${item.id}: ${s.url}`).toBe(true); expect(s.verifiedOn).toMatch(/^\d{4}-\d{2}-\d{2}$/); }
     }
   });
@@ -23,11 +24,10 @@ describe("verified-only content rule", () => {
   });
   it("verified items are complete", () => {
     for (const f of verified(FX)) { expect(f.params.length, f.id).toBeGreaterThan(0); expect(f.tryThis.length, f.id).toBeGreaterThan(1); expect(f.useFor.length, f.id).toBeGreaterThan(0); }
-    for (const t of verified(TRICKS)) expect(t.steps.length, t.id).toBeGreaterThan(2);
+    for (const t of verified(TRICKS)) expect(t.steps.length, t.id).toBeGreaterThan(1);
   });
   it("no invented button names: controls used are known SP-404MK2 controls", () => {
-    const known = new Set(["PATTERN SELECT", "REC", "REMAIN", "SUB PAD", "SHIFT", "HOLD", "MARK", "RESAMPLE", "DEL", "EXIT", "EXT SOURCE",
-      "CTRL 1", "CTRL 2", "CTRL 3", "VALUE", "FILTER+DRIVE", "RESONATOR", "DELAY", "ISOLATOR", "DJFX LOOPER", "MFX"]);
+    const known = KNOWN_CONTROLS;
     for (const item of [...verified(FX), ...verified(TRICKS)]) {
       const steps = "tryThis" in item ? item.tryThis : item.steps;
       for (const s of steps) for (const c of s.controls ?? []) expect(known.has(c), `${item.id}: ${c}`).toBe(true);

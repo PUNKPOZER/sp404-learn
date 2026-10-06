@@ -1,0 +1,105 @@
+{
+  "id": "inter-16-creative-resampling",
+  "type": "lesson",
+  "title": {
+    "ru": "Творческий ресэмплинг: Looper",
+    "en": "Creative resampling: the Looper"
+  },
+  "summary": {
+    "ru": "Наслаивай звук в реальном времени.",
+    "en": "Layer sound in real time."
+  },
+  "category": "intermediate",
+  "tags": [
+    "lesson",
+    "path:sp404-intermediate",
+    "skill:resampling"
+  ],
+  "difficulty": "advanced",
+  "durationMin": 12,
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Recording samples by looping (LOOPER)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/8584103589852939.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — Sampling what you previously played (SKIP-BACK SAMPLING)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7907879578474123.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  "objectives": [
+    {
+      "ru": "Включить Looper и записывать слои",
+      "en": "Turn the Looper on and record layers"
+    }
+  ],
+  "steps": [
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Сначала в параметрах System поставь MARK Function = Looper. Затем нажми [MARK] — режим looper.",
+        "en": "First set the System parameter MARK Function to Looper. Then press [MARK] to switch to looper mode."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "MARK"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Параметры: [CTRL 1] — MEAS (Free, 1, 2, 4 такта), [CTRL 2] — AUTO TRIG, [CTRL 3] — BPM. [REC] начинает запись, [RESAMPLE] — овердаб (наложение).",
+        "en": "Parameters: [CTRL 1] is MEAS (Free, 1, 2, 4 measures), [CTRL 2] is AUTO TRIG, [CTRL 3] is BPM. [REC] starts recording and [RESAMPLE] turns on overdubbing."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "CTRL 1",
+          "CTRL 2",
+          "CTRL 3",
+          "REC",
+          "RESAMPLE"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "[DEL] стирает записанное, [COPY] назначает результат на пэды, [SHIFT] + [PATTERN SELECT] — отмена и повтор. [MARK] — выход из режима.",
+        "en": "[DEL] erases what you recorded, [COPY] assigns the result to pads, [SHIFT] + [PATTERN SELECT] undoes/redoes. [MARK] leaves the mode."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "DEL",
+          "COPY",
+          "SHIFT",
+          "PATTERN SELECT",
+          "MARK"
+        ]
+      }
+    },
+    {
+      "kind": "concept",
+      "text": {
+        "ru": "Looper и skip-back одновременно использовать нельзя. Записывай не более 16 секунд (зависит от темпа).",
+        "en": "You can't use the looper and skip-back at the same time. Recording is limited to about 16 seconds (depending on tempo)."
+      },
+      "tryIt": {
+        "ru": "Запиши 2 такта с MEAS = 2: бочка → хэт → вокальный стаб овердабом.",
+        "en": "Record 2 bars with MEAS = 2: kick → hat → a vocal stab overdubbed."
+      }
+    }
+  ],
+  "prerequisites": [
+    "inter-02-resampling-workflows"
+  ],
+  "related": [
+    "skip-back"
+  ]
+}

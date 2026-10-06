@@ -1,0 +1,126 @@
+{
+  "id": "zero-02-pads-and-banks",
+  "type": "lesson",
+  "title": {
+    "ru": "Пэды и банки",
+    "en": "Pads and banks"
+  },
+  "summary": {
+    "ru": "Шестнадцать пэдов, десять банков — как между ними переключаться.",
+    "en": "Sixteen pads, ten banks — and how to move between them."
+  },
+  "category": "zero",
+  "tags": [
+    "lesson",
+    "path:sp404-from-zero"
+  ],
+  "difficulty": "beginner",
+  "durationMin": 5,
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Selecting a sample bank",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7885249178448779.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — Panel descriptions — Pad section",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7882151578444939.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — Shortcuts that use the [SHIFT] button",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/8003597978584715.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  "objectives": [
+    {
+      "ru": "Играть сэмплы с пэдов",
+      "en": "Play samples from the pads"
+    },
+    {
+      "ru": "Переключать банки A–J и регулировать громкость банка",
+      "en": "Switch banks A–J and set a bank's volume"
+    }
+  ],
+  "steps": [
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Нажимай пэды [1]–[16] — играют сэмплы, назначенные на них.",
+        "en": "Press pads [1]–[16] — the samples assigned to them play."
+      },
+      "deviceHighlight": {
+        "pads": [
+          1,
+          2,
+          3,
+          4
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Кнопки банков [A/F]–[E/J] переключают банк. Каждое нажатие [A/F] переключает между банками A и F.",
+        "en": "The bank buttons [A/F]–[E/J] switch banks. Each press of [A/F] toggles between banks A and F."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "A/F",
+          "B/G",
+          "C/H",
+          "D/I",
+          "E/J"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Банки A–E: кнопка банка горит. Банки F–J: кнопка мигает — по ней видно, какая половина выбрана.",
+        "en": "Banks A–E: the bank button is lit. Banks F–J: it blinks — that tells you which half is active."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "A/F"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Удерживая [SHIFT], нажми кнопку банка — это общая громкость банка (BANK VOLUME).",
+        "en": "Hold [SHIFT] and press a bank button — this sets the whole bank's volume (BANK VOLUME)."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "SHIFT",
+          "A/F"
+        ]
+      }
+    },
+    {
+      "kind": "concept",
+      "text": {
+        "ru": "Раскладывай по банкам по смыслу: например, ударные в A, бас и мелодии в B, вокал в C. Так проект остаётся читаемым.",
+        "en": "Give banks a meaning: for example drums in A, bass and melodies in B, vocals in C. It keeps a project readable."
+      },
+      "why": {
+        "ru": "Через неделю ты не будешь помнить, что лежит на пэде 11 банка G.",
+        "en": "In a week you won't remember what is on pad 11 of bank G."
+      },
+      "tryIt": {
+        "ru": "Переключись на другой банк и сыграй пару пэдов — потом вернись в A.",
+        "en": "Switch to another bank, play a couple of pads, then go back to A."
+      }
+    }
+  ],
+  "prerequisites": [
+    "zero-01-device-overview"
+  ]
+}

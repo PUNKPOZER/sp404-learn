@@ -1,0 +1,58 @@
+{
+  "id": "performance-transition",
+  "type": "trick",
+  "title": {
+    "ru": "Переход эффектом",
+    "en": "A performance transition"
+  },
+  "summary": {
+    "ru": "Эффект только на время нажатия.",
+    "en": "An effect only while pressed."
+  },
+  "category": "fx",
+  "categoryGroup": "fx",
+  "topic": "performance transition",
+  "tags": [
+    "trick",
+    "group:fx"
+  ],
+  "difficulty": "beginner",
+  "durationMin": 3,
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Turning Effects on/off at the desired timing",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7902733978467211.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  "steps": [
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Играй луп.",
+        "en": "Play a loop."
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Удерживая [VALUE], нажми кнопку эффекта — он звучит только пока нажат.",
+        "en": "Hold [VALUE] and press an effect button — it sounds only while pressed."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "VALUE",
+          "FILTER+DRIVE"
+        ]
+      },
+      "tryIt": {
+        "ru": "Бросай [DELAY] на последнюю долю каждого 4-го такта.",
+        "en": "Throw [DELAY] on the last beat of every fourth bar."
+      }
+    }
+  ]
+}

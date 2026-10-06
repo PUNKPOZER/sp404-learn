@@ -1,0 +1,66 @@
+{
+  "id": "mute-unmute-workflow",
+  "type": "trick",
+  "title": {
+    "ru": "Mute / unmute вживую",
+    "en": "Mute / unmute workflow"
+  },
+  "summary": {
+    "ru": "Убирай и возвращай партии.",
+    "en": "Drop parts out and bring them back."
+  },
+  "category": "performance",
+  "categoryGroup": "performance",
+  "topic": "mute/unmute workflow",
+  "tags": [
+    "trick",
+    "group:performance"
+  ],
+  "difficulty": "beginner",
+  "durationMin": 3,
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Muting the playback of a sample (Pad MUTE)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7894388378457995.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  "steps": [
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Играй паттерн. [SHIFT] + [REVERSE] + пэд — mute (пэд красный), повтор — unmute.",
+        "en": "Play a pattern. [SHIFT] + [REVERSE] + a pad — mute (the pad turns red); repeat to unmute."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "SHIFT",
+          "REVERSE"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "[SHIFT] + [REVERSE] + [REMAIN] держит режим mute включённым — удобно для нескольких пэдов; [EXIT] отменяет.",
+        "en": "[SHIFT] + [REVERSE] + [REMAIN] keeps mute mode on — handy for several pads; [EXIT] cancels."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "SHIFT",
+          "REVERSE",
+          "REMAIN",
+          "EXIT"
+        ]
+      },
+      "tryIt": {
+        "ru": "Убери хэты и верни их на пятом такте.",
+        "en": "Drop the hats and bring them back on bar five."
+      }
+    }
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "id": "sp404-from-zero",
+  "type": "course",
+  "title": {
+    "ru": "SP-404 с нуля",
+    "en": "SP-404 from zero"
+  },
+  "summary": {
+    "ru": "22 урока: от обзора прибора до готового трека.",
+    "en": "22 lessons: from the device tour to a finished track."
+  },
+  "description": {
+    "ru": "Курс для тех, кто впервые взял SP-404MKII. Каждый урок отвечает на вопросы: что это, зачем, как и что попробовать. Кнопки и шаги сверены с официальным руководством Roland.",
+    "en": "A course for anyone picking up the SP-404MKII for the first time. Every lesson answers: what it is, why, how, and what to try. Buttons and steps are checked against Roland's official manual."
+  },
+  "category": "path",
+  "tags": [
+    "course",
+    "path",
+    "level:beginner"
+  ],
+  "difficulty": "beginner",
+  "durationMin": 190,
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Playing back samples (SAMPLE MODE)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7884506778448011.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — Creating a new pattern (TR-REC)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7921805978489483.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — Playing back patterns in order (PATTERN CHAIN)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v500/en-US/7925133978493323.html",
+        "note": "v5"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — Adding effects to a sample (BUS FX)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7899047578463371.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  "lessons": [
+    "zero-01-device-overview",
+    "zero-02-pads-and-banks",
+    "zero-03-importing-samples",
+    "zero-04-playing-samples",
+    "zero-05-start-end-points",
+    "zero-06-pitch-and-speed",
+    "zero-07-envelope",
+    "zero-08-chopping",
+    "zero-09-resampling",
+    "zero-10-pattern-sequencer",
+    "zero-11-tr-rec",
+    "zero-12-bpm",
+    "zero-13-quantize",
+    "zero-14-swing",
+    "zero-15-mute-groups",
+    "zero-16-bus-fx",
+    "zero-17-mfx",
+    "zero-18-skip-back",
+    "zero-19-build-your-first-beat",
+    "zero-20-make-a-variation",
+    "zero-21-create-a-transition",
+    "zero-22-perform-the-track"
+  ],
+  "finalProject": {
+    "ru": "Собери законченный трек на 1–2 минуты: 3 паттерна (A, B, переход), цепочка, mute и эффекты вживую — и запиши его.",
+    "en": "Build a complete 1–2 minute track: three patterns (A, B and a transition), a chain, mutes and live effects — and record it."
+  }
+}

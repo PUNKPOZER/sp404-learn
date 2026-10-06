@@ -1,0 +1,131 @@
+{
+  "id": "zero-11-tr-rec",
+  "type": "lesson",
+  "title": {
+    "ru": "TR-REC: паттерн по шагам",
+    "en": "TR-REC: a pattern step by step"
+  },
+  "summary": {
+    "ru": "Строй паттерн, как на драм-машине: пэды — это шаги.",
+    "en": "Build a pattern like on a drum machine: the pads are the steps."
+  },
+  "category": "zero",
+  "tags": [
+    "lesson",
+    "path:sp404-from-zero",
+    "skill:sequencing"
+  ],
+  "difficulty": "beginner",
+  "durationMin": 12,
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Creating a new pattern (TR-REC)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7921805978489483.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — Shortcuts used in TR-REC",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/8008257178590091.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  "objectives": [
+    {
+      "ru": "Включить TR-REC и расставить шаги",
+      "en": "Start TR-REC and place steps"
+    },
+    {
+      "ru": "Править параметры шага",
+      "en": "Edit step parameters"
+    }
+  ],
+  "steps": [
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "[PATTERN SELECT] → [REC] → красный пэд → [REMAIN] (метод TR-REC) → [REC]. Запись по шагам началась.",
+        "en": "[PATTERN SELECT] → [REC] → a red pad → [REMAIN] (method TR-REC) → [REC]. Step recording has started."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "PATTERN SELECT",
+          "REC",
+          "REMAIN"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Удерживая [SUB PAD], нажми пэд с нужным сэмплом. Затем нажимай пэды [1]–[16], на которых он должен звучать: пэд = шаг.",
+        "en": "Holding [SUB PAD], press the pad with the sample you need. Then press the pads [1]–[16] where it should sound: pad = step."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "SUB PAD"
+        ],
+        "pads": [
+          1,
+          5,
+          9,
+          13
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Повторное нажатие горящего пэда убирает шаг. Для 2-го такта и дальше выбирай такт ручкой [VALUE].",
+        "en": "Press a lit pad again to remove the step. For measure 2 and onward, choose the measure with [VALUE]."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "VALUE"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "[CTRL 2] — PITCH, [CTRL 3] — VELOCITY (0–127), [CTRL 1] — SUBSTEP (деление шага). В параметрах паттерна: [CTRL 3] — SHUFFLE.",
+        "en": "[CTRL 2] is PITCH, [CTRL 3] is VELOCITY (0–127), [CTRL 1] is SUBSTEP (splits a step). In pattern parameters [CTRL 3] is SHUFFLE."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "CTRL 1",
+          "CTRL 2",
+          "CTRL 3"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "[DEL] + [A/F] стирает ноты выбранного пэда за один такт, [DEL] + [B/G] — всех пэдов за такт. Закончив, нажми [EXIT] два раза.",
+        "en": "[DEL] + [A/F] erases the selected pad's notes for one measure; [DEL] + [B/G] erases all pads' notes for one measure. When done, press [EXIT] twice."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "DEL",
+          "A/F",
+          "B/G",
+          "EXIT"
+        ]
+      },
+      "tryIt": {
+        "ru": "Собери четыре в пол: бочка на шагах 1, 5, 9, 13 (пэды [1], [5], [9], [13]).",
+        "en": "Build four on the floor: kick on steps 1, 5, 9, 13 (pads [1], [5], [9], [13])."
+      }
+    }
+  ],
+  "prerequisites": [
+    "zero-10-pattern-sequencer"
+  ],
+  "related": [
+    "zero-19-build-your-first-beat"
+  ]
+}

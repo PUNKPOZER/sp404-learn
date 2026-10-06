@@ -34,6 +34,7 @@ export function fxEntries(): FxEntry[] {
 export function trickEntries(): Trick[] {
   return itemsOf<TrickV2>("trick").filter((x) => isPublishable(x.verification)).map((x) => ({
     id: x.id, title: loc(x.title), topic: x.topic, status: statusOf(x.verification), summary: loc(x.summary), steps: x.steps.map(step),
+    group: x.categoryGroup, difficulty: x.difficulty, durationMin: x.durationMin,
     notes: x.notes?.map(loc), sources: (x.verification.verifiedAgainst ?? []).map((s) => source(s, x.verification)),
   }));
 }

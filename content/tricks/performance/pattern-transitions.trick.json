@@ -1,0 +1,62 @@
+{
+  "id": "pattern-transitions",
+  "type": "trick",
+  "title": {
+    "ru": "Переход между паттернами",
+    "en": "Transition between patterns"
+  },
+  "summary": {
+    "ru": "Очередь вместо щелчка.",
+    "en": "Queue instead of a click."
+  },
+  "category": "performance",
+  "categoryGroup": "performance",
+  "topic": "transition between patterns",
+  "tags": [
+    "trick",
+    "group:performance"
+  ],
+  "difficulty": "beginner",
+  "durationMin": 3,
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Playing a pattern",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7919732378487179.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  "steps": [
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Во время игры нажми другой пэд паттерна — он встанет в очередь и начнётся в конце текущего.",
+        "en": "During playback press another pattern pad — it queues and starts at the end of the current one."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "PATTERN SELECT"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Чтобы сменить сразу, удерживай [SUB PAD] и нажми пэд.",
+        "en": "To switch right away, hold [SUB PAD] and press a pad."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "SUB PAD"
+        ]
+      },
+      "tryIt": {
+        "ru": "Пройди A → B → A, нажимая пэды за такт до смены.",
+        "en": "Go A → B → A, pressing pads one bar before each change."
+      }
+    }
+  ]
+}

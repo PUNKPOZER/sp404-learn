@@ -1,0 +1,67 @@
+{
+  "id": "sp404-intermediate",
+  "type": "course",
+  "title": {
+    "ru": "SP-404: средний уровень",
+    "en": "SP-404: intermediate"
+  },
+  "summary": {
+    "ru": "16 уроков: нарезка, ресэмплинг, грув, бас, переходы и аранжировка.",
+    "en": "16 lessons: chopping, resampling, groove, bass, transitions and arrangement."
+  },
+  "description": {
+    "ru": "Для тех, кто уже собирает биты на SP и хочет выйти за рамки базовых приёмов. Шаги сверены с руководством Roland; музыкальные советы помечены отдельно.",
+    "en": "For people who already build beats on the SP and want to go beyond the basics. Steps are checked against Roland's manual; music advice is marked separately."
+  },
+  "category": "path",
+  "tags": [
+    "course",
+    "path",
+    "level:intermediate"
+  ],
+  "difficulty": "intermediate",
+  "durationMin": 175,
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Using a marker to split and assign a sample to a pad (CHOP)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7912513178477963.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — Recording samples by looping (LOOPER)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/8584103589852939.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — Playing back patterns in order (PATTERN CHAIN)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v500/en-US/7925133978493323.html",
+        "note": "v5"
+      }
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  "lessons": [
+    "inter-01-advanced-chopping",
+    "inter-02-resampling-workflows",
+    "inter-03-pattern-variations",
+    "inter-04-microtiming",
+    "inter-05-velocity",
+    "inter-06-swing-and-groove",
+    "inter-07-layering",
+    "inter-08-bass-creation",
+    "inter-09-pitched-bass",
+    "inter-10-vocal-chops",
+    "inter-11-break-chopping",
+    "inter-12-transitions",
+    "inter-13-performance-fx",
+    "inter-14-chaining-and-arrangement",
+    "inter-15-sound-design",
+    "inter-16-creative-resampling"
+  ],
+  "finalProject": {
+    "ru": "Сделай ремикс-цепочку на 2–3 минуты: нарежь брейк, сделай бас, три вариации, переходы с MOTION REC и играй цепочку вживую.",
+    "en": "Make a 2–3 minute remix chain: chop a break, make a bass, three variations, MOTION REC transitions and play the chain live."
+  }
+}

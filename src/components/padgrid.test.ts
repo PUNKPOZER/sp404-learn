@@ -10,6 +10,9 @@ describe("pad geometry", () => {
   it("device diagram only offers controls that appear in verified procedures", () => {
     expect(CONTROL_GROUPS.fx).toContain("DJFX LOOPER");
     expect(CONTROL_GROUPS.keys).toContain("PATTERN SELECT");
-    expect(new Set([...CONTROL_GROUPS.knobs, ...CONTROL_GROUPS.fx, ...CONTROL_GROUPS.keys]).size).toBe(20);
+        expect(CONTROL_GROUPS.edit).toContain("START/END");
+    expect(CONTROL_GROUPS.bank).toHaveLength(5);
+    // every control is printed on the unit (Panel descriptions); no duplicates across groups
+    expect(new Set(Object.values(CONTROL_GROUPS).flat()).size).toBe(38);
   });
 });

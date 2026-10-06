@@ -1,0 +1,84 @@
+{
+  "id": "bake-effect",
+  "type": "trick",
+  "title": {
+    "ru": "Запечь эффект в сэмпл",
+    "en": "Bake an effect into a sample"
+  },
+  "summary": {
+    "ru": "Эффект станет частью звука.",
+    "en": "The effect becomes part of the sound."
+  },
+  "category": "resampling",
+  "categoryGroup": "resampling",
+  "topic": "bake effect",
+  "tags": [
+    "trick",
+    "group:resampling"
+  ],
+  "difficulty": "beginner",
+  "durationMin": 4,
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Resampling a sample (RESAMPLE)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7907213978473355.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — Configuring the sampling settings (RECORD SETTING)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7904269978469515.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  "steps": [
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Включи эффект (например [FILTER+DRIVE]) и настрой его.",
+        "en": "Turn an effect on (for example [FILTER+DRIVE]) and set it."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "FILTER+DRIVE"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "[RESAMPLE], [RECORD SETTING] → ROUTING = Mix ([CTRL 2]), затем пэд назначения.",
+        "en": "[RESAMPLE], [RECORD SETTING] → ROUTING = Mix ([CTRL 2]), then the destination pad."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "RESAMPLE",
+          "RECORD SETTING",
+          "CTRL 2"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Играй сэмпл — результат сохраняется на пэд; останови [REC] или пэдом.",
+        "en": "Play the sample — the result is saved to the pad; stop with [REC] or the pad."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "REC"
+        ]
+      },
+      "tryIt": {
+        "ru": "Запеки дисторшн на снейр и сыграй новый пэд.",
+        "en": "Bake distortion onto a snare and play the new pad."
+      }
+    }
+  ],
+  "related": [
+    "resample-pattern"
+  ]
+}

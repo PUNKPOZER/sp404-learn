@@ -1,0 +1,198 @@
+{
+  "id": "zero-01-device-overview",
+  "type": "lesson",
+  "title": {
+    "ru": "Обзор прибора",
+    "en": "Device overview"
+  },
+  "summary": {
+    "ru": "Где что лежит на SP-404MK2: ручки, кнопки, пэды.",
+    "en": "Where everything is on the SP-404MK2: knobs, buttons, pads."
+  },
+  "category": "zero",
+  "tags": [
+    "lesson",
+    "path:sp404-from-zero"
+  ],
+  "difficulty": "beginner",
+  "durationMin": 6,
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Playing back samples (SAMPLE MODE)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7884506778448011.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — Panel descriptions — Edit section",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7879335578441867.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — Panel descriptions — Control section (1)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7880077978442635.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — Panel descriptions — Control section (2)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7880743578443403.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — Panel descriptions — Control section (3)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7881332378444171.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — Panel descriptions — Pad section",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7882151578444939.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  "objectives": [
+    {
+      "ru": "Знать главные группы органов управления",
+      "en": "Know the main groups of controls"
+    },
+    {
+      "ru": "Понимать, в каком режиме ты сейчас",
+      "en": "Know which mode you are in"
+    }
+  ],
+  "steps": [
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Включи прибор: пэды загорятся оранжевым — ты в режиме сэмплов (sample mode).",
+        "en": "Turn the unit on: the pads light orange — you are in sample mode."
+      },
+      "deviceHighlight": {
+        "pads": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Ручка [VOLUME] — общая громкость. Ручки [CTRL 1]–[CTRL 3] — правка параметров того, что открыто на экране.",
+        "en": "The [VOLUME] knob sets the overall volume. [CTRL 1]–[CTRL 3] edit the parameters of whatever is on the screen."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "VOLUME",
+          "CTRL 1",
+          "CTRL 2",
+          "CTRL 3"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Кнопки эффектов выбирают эффект: [FILTER+DRIVE], [RESONATOR], [DELAY], [ISOLATOR], [DJFX LOOPER], [MFX].",
+        "en": "The effect buttons choose an effect: [FILTER+DRIVE], [RESONATOR], [DELAY], [ISOLATOR], [DJFX LOOPER], [MFX]."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "FILTER+DRIVE",
+          "RESONATOR",
+          "DELAY",
+          "ISOLATOR",
+          "DJFX LOOPER",
+          "MFX"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Паттерны и запись: [PATTERN SELECT] включает секвенсор, [PATTERN EDIT] правит паттерн, [RECORD SETTING] — настройки записи, [REC] пишет, [RESAMPLE] ресэмплит, [DEL] стирает, [COPY] копирует.",
+        "en": "Patterns and recording: [PATTERN SELECT] turns on the sequencer, [PATTERN EDIT] edits a pattern, [RECORD SETTING] opens recording settings, [REC] records, [RESAMPLE] resamples, [DEL] erases, [COPY] copies."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "PATTERN SELECT",
+          "PATTERN EDIT",
+          "RECORD SETTING",
+          "REC",
+          "RESAMPLE",
+          "DEL",
+          "COPY"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "[EXIT] — назад или отмена. [REMAIN], пока он нажат, показывает данные последнего нажатого пэда.",
+        "en": "[EXIT] goes back or cancels. While [REMAIN] is held, it shows the data of the last pad you pressed."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "EXIT",
+          "REMAIN"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Правка сэмпла: [START/END], [PITCH/SPEED], [MARK], [BPM SYNC], [GATE], [LOOP], [REVERSE], [ROLL]. Кнопка [SHIFT] даёт вторую функцию, а [VALUE] крутится для выбора и нажимается для подтверждения.",
+        "en": "Sample editing: [START/END], [PITCH/SPEED], [MARK], [BPM SYNC], [GATE], [LOOP], [REVERSE], [ROLL]. [SHIFT] gives a second function; [VALUE] turns to choose and presses to confirm."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "START/END",
+          "PITCH/SPEED",
+          "MARK",
+          "BPM SYNC",
+          "GATE",
+          "LOOP",
+          "REVERSE",
+          "ROLL",
+          "SHIFT",
+          "VALUE"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Если пэды мигают синим, нажми [EXIT] несколько раз, а затем [PATTERN SELECT], чтобы вернуться в режим сэмплов.",
+        "en": "If the pads blink blue, press [EXIT] a few times and then [PATTERN SELECT] to get back to sample mode."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "EXIT",
+          "PATTERN SELECT"
+        ]
+      },
+      "tryIt": {
+        "ru": "Назови вслух по одной кнопке из каждой группы и найди её на схеме.",
+        "en": "Say one button from each group out loud and find it on the diagram."
+      }
+    }
+  ],
+  "related": [
+    "zero-02-pads-and-banks"
+  ]
+}

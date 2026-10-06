@@ -1,0 +1,102 @@
+{
+  "id": "inter-15-sound-design",
+  "type": "lesson",
+  "title": {
+    "ru": "Саунд-дизайн эффектами",
+    "en": "Sound design with effects"
+  },
+  "summary": {
+    "ru": "Превращай обычные сэмплы в новые звуки.",
+    "en": "Turn ordinary samples into new sounds."
+  },
+  "category": "intermediate",
+  "tags": [
+    "lesson",
+    "path:sp404-intermediate",
+    "skill:sound-design"
+  ],
+  "difficulty": "intermediate",
+  "durationMin": 10,
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Adding effects to a sample (BUS FX)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7899047578463371.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — Using the MFX effects",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7900737178465675.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — Resampling a sample (RESAMPLE)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7907213978473355.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  "objectives": [
+    {
+      "ru": "Использовать эффекты как инструмент звука",
+      "en": "Use effects as a sound-shaping tool"
+    }
+  ],
+  "steps": [
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "[RESONATOR] красит звук тоном: подбери ROOT к ключу баса. [ISOLATOR] убирает низ, середину или верх. Смотри параметры на экране.",
+        "en": "[RESONATOR] gives a sound a pitch: set its ROOT to your bass key. [ISOLATOR] removes lows, mids or highs. Watch the parameters on the screen."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "RESONATOR",
+          "ISOLATOR"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "[MFX] открывает длинный список: например Reverb, Tape Echo, Cassette Sim, Lo-fi, Scatter. Выбор — [MFX] + [VALUE].",
+        "en": "[MFX] opens a long list, for example Reverb, Tape Echo, Cassette Sim, Lo-fi, Scatter. Choose with [MFX] + [VALUE]."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "MFX",
+          "VALUE"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Запеки эффект в сэмпл через RESAMPLE и играй результатом: теперь это новый звук, а не эффект.",
+        "en": "Bake the effect into a sample with RESAMPLE and play the result: it's now a new sound, not an effect."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "RESAMPLE"
+        ]
+      }
+    },
+    {
+      "kind": "concept",
+      "text": {
+        "ru": "Два эффекта подряд (например Lo-fi, потом Reverb через второй ресэмпл) дают звуки, которых нет в списке пресетов.",
+        "en": "Two effects in a row (for example Lo-fi, then Reverb through a second resample) give sounds that aren't in the preset list."
+      },
+      "tryIt": {
+        "ru": "Ресэмпли удар через Resonator, потом ещё раз через Lo-fi.",
+        "en": "Resample a hit through Resonator, then again through Lo-fi."
+      }
+    }
+  ],
+  "prerequisites": [
+    "zero-17-mfx",
+    "zero-09-resampling"
+  ]
+}

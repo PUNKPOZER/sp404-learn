@@ -1,0 +1,101 @@
+{
+  "id": "zero-17-mfx",
+  "type": "lesson",
+  "title": {
+    "ru": "Эффекты MFX",
+    "en": "MFX effects"
+  },
+  "summary": {
+    "ru": "Выбирай из большого списка эффектов кнопкой [MFX].",
+    "en": "Pick from the big effect list with the [MFX] button."
+  },
+  "category": "zero",
+  "tags": [
+    "lesson",
+    "path:sp404-from-zero",
+    "skill:fx"
+  ],
+  "difficulty": "beginner",
+  "durationMin": 6,
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Using the MFX effects",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7900737178465675.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — Adding effects to a sample (BUS FX)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7899047578463371.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  "objectives": [
+    {
+      "ru": "Выбрать MFX-эффект и править его",
+      "en": "Choose an MFX effect and edit it"
+    }
+  ],
+  "steps": [
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Удерживая [MFX], вращай [VALUE] или [CTRL 3], чтобы выбрать эффект. Отпусти [MFX] — эффект включится и откроется экран правки.",
+        "en": "Hold [MFX] and turn [VALUE] or [CTRL 3] to choose an effect. Release [MFX] — the effect turns on and the edit screen opens."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "MFX",
+          "VALUE",
+          "CTRL 3"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Выбирать эффект можно и пэдами [1]–[16] вместо ручки. С [MFX] + [DJFX LOOPER] открываются эффекты №17 и дальше, с [MFX] + [ISOLATOR] — №33 и дальше.",
+        "en": "You can also pick an effect with pads [1]–[16] instead of the knob. [MFX] + [DJFX LOOPER] reaches effects #17 and up; [MFX] + [ISOLATOR] reaches #33 and up."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "MFX",
+          "DJFX LOOPER",
+          "ISOLATOR"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Играй сэмпл и правь параметры [CTRL 1]–[CTRL 3]; дополнительные — с зажатой [VALUE].",
+        "en": "Play a sample and edit parameters with [CTRL 1]–[CTRL 3]; hold [VALUE] for sub-parameters."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "CTRL 1",
+          "CTRL 2",
+          "CTRL 3",
+          "VALUE"
+        ]
+      }
+    },
+    {
+      "kind": "concept",
+      "text": {
+        "ru": "В списке MFX есть, например, Reverb, Tape Echo, Cassette Sim, Lo-fi, Scatter и другие — пролистай список, чтобы услышать, что что делает.",
+        "en": "The MFX list includes Reverb, Tape Echo, Cassette Sim, Lo-fi, Scatter and many more — scroll through to hear what each does."
+      },
+      "tryIt": {
+        "ru": "Найди эффект, который делает звук «винилом» или «кассетой», и включи его на семпле.",
+        "en": "Find an effect that makes a sound “vinyl” or “cassette” and put it on a sample."
+      }
+    }
+  ],
+  "prerequisites": [
+    "zero-16-bus-fx"
+  ]
+}

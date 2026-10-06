@@ -1,7 +1,8 @@
 import { api, isTauri } from "../lib/sidecar";
 import type { DrumEvent, DrumType, StepMap, TrackAnalysis, TutorialStep } from "../lib/types";
-import { resetProgress, saveProgress } from "../lib/progress";
-import { stepsFromContent } from "../content/toSteps";
+import { markDone, resetProgress, saveProgress } from "../lib/progress";
+import { stepsFromContent, stepsFromLessonSteps } from "../content/toSteps";
+import { byId, isPublishable, loc } from "../content/load";
 import type { Step } from "../content/types";
 import { getState, setState, type Screen } from "./store";
 import { t } from "../lib/i18n";
@@ -180,6 +181,17 @@ export function restartCourse(name: string) {
 /** Run a verified FX LAB "Try this" or TRICKS procedure through the same lesson renderer. */
 export function startGuide(mode: "fx" | "trick", title: string, steps: Step[], back: Screen) {
   setState({ tutorial: { mode, steps: stepsFromContent(title, steps), index: 0, title, back }, screen: "tutorial", previewBpm: null });
+}
+/** Library lesson (Learning Library 2.0) through the same renderer; finishing it marks it done (separate per-lesson store). */
+export function startLesson(id: string, back: Screen = "courses") {
+  const item = byId(id);
+  if (!item || item.type !== "lesson" || !isPublishable(item.verification)) return;
+  const title = loc(item.title);
+  setState({ tutorial: { mode: "lesson", steps: stepsFromLessonSteps(title, item.steps), index: 0, title, lessonId: id, back }, screen: "tutorial", previewBpm: null });
+}
+export function finishTutorial() {
+  const t = getState().tutorial;
+  if (t?.mode === "lesson" && t.lessonId) setState({ lessonsDone: markDone(t.lessonId) });
 }
 export function tutorialGo(delta: number) {
   const t = getState().tutorial;

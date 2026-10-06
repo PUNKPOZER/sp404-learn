@@ -1,0 +1,70 @@
+{
+  "id": "build-up",
+  "type": "trick",
+  "title": {
+    "ru": "Нарастание (build-up)",
+    "en": "Build-up"
+  },
+  "summary": {
+    "ru": "Ролл, который ускоряется.",
+    "en": "A roll that speeds up."
+  },
+  "category": "fx",
+  "categoryGroup": "fx",
+  "topic": "build-up",
+  "tags": [
+    "trick",
+    "group:fx"
+  ],
+  "difficulty": "intermediate",
+  "durationMin": 4,
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Setting the roll interval",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7890497178454923.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  "steps": [
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Запусти ролл ([ROLL] + пэд).",
+        "en": "Start a roll ([ROLL] + a pad)."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "ROLL"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Удерживая [ROLL], вращай [VALUE] по часовой — интервал сокращается.",
+        "en": "Holding [ROLL], turn [VALUE] clockwise — the interval shortens."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "ROLL",
+          "VALUE"
+        ]
+      }
+    },
+    {
+      "kind": "concept",
+      "text": {
+        "ru": "Добавь параллельно открытие фильтра — и убери всё за шаг до дропа.",
+        "en": "Open a filter at the same time and drop everything one step before the drop."
+      },
+      "tryIt": {
+        "ru": "Сделай 4-тактовое нарастание снейр-роллом.",
+        "en": "Make a four-bar build with a snare roll."
+      }
+    }
+  ]
+}

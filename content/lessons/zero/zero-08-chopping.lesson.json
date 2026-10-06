@@ -1,0 +1,126 @@
+{
+  "id": "zero-08-chopping",
+  "type": "lesson",
+  "title": {
+    "ru": "Нарезка (Chop)",
+    "en": "Chopping"
+  },
+  "summary": {
+    "ru": "Режь длинный сэмпл маркерами и раскладывай куски по пэдам.",
+    "en": "Cut a long sample with markers and spread the pieces over the pads."
+  },
+  "category": "zero",
+  "tags": [
+    "lesson",
+    "path:sp404-from-zero",
+    "skill:chopping"
+  ],
+  "difficulty": "beginner",
+  "durationMin": 10,
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Marking and splitting samples (MARK)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7911540378477195.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — Using a marker to split and assign a sample to a pad (CHOP)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7912513178477963.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  "objectives": [
+    {
+      "ru": "Поставить маркеры",
+      "en": "Place markers"
+    },
+    {
+      "ru": "Назначить куски на пэды",
+      "en": "Assign the pieces to pads"
+    }
+  ],
+  "steps": [
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Выбери пэд с длинным сэмплом. Удерживая [SHIFT], нажми [START/END] — экран маркеров.",
+        "en": "Select the pad with a long sample. Hold [SHIFT] and press [START/END] — the marker screen."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "SHIFT",
+          "START/END"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "[CTRL 1] двигает курсор, [MARK] ставит маркер в этом месте. [DEL] удаляет выбранный маркер.",
+        "en": "[CTRL 1] moves the cursor and [MARK] drops a marker there. [DEL] deletes the selected marker."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "CTRL 1",
+          "MARK",
+          "DEL"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Или на ходу: нажми пэд [1] — сэмпл играет, и нажимай мигающие синие пэды [2]–[16] в нужные моменты.",
+        "en": "Or on the fly: press pad [1] to play the sample, then tap the blinking blue pads [2]–[16] at the right moments."
+      },
+      "deviceHighlight": {
+        "pads": [
+          1,
+          2,
+          3
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Нажми [VALUE], выбери ASSIGN TO PAD и нажми [VALUE]. Выбери пэды, [CTRL 2] выбирает маркер, [CTRL 3] включает GATE.",
+        "en": "Press [VALUE], pick ASSIGN TO PAD and press [VALUE]. Choose pads; [CTRL 2] selects a marker, [CTRL 3] toggles GATE."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "VALUE",
+          "CTRL 2",
+          "CTRL 3"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Нажми [VALUE] ещё раз — куски назначены на пэды. Пока не нажал [VALUE], ничего не записано; отменить выбор можно [DEL].",
+        "en": "Press [VALUE] again — the pieces are assigned. Nothing is written until that last [VALUE] press; [DEL] cancels a selection."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "VALUE",
+          "DEL"
+        ]
+      },
+      "tryIt": {
+        "ru": "Нарежь барабанный луп на 4–8 кусков и сыграй собственный ритм на пэдах.",
+        "en": "Chop a drum loop into 4–8 pieces and play your own rhythm on the pads."
+      }
+    }
+  ],
+  "prerequisites": [
+    "zero-05-start-end-points"
+  ],
+  "related": [
+    "inter-01-advanced-chopping"
+  ]
+}

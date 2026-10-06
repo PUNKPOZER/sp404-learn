@@ -1,0 +1,69 @@
+{
+  "id": "perform-with-fx",
+  "type": "trick",
+  "title": {
+    "ru": "Игра с эффектами",
+    "en": "Perform with FX"
+  },
+  "summary": {
+    "ru": "Блокировка экрана и сохранение.",
+    "en": "Lock the screen and save."
+  },
+  "category": "performance",
+  "categoryGroup": "performance",
+  "topic": "perform with FX",
+  "tags": [
+    "trick",
+    "group:performance"
+  ],
+  "difficulty": "intermediate",
+  "durationMin": 3,
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Editing the effects",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7901249178466443.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — Shortcuts that use the [SHIFT] button",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/8003597978584715.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  "steps": [
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Удерживай [REMAIN] и нажми кнопку эффекта — экран не закрывается; [VALUE] переключает основные и дополнительные параметры.",
+        "en": "Hold [REMAIN] and press an effect button — the screen stays open; [VALUE] switches main and sub-parameters."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "REMAIN",
+          "VALUE"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "[SHIFT] + [MARK] (3+ секунды) сохраняет основные параметры эффектов BUS 1 и BUS 2.",
+        "en": "[SHIFT] + [MARK] (3+ seconds) saves the main parameters of the BUS 1 and BUS 2 effects."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "SHIFT",
+          "MARK"
+        ]
+      },
+      "tryIt": {
+        "ru": "Подготовь два эффекта (BUS 1 и BUS 2) и переключайся [BUS FX].",
+        "en": "Prepare two effects (BUS 1 and BUS 2) and switch with [BUS FX]."
+      }
+    }
+  ]
+}

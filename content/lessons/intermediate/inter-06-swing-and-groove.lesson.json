@@ -1,0 +1,91 @@
+{
+  "id": "inter-06-swing-and-groove",
+  "type": "lesson",
+  "title": {
+    "ru": "Свинг и шаблоны groove",
+    "en": "Swing and groove templates"
+  },
+  "summary": {
+    "ru": "Humanize, Rate и шаблоны 8/16 для лупов.",
+    "en": "Humanize, Rate and the 8/16 templates for loops."
+  },
+  "category": "intermediate",
+  "tags": [
+    "lesson",
+    "path:sp404-intermediate",
+    "skill:groove"
+  ],
+  "difficulty": "intermediate",
+  "durationMin": 8,
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Adding unique rhythmic character to a sample (Groove)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/8591783590384523.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  "objectives": [
+    {
+      "ru": "Подобрать groove-шаблон для лупа",
+      "en": "Pick a groove template for a loop"
+    }
+  ],
+  "steps": [
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "[PITCH/SPEED] → [ROLL] открывают параметры groove для выбранного сэмпла.",
+        "en": "[PITCH/SPEED] → [ROLL] opens the groove parameters of the selected sample."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "PITCH/SPEED",
+          "ROLL"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "[CTRL 1] Humanize: Off/Low/Mid/High — случайно меняет силу сдвига времени. [CTRL 2] Rate (1–15) — фиксированная сила сдвига.",
+        "en": "[CTRL 1] Humanize: Off/Low/Mid/High randomly varies the strength of the timing shift. [CTRL 2] Rate (1–15) sets a fixed strength."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "CTRL 1",
+          "CTRL 2"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "[CTRL 3] Groove: Off, 8<, 8<<, 8>, 8>>, 16<, 16<<, 16>, 16>> — шаблоны для 8-й и 16-й нот с разной силой свинга.",
+        "en": "[CTRL 3] Groove: Off, 8<, 8<<, 8>, 8>>, 16<, 16<<, 16>, 16>> — templates for 8th and 16th notes with different swing strength."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "CTRL 3"
+        ]
+      }
+    },
+    {
+      "kind": "concept",
+      "text": {
+        "ru": "Все шаблоны рассчитаны на 4/4. Если сэмпл не в 4/4 или темп задан неверно, эффект может звучать странно — сначала поправь темп сэмпла.",
+        "en": "All templates assume 4/4. If a sample isn't in 4/4 or its tempo is wrong the effect can sound odd — fix the sample tempo first."
+      },
+      "tryIt": {
+        "ru": "Включи Groove 16< на хэт-лупе и сравни с Off.",
+        "en": "Turn on Groove 16< on a hat loop and compare it with Off."
+      }
+    }
+  ],
+  "prerequisites": [
+    "zero-14-swing"
+  ]
+}

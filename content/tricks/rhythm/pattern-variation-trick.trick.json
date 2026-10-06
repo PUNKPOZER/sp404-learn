@@ -1,0 +1,69 @@
+{
+  "id": "pattern-variation-trick",
+  "type": "trick",
+  "title": {
+    "ru": "Вариация паттерна",
+    "en": "Pattern variation"
+  },
+  "summary": {
+    "ru": "Копия + одно изменение.",
+    "en": "A copy plus one change."
+  },
+  "category": "rhythm",
+  "categoryGroup": "rhythm",
+  "topic": "pattern variation",
+  "tags": [
+    "trick",
+    "group:rhythm"
+  ],
+  "difficulty": "beginner",
+  "durationMin": 3,
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Copying the pattern of a pad",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7932327578503307.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — Creating a new pattern (TR-REC)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7921805978489483.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  "steps": [
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "[COPY] → пэд паттерна → пэд назначения → [VALUE] или [COPY].",
+        "en": "[COPY] → the pattern's pad → the destination pad → [VALUE] or [COPY]."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "COPY",
+          "VALUE"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Открой копию в TR-REC и измени один элемент.",
+        "en": "Open the copy in TR-REC and change one element."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "REC",
+          "REMAIN"
+        ]
+      },
+      "tryIt": {
+        "ru": "Сделай B с другим хэтом.",
+        "en": "Make a B with a different hat."
+      }
+    }
+  ]
+}

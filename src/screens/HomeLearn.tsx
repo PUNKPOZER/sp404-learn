@@ -2,8 +2,11 @@ import { useEffect } from "react";
 import { DeviceDiagram } from "../components/DeviceDiagram";
 import { GenreArt } from "../components/GenreArt";
 import { Icon } from "../components/Icon";
+import { byId, itemsOf, loc } from "../content/load";
+import type { Course } from "../content/schema";
+import { nextLesson, pathPercent } from "./Paths";
 import { latest, percent } from "../lib/progress";
-import { loadCourses, startCourse } from "../state/actions";
+import { loadCourses, startCourse, startLesson } from "../state/actions";
 import { setState, useStore } from "../state/store";
 import { t } from "../lib/i18n";
 
@@ -16,13 +19,33 @@ const AREAS = [
 
 /** Calm learning dashboard (board layout): title, one thing to continue, genre tiles, recent lessons, device card. */
 export function HomeLearn() {
-  const { courseList, progress } = useStore((s) => s);
+  const { courseList, progress, lessonsDone } = useStore((s) => s);
+  const paths = itemsOf<Course>("course");
+  const path = paths.find((c) => nextLesson(c, lessonsDone)) ?? paths[0];
+  const nextId = path ? nextLesson(path, lessonsDone) : null;
+  const nextItem = nextId ? byId(nextId) : null;
   useEffect(() => { void loadCourses(); }, []);
   const last = latest(progress);
   const current = courseList.find((c) => c.id === last?.courseId) ?? (last ? undefined : courseList[0]);
   const prog = current ? progress[current.id] : undefined;
   const recent = Object.values(progress).filter((p) => courseList.some((c) => c.id === p.courseId)).sort((a, b) => b.updated - a.updated).slice(0, 3);
   const name = (id: string) => courseList.find((c) => c.id === id)?.title ?? id;
+  const pathBlock = (
+    path && (
+        <section className="panel path-home" aria-label={t("Учебный путь", "Learning path")} data-tour="path">
+          <div className="path-home-main">
+            <span className="k strong">{t("Учебный путь", "Learning path")}</span>
+            <h2>{loc(path.title)}</h2>
+            <p className="hint">{nextItem ? <>{t("Дальше", "Next")}: <b>{loc(nextItem.title)}</b></> : t("Путь пройден — загляни в Tricks.", "Path completed — have a look at Tricks.")}</p>
+          </div>
+          <div className="path-home-side">
+            <div className="progress" role="progressbar" aria-valuemin={0} aria-valuemax={100} aria-valuenow={pathPercent(path, lessonsDone)} aria-label={t("Прогресс курса", "Course progress")}><i style={{ width: `${pathPercent(path, lessonsDone)}%` }} /></div>
+            <b className="mono">{pathPercent(path, lessonsDone)}%</b>
+            {nextId && <button className="btn primary" onClick={() => startLesson(nextId, "home")}>{pathPercent(path, lessonsDone) ? t("Продолжить", "Continue") : t("Начать", "Start")} <Icon name="arrow" size={16} /></button>}
+          </div>
+        </section>
+    )
+  );
   return (
     <div className="screen home-learn">
       <header className="home-title">
@@ -30,6 +53,7 @@ export function HomeLearn() {
         <p className="home-tag">{t("Учись / Практикуй / Разбирай / Делай музыку", "Learn / Practise / Analyse / Make music")}</p>
       </header>
 
+      {!last && pathBlock}
       {current && (
         <section className="continue" data-tour="continue" aria-label={t("Продолжить обучение", "Continue learning")}>
           <div className="continue-body">
@@ -45,6 +69,8 @@ export function HomeLearn() {
         </section>
       )}
 
+
+      {last && pathBlock}
       <section aria-label={t("Курсы", "Courses")}>
         <div className="section-head"><h3>{t("Курсы", "Courses")}</h3><button className="link" onClick={() => setState({ screen: "courses" })}>{t("все курсы", "all courses")}</button></div>
         <div className="course-grid gc-grid">

@@ -1,0 +1,92 @@
+{
+  "id": "inter-14-chaining-and-arrangement",
+  "type": "lesson",
+  "title": {
+    "ru": "Цепочки и аранжировка",
+    "en": "Chaining and arrangement"
+  },
+  "summary": {
+    "ru": "Собери трек из паттернов в нужном порядке.",
+    "en": "Build a track from patterns in the right order."
+  },
+  "category": "intermediate",
+  "tags": [
+    "lesson",
+    "path:sp404-intermediate",
+    "skill:arrangement"
+  ],
+  "difficulty": "intermediate",
+  "durationMin": 12,
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Playing back patterns in order (PATTERN CHAIN)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v500/en-US/7925133978493323.html",
+        "note": "v5"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — Selecting a pattern bank",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/140553099140559243.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  "objectives": [
+    {
+      "ru": "Составить цепочку паттернов и план трека",
+      "en": "Build a pattern chain and plan a track"
+    }
+  ],
+  "steps": [
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Цепочка: [PATTERN SELECT] → удерживая [HOLD], нажми пэд цепочки → нажимай пэды паттернов в нужном порядке → [EXIT].",
+        "en": "Chain: [PATTERN SELECT] → hold [HOLD] and press a chain pad → press the patterns' pads in the order you want → [EXIT]."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "PATTERN SELECT",
+          "HOLD",
+          "EXIT"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Паттерны из других банков добавляй кнопками банков [A/F]–[E/J]. [REMAIN] переключает повтор: All / Current / Off.",
+        "en": "Add patterns from other banks with the bank buttons [A/F]–[E/J]. [REMAIN] switches repeat: All / Current / Off."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "A/F",
+          "REMAIN"
+        ]
+      }
+    },
+    {
+      "kind": "concept",
+      "text": {
+        "ru": "Простой план на 1:30 при 124 BPM: интро 8 тактов (A без бочки), основа 16 (A, A, B, A), брейк 8, возврат 16, аутро 8.",
+        "en": "A simple 1:30 plan at 124 BPM: intro 8 bars (A without kick), main 16 (A, A, B, A), break 8, return 16, outro 8."
+      },
+      "why": {
+        "ru": "Тактов в каждой части — степени двойки: слушатель чувствует границы.",
+        "en": "Section lengths are powers of two, so the listener feels the boundaries."
+      },
+      "tryIt": {
+        "ru": "Запиши цепочку A, A, B, A, C, A и проиграй её без остановки.",
+        "en": "Record a chain A, A, B, A, C, A and play it straight through."
+      }
+    }
+  ],
+  "prerequisites": [
+    "zero-22-perform-the-track"
+  ],
+  "related": [
+    "pattern-chain"
+  ]
+}

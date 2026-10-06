@@ -25,6 +25,7 @@ export function HomeLearn() {
   const paths = itemsOf<Course>("course");
   const path = paths.find((c) => nextLesson(c, lessonsDone)) ?? paths[0];
   const nextId = path ? nextLesson(path, lessonsDone) : null;
+  const dnb = byId("genre-drum-and-bass") as Course | undefined;
   const nextItem = nextId ? byId(nextId) : null;
   useEffect(() => { void loadCourses(); }, []);
   const last = latest(progress);
@@ -85,6 +86,21 @@ export function HomeLearn() {
               </button>
             );
           })}
+          {dnb && (() => {
+            const pc = pathPercent(dnb, lessonsDone), next = nextLesson(dnb, lessonsDone) ?? dnb.lessons[0];
+            return (
+              <button className="genre-card gc-open gc-tile" onClick={() => startLesson(next, "home")} aria-label={`${loc(dnb.title)}${pc ? `, ${pc}%` : ""}`}>
+                <span className="gc-top"><span className="gc-num mono">{String(courseList.length + 1).padStart(2, "0")}</span><i className="gc-dash" />{pc ? <span className="gc-pct mono">{pc}%</span> : <svg className="gc-wave" viewBox="0 0 20 16" width="20" height="16" aria-hidden="true"><path d="M2 5v6M6 2v12M10 4v8M14 1v14M18 5v6" stroke="currentColor" strokeWidth="1.4" fill="none" /></svg>}</span>
+                <GenreArt id="dnb" className="gc-art" />
+                <span className="gc-name"><b>{loc(dnb.title).split(" / ")[0]}</b><Icon name="up-right" size={18} /></span>
+              </button>
+            );
+          })()}
+          <button className="genre-card gc-open gc-tile gc-all" onClick={() => setState({ screen: "courses" })}>
+            <span className="gc-top"><i className="gc-dash" /></span>
+            <span className="gc-art gc-all-label">{t("Все курсы", "All courses")}</span>
+            <span className="gc-name"><b>&nbsp;</b><Icon name="up-right" size={18} /></span>
+          </button>
         </div>
       </section>
 

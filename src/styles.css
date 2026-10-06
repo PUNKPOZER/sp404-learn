@@ -483,3 +483,5 @@ h1 { font-weight: 800; letter-spacing: -.005em; }
 .onb-actions { display: flex; align-items: center; gap: var(--sp-space-2); margin-top: var(--sp-space-2); }
 @media (max-width: 640px) { .onb { grid-template-columns: 1fr; } .onb-art { border-right: 0; border-bottom: var(--sp-border-w-thin) solid var(--sp-rule); } .onb-art .genre-art { max-width: 120px; } }
 .gc-wave { margin-left: auto; opacity: .7; }
+
+.gc-all-label { display: grid; place-items: center; text-align: center; font: 800 var(--sp-text-xl, 1.4rem) var(--sp-font-ui); text-transform: uppercase; line-height: 1.05; max-width: none; }

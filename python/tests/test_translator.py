@@ -82,7 +82,7 @@ def test_user_added_bass_step_gets_default_note():
 def test_every_course_builds_and_is_consistent():
     from translator.sp404 import learn
     from translator.sp404.courses import COURSES
-    assert len(learn.list_courses()) >= 9
+    assert len(learn.list_courses()) >= 13
     for name, spec in COURSES.items():
         c = learn.build_course(name)
         assert c["available"] and c["steps"] and len(c["lessons"]) == len(spec["lessons"])

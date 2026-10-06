@@ -4,7 +4,7 @@ import { GenreArt } from "../components/GenreArt";
 import { Icon } from "../components/Icon";
 import { byId, itemsOf, loc } from "../content/load";
 import type { Course } from "../content/schema";
-import { nextLesson, pathPercent, Paths } from "./Paths";
+import { nextLesson, pathPercent } from "./Paths";
 import { latest, percent } from "../lib/progress";
 import { loadCourses, startCourse, startLesson } from "../state/actions";
 import { setState, useStore } from "../state/store";
@@ -104,14 +104,7 @@ export function HomeLearn() {
         </div>
       </section>
 
-      <section aria-label={t("Полное обучение", "Full learning")}>
-        <div className="section-head"><h3>{t("Полное обучение", "Full learning")}</h3><button className="link" onClick={() => setState({ screen: "courses" })}>{t("все курсы", "all courses")}</button></div>
-        <Paths />
-      </section>
-
       <div className="home-bottom">
-      <RecommendList genre={homeGenre} back="home" />
-
         <section className="recent" aria-label={t("Недавнее", "Recent")}>
           <h3>{t("Недавнее", "Recent")}</h3>
           {recent.length === 0 ? <p className="hint">{t("Здесь появятся курсы, которые ты начнёшь.", "Courses you start will appear here.")}</p> : (
@@ -133,6 +126,8 @@ export function HomeLearn() {
           <Icon name="arrow" size={22} className="dc-arrow" />
         </button>
       </div>
+
+      <RecommendList genre={homeGenre} back="home" />
 
       <section aria-label={t("Разделы", "Sections")} data-tour="areas">
         <h3>{t("Практика и справка", "Practice and reference")}</h3>

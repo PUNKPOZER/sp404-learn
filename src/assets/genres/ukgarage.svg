@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="currentColor"><title>UK Garage</title>
+  <!-- simplified clock tower -->
+  <path d="M82 62L100 12L118 62Z"/>
+  <path fill-rule="evenodd" d="M70 66H130V118H70ZM100 74A20 20 0 1 0 100.01 74Z"/>
+  <rect x="98" y="80" width="4" height="16"/><rect x="100" y="94" width="12" height="4"/>
+  <path d="M78 122H122V152H78Z"/>
+  <path d="M68 156H132V192H68Z"/>
+</svg>

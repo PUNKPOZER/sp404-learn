@@ -10,12 +10,14 @@ from __future__ import annotations
 
 from typing import Any
 
+from translator.sp404.text import STEP_NAMES_NOTE, TRREC_CONTROLS, TRREC_HOWTO
+
 FX_NOTE = ("Эффекты на SP-404MKII (например Reverb, Tape Echo, Vinyl Sim, Cassette Sim, Lo-fi) вешаются на шину пэда; "
            "точные названия смотри в списке эффектов своей прошивки.")
 
 
-def info(title, summary, text, voice=None, highlight=None):
-    return dict(kind="info", title=title, summary=summary, text=text, voice=voice, highlight=highlight or [])
+def info(title, summary, text, voice=None, highlight=None, controls=None):
+    return dict(kind="info", title=title, summary=summary, text=text, voice=voice, highlight=highlight or [], controls=controls or [])
 
 
 def voice(title, summary, v, steps, intro, how):
@@ -29,7 +31,8 @@ def pattern(title, summary, name, text, highlight=None, voice_=None):
 def kit_lesson(bpm, extra=""):
     return info("Драм-кит", "Раскладываем пэды",
                 f"Загрузи на пэды: 1 БОЧКА, 2 СНЕЙР, 3 КЛЭП, 4 ХЭТ ЗАКР., 5 ХЭТ ОТКР., 6 ПЕРК., 7 БАС, 8 ВОКАЛ; 9–12 — нарезки, "
-                f"13–16 — FX, филл, текстура, ресэмпл. Поставь BPM {bpm}, включи пошаговый ввод: 16 шагов = один такт.{extra}")
+                f"13–16 — FX, филл, текстура, ресэмпл. Темп — {bpm} BPM. Запись по шагам (TR-REC): {TRREC_HOWTO} {STEP_NAMES_NOTE}{extra}",
+                controls=TRREC_CONTROLS)
 
 
 def arrangement(order, extra=""):

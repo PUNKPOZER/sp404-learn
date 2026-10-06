@@ -29,21 +29,21 @@ def build_course(name: str = "footwork", kit_map: dict[int, str] | None = None) 
     def pad(v):
         return pads.pad_for(v, kit) if v else None
 
-    def add(n, lesson, title, body, voice=None, highlight=None):
+    def add(n, lesson, title, body, voice=None, highlight=None, controls=None):
         steps.append({"id": len(steps), "lesson": n, "lessonTitle": lesson["title"], "lessonsTotal": n_lessons,
                       "section": f"УРОК {n:02d}", "title": title, "text": body, "voice": voice, "pad": pad(voice),
-                      "highlight": list(highlight or []), "grid": {k: list(v) for k, v in grid.items()}})
+                      "highlight": list(highlight or []), "controls": list(controls or []), "grid": {k: list(v) for k, v in grid.items()}})
 
     for n, L in enumerate(spec["lessons"], 1):
         kind = L["kind"]
         if kind == "info":
-            add(n, L, L["title"], L["text"], L.get("voice"), L.get("highlight"))
+            add(n, L, L["title"], L["text"], L.get("voice"), L.get("highlight"), L.get("controls"))
         elif kind == "voice":
             v, st = L["voice"], L["steps"]
             label = pads.LABELS.get(v, v)
-            add(n, L, f"{label}: выбери пэд", f"{L['intro']} Выбери его на ПЭД {pad(v)}.", voice=v)
+            add(n, L, f"{label}: выбери сэмпл", f"{L['intro']} Удерживая [SUB PAD], нажми ПЭД {pad(v)}.", voice=v, controls=["SUB PAD"])
             grid[v] = list(st)
-            add(n, L, f"{label}: расставь шаги", f"{L['how']} Шаги: {' / '.join(map(str, st))}.", voice=v, highlight=st)
+            add(n, L, f"{label}: расставь шаги", f"{L['how']} Нажми пэды-шаги: {' / '.join(map(str, st))}.", voice=v, highlight=st)
         elif kind == "pattern":
             grid.clear()
             grid.update({k: list(v) for k, v in patterns[L["pattern"]]["steps"].items()})

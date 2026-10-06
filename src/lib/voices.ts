@@ -1,9 +1,10 @@
+// SP SYSTEM palette only: ink + the three accents. Rows are always labelled, so colour is never the only cue.
+const INK = "#191918", RED = "#FF2A1A", BLUE = "#1265F5", GREEN = "#718A35", INK3 = "#66645D";
 export const VOICE_COLORS: Record<string, string> = {
-  KICK: "#ff7a6b", SNARE: "#ff6fae", CLAP: "#ffc15e", CLOSED_HAT: "#5cc8ff", OPEN_HAT: "#5ef2c0",
-  PERCUSSION: "#a89bff", UNKNOWN: "#8b91a3", BASS: "#ff9a5c", VOCAL: "#ff6fae", CHOP: "#5ef2c0",
-  FX: "#5cc8ff", FILL: "#ffc15e", TEXTURE: "#a89bff", RESAMPLE: "#8b91a3",
+  KICK: INK, SNARE: RED, CLAP: RED, CLOSED_HAT: BLUE, OPEN_HAT: BLUE, PERCUSSION: GREEN, UNKNOWN: INK3,
+  BASS: INK, VOCAL: GREEN, CHOP: GREEN, FX: BLUE, FILL: RED, TEXTURE: GREEN, RESAMPLE: INK3,
 };
-export const STEM_COLORS: Record<string, string> = { drums: "#ff7a6b", bass: "#ff9a5c", lead: "#a89bff", vocals: "#ff6fae" };
+export const STEM_COLORS: Record<string, string> = { drums: RED, bass: INK, lead: BLUE, vocals: GREEN };
 export const STEM_LABELS: Record<string, string> = { drums: "УДАРНЫЕ", bass: "БАС", lead: "ЛИД", vocals: "ВОКАЛ" };
 export const STEM_ORDER = ["drums", "bass", "lead", "vocals"];
 const NOTE_NAMES = ["C", "C#", "D", "Eb", "E", "F", "F#", "G", "Ab", "A", "Bb", "B"];

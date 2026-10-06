@@ -1,0 +1,71 @@
+/* ==========================================================================
+   SP SYSTEM — design tokens (shared by SP404 DROP and SP-404 LEARN)
+   Paper + Ink carry the interface. Red / Blue / Green are accents with a job:
+     RED   primary action in DROP · record / performance state in LEARN · active pad
+     BLUE  navigation, focus and primary action in LEARN · FX parameters
+     GREEN success / ok · moss accent
+   No gradients, glass, glow or heavy shadows.
+   ========================================================================== */
+:root {
+  /* palette */
+  --sp-paper: #F2F1EC;
+  --sp-ink:   #191918;
+  --sp-red:   #FF2A1A;
+  --sp-blue:  #1265F5;
+  --sp-green: #718A35;
+
+  /* derived neutrals (hierarchy only) */
+  --sp-white:   #FBFAF7;
+  --sp-paper-2: #E8E6DE;
+  --sp-paper-3: #DAD7CB;
+  --sp-rule:    #C4C1B4;
+  --sp-ink-2:   #4A4944;   /* secondary text  — 9:1 on paper */
+  --sp-ink-3:   #66645D;   /* tertiary text   — 5.2:1 on paper */
+  --sp-red-ink: #B8140A;   /* red as TEXT on paper — 5.5:1 */
+  --sp-green-ink: #566A27; /* green as TEXT on paper — 5.4:1 */
+  --sp-blue-hover: #0E52C9;
+
+  /* semantic roles */
+  --sp-bg: var(--sp-paper);
+  --sp-fg: var(--sp-ink);
+  --sp-border: var(--sp-ink);
+  --sp-focus: var(--sp-blue);
+  --sp-action: var(--sp-blue);        /* LEARN: primary action (paper text on blue = 4.9:1) */
+  --sp-record: var(--sp-red);         /* performance / record / active-pad state */
+
+  /* spacing (4 px base) */
+  --sp-space-1: 4px;  --sp-space-2: 8px;  --sp-space-3: 12px; --sp-space-4: 16px;
+  --sp-space-5: 24px; --sp-space-6: 32px; --sp-space-7: 48px;
+
+  /* radius — restrained */
+  --sp-radius-0: 0; --sp-radius-1: 2px; --sp-radius-2: 4px; --sp-radius-3: 6px; --sp-radius-pill: 999px;
+
+  /* borders */
+  --sp-border-w: 2px; --sp-border-w-thin: 1px; --sp-border-w-heavy: 3px;
+
+  /* typography: display/hardware + UI + mono */
+  --sp-font-display: "DIN Condensed", "Avenir Next Condensed", "Bahnschrift", "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
+  --sp-font-ui: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Inter, "Helvetica Neue", Arial, sans-serif;
+  --sp-font-mono: ui-monospace, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+  --sp-text-2xs: 10px; --sp-text-xs: 11px; --sp-text-sm: 12px; --sp-text-md: 14px; --sp-text-lg: 16px;
+  --sp-text-xl: 22px; --sp-text-2xl: 32px; --sp-text-display: clamp(34px, 5vw, 56px);
+  --sp-tracking-caps: .06em;
+
+  /* controls */
+  --sp-control-h: 40px; --sp-control-h-sm: 32px; --sp-hit: 40px;
+
+  /* pads */
+  --sp-pad-gap: 8px; --sp-pad-size: 72px; --sp-pad-radius: var(--sp-radius-2);
+
+  /* motion — hardware: fast, direct */
+  --sp-dur-fast: 70ms; --sp-dur: 130ms; --sp-ease: cubic-bezier(.2, 0, 0, 1);
+
+  /* z-index */
+  --sp-z-base: 1; --sp-z-sticky: 10; --sp-z-overlay: 20; --sp-z-toast: 30; --sp-z-tour: 100;
+
+  color-scheme: light;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; scroll-behavior: auto !important; }
+}

@@ -96,3 +96,20 @@ def test_every_course_builds_and_is_consistent():
             assert all(1 <= s <= 16 for v in p["steps"].values() for s in v)
     assert len(learn.build_course("footwork")["lessons"]) == 18
     assert not learn.build_course("nope")["available"]
+
+
+def test_tutorial_uses_verified_roland_button_names():
+    """Button names must match the SP-404MK2 Reference Manual (TR-REC procedure); no invented ones."""
+    from translator.sp404 import learn
+    r = build_recipe(_analysis())
+    blob = " ".join(s["text"] for s in r.tutorial_steps)
+    for must in ("[PATTERN SELECT]", "[REC]", "[REMAIN]", "[SUB PAD]", "[EXIT]"):
+        assert must in blob, must
+    for banned in ("PTN SEQ", "TR-REC]", "[BPM]"):
+        assert banned not in blob, banned
+    ctrl = {c for s in r.tutorial_steps for c in s["controls"]}
+    assert {"PATTERN SELECT", "REC", "REMAIN", "SUB PAD", "EXIT"} <= ctrl
+    course = learn.build_course("house")
+    kit_step = course["steps"][0]
+    assert "PATTERN SELECT" in kit_step["controls"] and "[SUB PAD]" in kit_step["text"]
+    assert all("PTN SEQ" not in s["text"] for s in course["steps"])

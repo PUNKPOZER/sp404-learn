@@ -40,6 +40,7 @@ def build_steps(recipe, kit_map: dict[int, str]) -> list[dict[str, Any]]:
         kw.setdefault("pad", None)
         kw.setdefault("highlight", [])
         kw.setdefault("voice", None)
+        kw.setdefault("controls", [])
         out.append(kw)
 
     used: list[str] = []
@@ -55,39 +56,42 @@ def build_steps(recipe, kit_map: dict[int, str]) -> list[dict[str, Any]]:
             text=f"Положи сэмпл {VOICE_RU.get(v, v)} на PAD {pad}.")
 
     first = recipe.patterns[0] if recipe.patterns else None
-    add(section="НАСТРОЙКА", title="Открой режим паттернов",
-        text=f"Нажми {text.BTN_PATTERN}, выбери пустой паттерн и подтверди создание: это Паттерн A.")
-    add(section="НАСТРОЙКА", title=f"Установи BPM = {recipe.bpm:g}",
-        text=f"Зажми {text.BTN_BPM} и выставь темп {recipe.bpm:g}. Метроном/клик можно включить для проверки.")
-    add(section="НАСТРОЙКА", title="Включи пошаговый ввод",
-        text=f"Включи {text.BTN_TRREC}. Шаги 1–16 — один такт. {text.STEP_NAMES_NOTE}")
+
+    def create_pattern(name: str):
+        add(section=f"ПАТТЕРН {name}", title=f"Создай паттерн {name}", controls=[text.BTN_PATTERN, text.BTN_REC],
+            text=(f"Нажми [{text.BTN_PATTERN}], затем [{text.BTN_REC}]. Пустые пэды мигают красным — нажми один из них: "
+                  f"сюда запишется паттерн {name}. Откроется экран RECORD SETTING."))
+        add(section=f"ПАТТЕРН {name}", title="Включи TR-REC", controls=[text.BTN_REMAIN, text.BTN_REC],
+            text=(f"Нажми [{text.BTN_REMAIN}] — способ записи переключится на «TR-REC». Затем нажми [{text.BTN_REC}] — запись началась. "
+                  f"{text.STEP_NAMES_NOTE} Темп паттерна ({recipe.bpm:g} BPM) настрой на приборе."))
 
     for p in recipe.patterns:
         grid: dict[str, list[int]] = {}
-        if p is not first:
-            add(section=f"ПАТТЕРН {p['name']}", title=f"Создай паттерн {p['name']}",
-                text=f"Выбери новый пустой паттерн ({p['name']}), BPM {recipe.bpm:g}, снова {text.BTN_TRREC}.", grid={})
+        create_pattern(p["name"])
         for v in used:
             st = p["steps"].get(v, [])
             if not st:
                 continue
             pad = pads.pad_for(v, kit_map)
-            add(section=f"ПАТТЕРН {p['name']}", title=f"{pads.LABELS[v]}: выбери пэд", voice=v, pad=pad,
-                grid=dict(grid), text=f"Выбери {VOICE_RU.get(v, v)} на PAD {pad}.")
+            add(section=f"ПАТТЕРН {p['name']}", title=f"{pads.LABELS[v]}: выбери сэмпл", voice=v, pad=pad, controls=[text.BTN_SUBPAD],
+                grid=dict(grid), text=f"Удерживая [{text.BTN_SUBPAD}], нажми пэд {pad} — сэмпл: {VOICE_RU.get(v, v)}.")
             grid[v] = list(st)
             bn = p.get("notes", {}).get("BASS") if v == "BASS" else None
-            body = (f"Поставь бас на шаги: {_fmt_steps(st)}. Ноты — {bass_text(st, bn)}. "
-                    "Высоту задай питчем сэмпла на пэде (клавиатурный режим пэдов или подстройка Pitch)."
-                    if bn else f"Поставь {VOICE_RU.get(v, v)} на шаги: {_fmt_steps(st)}.")
+            tail = " Горящие пэды — звучащие шаги; нажми горящий пэд, чтобы убрать шаг."
+            body = (f"Нажми пэды-шаги: {_fmt_steps(st)}. Ноты баса — {bass_text(st, bn)}. "
+                    "Высоту ноты ты задаёшь сам питчем сэмпла; этот способ в приложении пока не описан." + tail
+                    if bn else f"Нажми пэды-шаги: {_fmt_steps(st)} — на них зазвучит {VOICE_RU.get(v, v)}." + tail)
             add(section=f"ПАТТЕРН {p['name']}", title=f"{pads.LABELS[v]}: расставь шаги", voice=v, pad=pad,
                 grid=dict(grid), highlight=list(st), text=body)
-        add(section=f"ПАТТЕРН {p['name']}", title=f"Проверь паттерн {p['name']}", grid=dict(grid),
-            text="Включи воспроизведение и сравни по слуху. Если что-то не так — вернись к нужному инструменту.")
+        add(section=f"ПАТТЕРН {p['name']}", title=f"Сохрани паттерн {p['name']}", grid=dict(grid), controls=[text.BTN_EXIT],
+            text=f"Закончив, дважды нажми [{text.BTN_EXIT}] — паттерн автоматически сохранится на пэде. Включи его и сравни по слуху с треком.")
 
     if len(recipe.patterns) > 1 and recipe.arrangement:
         seq = " → ".join(f"{a['pattern']} ({a['label']})" for a in recipe.arrangement)
         add(section="АРАНЖИРОВКА", title="Собери аранжировку",
-            text=f"Порядок паттернов по треку: {seq}. Переключай паттерны в нужные моменты (или запиши цепочку).")
+            controls=[text.BTN_PATTERN, text.BTN_HOLD, text.BTN_EXIT],
+            text=(f"Порядок паттернов по треку: {seq}. Чтобы они играли сами по порядку, собери цепочку: [{text.BTN_PATTERN}], затем, удерживая "
+                  f"[{text.BTN_HOLD}], нажми пэд цепочки, потом пэды паттернов в нужном порядке и [{text.BTN_EXIT}]."))
     add(section="ГОТОВО", title="Готово", text="Паттерны собраны. Сохрани проект на SP-404MKII и поиграй с вариациями.")
     for s in out:
         s["total"] = len(out)

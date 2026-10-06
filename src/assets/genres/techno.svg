@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="currentColor"><title>Techno</title>
+  <!-- factory: saw-tooth roof and two stacks -->
+  <path d="M150 22H168V120H150Z"/>
+  <path d="M120 38H138V120H120Z"/>
+  <path fill-rule="evenodd" d="M20 178V104L66 80V104L112 80V104L158 80V104L180 92V178ZM44 140H62V158H44ZM82 140H100V158H82ZM120 140H138V158H120Z"/>
+</svg>

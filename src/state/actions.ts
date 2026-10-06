@@ -1,6 +1,9 @@
 import { api, isTauri } from "../lib/sidecar";
-import type { DrumEvent, DrumType, StepMap, TrackAnalysis } from "../lib/types";
-import { getState, setState } from "./store";
+import type { DrumEvent, DrumType, StepMap, TrackAnalysis, TutorialStep } from "../lib/types";
+import { resetProgress, saveProgress } from "../lib/progress";
+import { stepsFromContent } from "../content/toSteps";
+import type { Step } from "../content/types";
+import { getState, setState, type Screen } from "./store";
 
 // ---- file helpers (desktop: Tauri dialog + Rust fs; browser dev: not supported) -------------
 async function invoke<T>(cmd: string, args: object): Promise<T> {
@@ -127,21 +130,42 @@ export function setPadVoice(pad: number, voice: string) {
 export function learnThisTrack() {
   const r = getState().recipe;
   if (!r || !r.tutorialSteps.length) return;
-  setState({ tutorial: { mode: "track", steps: r.tutorialSteps, index: Math.min(getState().resumeIndex, r.tutorialSteps.length - 1), title: r.title }, screen: "tutorial", previewSource: "tutorial" });
+  setState({ tutorial: { mode: "track", steps: r.tutorialSteps, index: Math.min(getState().resumeIndex, r.tutorialSteps.length - 1), title: r.title, back: "recipe" }, screen: "tutorial", previewSource: "tutorial" });
 }
 export async function loadCourses() {
   if (getState().courseList.length) return;
   try { setState({ courseList: await api.courses() }); } catch (e) { setState({ error: (e as Error).message }); }
 }
-export async function startCourse(name = "footwork") {
+function recordProgress(courseId: string, steps: TutorialStep[], index: number) {
+  const st = steps[index];
+  if (!st) return;
+  setState({ progress: saveProgress({ courseId, index, total: steps.length, lesson: st.lesson ?? 1, lessons: st.lessonsTotal ?? 1, lessonTitle: st.lessonTitle ?? st.title }) });
+}
+/** Open a course. `resume` continues from the saved step (Continue learning); otherwise starts at step 1. */
+export async function startCourse(name = "footwork", resume = true) {
   try {
     const cached = getState().course;
     const course = cached && cached.name === name ? cached : await api.course(name, getState().kit);
-    setState({ course, tutorial: { mode: "course", steps: course.steps, index: 0, title: course.title }, screen: "tutorial", previewSource: "tutorial", previewBpm: course.bpm });
+    const saved = resume ? getState().progress[name] : undefined;
+    const index = saved && saved.index < course.steps.length ? saved.index : 0;
+    setState({ course, tutorial: { mode: "course", courseId: name, steps: course.steps, index, title: course.title, back: "courses" }, screen: "tutorial", previewSource: "tutorial", previewBpm: course.bpm });
+    recordProgress(name, course.steps, index);
   } catch (e) { setState({ error: (e as Error).message }); }
 }
+export function restartCourse(name: string) {
+  setState({ progress: resetProgress(name) });
+  void startCourse(name, false);
+}
+/** Run a verified FX LAB "Try this" or TRICKS procedure through the same lesson renderer. */
+export function startGuide(mode: "fx" | "trick", title: string, steps: Step[], back: Screen) {
+  setState({ tutorial: { mode, steps: stepsFromContent(title, steps), index: 0, title, back }, screen: "tutorial", previewBpm: null });
+}
 export function tutorialGo(delta: number) {
-  setState((s) => s.tutorial ? { tutorial: { ...s.tutorial, index: Math.max(0, Math.min(s.tutorial.steps.length - 1, s.tutorial.index + delta)) }, dirty: true } : {});
+  const t = getState().tutorial;
+  if (!t) return;
+  const index = Math.max(0, Math.min(t.steps.length - 1, t.index + delta));
+  setState({ tutorial: { ...t, index }, dirty: true });
+  if (t.mode === "course" && t.courseId) recordProgress(t.courseId, t.steps, index);
 }
 
 // ---- project files -------------------------------------------------------------------------

@@ -38,7 +38,7 @@ export function Bass() {
         <section className="panel">
           <h2>Где бас в треке <small>полоски — начало каждой ноты · клик по волне — перейти к такту</small></h2>
           <Waveform peaks={a.stems.bass?.peaks?.length ? a.stems.bass.peaks : peaks} analysis={a} currentBar={currentBar}
-            markers={marks} markerColor="#ff9a5c" height={92} onBar={(b) => setState({ currentBar: b })}
+            markers={marks} markerColor="#FF2A1A" height={92} onBar={(b) => setState({ currentBar: b })}
             playTime={stemPlaying && audioTag?.startsWith("bass-bar") ? stemTime : null} />
           <p className="hint">Бас входит в такте <b>{a.bass[0].bar + 1}</b> ({mmss(a.bass[0].time)}) · нот в треке: <b>{a.bass.length}</b>.</p>
         </section>

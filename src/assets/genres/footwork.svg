@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="currentColor"><title>Footwork</title>
+  <!-- two sneakers mid-step: one planted, one lifted -->
+  <g transform="translate(6 18) rotate(-20 61 36) scale(1.5)">
+    <path d="M3 31C3 22 8 17 15 17L30 13C34 5 41 3 45 8C49 14 57 18 67 20C75 22 79 26 79 31L79 34H3Z"/>
+    <path d="M1 37H81V43C81 44 80 45 79 45H3C2 45 1 44 1 43Z"/>
+  </g>
+  <g transform="translate(44 104) scale(1.5)">
+    <path d="M3 31C3 22 8 17 15 17L30 13C34 5 41 3 45 8C49 14 57 18 67 20C75 22 79 26 79 31L79 34H3Z"/>
+    <path d="M1 37H81V43C81 44 80 45 79 45H3C2 45 1 44 1 43Z"/>
+  </g>
+</svg>

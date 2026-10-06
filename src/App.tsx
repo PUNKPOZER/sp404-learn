@@ -9,8 +9,14 @@ import { Analyzing } from "./screens/Analyzing";
 import { Bass } from "./screens/Bass";
 import { Stems } from "./screens/Stems";
 import { Drums } from "./screens/Drums";
-import { Home } from "./screens/Home";
-import { Learn } from "./screens/Learn";
+import { HomeLearn } from "./screens/HomeLearn";
+import { Courses } from "./screens/Courses";
+import { FxLab } from "./screens/FxLab";
+import { FxDetail } from "./screens/FxDetail";
+import { Tricks } from "./screens/Tricks";
+import { TrickDetail } from "./screens/TrickDetail";
+import { Reference } from "./screens/Reference";
+import { TrackLabHome } from "./screens/TrackLabHome";
 import { Recipe } from "./screens/Recipe";
 import { Settings } from "./screens/Settings";
 import { Structure } from "./screens/Structure";
@@ -21,8 +27,9 @@ import { stopStems } from "./lib/audio/stemPlayer";
 import { Tour } from "./components/Tour";
 import { seenTours, tourForScreen } from "./lib/tours";
 
-const SCREENS = { home: Home, analyzing: Analyzing, track: Track, stems: Stems, drums: Drums, bass: Bass, structure: Structure, recipe: Recipe,
-  learn: Learn, tutorial: Tutorial, settings: Settings };
+const SCREENS = { home: HomeLearn, courses: Courses, fxlab: FxLab, fx: FxDetail, tricks: Tricks, trick: TrickDetail, reference: Reference,
+  tracklab: TrackLabHome, analyzing: Analyzing, track: Track, stems: Stems, drums: Drums, bass: Bass, structure: Structure, recipe: Recipe,
+  tutorial: Tutorial, settings: Settings };
 
 export function App() {
   const { screen, error, analysis, dirty, projectPath, busy } = useStore((s) => s);
@@ -33,11 +40,13 @@ export function App() {
   // first visit to a screen → a short spotlight tour (once; replay with the "? Подсказки" button)
   useEffect(() => {
     const id = tourForScreen(screen);
-    if (!id || seenTours().includes(id) || (id !== "welcome" && !analysis)) return;
+    if (!id || seenTours().includes(id) || (["track", "stems", "drums", "bass", "structure", "recipe"].includes(id) && !analysis)) return;
     const t = window.setTimeout(() => { if (!getState().tour) setState({ tour: { id, i: 0 } }); }, 700);
     return () => window.clearTimeout(t);
   }, [screen, analysis]);
   const inspector = screen === "drums" && !!analysis;
+  const tutorialMode = useStore((s) => s.tutorial?.mode);
+  const showTransport = ["track", "stems", "drums", "bass", "recipe"].includes(screen) || (screen === "tutorial" && (tutorialMode === "course" || tutorialMode === "track"));
 
   useEffect(() => {
     if (isTauri) {
@@ -84,7 +93,7 @@ export function App() {
         {error && screen !== "analyzing" && <div className="err" role="alert">{error}<button className="link" onClick={() => setState({ error: null })}>закрыть</button></div>}
           <Screen />
         </div>
-        {!["home", "analyzing", "learn", "settings", "structure"].includes(screen) ? <Transport /> : <div />}
+        {showTransport ? <Transport /> : <div />}
       </main>
       {inspector && <Inspector />}
       <Tour />

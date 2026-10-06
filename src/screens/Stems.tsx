@@ -20,7 +20,7 @@ function Lane({ part, info, a, time, regions, off }: { part: string; info: StemI
       for (let b = 0; b <= n; b++) {
         if (w / n < 5 && b % 4) continue;
         const x = Math.round(((a.grid.origin + b * bar) / a.duration) * w) + 0.5;
-        g.strokeStyle = b % 4 === 0 ? "rgba(255,255,255,.14)" : "rgba(255,255,255,.06)";
+        g.strokeStyle = b % 4 === 0 ? "rgba(25,25,24,.28)" : "rgba(25,25,24,.12)";
         g.beginPath(); g.moveTo(x, 0); g.lineTo(x, h); g.stroke();
       }
       g.fillStyle = STEM_COLORS[part];

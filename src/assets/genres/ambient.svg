@@ -1,0 +1,7 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="square" stroke-linejoin="miter"><title>Ambient</title>
+  <!-- technical diagram: perspective floor + one waveform above the horizon -->
+  <path d="M10 112H190"/>
+  <path d="M100 112V196M100 112L40 196M100 112L160 196M100 112L10 168M100 112L190 168"/>
+  <path d="M10 140H190M10 164H190" stroke-width="3"/>
+  <path stroke="var(--sp-green, currentColor)" d="M10 66C28 28 46 28 64 66S100 104 118 66S154 28 172 66S186 74 190 66"/>
+</svg>

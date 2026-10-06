@@ -30,6 +30,8 @@ export interface TutorialStep {
   id: number; total: number; section: string; title: string; text: string;
   voice: Voice | null; pad: number | null; highlight: number[]; grid: StepMap;
   lesson?: number; lessonTitle?: string; lessonsTotal?: number;
+  /** hardware controls this step is about (printed names, e.g. "PATTERN SELECT") and pads to light on the device diagram */
+  controls?: string[]; pads?: number[];
 }
 export interface CourseMeta { id: string; title: string; bpm: number; short: string; summary: string; lessons: { n: number; title: string; summary: string }[] }
 export interface Course {

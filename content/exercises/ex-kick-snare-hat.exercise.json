@@ -1,0 +1,65 @@
+{
+  "id": "ex-kick-snare-hat",
+  "type": "exercise",
+  "title": {
+    "ru": "Бочка, снейр, хэт",
+    "en": "Kick, snare, hat"
+  },
+  "summary": {
+    "ru": "Три звука — первый настоящий бит.",
+    "en": "Three sounds — your first real beat."
+  },
+  "category": "practice",
+  "tags": [
+    "exercise"
+  ],
+  "difficulty": "beginner",
+  "durationMin": 4,
+  "verification": {
+    "status": "verified"
+  },
+  "practice": {
+    "voices": {
+      "KICK": [
+        1,
+        5,
+        9,
+        13
+      ],
+      "SNARE": [
+        5,
+        13
+      ],
+      "CLOSED_HAT": [
+        1,
+        3,
+        5,
+        7,
+        9,
+        11,
+        13,
+        15
+      ]
+    },
+    "bpm": 90,
+    "bars": 2
+  },
+  "instructions": [
+    {
+      "ru": "Слушай: паттерн играет сам.",
+      "en": "Listen: the pattern plays by itself."
+    },
+    {
+      "ru": "Смотри: шаги загораются в такт, пэды подсказывают, что нажать.",
+      "en": "Watch: the steps light up in time and the pads cue what to press."
+    },
+    {
+      "ru": "Повторяй: играй вместе с паттерном. Клавиши Z X C V / A S D F / Q W E R / 1 2 3 4 — как пэды на приборе.",
+      "en": "Copy: play along with the pattern. The keys Z X C V / A S D F / Q W E R / 1 2 3 4 mirror the pads on the unit."
+    },
+    {
+      "ru": "Играй: паттерн замолкает — держи его по метроному. Чтобы усложнить, включи «Память».",
+      "en": "Play: the pattern goes silent — keep it going to the click. To make it harder, switch on “Memory”."
+    }
+  ]
+}

@@ -201,5 +201,6 @@
   ],
   "prerequisites": [
     "bb-01-what"
-  ]
+  ],
+  "exercise": "ex-breakbeat"
 }

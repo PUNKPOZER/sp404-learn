@@ -202,5 +202,6 @@
   ],
   "prerequisites": [
     "tc-01-what"
-  ]
+  ],
+  "exercise": "ex-techno"
 }

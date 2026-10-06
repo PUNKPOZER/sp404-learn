@@ -197,5 +197,6 @@
   ],
   "prerequisites": [
     "ukg-01-what"
-  ]
+  ],
+  "exercise": "ex-uk-garage"
 }

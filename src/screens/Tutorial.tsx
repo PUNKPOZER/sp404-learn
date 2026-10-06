@@ -2,6 +2,7 @@ import { DeviceDiagram } from "../components/DeviceDiagram";
 import { StepSequencer, type Cell } from "../components/StepSequencer";
 import { GenreArt } from "../components/GenreArt";
 import { finishTutorial, tutorialGo } from "../state/actions";
+import { byId } from "../content/load";
 import { setState, useStore } from "../state/store";
 import { stopPlay } from "../lib/audio/preview";
 import type { TutorialStep } from "../lib/types";
@@ -78,6 +79,9 @@ export function Tutorial() {
 
       <div className="tut-nav">
         <button className="btn big" disabled={t.index === 0} onClick={() => tutorialGo(-1)}>{tx("← Назад", "← Back")}</button>
+        {last && t.mode === "lesson" && t.lessonId && (byId(t.lessonId) as { exercise?: string } | undefined)?.exercise && (
+          <button className="btn big" onClick={() => { finishTutorial(); setState({ screen: "practice", practiceId: (byId(t.lessonId!) as { exercise: string }).exercise }); }}>{tx("Практика →", "Practice →")}</button>
+        )}
         {last ? <button className="btn primary big" onClick={() => { finishTutorial(); exit(); }}>{tx("Готово ✓", "Done ✓")}</button> : <button className="btn primary big" onClick={() => tutorialGo(1)}>{tx("Далее →", "Next →")}</button>}
       </div>
     </div>

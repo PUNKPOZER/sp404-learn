@@ -151,5 +151,6 @@
   ],
   "prerequisites": [
     "zero-11-tr-rec"
-  ]
+  ],
+  "exercise": "ex-kick-snare-hat"
 }

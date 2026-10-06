@@ -118,5 +118,6 @@
   ],
   "prerequisites": [
     "zero-11-tr-rec"
-  ]
+  ],
+  "exercise": "ex-syncopation-study"
 }

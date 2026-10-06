@@ -202,5 +202,6 @@
   ],
   "prerequisites": [
     "jg-01-what"
-  ]
+  ],
+  "exercise": "ex-jungle"
 }

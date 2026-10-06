@@ -19,7 +19,7 @@ export function Sidebar() {
   const has = useStore((s) => !!s.analysis);
   const name = useStore((s) => s.trackName);
   const tutorialBack = useStore((s) => s.tutorial?.back);
-  const effective: Screen = screen === "tutorial" ? tutorialBack ?? "courses" : screen;
+  const effective: Screen = screen === "tutorial" ? tutorialBack ?? "courses" : screen === "practice" ? "courses" : screen;
   const inLab = TRACK_LAB_SCREENS.includes(effective);
   const item = (on: boolean, icon: string, label: string, onClick: () => void, tour: string, sub?: string) => (
     <button key={tour} data-tour={tour} className={`nav ${on ? "on" : ""}`} aria-current={on ? "page" : undefined} onClick={onClick}>

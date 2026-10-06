@@ -1,0 +1,72 @@
+{
+  "id": "ex-house",
+  "type": "exercise",
+  "title": {
+    "ru": "Хаус",
+    "en": "House"
+  },
+  "summary": {
+    "ru": "Бочка, клэп и хэты на «и».",
+    "en": "Kick, clap and hats on the “and”."
+  },
+  "category": "practice",
+  "tags": [
+    "exercise",
+    "genre:house"
+  ],
+  "difficulty": "intermediate",
+  "durationMin": 4,
+  "verification": {
+    "status": "verified"
+  },
+  "practice": {
+    "voices": {
+      "KICK": [
+        1,
+        5,
+        9,
+        13
+      ],
+      "CLAP": [
+        5,
+        13
+      ],
+      "OPEN_HAT": [
+        3,
+        7,
+        11,
+        15
+      ],
+      "CLOSED_HAT": [
+        2,
+        4,
+        6,
+        8,
+        10,
+        12,
+        14,
+        16
+      ]
+    },
+    "bpm": 124,
+    "bars": 2
+  },
+  "instructions": [
+    {
+      "ru": "Слушай: паттерн играет сам.",
+      "en": "Listen: the pattern plays by itself."
+    },
+    {
+      "ru": "Смотри: шаги загораются в такт, пэды подсказывают, что нажать.",
+      "en": "Watch: the steps light up in time and the pads cue what to press."
+    },
+    {
+      "ru": "Повторяй: играй вместе с паттерном. Клавиши Z X C V / A S D F / Q W E R / 1 2 3 4 — как пэды на приборе.",
+      "en": "Copy: play along with the pattern. The keys Z X C V / A S D F / Q W E R / 1 2 3 4 mirror the pads on the unit."
+    },
+    {
+      "ru": "Играй: паттерн замолкает — держи его по метроному. Чтобы усложнить, включи «Память».",
+      "en": "Play: the pattern goes silent — keep it going to the click. To make it harder, switch on “Memory”."
+    }
+  ]
+}

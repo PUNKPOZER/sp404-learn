@@ -125,5 +125,6 @@
   ],
   "prerequisites": [
     "am-01-what"
-  ]
+  ],
+  "exercise": "ex-sparse-pulse"
 }

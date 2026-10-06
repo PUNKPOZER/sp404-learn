@@ -213,5 +213,6 @@
   ],
   "prerequisites": [
     "hs-01-what"
-  ]
+  ],
+  "exercise": "ex-house"
 }

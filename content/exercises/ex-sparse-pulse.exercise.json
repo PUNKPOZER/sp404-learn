@@ -1,0 +1,52 @@
+{
+  "id": "ex-sparse-pulse",
+  "type": "exercise",
+  "title": {
+    "ru": "Редкий пульс",
+    "en": "A sparse pulse"
+  },
+  "summary": {
+    "ru": "Два удара на такт — терпение и точность.",
+    "en": "Two hits per bar — patience and accuracy."
+  },
+  "category": "practice",
+  "tags": [
+    "exercise",
+    "genre:ambient"
+  ],
+  "difficulty": "beginner",
+  "durationMin": 4,
+  "verification": {
+    "status": "verified"
+  },
+  "practice": {
+    "voices": {
+      "KICK": [
+        1
+      ],
+      "PERCUSSION": [
+        13
+      ]
+    },
+    "bpm": 72,
+    "bars": 2
+  },
+  "instructions": [
+    {
+      "ru": "Слушай: паттерн играет сам.",
+      "en": "Listen: the pattern plays by itself."
+    },
+    {
+      "ru": "Смотри: шаги загораются в такт, пэды подсказывают, что нажать.",
+      "en": "Watch: the steps light up in time and the pads cue what to press."
+    },
+    {
+      "ru": "Повторяй: играй вместе с паттерном. Клавиши Z X C V / A S D F / Q W E R / 1 2 3 4 — как пэды на приборе.",
+      "en": "Copy: play along with the pattern. The keys Z X C V / A S D F / Q W E R / 1 2 3 4 mirror the pads on the unit."
+    },
+    {
+      "ru": "Играй: паттерн замолкает — держи его по метроному. Чтобы усложнить, включи «Память».",
+      "en": "Play: the pattern goes silent — keep it going to the click. To make it harder, switch on “Memory”."
+    }
+  ]
+}

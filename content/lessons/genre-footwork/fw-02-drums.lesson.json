@@ -189,5 +189,6 @@
   ],
   "prerequisites": [
     "fw-01-what"
-  ]
+  ],
+  "exercise": "ex-footwork"
 }

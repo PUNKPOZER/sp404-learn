@@ -1,0 +1,65 @@
+{
+  "id": "ex-techno",
+  "type": "exercise",
+  "title": {
+    "ru": "Техно",
+    "en": "Techno"
+  },
+  "summary": {
+    "ru": "Ровная бочка, офф-бит и редкий клэп.",
+    "en": "A steady kick, off-beat hats and a rare clap."
+  },
+  "category": "practice",
+  "tags": [
+    "exercise",
+    "genre:techno"
+  ],
+  "difficulty": "intermediate",
+  "durationMin": 4,
+  "verification": {
+    "status": "verified"
+  },
+  "practice": {
+    "voices": {
+      "KICK": [
+        1,
+        5,
+        9,
+        13
+      ],
+      "CLOSED_HAT": [
+        3,
+        7,
+        11,
+        15
+      ],
+      "OPEN_HAT": [
+        4,
+        12
+      ],
+      "CLAP": [
+        13
+      ]
+    },
+    "bpm": 132,
+    "bars": 2
+  },
+  "instructions": [
+    {
+      "ru": "Слушай: паттерн играет сам.",
+      "en": "Listen: the pattern plays by itself."
+    },
+    {
+      "ru": "Смотри: шаги загораются в такт, пэды подсказывают, что нажать.",
+      "en": "Watch: the steps light up in time and the pads cue what to press."
+    },
+    {
+      "ru": "Повторяй: играй вместе с паттерном. Клавиши Z X C V / A S D F / Q W E R / 1 2 3 4 — как пэды на приборе.",
+      "en": "Copy: play along with the pattern. The keys Z X C V / A S D F / Q W E R / 1 2 3 4 mirror the pads on the unit."
+    },
+    {
+      "ru": "Играй: паттерн замолкает — держи его по метроному. Чтобы усложнить, включи «Память».",
+      "en": "Play: the pattern goes silent — keep it going to the click. To make it harder, switch on “Memory”."
+    }
+  ]
+}

@@ -1,4 +1,5 @@
 import { CONTROL_GROUPS } from "../components/DeviceDiagram";
+import { ALL_VOICES } from "../lib/voices";
 import { DIFFICULTIES, MAX_STEP_CHARS, type ContentItem, type Lesson, type LessonStep, type Loc } from "./schema";
 
 export const KNOWN_CONTROLS = new Set<string>([...CONTROL_GROUPS.knobs, ...CONTROL_GROUPS.fx, ...CONTROL_GROUPS.keys, ...CONTROL_GROUPS.edit, ...CONTROL_GROUPS.bank]);
@@ -59,6 +60,17 @@ export function validateItem(item: ContentItem, all: ContentItem[]): string[] {
   // 5. relations resolve
   const ids = new Set(all.map((x) => x.id));
   for (const r of [...(item.prerequisites ?? []), ...(item.related ?? [])]) if (!ids.has(r)) p.push(`${id}: unknown relation "${r}"`);
+  if (item.type === "lesson" && item.exercise && !all.some((x) => x.id === item.exercise && x.type === "exercise")) p.push(`${id}: exercise "${item.exercise}" not found`);
+  if (item.type === "exercise") {
+    const pr = item.practice;
+    if (!(pr.bpm >= 40 && pr.bpm <= 200)) p.push(`${id}: bpm 40–200`);
+    if (!Object.keys(pr.voices).length) p.push(`${id}: practice needs at least one voice`);
+    for (const [v, st] of Object.entries(pr.voices)) {
+      if (!ALL_VOICES.includes(v)) p.push(`${id}: unknown voice ${v}`);
+      if (!st.length || st.some((n) => !Number.isInteger(n) || n < 1 || n > 16)) p.push(`${id}: ${v} steps must be 1–16`);
+    }
+    if (!item.instructions?.length) p.push(`${id}: instructions required`);
+  }
   if (item.type === "fx") {
     for (const r of item.relatedEffects) if (!all.some((x) => x.id === r && x.type === "fx")) p.push(`${id}: relatedEffects → "${r}" is not an effect`);
     for (const t of item.tricks ?? []) if (!all.some((x) => x.id === t && x.type === "trick")) p.push(`${id}: tricks → "${t}" is not a trick`);

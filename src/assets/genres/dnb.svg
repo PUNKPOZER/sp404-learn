@@ -1,4 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="currentColor"><title>Drum &amp; Bass</title>
-  <!-- one bass speaker: cabinet, tweeter, woofer cone -->
-  <path fill-rule="evenodd" d="M44 16H156A12 12 0 0 1 168 28V172A12 12 0 0 1 156 184H44A12 12 0 0 1 32 172V28A12 12 0 0 1 44 16ZM100 36A14 14 0 1 0 100.01 36ZM100 80A56 56 0 1 0 100.01 80ZM100 96A40 40 0 1 1 99.99 96ZM100 116A20 20 0 1 0 100.01 116Z"/>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="currentColor"><title>Drum &amp; Bass</title><path fill-rule="evenodd" d="M46 14L154 12Q170 12 171 28L169 170Q169 188 153 187L47 188Q31 187 31 171L33 29Q32 14 46 14ZM101 33Q116 32 116 47Q115 62 100 61Q85 61 85 47Q86 33 101 33ZM100 78Q137 76 140 114Q141 152 102 154Q62 155 60 115Q60 79 100 78ZM100 96Q80 96 79 115Q80 134 101 135Q121 134 121 115Q120 96 100 96Z"/><path d="M52 176L150 100L158 112L60 188Z" fill="var(--sp-paper, #f4f2ec)"/></svg>

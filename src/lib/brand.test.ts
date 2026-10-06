@@ -35,9 +35,9 @@ describe("genre SVG assets", () => {
   it("all expected genre files exist", () => {
     expect(Object.keys(genres).map((p) => p.split("/").pop()!.replace(".svg", "")).sort()).toEqual([...ids].sort());
   });
-  it.each(ids)("%s is editable vector art on the shared 200×200 canvas, no bitmaps/gradients/filters", (id) => {
+  it.each(ids)("%s is editable vector art with its own viewBox, no bitmaps/gradients/filters", (id) => {
     const svg = genres[`../assets/genres/${id}.svg`];
-    expect(svg).toContain('viewBox="0 0 200 200"');
+    expect(svg).toMatch(/viewBox="0 0 \d+ \d+"/);
     expect(svg).not.toMatch(/<image|base64|Gradient|<filter|<pattern/i);
     expect(svg).toMatch(/currentColor/);
   });

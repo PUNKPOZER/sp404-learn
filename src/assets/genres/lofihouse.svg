@@ -1,5 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="currentColor"><title>Lo-Fi House</title>
-  <!-- cassette tape -->
-  <path fill-rule="evenodd" d="M20 48H180V152H20ZM64 104A20 20 0 1 0 64.01 104ZM136 104A20 20 0 1 0 136.01 104ZM76 90H124V118H76Z"/>
-  <path d="M38 164H162L174 152H26Z"/>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="currentColor"><title>Lo-fi House</title><path fill-rule="evenodd" d="M100 14L184 90L172 98L168 96V178Q168 186 160 186H40Q32 186 32 178V96L28 98L16 90L72 40V22Q72 18 77 18H90Q95 18 95 22V28ZM100 104Q70 108 70 140Q72 168 102 168Q118 168 128 158Q104 160 96 140Q92 120 108 106Q104 104 100 104Z"/></svg>

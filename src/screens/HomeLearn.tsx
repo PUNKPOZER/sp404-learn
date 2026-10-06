@@ -55,7 +55,6 @@ export function HomeLearn() {
         <p className="home-tag">{t("Учись / Практикуй / Разбирай / Делай музыку", "Learn / Practise / Analyse / Make music")}</p>
       </header>
 
-      {!last && pathBlock}
       {current && (
         <section className="continue" data-tour="continue" aria-label={t("Продолжить обучение", "Continue learning")}>
           <div className="continue-body">
@@ -72,11 +71,11 @@ export function HomeLearn() {
       )}
 
 
-      {last && pathBlock}
+      {pathBlock}
       <section aria-label={t("Курсы", "Courses")}>
         <div className="section-head"><h3>{t("Курсы", "Courses")}</h3><button className="link" onClick={() => setState({ screen: "courses" })}>{t("все курсы", "all courses")}</button></div>
-        <div className="course-grid gc-grid">
-          {courseList.map((c, i) => {
+        <div className="course-grid gc-grid gc-compact">
+          {courseList.filter((c) => c.id !== current?.id).slice(0, 8).map((c, i) => {
             const p = progress[c.id];
             return (
               <button key={c.id} className="genre-card gc-open gc-tile" onClick={() => void startCourse(c.id, true)} aria-label={`${c.title}${p ? `, ${percent(p)}%` : ""}`}>

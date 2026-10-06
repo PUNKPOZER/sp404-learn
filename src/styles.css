@@ -467,3 +467,26 @@ h1 { font-weight: 800; letter-spacing: -.005em; }
 .search-row:hover, .search-row:focus-visible { background: var(--sp-surface-2, rgba(0,0,0,.05)); }
 .search-group { margin-bottom: var(--sp-space-3); }
 .rec-list h2 small { margin-left: 8px; }
+
+/* first-launch onboarding */
+.onb-scrim { position: fixed; inset: 0; z-index: 100; display: grid; place-items: center; padding: var(--sp-space-5); background: rgba(10, 10, 10, .62); }
+.onb { display: grid; grid-template-columns: minmax(180px, 1fr) 1.4fr; width: min(860px, 100%); background: var(--sp-paper, #f4f2ec); color: var(--sp-ink); border: var(--sp-border-w-thin) solid var(--sp-ink); }
+.onb-art { display: grid; place-items: center; padding: var(--sp-space-5); border-right: var(--sp-border-w-thin) solid var(--sp-rule); }
+.onb-art .genre-art { max-width: 220px; }
+.onb-body { display: grid; gap: var(--sp-space-3); padding: var(--sp-space-5); align-content: start; }
+.onb-body h2 { margin: 0; font-size: 1.6rem; line-height: 1.1; text-transform: uppercase; }
+.onb-body p { margin: 0; }
+.onb-body ul { margin: 0; padding-left: 1.1em; display: grid; gap: 4px; }
+.onb-dots { display: flex; gap: 6px; }
+.onb-dots i { width: 22px; height: 4px; background: var(--sp-rule); }
+.onb-dots i.on { background: var(--sp-blue); }
+.onb-actions { display: flex; align-items: center; gap: var(--sp-space-2); margin-top: var(--sp-space-2); }
+@media (max-width: 640px) { .onb { grid-template-columns: 1fr; } .onb-art { border-right: 0; border-bottom: var(--sp-border-w-thin) solid var(--sp-rule); } .onb-art .genre-art { max-width: 120px; } }
+
+/* Home: compact genre tiles (board layout) */
+.gc-compact { grid-template-columns: repeat(4, 1fr); }
+.gc-compact .gc-num, .gc-compact .gc-dash, .gc-compact .gc-name svg { display: none; }
+.gc-compact .gc-top { justify-content: flex-end; min-height: 1em; }
+.gc-compact .gc-art { max-width: 96px; }
+.gc-compact .gc-name { justify-content: center; border-top: 0; font-size: var(--sp-text-sm, .85rem); }
+@media (max-width: 720px) { .gc-compact { grid-template-columns: repeat(2, 1fr); } }

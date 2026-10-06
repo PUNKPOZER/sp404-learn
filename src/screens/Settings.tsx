@@ -3,6 +3,7 @@ import { api } from "../lib/sidecar";
 import type { GenrePackStatus, ModelStatus } from "../lib/types";
 import { loadGenre } from "../state/actions";
 import { t } from "../lib/i18n";
+import { startOnboarding } from "../components/Onboarding";
 
 const mb = (b: number) => `${(b / 1048576).toFixed(1)} MB`;
 
@@ -66,6 +67,7 @@ export function Settings() {
           </>
         )}
       </section>
+      <section className="panel"><h2>{t("Знакомство", "Introduction")}</h2><p className="hint">{t("Короткая экскурсия по функциям приложения.", "A short tour of what the app does.")}</p><button className="btn sm" onClick={startOnboarding}>{t("Показать экскурсию снова", "Replay the tour")}</button></section>
       <section className="panel"><h2>{t("Кэш", "Cache")}</h2>
         <p className="mono">{cache ? `${mb(cache.bytes)} · ${cache.path}` : t("движок недоступен", "engine unavailable")}</p>
         <button className="btn" onClick={async () => { await api.cacheClear(); refresh(); }}>{t("Очистить кэш", "Clear cache")}</button>

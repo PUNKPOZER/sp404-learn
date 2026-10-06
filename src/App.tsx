@@ -22,6 +22,7 @@ import { Recipe } from "./screens/Recipe";
 import { Settings } from "./screens/Settings";
 import { SearchScreen } from "./screens/SearchScreen";
 import { SearchBox } from "./components/SearchBox";
+import { Onboarding } from "./components/Onboarding";
 import { Structure } from "./screens/Structure";
 import { Track } from "./screens/Track";
 import { Tutorial } from "./screens/Tutorial";
@@ -46,7 +47,7 @@ export function App() {
   useEffect(() => {
     const id = tourForScreen(screen);
     if (!id || seenTours().includes(id) || (["track", "stems", "drums", "bass", "structure", "recipe"].includes(id) && !analysis)) return;
-    const t = window.setTimeout(() => { if (!getState().tour) setState({ tour: { id, i: 0 } }); }, 700);
+    const t = window.setTimeout(() => { if (!getState().tour && !getState().onboarding && !seenTours().includes(id)) setState({ tour: { id, i: 0 } }); }, 700);
     return () => window.clearTimeout(t);
   }, [screen, analysis]);
   const inspector = screen === "drums" && !!analysis;
@@ -84,6 +85,7 @@ export function App() {
       <div className="appbar"><span>SP SYSTEM / LEARN</span><span className="appbar-right">FOR SP-404MKII
           <span className="langsw" role="group" aria-label="Language">{(["ru", "en"] as const).map((l) => <button key={l} className={lang === l ? "on" : ""} aria-pressed={lang === l} onClick={() => lang !== l && setLang(l)}>{l.toUpperCase()}</button>)}</span></span></div>
       <Sidebar />
+      <Onboarding />
       <main className="main">
         <div className="topbar">
           <button className="btn sm" onClick={pickTrack}>{t("Открыть трек", "Open track")}</button>

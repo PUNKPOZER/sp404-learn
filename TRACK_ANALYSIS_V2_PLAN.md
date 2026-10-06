@@ -139,6 +139,18 @@ cache/<fileHash>/
 * Genre: see `GENRE_BASELINE.md` (heuristic 36–41 % → Genre Engine 2.0 78 % Top-1 on owner-labelled folders).
 * Still unmeasured for lack of truth: beats/downbeats, key, drum labels, sections.
 
+### 8c. Which current drum descriptors are usable? (measured 2026-10-07, 58 tracks)
+| Descriptor | Spread on real music | Verdict |
+|---|---|---|
+| `syncopation` | 0.60–0.77 for 90 % of tracks (median 0.71) — saturated | **not usable** as an explanation or genre feature |
+| `four_on_floor` | footwork 0.63, hip-hop 0.64, house 0.49, **techno 0.32**, DnB 0.39 | **does not separate styles** (kick detection mixes bass bleed and rolls) |
+| `hat_density` | median 1.4 hats/bar | hats badly under-detected in the full mix |
+| `snare_on_backbeat` | 0.04–0.5 across all genres | **not usable** (snare class over-assigned) |
+| `timing_variation_ms` | 14–40 ms | plausible, unvalidated |
+| tempo reading | 81 % exact / 97 % octave-tolerant vs DJ software | usable (with ÷2/×2) |
+| engine `bpm_confidence` | 75 % correct below 0.5, 100 % at 0.5–0.75 | **not predictive** — do not show as a percentage |
+These are the evidence for Drum V2 (A3): the classifier, not the onset detector, is the weak part. Phase 8 therefore explains tempo, style, structure, bass and vocals, and shows drum numbers only as approximate raw measurements.
+
 ## 9. Recommendation: keep / upgrade / replace
 
 | Module | Decision | Why / condition |

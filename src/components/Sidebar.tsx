@@ -11,7 +11,7 @@ const AREAS: { id: Screen; label: string; sub?: string; icon: string; also?: Scr
 ];
 const LAB: { id: Screen; label: string }[] = [
   { id: "track", label: t("Трек", "Track") }, { id: "stems", label: t("Стемы", "Stems") }, { id: "drums", label: t("Ударные", "Drums") }, { id: "bass", label: t("Бас", "Bass") },
-  { id: "structure", label: t("Структура", "Structure") }, { id: "recipe", label: t("Рецепт SP", "SP Recipe") },
+  { id: "structure", label: t("Структура", "Structure") }, { id: "recipe", label: t("Рецепт SP", "SP Recipe") }, { id: "learn", label: t("Учить трек", "Learn track") },
 ];
 
 export function Sidebar() {

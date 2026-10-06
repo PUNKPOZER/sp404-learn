@@ -446,3 +446,16 @@ h1 { font-weight: 800; letter-spacing: -.005em; }
 .practice-pads { display: grid; grid-template-columns: minmax(220px, 340px) 1fr; gap: var(--sp-space-5); align-items: start; } .practice-side { display: flex; flex-direction: column; gap: var(--sp-space-3); align-items: flex-start; }
 .countin { font: 800 64px/1 var(--sp-font-display); } .practice-result.ok { border-color: var(--sp-green-ink); } .practice-result h2 small { font-size: var(--sp-text-md); }
 @media (max-width: 760px) { .practice-pads { grid-template-columns: 1fr; } .practice-row { grid-template-columns: 80px 1fr; } }
+
+/* learn this track + explain cards */
+.plan-top { display: flex; flex-direction: column; gap: var(--sp-space-3); } .plan-facts { display: flex; gap: var(--sp-space-6); flex-wrap: wrap; }
+.plan-facts > div { display: flex; flex-direction: column; gap: var(--sp-space-1); align-items: flex-start; } .plan-genre { font: 800 var(--sp-text-xl) var(--sp-font-ui); text-transform: uppercase; }
+.plan-fix { align-items: center; gap: var(--sp-space-3); flex-wrap: wrap; } .plan-needs ul { margin: var(--sp-space-1) 0 0; padding-left: 18px; }
+.plan-h { margin: var(--sp-space-5) 0 var(--sp-space-2); } .plan-steps { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--sp-space-3); }
+.plan-step { background: var(--sp-white); border: 1px solid var(--sp-card-line); border-radius: var(--sp-radius-card); padding: var(--sp-space-4); }
+.plan-step header { display: flex; align-items: center; gap: var(--sp-space-3); } .plan-step h3 { margin: 0; flex: 1; font: 800 var(--sp-text-lg) var(--sp-font-ui); text-transform: uppercase; }
+.plan-step .n { font: 800 var(--sp-text-md) var(--sp-font-mono); color: var(--sp-ink-3); } .plan-items { display: flex; flex-wrap: wrap; gap: var(--sp-space-2); margin-top: var(--sp-space-2); } .from-track { font-size: var(--sp-text-xs); }
+.warn-note { color: var(--sp-red-ink); font-weight: 600; } .explain-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: var(--sp-space-3); }
+.explain-head { display: flex; justify-content: space-between; align-items: baseline; gap: var(--sp-space-2); } .explain-head h2 { margin: 0; text-transform: none; }
+.chip.lvl-high { border-color: var(--sp-green-ink); color: var(--sp-green-ink); } .chip.lvl-medium { border-color: var(--sp-blue-hover); color: var(--sp-blue-hover); } .chip.lvl-low { border-color: var(--sp-red-ink); color: var(--sp-red-ink); }
+.explain .try { border-left: 3px solid var(--sp-blue); padding-left: var(--sp-space-3); } .explain-details { margin-top: var(--sp-space-2); font-size: var(--sp-text-xs); } .explain-details summary { cursor: pointer; font-weight: 700; }

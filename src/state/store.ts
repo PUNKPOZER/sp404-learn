@@ -3,10 +3,10 @@ import type { Course, CourseMeta, Recipe, StageInfo, StepMap, TrackAnalysis, Tut
 import { DEFAULT_KIT } from "../lib/voices";
 import { loadDone, loadProgress, type CourseProgress } from "../lib/progress";
 
-export type Screen = "home" | "courses" | "fxlab" | "fx" | "tricks" | "trick" | "reference" | "tracklab" | "analyzing" | "track" | "stems" | "drums" | "bass" | "structure" | "recipe" | "tutorial" | "practice" | "settings";
+export type Screen = "home" | "courses" | "fxlab" | "fx" | "tricks" | "trick" | "reference" | "tracklab" | "analyzing" | "track" | "stems" | "drums" | "bass" | "structure" | "recipe" | "tutorial" | "practice" | "learn" | "settings";
 
 /** Screens that belong to TRACK LAB (the full analysis workflow). */
-export const TRACK_LAB_SCREENS: Screen[] = ["tracklab", "analyzing", "track", "stems", "drums", "bass", "structure", "recipe"];
+export const TRACK_LAB_SCREENS: Screen[] = ["tracklab", "analyzing", "track", "stems", "drums", "bass", "structure", "recipe", "learn"];
 
 export interface AppState {
   screen: Screen;

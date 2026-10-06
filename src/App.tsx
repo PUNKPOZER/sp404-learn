@@ -24,6 +24,7 @@ import { Structure } from "./screens/Structure";
 import { Track } from "./screens/Track";
 import { Tutorial } from "./screens/Tutorial";
 import { Practice } from "./screens/Practice";
+import { LearnThisTrack } from "./screens/LearnThisTrack";
 import { stopPlay } from "./lib/audio/preview";
 import { stopStems } from "./lib/audio/stemPlayer";
 import { Tour } from "./components/Tour";
@@ -31,7 +32,7 @@ import { seenTours, tourForScreen } from "./lib/tours";
 
 const SCREENS = { home: HomeLearn, courses: Courses, fxlab: FxLab, fx: FxDetail, tricks: Tricks, trick: TrickDetail, reference: Reference,
   tracklab: TrackLabHome, analyzing: Analyzing, track: Track, stems: Stems, drums: Drums, bass: Bass, structure: Structure, recipe: Recipe,
-  tutorial: Tutorial, practice: Practice, settings: Settings };
+  tutorial: Tutorial, practice: Practice, learn: LearnThisTrack, settings: Settings };
 
 export function App() {
   const { screen, error, analysis, dirty, projectPath, busy } = useStore((s) => s);

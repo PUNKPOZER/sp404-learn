@@ -1,7 +1,7 @@
 import { SectionStrip } from "../components/ArrangementStrip";
 import { SP404PadGrid } from "../components/SP404PadGrid";
 import { StepSequencer, type Cell } from "../components/StepSequencer";
-import { learnThisTrack, resetPattern, setPadVoice, setPatternStep } from "../state/actions";
+import { resetPattern, setPadVoice, setPatternStep } from "../state/actions";
 import { setState, useStore } from "../state/store";
 import { padOf } from "../lib/kit";
 import { mmss } from "../lib/sections";
@@ -29,7 +29,7 @@ export function Recipe() {
         <h1>{t("Рецепт SP", "SP Recipe")}</h1>
         <span className="chip">{recipe.bpm} BPM</span>
         <div className="grow" />
-        <button className="btn primary big" onClick={learnThisTrack} data-tour="learn-track">{t("Учить этот трек ▸", "Learn this track ▸")}</button>
+        <button className="btn primary big" onClick={() => setState({ screen: "learn" })} data-tour="learn-track">{t("Учить этот трек ▸", "Learn this track ▸")}</button>
       </header>
       <section className="panel">
         <h2>{t("Где звучит паттерн", "Where pattern")} {pat.name} {t("", "plays")} <small>{t("выбери паттерн ниже — подсветятся его секции", "pick a pattern below to highlight its sections")}</small></h2>

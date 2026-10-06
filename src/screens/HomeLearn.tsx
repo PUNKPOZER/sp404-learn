@@ -4,7 +4,7 @@ import { GenreArt } from "../components/GenreArt";
 import { Icon } from "../components/Icon";
 import { byId, itemsOf, loc } from "../content/load";
 import type { Course } from "../content/schema";
-import { nextLesson, pathPercent } from "./Paths";
+import { nextLesson, pathPercent, Paths } from "./Paths";
 import { latest, percent } from "../lib/progress";
 import { loadCourses, startCourse, startLesson } from "../state/actions";
 import { setState, useStore } from "../state/store";
@@ -74,18 +74,23 @@ export function HomeLearn() {
       {pathBlock}
       <section aria-label={t("Курсы", "Courses")}>
         <div className="section-head"><h3>{t("Курсы", "Courses")}</h3><button className="link" onClick={() => setState({ screen: "courses" })}>{t("все курсы", "all courses")}</button></div>
-        <div className="course-grid gc-grid gc-compact">
-          {courseList.filter((c) => c.id !== current?.id).slice(0, 8).map((c, i) => {
+        <div className="course-grid gc-grid">
+          {courseList.map((c, i) => {
             const p = progress[c.id];
             return (
               <button key={c.id} className="genre-card gc-open gc-tile" onClick={() => void startCourse(c.id, true)} aria-label={`${c.title}${p ? `, ${percent(p)}%` : ""}`}>
-                <span className="gc-top"><span className="gc-num mono">{String(i + 1).padStart(2, "0")}</span><i className="gc-dash" />{p && <span className="gc-pct mono">{percent(p)}%</span>}</span>
+                <span className="gc-top"><span className="gc-num mono">{String(i + 1).padStart(2, "0")}</span><i className="gc-dash" />{p ? <span className="gc-pct mono">{percent(p)}%</span> : <svg className="gc-wave" viewBox="0 0 20 16" width="20" height="16" aria-hidden="true"><path d="M2 5v6M6 2v12M10 4v8M14 1v14M18 5v6" stroke="currentColor" strokeWidth="1.4" fill="none" /></svg>}</span>
                 <GenreArt id={c.id} className="gc-art" />
                 <span className="gc-name"><b>{c.title.split(" / ")[0]}</b><Icon name="up-right" size={18} /></span>
               </button>
             );
           })}
         </div>
+      </section>
+
+      <section aria-label={t("Полное обучение", "Full learning")}>
+        <div className="section-head"><h3>{t("Полное обучение", "Full learning")}</h3><button className="link" onClick={() => setState({ screen: "courses" })}>{t("все курсы", "all courses")}</button></div>
+        <Paths />
       </section>
 
       <div className="home-bottom">

@@ -482,11 +482,4 @@ h1 { font-weight: 800; letter-spacing: -.005em; }
 .onb-dots i.on { background: var(--sp-blue); }
 .onb-actions { display: flex; align-items: center; gap: var(--sp-space-2); margin-top: var(--sp-space-2); }
 @media (max-width: 640px) { .onb { grid-template-columns: 1fr; } .onb-art { border-right: 0; border-bottom: var(--sp-border-w-thin) solid var(--sp-rule); } .onb-art .genre-art { max-width: 120px; } }
-
-/* Home: compact genre tiles (board layout) */
-.gc-compact { grid-template-columns: repeat(4, 1fr); }
-.gc-compact .gc-num, .gc-compact .gc-dash, .gc-compact .gc-name svg { display: none; }
-.gc-compact .gc-top { justify-content: flex-end; min-height: 1em; }
-.gc-compact .gc-art { max-width: 96px; }
-.gc-compact .gc-name { justify-content: center; border-top: 0; font-size: var(--sp-text-sm, .85rem); }
-@media (max-width: 720px) { .gc-compact { grid-template-columns: repeat(2, 1fr); } }
+.gc-wave { margin-left: auto; opacity: .7; }

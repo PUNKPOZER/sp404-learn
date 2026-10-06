@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { DeviceDiagram } from "../components/DeviceDiagram";
+import deviceArt from "../assets/sp404-device.svg?raw";
 import { GenreArt } from "../components/GenreArt";
 import { Icon } from "../components/Icon";
 import { byId, itemsOf, loc } from "../content/load";
@@ -122,7 +122,7 @@ export function HomeLearn() {
         </section>
         <button className="device-card" onClick={() => setState({ screen: "reference" })} aria-label={t("Reference: кнопки и понятия SP-404MKII", "Reference: SP-404MKII buttons and concepts")}>
           <span className="dc-text"><b>SP-404MKII</b><span>{t(<>Практикуй<br />Изучай<br />Делай музыку<br />где угодно</>, <>Practise<br />Learn<br />Make music<br />anywhere</>)}</span></span>
-          <span className="dc-art" aria-hidden><DeviceDiagram compact highlightPads={[]} display="SP-404MKII" /></span>
+          <span className="dc-art" aria-hidden dangerouslySetInnerHTML={{ __html: deviceArt.replace("<svg", '<svg focusable="false"') }} />
           <Icon name="arrow" size={22} className="dc-arrow" />
         </button>
       </div>

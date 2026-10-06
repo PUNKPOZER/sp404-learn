@@ -382,7 +382,8 @@ h1 { font-weight: 800; letter-spacing: -.005em; }
 .device-card:hover { background: var(--sp-paper-3); } .device-card:focus-visible { outline: 3px solid var(--sp-focus); outline-offset: 2px; }
 .dc-text { display: flex; flex-direction: column; gap: var(--sp-space-2); font: 600 var(--sp-text-xs) var(--sp-font-mono); letter-spacing: .12em; text-transform: uppercase; line-height: 1.5; }
 .dc-text b { font: 800 var(--sp-text-md) var(--sp-font-ui); letter-spacing: .02em; }
-.dc-art { transform: scale(.52); transform-origin: right center; margin: -90px -160px -90px 0; pointer-events: none; }
+.dc-art { display: block; width: clamp(160px, 22vw, 260px); margin: -10px -10px -14px 0; color: var(--sp-ink); pointer-events: none; }
+.dc-art svg { display: block; width: 100%; height: auto; }
 .dc-arrow { position: absolute; right: var(--sp-space-4); bottom: var(--sp-space-3); }
 .area-tile .icon { color: var(--sp-blue); }
 .course-art { width: 120px; margin-bottom: var(--sp-space-2); }

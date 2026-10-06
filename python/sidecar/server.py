@@ -130,7 +130,7 @@ class Server:
 
     def m_genre_correct(self, p, rid):
         from engine.genre import corrections
-        return corrections.record(p.get("audio_hash", ""), p.get("raw"), p.get("user"), "0.3.0")
+        return corrections.record(p.get("audio_hash", ""), p.get("raw"), p.get("user"), "0.3.0", p.get("kind") or "genre")
 
     def m_cache_clear(self, p, rid):
         self.cache.clear()

@@ -3,7 +3,7 @@ import type { Course, CourseMeta, Recipe, StageInfo, StepMap, TrackAnalysis, Tut
 import { DEFAULT_KIT } from "../lib/voices";
 import { loadDone, loadProgress, type CourseProgress } from "../lib/progress";
 
-export type Screen = "home" | "courses" | "fxlab" | "fx" | "tricks" | "trick" | "reference" | "tracklab" | "analyzing" | "track" | "stems" | "drums" | "bass" | "structure" | "recipe" | "tutorial" | "practice" | "learn" | "settings";
+export type Screen = "home" | "courses" | "fxlab" | "fx" | "tricks" | "trick" | "reference" | "tracklab" | "analyzing" | "track" | "stems" | "drums" | "bass" | "structure" | "recipe" | "tutorial" | "practice" | "learn" | "search" | "settings";
 
 /** Screens that belong to TRACK LAB (the full analysis workflow). */
 export const TRACK_LAB_SCREENS: Screen[] = ["tracklab", "analyzing", "track", "stems", "drums", "bass", "structure", "recipe", "learn"];
@@ -30,6 +30,9 @@ export interface AppState {
   lessonsDone: Record<string, number>;
   practiceId: string | null;
   fxId: string | null;
+  coursesTab: "paths" | "deep" | "genres" | "practice" | null;
+  searchQuery: string;
+  searchBack: Screen;
   trickId: string | null;
   course: Course | null;
   courseList: CourseMeta[];
@@ -54,7 +57,7 @@ export interface AppState {
 const initial: AppState = {
   screen: "home", busy: null, error: null, trackPath: null, trackName: null, peaks: [], analysis: null, stages: [],
   recipe: null, kit: { ...DEFAULT_KIT }, patternEdits: {}, minConfidence: 0.3, selectedEventId: null, selectedPad: null,
-  currentBar: 0, activePattern: "A", tutorial: null, progress: loadProgress(), lessonsDone: loadDone(), practiceId: null, fxId: null, trickId: null, course: null, courseList: [], projectPath: null, dirty: false,
+  currentBar: 0, activePattern: "A", tutorial: null, progress: loadProgress(), lessonsDone: loadDone(), practiceId: null, fxId: null, coursesTab: null, searchQuery: "", searchBack: "home", trickId: null, course: null, courseList: [], projectPath: null, dirty: false,
   playing: false, playStep: -1, loop: true, resumeIndex: 0, stemMute: {}, stemSolo: null, stemTime: 0, stemPlaying: false, stemLoading: false, audioTag: null, tour: null, previewBpm: null, previewSource: "pattern",
 };
 

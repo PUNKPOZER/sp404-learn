@@ -96,6 +96,7 @@ class TrackAnalysis:
     likely_styles: list[dict[str, Any]] = field(default_factory=list)
     genre: dict[str, Any] | None = None          # Genre Engine 2.0 prediction (only when the Genre Pack is installed)
     genre_user: str | None = None                # the user's own correction; never overwrites `genre`
+    corrections: dict[str, Any] = field(default_factory=dict)   # user corrections kept beside (never over) the raw readings, e.g. {'bpm': {'raw': 87.0, 'user': 174.0}}
     warnings: list[str] = field(default_factory=list)
     stages: list[dict[str, Any]] = field(default_factory=list)
     resolution: int = 16          # steps per bar used for quantizing
@@ -121,7 +122,7 @@ class TrackAnalysis:
             "bass": [b.to_dict() for b in self.bass],
             "characteristics": self.characteristics,
             "likely_styles": self.likely_styles,
-            "genre": self.genre, "genre_user": self.genre_user,
+            "genre": self.genre, "genre_user": self.genre_user, "corrections": self.corrections,
             "warnings": self.warnings,
             "stages": self.stages,
             "resolution": self.resolution,
@@ -139,7 +140,7 @@ class TrackAnalysis:
             bass=[BassNote(**b) for b in d.get("bass", [])],
             characteristics=d.get("characteristics", {}),
             likely_styles=d.get("likely_styles", []),
-            genre=d.get("genre"), genre_user=d.get("genre_user"),
+            genre=d.get("genre"), genre_user=d.get("genre_user"), corrections=d.get("corrections", {}),
             warnings=d.get("warnings", []),
             stages=d.get("stages", []),
             resolution=d.get("resolution", 16),

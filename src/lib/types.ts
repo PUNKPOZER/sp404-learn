@@ -18,6 +18,8 @@ export interface TrackAnalysis {
   stems: Record<string, StemInfo>; stems_model: string;
   /** Genre Engine 2.0 (only with the Genre Pack) and the user's own correction (never overwrites `genre`) */
   genre?: GenrePrediction | null; genre_user?: string | null;
+  /** user corrections kept beside the raw readings: the engine's own BPM is `corrections.bpm.raw`, the user's is `.user` */
+  corrections?: { bpm?: { raw: number; user: number } };
 }
 export interface GenreCandidate { genre: string; confidence: number; family?: string | null }
 export interface GenrePrediction {

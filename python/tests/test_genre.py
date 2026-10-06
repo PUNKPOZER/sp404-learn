@@ -97,6 +97,18 @@ def test_corrections_are_appended_not_overwritten(tmp_path, monkeypatch):
     assert len(rows) == 2 and rows[0]["raw"]["primaryGenre"] == "jungle" and rows[0]["user"] == "drum_and_bass" and rows[1]["user"] is None
 
 
+def test_bpm_corrections_go_to_their_own_file_and_survive_the_model(tmp_path, monkeypatch):
+    from engine.genre import corrections
+    monkeypatch.setenv("SP404LEARN_CORRECTIONS", str(tmp_path / "g.jsonl"))
+    corrections.record("abc", 87.0, 174.0, kind="bpm")
+    row = json.loads((tmp_path / "bpm.jsonl").read_text())
+    assert row["kind"] == "bpm" and row["raw"] == 87.0 and row["user"] == 174.0 and not (tmp_path / "g.jsonl").exists()
+    from engine.model import Grid, TrackAnalysis
+    a = TrackAnalysis(path="/x/a.wav", filename="a.wav", duration=6.0, sample_rate=44100, channels=2, audio_hash="abc",
+                      grid=Grid(bpm=174, origin=0.0, confidence=.9), corrections={"bpm": {"raw": 87, "user": 174}})
+    assert TrackAnalysis.from_dict(a.to_dict()).corrections["bpm"] == {"raw": 87, "user": 174}
+
+
 @pytest.mark.skipif(not HAVE_PACK, reason="Genre Pack not installed")
 def test_embedding_runs_and_predict_degrades_gracefully(tmp_path):
     from engine.genre import embed, predict

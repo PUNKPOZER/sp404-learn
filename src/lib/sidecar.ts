@@ -71,6 +71,8 @@ export const api = {
   genrePackDownload: () => rpc<GenrePackStatus>("genre_pack_download"),
   genrePredict: (analysis: TrackAnalysis) => rpc<GenrePrediction>("genre_predict", { analysis }),
   genreCorrect: (audio_hash: string, raw: GenrePrediction | null | undefined, user: string | null) => rpc("genre_correct", { audio_hash, raw, user }),
+  /** Local corrections dataset, raw reading and the user's value kept apart (bpm.jsonl). */
+  bpmCorrect: (audio_hash: string, raw: number, user: number) => rpc("genre_correct", { audio_hash, raw, user, kind: "bpm" }),
   chopPlan: (p: { path: string; mode: string; bars?: number; grid: { bpm: number; origin: number }; sensitivity?: number }) =>
     rpc<{ regions: { start: number; end: number }[]; duration: number }>("chop_plan", p),
   exportChops: (p: { path: string; regions: { start: number; end: number }[]; outdir: string; basename: string; normalize: boolean }) =>

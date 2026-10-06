@@ -20,6 +20,8 @@ import { Reference } from "./screens/Reference";
 import { TrackLabHome } from "./screens/TrackLabHome";
 import { Recipe } from "./screens/Recipe";
 import { Settings } from "./screens/Settings";
+import { SearchScreen } from "./screens/SearchScreen";
+import { SearchBox } from "./components/SearchBox";
 import { Structure } from "./screens/Structure";
 import { Track } from "./screens/Track";
 import { Tutorial } from "./screens/Tutorial";
@@ -32,7 +34,7 @@ import { seenTours, tourForScreen } from "./lib/tours";
 
 const SCREENS = { home: HomeLearn, courses: Courses, fxlab: FxLab, fx: FxDetail, tricks: Tricks, trick: TrickDetail, reference: Reference,
   tracklab: TrackLabHome, analyzing: Analyzing, track: Track, stems: Stems, drums: Drums, bass: Bass, structure: Structure, recipe: Recipe,
-  tutorial: Tutorial, practice: Practice, learn: LearnThisTrack, settings: Settings };
+  tutorial: Tutorial, practice: Practice, learn: LearnThisTrack, search: SearchScreen, settings: Settings };
 
 export function App() {
   const { screen, error, analysis, dirty, projectPath, busy } = useStore((s) => s);
@@ -90,6 +92,7 @@ export function App() {
           <button className="btn sm" disabled={!analysis} onClick={() => saveProject(true)}>{t("Сохранить как", "Save as")}</button>
           <span className="mono dim">{projectPath ?? ""}</span>
           <div className="grow" />
+          <SearchBox />
           <button className="btn sm" title={t("Показать подсказки по этому экрану", "Show tips for this screen")} onClick={() => { const id = tourForScreen(screen) ?? "welcome"; setState({ tour: { id, i: 0 } }); }}>{t("? Подсказки", "? Tips")}</button>
           {busy === "regrid" && <span className="mono dim">{t("пересчёт сетки…", "recomputing grid…")}</span>}
           {!isTauri && <span className="chip">{t("режим разработки в браузере", "browser dev mode")}</span>}

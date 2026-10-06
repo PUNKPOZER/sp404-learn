@@ -459,3 +459,11 @@ h1 { font-weight: 800; letter-spacing: -.005em; }
 .explain-head { display: flex; justify-content: space-between; align-items: baseline; gap: var(--sp-space-2); } .explain-head h2 { margin: 0; text-transform: none; }
 .chip.lvl-high { border-color: var(--sp-green-ink); color: var(--sp-green-ink); } .chip.lvl-medium { border-color: var(--sp-blue-hover); color: var(--sp-blue-hover); } .chip.lvl-low { border-color: var(--sp-red-ink); color: var(--sp-red-ink); }
 .explain .try { border-left: 3px solid var(--sp-blue); padding-left: var(--sp-space-3); } .explain-details { margin-top: var(--sp-space-2); font-size: var(--sp-text-xs); } .explain-details summary { cursor: pointer; font-weight: 700; }
+
+/* search + recommendations */
+.search-box { width: 220px; padding: 6px 10px; border: var(--sp-border-w-thin) solid var(--sp-rule); background: var(--sp-paper, transparent); color: inherit; font: inherit; }
+.search-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; }
+.search-row { display: grid; gap: 2px; width: 100%; text-align: left; padding: 8px 10px; background: transparent; border: 0; border-bottom: var(--sp-border-w-thin) solid var(--sp-rule); color: inherit; font: inherit; cursor: pointer; }
+.search-row:hover, .search-row:focus-visible { background: var(--sp-surface-2, rgba(0,0,0,.05)); }
+.search-group { margin-bottom: var(--sp-space-3); }
+.rec-list h2 small { margin-left: 8px; }

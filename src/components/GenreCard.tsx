@@ -4,6 +4,7 @@ import { CORRECTABLE, genreName, STATUS_TEXT } from "../lib/genres";
 import { t } from "../lib/i18n";
 import { setGenreUser } from "../state/actions";
 import { setState } from "../state/store";
+import { RecommendList } from "./RecommendList";
 
 /** Genre Engine 2.0 result: ranked candidates, honest status (hybrid / unclear), the user's correction, and the evidence. */
 export function GenreCard({ a }: { a: TrackAnalysis }) {
@@ -50,6 +51,7 @@ export function GenreCard({ a }: { a: TrackAnalysis }) {
         {(g.evidence ?? []).map((e, i) => <p key={i} className="hint"><b>{e.source}</b>: {e.text}</p>)}
         <p className="hint">{t("Определено моделью Discogs-EffNet и ритмом трека. Проценты — доля уверенности, а не гарантия.", "From the Discogs-EffNet model plus the track's rhythm. Percentages are confidence shares, not guarantees.")}</p>
       </details>
+      <RecommendList genre={user ?? first.genre} back="track" limit={4} />
     </section>
   );
 }

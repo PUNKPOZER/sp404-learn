@@ -9,6 +9,7 @@ import { latest, percent } from "../lib/progress";
 import { loadCourses, startCourse, startLesson } from "../state/actions";
 import { setState, useStore } from "../state/store";
 import { t } from "../lib/i18n";
+import { RecommendList } from "../components/RecommendList";
 
 const AREAS = [
   { screen: "fxlab" as const, title: "FX Lab", text: t("Эффекты SP-404MKII: что делают и как попробовать.", "SP-404MKII effects: what they do and how to try them."), icon: "fx" },
@@ -19,7 +20,8 @@ const AREAS = [
 
 /** Calm learning dashboard (board layout): title, one thing to continue, genre tiles, recent lessons, device card. */
 export function HomeLearn() {
-  const { courseList, progress, lessonsDone } = useStore((s) => s);
+  const { courseList, progress, lessonsDone, analysis } = useStore((s) => s);
+  const homeGenre = analysis?.genre_user ?? (analysis?.genre?.status === "unknown" ? null : analysis?.genre?.primaryGenre ?? null);
   const paths = itemsOf<Course>("course");
   const path = paths.find((c) => nextLesson(c, lessonsDone)) ?? paths[0];
   const nextId = path ? nextLesson(path, lessonsDone) : null;
@@ -88,6 +90,8 @@ export function HomeLearn() {
       </section>
 
       <div className="home-bottom">
+      <RecommendList genre={homeGenre} back="home" />
+
         <section className="recent" aria-label={t("Недавнее", "Recent")}>
           <h3>{t("Недавнее", "Recent")}</h3>
           {recent.length === 0 ? <p className="hint">{t("Здесь появятся курсы, которые ты начнёшь.", "Courses you start will appear here.")}</p> : (

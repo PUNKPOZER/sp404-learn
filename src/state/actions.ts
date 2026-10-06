@@ -117,7 +117,12 @@ export async function setGrid(g: { bpm?: number; origin?: number }, resolution?:
   setState({ busy: "regrid" });
   try {
     const next = await api.regrid(a, g, resolution);
-    setState({ analysis: next, dirty: true, busy: null, currentBar: 0 });
+    // a BPM the user chose: remember the engine's original reading beside it (first reading wins) and log both locally
+    const bpmChanged = g.bpm !== undefined && Math.abs(g.bpm - a.grid.bpm) > 0.05;
+    const raw = a.corrections?.bpm?.raw ?? a.grid.bpm;
+    const corrections = bpmChanged ? { ...a.corrections, bpm: { raw, user: g.bpm! } } : a.corrections;
+    setState({ analysis: { ...next, corrections }, dirty: true, busy: null, currentBar: 0 });
+    if (bpmChanged) void api.bpmCorrect(a.audio_hash, raw, g.bpm!).catch(() => undefined);
     await refreshRecipe();
   } catch (e) { setState({ busy: null, error: (e as Error).message }); }
 }
@@ -188,6 +193,16 @@ export function startLesson(id: string, back: Screen = "courses") {
   if (!item || item.type !== "lesson" || !isPublishable(item.verification)) return;
   const title = loc(item.title);
   setState({ tutorial: { mode: "lesson", steps: stepsFromLessonSteps(title, item.steps), index: 0, title, lessonId: id, back }, screen: "tutorial", previewBpm: null });
+}
+/** Open any library item from search / recommendations in the right place. */
+export function openLibraryItem(type: string, id: string, back: Screen = "home") {
+  const it = byId(id);
+  if (type === "lesson") startLesson(id, back);
+  else if (type === "trick") setState({ screen: "trick", trickId: id });
+  else if (type === "fx") setState({ screen: "fx", fxId: id });
+  else if (type === "exercise") setState({ screen: "practice", practiceId: id });
+  else if (type === "reference") setState({ screen: "reference" });
+  else if (type === "course") setState({ screen: "courses", coursesTab: it && "genre" in it && it.genre ? "deep" : "paths" });
 }
 export function finishTutorial() {
   const t = getState().tutorial;

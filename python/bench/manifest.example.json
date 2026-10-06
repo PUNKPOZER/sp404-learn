@@ -1,0 +1,13 @@
+{
+  "_comment": "Copy to bench/local/benchmark.json (gitignored). Paths point at YOUR local files; audio is never committed. Every truth field is optional.",
+  "tracks": [
+    {"id": "jungle01", "path": "/local/music/jungle01.wav",
+     "expected": {"genre": ["jungle", "drum_and_bass"], "bpm": [168, 172], "meter": "4/4"}},
+    {"id": "garage01", "path": "/local/music/garage01.wav", "expected": ["uk_garage", "two_step"]},
+    {"id": "house01", "path": "/local/music/house01.wav",
+     "expected": {"genre": ["house"], "bpm": 124, "key": "F# minor", "sections": [0, 30.5, 61.0, 91.5]}},
+    {"id": "footwork01", "path": "/local/music/footwork01.mp3",
+     "expected": {"genre": ["footwork", "juke"], "bpm": [156, 164],
+                  "drums": [{"time": 1.20, "type": "KICK"}, {"time": 1.57, "type": "SNARE"}]}}
+  ]
+}

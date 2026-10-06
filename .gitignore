@@ -10,3 +10,7 @@ target/
 /python/dist/
 src-tauri/resources/
 build/
+
+# private benchmark material (manifests with local paths, results) — audio is never committed
+/python/bench/local/
+/python/bench/results/

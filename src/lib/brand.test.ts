@@ -31,7 +31,7 @@ describe("® removal", () => {
 });
 
 describe("genre SVG assets", () => {
-  const ids = ["footwork", "jungle", "ukgarage", "hiphop", "house", "techno", "breakbeat", "ambient", "triphop", "lofihouse", "lofihiphop", "idm", "dub"];
+  const ids = ["footwork", "jungle", "ukgarage", "hiphop", "house", "techno", "breakbeat", "ambient", "triphop", "lofihouse", "lofihiphop", "idm", "dub", "dnb"];
   it("all expected genre files exist", () => {
     expect(Object.keys(genres).map((p) => p.split("/").pop()!.replace(".svg", "")).sort()).toEqual([...ids].sort());
   });

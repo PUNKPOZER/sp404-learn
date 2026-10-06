@@ -435,3 +435,4 @@ h1 { font-weight: 800; letter-spacing: -.005em; }
 .path-home { display: flex; justify-content: space-between; align-items: center; gap: var(--sp-space-4); flex-wrap: wrap; } .path-home h2 { margin: var(--sp-space-1) 0; font: 800 var(--sp-text-xl) var(--sp-font-ui); text-transform: uppercase; }
 .path-home-side { display: flex; align-items: center; gap: var(--sp-space-3); min-width: 280px; } .path-home-side .progress { flex: 1; height: 6px; }
 .filters .seg { flex-wrap: wrap; } .filters .seg .btn { border-radius: var(--sp-radius-2); }
+.path-head { align-items: flex-start; } .path-art { width: 84px; flex: none; } .path-main { flex: 1; min-width: 220px; }

@@ -1,0 +1,88 @@
+{
+  "id": "bb-01-what",
+  "type": "lesson",
+  "title": {
+    "ru": "Breakbeat: Что делает жанр жанром",
+    "en": "Breakbeat: What makes it sound like this?"
+  },
+  "summary": {
+    "ru": "Сэмплированные брейки 110–140 BPM: тяжёлая бочка, бэкбит и риффы.",
+    "en": "Sampled breaks at 110–140 BPM: heavy kick, backbeat and riffs."
+  },
+  "category": "genre-breakbeat",
+  "tags": [
+    "lesson",
+    "genre:breakbeat",
+    "path:genre-breakbeat",
+    "slot:what"
+  ],
+  "difficulty": "intermediate",
+  "durationMin": 12,
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Setting the tempo for a bank or project",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7936372378508683.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  "objectives": [
+    {
+      "ru": "Описать breakbeat тремя приметами",
+      "en": "Describe breakbeat by three traits"
+    }
+  ],
+  "steps": [
+    {
+      "kind": "concept",
+      "text": {
+        "ru": "Breakbeat — семейство стилей, где барабаны взяты или сделаны по образцу сэмплированных брейков; темп чаще 110–140 BPM.",
+        "en": "Breakbeat is a family of styles whose drums are sampled breaks or modelled on them; tempo is usually 110–140 BPM."
+      }
+    },
+    {
+      "kind": "concept",
+      "text": {
+        "ru": "Три приметы: синкопированная бочка вокруг бэкбита, разные длины брейков и тяжёлый риф или хук.",
+        "en": "Three traits: a syncopated kick around a backbeat, break loops of different lengths, and a heavy riff or hook."
+      },
+      "why": {
+        "ru": "От jungle и DnB его отличает более ровный и медленный темп.",
+        "en": "A steadier, slower tempo separates it from jungle and DnB."
+      }
+    },
+    {
+      "kind": "concept",
+      "text": {
+        "ru": "Слушай разные подходы: от «большого» брейка с гитарными риффами до чистых клубных брейков.",
+        "en": "Listen to different takes: from the “big” break with guitar riffs to clean club breaks."
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Темп проекта 130: [SHIFT] + пэд [11], [VALUE].",
+        "en": "Project tempo 130: [SHIFT] + pad [11], then [VALUE]."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "SHIFT",
+          "VALUE"
+        ],
+        "pads": [
+          11
+        ]
+      },
+      "tryIt": {
+        "ru": "Прогони один брейк на 110, 130 и 140 BPM и сравни настроение.",
+        "en": "Run one break at 110, 130 and 140 BPM and compare the mood."
+      }
+    }
+  ],
+  "prerequisites": [
+    "zero-11-tr-rec"
+  ]
+}

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { DifficultyBadge, DurationChip } from "../components/Chips";
+import { GENRE_ART, GenreArt } from "../components/GenreArt";
 import { Icon } from "../components/Icon";
 import { byId, itemsOf, loc } from "../content/load";
 import type { Course, Lesson } from "../content/schema";
@@ -13,9 +14,11 @@ export const pathPercent = (c: Course, done: Record<string, number>) =>
 export const nextLesson = (c: Course, done: Record<string, number>) => c.lessons.find((id) => !(id in done)) ?? null;
 
 /** Learning paths (courses of the Learning Library): beginner → intermediate; lessons open in the shared lesson renderer. */
-export function Paths() {
+export function Paths({ kind = "path" }: { kind?: "path" | "genre" }) {
   const { lessonsDone } = useStore((s) => s);
-  const courses = itemsOf<Course>("course").sort((a, b) => a.durationMin - b.durationMin).sort((a, b) => ["beginner", "intermediate", "advanced"].indexOf(a.difficulty) - ["beginner", "intermediate", "advanced"].indexOf(b.difficulty));
+  const order = ["beginner", "intermediate", "advanced"];
+  const courses = itemsOf<Course>("course").filter((c) => (kind === "genre") === !!c.genre)
+    .sort((a, b) => order.indexOf(a.difficulty) - order.indexOf(b.difficulty) || (kind === "genre" ? loc(a.title).localeCompare(loc(b.title)) : a.durationMin - b.durationMin));
   const [open, setOpen] = useState<string | null>(courses[0]?.id ?? null);
   void isDone;
   return (
@@ -27,10 +30,11 @@ export function Paths() {
         return (
           <section key={c.id} className="panel path-card">
             <header className="path-head">
-              <div>
+              {c.genre && GENRE_ART[c.genre] && <GenreArt id={GENRE_ART[c.genre]} className="path-art" />}
+              <div className="path-main">
                 <h2>{loc(c.title)}</h2>
                 <p className="hint">{loc(c.summary)}</p>
-                <div className="row"><DifficultyBadge level={c.difficulty} /><DurationChip min={c.durationMin} /><span className="chip soft mono">{c.lessons.length} {t("уроков", "lessons")}</span></div>
+                <div className="row"><DifficultyBadge level={c.difficulty} /><DurationChip min={c.durationMin} /><span className="chip soft mono">{c.lessons.length} {t("уроков", "lessons")}</span>{c.bpm && <span className="chip soft mono">~{c.bpm} BPM</span>}</div>
               </div>
               <div className="path-side">
                 <div className="progress" role="progressbar" aria-valuemin={0} aria-valuemax={100} aria-valuenow={pct} aria-label={t("Прогресс курса", "Course progress")}><i style={{ width: `${pct}%` }} /></div>

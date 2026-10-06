@@ -1,0 +1,217 @@
+{
+  "id": "hs-02-drums",
+  "type": "lesson",
+  "title": {
+    "ru": "House: Барабаны",
+    "en": "House: Drums"
+  },
+  "summary": {
+    "ru": "Бочка 1/5/9/13, клэп 5 и 13, хэты на «и».",
+    "en": "Kick on 1/5/9/13, clap on 5 and 13, hats on the “and”."
+  },
+  "category": "genre-house",
+  "tags": [
+    "lesson",
+    "genre:house",
+    "path:genre-house",
+    "slot:drums"
+  ],
+  "difficulty": "beginner",
+  "durationMin": 12,
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Creating a new pattern (TR-REC)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7921805978489483.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  "objectives": [
+    {
+      "ru": "Собрать барабаны хауса",
+      "en": "Build the house drums"
+    }
+  ],
+  "steps": [
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Запусти TR-REC: [PATTERN SELECT] → [REC] → красный пэд → [REMAIN] (метод TR-REC) → [REC].",
+        "en": "Start TR-REC: [PATTERN SELECT] → [REC] → a red pad → [REMAIN] (method TR-REC) → [REC]."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "PATTERN SELECT",
+          "REC",
+          "REMAIN"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Удерживая [SUB PAD], выбери бочку и нажми пэды шагов 1, 5, 9, 13: пэд = шаг.",
+        "en": "Holding [SUB PAD], pick the kick and press the step pads 1, 5, 9, 13: pad = step."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "SUB PAD"
+        ],
+        "pads": [
+          1,
+          5,
+          9,
+          13
+        ]
+      },
+      "stepPattern": {
+        "voices": {
+          "KICK": [
+            1,
+            5,
+            9,
+            13
+          ]
+        }
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Удерживая [SUB PAD], выбери клэп и нажми пэды шагов 5, 13: пэд = шаг.",
+        "en": "Holding [SUB PAD], pick the clap and press the step pads 5, 13: pad = step."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "SUB PAD"
+        ],
+        "pads": [
+          5,
+          13
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Удерживая [SUB PAD], выбери открытый хэт и нажми пэды шагов 3, 7, 11, 15: пэд = шаг.",
+        "en": "Holding [SUB PAD], pick the open hat and press the step pads 3, 7, 11, 15: pad = step."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "SUB PAD"
+        ],
+        "pads": [
+          3,
+          7,
+          11,
+          15
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Удерживая [SUB PAD], выбери закрытый хэт и нажми пэды шагов 2, 4, 6, 8, 10, 12, 14, 16: пэд = шаг.",
+        "en": "Holding [SUB PAD], pick the closed hat and press the step pads 2, 4, 6, 8, 10, 12, 14, 16: pad = step."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "SUB PAD"
+        ],
+        "pads": [
+          2,
+          4,
+          6,
+          8,
+          10,
+          12,
+          14,
+          16
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "VELOCITY ([CTRL 3] при вводе шага, 0–127): закрытые хэты тише открытого.",
+        "en": "VELOCITY ([CTRL 3] while entering a step, 0–127): closed hats quieter than the open one."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "CTRL 3"
+        ]
+      }
+    },
+    {
+      "kind": "concept",
+      "text": {
+        "ru": "Открытый хэт на «и» — фирменное «ц-ц» хауса.",
+        "en": "The open hat on the “and” is house's signature “ts-ts”."
+      },
+      "tryIt": {
+        "ru": "Убери открытый хэт и верни — слышно, сколько он даёт «ходу».",
+        "en": "Remove the open hat and bring it back — hear how much drive it gives."
+      },
+      "stepPattern": {
+        "voices": {
+          "KICK": [
+            1,
+            5,
+            9,
+            13
+          ],
+          "CLAP": [
+            5,
+            13
+          ],
+          "CLOSED_HAT": [
+            2,
+            4,
+            6,
+            8,
+            10,
+            12,
+            14,
+            16
+          ],
+          "OPEN_HAT": [
+            3,
+            7,
+            11,
+            15
+          ],
+          "BASS": [
+            3,
+            7,
+            11,
+            15
+          ],
+          "CHOP": [
+            4,
+            10,
+            12
+          ]
+        }
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Закончив, нажми [EXIT] два раза — паттерн сохранится на пэде.",
+        "en": "When done, press [EXIT] twice — the pattern is saved on the pad."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "EXIT"
+        ]
+      }
+    }
+  ],
+  "prerequisites": [
+    "hs-01-what"
+  ]
+}

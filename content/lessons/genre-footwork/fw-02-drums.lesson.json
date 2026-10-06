@@ -1,0 +1,193 @@
+{
+  "id": "fw-02-drums",
+  "type": "lesson",
+  "title": {
+    "ru": "Footwork / Juke: Барабаны",
+    "en": "Footwork / Juke: Drums"
+  },
+  "summary": {
+    "ru": "Рваная бочка, клэп на 5 и 13, быстрые хэты.",
+    "en": "A broken kick, claps on 5 and 13, fast hats."
+  },
+  "category": "genre-footwork",
+  "tags": [
+    "lesson",
+    "genre:footwork",
+    "path:genre-footwork",
+    "slot:drums"
+  ],
+  "difficulty": "intermediate",
+  "durationMin": 12,
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Creating a new pattern (TR-REC)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7921805978489483.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  "objectives": [
+    {
+      "ru": "Собрать базовый паттерн footwork в TR-REC",
+      "en": "Build a basic footwork pattern in TR-REC"
+    }
+  ],
+  "steps": [
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Запусти TR-REC: [PATTERN SELECT] → [REC] → красный пэд → [REMAIN] (метод TR-REC) → [REC].",
+        "en": "Start TR-REC: [PATTERN SELECT] → [REC] → a red pad → [REMAIN] (method TR-REC) → [REC]."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "PATTERN SELECT",
+          "REC",
+          "REMAIN"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Удерживая [SUB PAD], выбери бочку и нажми пэды шагов 1, 4, 7, 11, 16: пэд = шаг.",
+        "en": "Holding [SUB PAD], pick the kick and press the step pads 1, 4, 7, 11, 16: pad = step."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "SUB PAD"
+        ],
+        "pads": [
+          1,
+          4,
+          7,
+          11,
+          16
+        ]
+      },
+      "stepPattern": {
+        "voices": {
+          "KICK": [
+            1,
+            4,
+            7,
+            11,
+            16
+          ]
+        }
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Удерживая [SUB PAD], выбери клэп и нажми пэды шагов 5, 13: пэд = шаг.",
+        "en": "Holding [SUB PAD], pick the clap and press the step pads 5, 13: pad = step."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "SUB PAD"
+        ],
+        "pads": [
+          5,
+          13
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Удерживая [SUB PAD], выбери снейр и нажми пэды шагов 8, 15: пэд = шаг.",
+        "en": "Holding [SUB PAD], pick the snare and press the step pads 8, 15: pad = step."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "SUB PAD"
+        ],
+        "pads": [
+          8,
+          15
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Удерживая [SUB PAD], выбери закрытый хэт и нажми пэды шагов 1, 3, 5, 7, 9, 11, 13, 15: пэд = шаг.",
+        "en": "Holding [SUB PAD], pick the closed hat and press the step pads 1, 3, 5, 7, 9, 11, 13, 15: pad = step."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "SUB PAD"
+        ],
+        "pads": [
+          1,
+          3,
+          5,
+          7,
+          9,
+          11,
+          13,
+          15
+        ]
+      }
+    },
+    {
+      "kind": "concept",
+      "text": {
+        "ru": "Расстояния между бочками — 3, 3, 4, 5: это и есть «спотыкающийся» грув. Не выравнивай их по долям.",
+        "en": "The gaps between kicks are 3, 3, 4, 5 — that is the stumbling groove. Don't snap them to the beats."
+      },
+      "tryIt": {
+        "ru": "Сдвинь одну бочку на шаг и послушай, как меняется ощущение.",
+        "en": "Move one kick by a step and hear the feel change."
+      },
+      "stepPattern": {
+        "voices": {
+          "KICK": [
+            1,
+            4,
+            7,
+            11,
+            16
+          ],
+          "CLAP": [
+            5,
+            13
+          ],
+          "SNARE": [
+            8,
+            15
+          ],
+          "CLOSED_HAT": [
+            1,
+            3,
+            5,
+            7,
+            9,
+            11,
+            13,
+            15
+          ]
+        }
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Закончив, нажми [EXIT] два раза — паттерн сохранится на пэде.",
+        "en": "When done, press [EXIT] twice — the pattern is saved on the pad."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "EXIT"
+        ]
+      }
+    }
+  ],
+  "prerequisites": [
+    "fw-01-what"
+  ]
+}

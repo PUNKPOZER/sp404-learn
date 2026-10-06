@@ -1,0 +1,96 @@
+{
+  "id": "jg-06-fx",
+  "type": "lesson",
+  "title": {
+    "ru": "Jungle: Эффекты",
+    "en": "Jungle: FX"
+  },
+  "summary": {
+    "ru": "Реверб на снейре, ленточное эхо и «rewind».",
+    "en": "Reverb on the snare, tape echo and the rewind."
+  },
+  "category": "genre-jungle",
+  "tags": [
+    "lesson",
+    "genre:jungle",
+    "path:genre-jungle",
+    "slot:fx"
+  ],
+  "difficulty": "intermediate",
+  "durationMin": 12,
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Using the MFX effects",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7900737178465675.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — MFX List — Back Spin",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7999015578579339.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — Temporarily output only the effect sound (MUTE BUS)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7903245978467979.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  "objectives": [
+    {
+      "ru": "Добавить пространство и перемотку",
+      "en": "Add space and the rewind"
+    }
+  ],
+  "steps": [
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Эффект из MFX: удерживая [MFX], вращай [VALUE], пока не появится «Reverb»; отпусти [MFX].",
+        "en": "An MFX effect: hold [MFX] and turn [VALUE] until “Reverb” appears, then release [MFX]."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "MFX",
+          "VALUE"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "«Rewind»: выбери Back Spin через [MFX] и включай BACK SW в конце фразы (эффект нужно «зарядить» играющим звуком).",
+        "en": "The rewind: pick Back Spin via [MFX] and turn BACK SW on at a phrase end (the effect must be charged with playing sound)."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "MFX",
+          "VALUE"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "[SHIFT] + [BUS FX] (MUTE BUS) оставляет только хвост эффекта на снейре.",
+        "en": "[SHIFT] + [BUS FX] (MUTE BUS) leaves only the effect tail on the snare."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "SHIFT",
+          "BUS FX"
+        ]
+      },
+      "tryIt": {
+        "ru": "Закончи 8-тактовую фразу перемоткой Back Spin.",
+        "en": "End an 8-bar phrase with a Back Spin rewind."
+      }
+    }
+  ],
+  "prerequisites": [
+    "jg-05-chops"
+  ]
+}

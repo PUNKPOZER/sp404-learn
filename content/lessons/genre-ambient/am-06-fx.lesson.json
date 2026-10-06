@@ -1,0 +1,108 @@
+{
+  "id": "am-06-fx",
+  "type": "lesson",
+  "title": {
+    "ru": "Ambient: Эффекты",
+    "en": "Ambient: FX"
+  },
+  "summary": {
+    "ru": "Реверб и эхо — главный инструмент.",
+    "en": "Reverb and delay as the main instrument."
+  },
+  "category": "genre-ambient",
+  "tags": [
+    "lesson",
+    "genre:ambient",
+    "path:genre-ambient",
+    "slot:fx"
+  ],
+  "difficulty": "intermediate",
+  "durationMin": 12,
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Using the MFX effects",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7900737178465675.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — MFX List — Reverb",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7986753178564747.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — MFX List — Cloud Delay",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7998349978578571.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — MFX List — Tape Echo",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7981812378558603.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  "objectives": [
+    {
+      "ru": "Растянуть пространство эффектами",
+      "en": "Stretch space with effects"
+    }
+  ],
+  "steps": [
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Эффект из MFX: удерживая [MFX], вращай [VALUE], пока не появится «Reverb»; отпусти [MFX].",
+        "en": "An MFX effect: hold [MFX] and turn [VALUE] until “Reverb” appears, then release [MFX]."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "MFX",
+          "VALUE"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Эффект из MFX: удерживая [MFX], вращай [VALUE], пока не появится «Cloud Delay»; отпусти [MFX].",
+        "en": "An MFX effect: hold [MFX] and turn [VALUE] until “Cloud Delay” appears, then release [MFX]."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "MFX",
+          "VALUE"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Эффект из MFX: удерживая [MFX], вращай [VALUE], пока не появится «Tape Echo»; отпусти [MFX].",
+        "en": "An MFX effect: hold [MFX] and turn [VALUE] until “Tape Echo” appears, then release [MFX]."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "MFX",
+          "VALUE"
+        ]
+      }
+    },
+    {
+      "kind": "concept",
+      "text": {
+        "ru": "Подними реверб/эхо до «тающего» хвоста и убери сухой звук — так получаются облака.",
+        "en": "Raise reverb/echo to a melting tail and lower the dry sound — that's how clouds are made."
+      },
+      "tryIt": {
+        "ru": "Брось один аккорд в Cloud Delay и ресэмпли результат на пэд.",
+        "en": "Throw one chord into Cloud Delay and resample the result onto a pad."
+      }
+    }
+  ],
+  "prerequisites": [
+    "am-05-chops"
+  ]
+}

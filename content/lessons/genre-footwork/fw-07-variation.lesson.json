@@ -1,0 +1,86 @@
+{
+  "id": "fw-07-variation",
+  "type": "lesson",
+  "title": {
+    "ru": "Footwork / Juke: Вариации",
+    "en": "Footwork / Juke: Variation"
+  },
+  "summary": {
+    "ru": "Меняй один элемент: бочку, клэп или вокал.",
+    "en": "Change one element: the kick, a clap or the vocal."
+  },
+  "category": "genre-footwork",
+  "tags": [
+    "lesson",
+    "genre:footwork",
+    "path:genre-footwork",
+    "slot:variation"
+  ],
+  "difficulty": "intermediate",
+  "durationMin": 12,
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Copying the pattern of a pad",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7932327578503307.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — Creating a new pattern (TR-REC)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7921805978489483.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  "objectives": [
+    {
+      "ru": "Сделать вариацию B из A",
+      "en": "Make variation B from A"
+    }
+  ],
+  "steps": [
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Вариация: [COPY] → пэд паттерна → пэд назначения → [VALUE] или [COPY] (паттерн назначения перезапишется).",
+        "en": "Variation: [COPY] → the pattern's pad → the destination pad → [VALUE] or [COPY] (the destination pattern is overwritten)."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "COPY",
+          "VALUE"
+        ]
+      }
+    },
+    {
+      "kind": "concept",
+      "text": {
+        "ru": "Хорошие вариации для footwork: убрать клэп на 13, сдвинуть бочку с 11 на 10, поменять вокальный кусок.",
+        "en": "Good footwork variations: drop the clap on 13, move the kick from 11 to 10, swap the vocal piece."
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Открой копию в TR-REC и измени шаг; нажми горящий пэд, чтобы убрать шаг.",
+        "en": "Open the copy in TR-REC and change a step; press a lit pad to remove it."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "PATTERN SELECT",
+          "REC",
+          "REMAIN"
+        ]
+      },
+      "tryIt": {
+        "ru": "Сделай B с бочкой на 10 вместо 11.",
+        "en": "Make B with the kick on 10 instead of 11."
+      }
+    }
+  ],
+  "prerequisites": [
+    "fw-06-fx"
+  ]
+}

@@ -43,7 +43,7 @@
       "id": "time",
       "label": "TIME",
       "range": {
-        "ru": "0–100 mс (SYNC OFF) / 1/32–1/1 (SYNC ON)",
+        "ru": "0–100 мс (SYNC OFF) / 1/32–1/1 (SYNC ON)",
         "en": "0–100 msec (SYNC OFF) / 1/32–1/1 (SYNC ON)"
       },
       "meaning": {

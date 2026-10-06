@@ -1,0 +1,95 @@
+{
+  "id": "tc-09-performance",
+  "type": "lesson",
+  "title": {
+    "ru": "Techno: Исполнение",
+    "en": "Techno: Performance"
+  },
+  "summary": {
+    "ru": "Фильтр и mute как инструмент.",
+    "en": "Filter and mute as an instrument."
+  },
+  "category": "genre-techno",
+  "tags": [
+    "lesson",
+    "genre:techno",
+    "path:genre-techno",
+    "slot:performance"
+  ],
+  "difficulty": "intermediate",
+  "durationMin": 12,
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Muting the playback of a sample (Pad MUTE)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7894388378457995.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — Turning Effects on/off at the desired timing",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7902733978467211.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — Editing the effects",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7901249178466443.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  "objectives": [
+    {
+      "ru": "Играть эволюцию вживую",
+      "en": "Play the evolution live"
+    }
+  ],
+  "steps": [
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "EFFECT GRAB: удерживая [VALUE], нажми кнопку эффекта — он звучит, пока нажата.",
+        "en": "EFFECT GRAB: hold [VALUE] and press an effect button — it sounds while held."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "VALUE",
+          "FILTER+DRIVE"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Mute пэда вживую: [SHIFT] + [REVERSE] + пэд (красный). Повтор — вернуть.",
+        "en": "Live pad mute: [SHIFT] + [REVERSE] + a pad (turns red). Repeat to bring it back."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "SHIFT",
+          "REVERSE"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Эффект «залипает»: удерживай [REMAIN] и нажми кнопку эффекта — экран не закрывается.",
+        "en": "To keep an effect screen open: hold [REMAIN] and press the effect button."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "REMAIN"
+        ]
+      },
+      "tryIt": {
+        "ru": "Исполни 32 такта: каждые 8 тактов меняй одну вещь.",
+        "en": "Perform 32 bars: change one thing every 8 bars."
+      }
+    }
+  ],
+  "prerequisites": [
+    "tc-08-arrangement"
+  ]
+}

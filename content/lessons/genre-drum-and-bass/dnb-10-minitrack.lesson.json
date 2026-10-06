@@ -1,0 +1,164 @@
+{
+  "id": "dnb-10-minitrack",
+  "type": "lesson",
+  "title": {
+    "ru": "Drum & Bass: Собери мини-трек",
+    "en": "Drum & Bass: Build a complete mini track"
+  },
+  "summary": {
+    "ru": "Мини-трек: двухшаговый бит, слойный бас, аккорды.",
+    "en": "A mini track: two-step beat, layered bass, chords."
+  },
+  "category": "genre-drum-and-bass",
+  "tags": [
+    "lesson",
+    "genre:drum_and_bass",
+    "path:genre-drum-and-bass",
+    "slot:minitrack"
+  ],
+  "difficulty": "intermediate",
+  "durationMin": 12,
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Creating a new pattern (TR-REC)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7921805978489483.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — Copying the pattern of a pad",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7932327578503307.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — Playing back patterns in order (PATTERN CHAIN)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v500/en-US/7925133978493323.html",
+        "note": "v5"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — Resampling a sample (RESAMPLE)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7907213978473355.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  "objectives": [
+    {
+      "ru": "Собрать законченный DnB-трек",
+      "en": "Build a finished DnB track"
+    }
+  ],
+  "steps": [
+    {
+      "kind": "concept",
+      "text": {
+        "ru": "Что нужно: бочка, снейр, хэты, саб + средний бас, аккордовый луп, вокальный чоп.",
+        "en": "You need: kick, snare, hats, a sub + mid bass, a chord loop, a vocal chop."
+      },
+      "stepPattern": {
+        "voices": {
+          "KICK": [
+            1,
+            11
+          ],
+          "SNARE": [
+            5,
+            13
+          ],
+          "CLOSED_HAT": [
+            1,
+            3,
+            5,
+            7,
+            9,
+            11,
+            13,
+            15
+          ],
+          "OPEN_HAT": [
+            8,
+            16
+          ],
+          "BASS": [
+            1,
+            4,
+            11
+          ]
+        }
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Запусти TR-REC: [PATTERN SELECT] → [REC] → красный пэд → [REMAIN] (метод TR-REC) → [REC].",
+        "en": "Start TR-REC: [PATTERN SELECT] → [REC] → a red pad → [REMAIN] (method TR-REC) → [REC]."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "PATTERN SELECT",
+          "REC",
+          "REMAIN"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Удерживая [SUB PAD], выбери бочку и нажми пэды шагов 1, 11: пэд = шаг.",
+        "en": "Holding [SUB PAD], pick the kick and press the step pads 1, 11: pad = step."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "SUB PAD"
+        ],
+        "pads": [
+          1,
+          11
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Вариация: [COPY] → пэд паттерна → пэд назначения → [VALUE] или [COPY] (паттерн назначения перезапишется).",
+        "en": "Variation: [COPY] → the pattern's pad → the destination pad → [VALUE] or [COPY] (the destination pattern is overwritten)."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "COPY",
+          "VALUE"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Цепочка: [PATTERN SELECT] → удерживая [HOLD], нажми пэд цепочки → пэды паттернов по порядку → [EXIT].",
+        "en": "Chain: [PATTERN SELECT] → hold [HOLD] and press a chain pad → the patterns' pads in order → [EXIT]."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "PATTERN SELECT",
+          "HOLD",
+          "EXIT"
+        ]
+      }
+    },
+    {
+      "kind": "concept",
+      "text": {
+        "ru": "Сыграй цепочку целиком и запиши ресэмплом; проверь, что дроп «ударяет» после паузы.",
+        "en": "Play the whole chain and capture it with a resample; check that the drop lands after the gap."
+      },
+      "tryIt": {
+        "ru": "Сделай трек 2 минуты: интро 8, подъём 8, дроп 16, брейк 8, дроп 16.",
+        "en": "Make a two-minute track: intro 8, build 8, drop 16, break 8, drop 16."
+      }
+    }
+  ],
+  "prerequisites": [
+    "dnb-09-performance"
+  ]
+}

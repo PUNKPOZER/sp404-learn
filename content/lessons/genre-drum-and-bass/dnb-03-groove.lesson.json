@@ -1,0 +1,104 @@
+{
+  "id": "dnb-03-groove",
+  "type": "lesson",
+  "title": {
+    "ru": "Drum & Bass: Грув",
+    "en": "Drum & Bass: Groove"
+  },
+  "summary": {
+    "ru": "Жёсткая сетка и точечные сдвиги.",
+    "en": "A tight grid with pinpoint shifts."
+  },
+  "category": "genre-drum-and-bass",
+  "tags": [
+    "lesson",
+    "genre:drum_and_bass",
+    "path:genre-drum-and-bass",
+    "slot:groove"
+  ],
+  "difficulty": "intermediate",
+  "durationMin": 12,
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Creating a new pattern (TR-REC)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7921805978489483.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — Aligning the playback timing of samples inputted to a pattern (QUANTIZE)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7930714778501003.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — Creating a new pattern (TR-REC)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7921805978489483.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  "objectives": [
+    {
+      "ru": "Держать сетку жёсткой и добавлять живость малыми приёмами",
+      "en": "Keep the grid tight and add life with small moves"
+    }
+  ],
+  "steps": [
+    {
+      "kind": "concept",
+      "text": {
+        "ru": "DnB звучит собранно: свинг минимален, живость — в динамике и ghost-снейрах.",
+        "en": "DnB sounds tight: little swing, the life comes from dynamics and ghost snares."
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "VELOCITY ([CTRL 3] при вводе шага, 0–127): чередуй хэты: 110 / 70 / 40.",
+        "en": "VELOCITY ([CTRL 3] while entering a step, 0–127): alternate the hats: 110 / 70 / 40."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "CTRL 3"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Удерживая [SUB PAD], выбери снейр (ghost) и нажми пэды шагов 8, 16: пэд = шаг.",
+        "en": "Holding [SUB PAD], pick the snare (ghost) and press the step pads 8, 16: pad = step."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "SUB PAD"
+        ],
+        "pads": [
+          8,
+          16
+        ]
+      },
+      "tryIt": {
+        "ru": "Добавь тихие снейры на 8 и 16 (VELOCITY 25–35).",
+        "en": "Add quiet snares on 8 and 16 (VELOCITY 25–35)."
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Если играешь вживую, в [RECORD SETTING] включи Quantize (GRID 16) и STR около 80 %.",
+        "en": "If you play live, enable Quantize in [RECORD SETTING] (GRID 16) with STR around 80 %."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "RECORD SETTING"
+        ]
+      }
+    }
+  ],
+  "prerequisites": [
+    "dnb-02-drums"
+  ]
+}

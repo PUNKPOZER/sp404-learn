@@ -1,0 +1,86 @@
+{
+  "id": "hs-07-variation",
+  "type": "lesson",
+  "title": {
+    "ru": "House: Вариации",
+    "en": "House: Variation"
+  },
+  "summary": {
+    "ru": "Меняй по одному элементу.",
+    "en": "Change one element at a time."
+  },
+  "category": "genre-house",
+  "tags": [
+    "lesson",
+    "genre:house",
+    "path:genre-house",
+    "slot:variation"
+  ],
+  "difficulty": "beginner",
+  "durationMin": 12,
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Copying the pattern of a pad",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7932327578503307.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — Creating a new pattern (TR-REC)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7921805978489483.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  "objectives": [
+    {
+      "ru": "Сделать вариации без потери ритма",
+      "en": "Make variations without losing the rhythm"
+    }
+  ],
+  "steps": [
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Вариация: [COPY] → пэд паттерна → пэд назначения → [VALUE] или [COPY] (паттерн назначения перезапишется).",
+        "en": "Variation: [COPY] → the pattern's pad → the destination pad → [VALUE] or [COPY] (the destination pattern is overwritten)."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "COPY",
+          "VALUE"
+        ]
+      }
+    },
+    {
+      "kind": "concept",
+      "text": {
+        "ru": "Хаус держится на повторении: меняй один элемент за раз — вокал, аккорд или хэт.",
+        "en": "House lives on repetition: change one element at a time — the vocal, a chord or the hat."
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Правь копию в TR-REC.",
+        "en": "Edit the copy in TR-REC."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "PATTERN SELECT",
+          "REC",
+          "REMAIN"
+        ]
+      },
+      "tryIt": {
+        "ru": "Сделай B: клэп на 16 и вокал на 13.",
+        "en": "Make B: a clap on 16 and a vocal on 13."
+      }
+    }
+  ],
+  "prerequisites": [
+    "hs-06-fx"
+  ]
+}

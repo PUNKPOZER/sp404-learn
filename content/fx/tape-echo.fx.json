@@ -43,7 +43,7 @@
       "id": "time",
       "label": "TIME",
       "range": {
-        "ru": "10–800 mс",
+        "ru": "10–800 мс",
         "en": "10–800 msec"
       },
       "meaning": {

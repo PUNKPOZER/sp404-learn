@@ -1,0 +1,88 @@
+{
+  "id": "hs-01-what",
+  "type": "lesson",
+  "title": {
+    "ru": "House: Что делает жанр жанром",
+    "en": "House: What makes it sound like this?"
+  },
+  "summary": {
+    "ru": "Бочка в четыре, офф-бит хэт, клэп на 2 и 4 — 118–130 BPM.",
+    "en": "Four-on-the-floor kick, off-beat hats, claps on 2 and 4 — 118–130 BPM."
+  },
+  "category": "genre-house",
+  "tags": [
+    "lesson",
+    "genre:house",
+    "path:genre-house",
+    "slot:what"
+  ],
+  "difficulty": "beginner",
+  "durationMin": 12,
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Setting the tempo for a bank or project",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7936372378508683.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  "objectives": [
+    {
+      "ru": "Описать хаус тремя приметами",
+      "en": "Describe house by three traits"
+    }
+  ],
+  "steps": [
+    {
+      "kind": "concept",
+      "text": {
+        "ru": "House возник в Чикаго в начале 1980-х; темп обычно 118–130 BPM.",
+        "en": "House emerged in Chicago in the early 1980s; the tempo is usually 118–130 BPM."
+      }
+    },
+    {
+      "kind": "concept",
+      "text": {
+        "ru": "Три приметы: бочка на каждую долю, открытый хэт между бочками («и»), клэп на 2 и 4.",
+        "en": "Three traits: a kick on every beat, an open hat between the kicks (the “and”), claps on 2 and 4."
+      },
+      "why": {
+        "ru": "Из-за ровной бочки музыка «ведёт» танцпол — лишнего не нужно.",
+        "en": "The even kick drives the dance floor — nothing extra is needed."
+      }
+    },
+    {
+      "kind": "concept",
+      "text": {
+        "ru": "Бас играет между бочками — они не мешают друг другу.",
+        "en": "The bass plays between the kicks — they don't get in each other's way."
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Темп проекта 124: [SHIFT] + пэд [11], [VALUE].",
+        "en": "Project tempo 124: [SHIFT] + pad [11], then [VALUE]."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "SHIFT",
+          "VALUE"
+        ],
+        "pads": [
+          11
+        ]
+      },
+      "tryIt": {
+        "ru": "Поставь 120 и 128 и выбери, где качает сильнее.",
+        "en": "Try 120 and 128 and choose where it grooves harder."
+      }
+    }
+  ],
+  "prerequisites": [
+    "zero-11-tr-rec"
+  ]
+}

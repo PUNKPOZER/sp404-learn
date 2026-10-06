@@ -8,14 +8,14 @@ import { t } from "../lib/i18n";
 export function Courses() {
   const { courseList, progress } = useStore((s) => s);
   useEffect(() => { void loadCourses(); }, []);
-  const [tab, setTab] = useState<"paths" | "genres">("paths");
+  const [tab, setTab] = useState<"paths" | "deep" | "genres">("paths");
   return (
     <div className="screen">
-      <header className="screen-head"><h1>{t("Курсы", "Courses")}</h1><span className="hint">{tab === "paths" ? t("Пошаговые курсы: от первого включения до готового трека. Каждый шаг с кнопками сверен с руководством Roland.", "Step-by-step paths: from the first power-on to a finished track. Every button step is checked against Roland's manual.") : t("Авторские учебные паттерны по жанрам — не копии записей. Каждый курс заканчивается своим небольшим треком.", "Original teaching patterns by genre — not copies of recordings. Every course ends with its own small track.")}</span></header>
+      <header className="screen-head"><h1>{t("Курсы", "Courses")}</h1><span className="hint">{tab === "deep" ? t("10 уроков на жанр: что делает жанр жанром, барабаны, грув, бас, нарезки, эффекты, вариации, аранжировка, исполнение и мини-трек. Все паттерны — авторские.", "10 lessons per genre: what defines it, drums, groove, bass, chops, FX, variation, arrangement, performance and a mini track. All patterns are original.") : tab === "paths" ? t("Пошаговые курсы: от первого включения до готового трека. Каждый шаг с кнопками сверен с руководством Roland.", "Step-by-step paths: from the first power-on to a finished track. Every button step is checked against Roland's manual.") : t("Авторские учебные паттерны по жанрам — не копии записей. Каждый курс заканчивается своим небольшим треком.", "Original teaching patterns by genre — not copies of recordings. Every course ends with its own small track.")}</span></header>
       <div className="seg tabs" role="tablist" aria-label={t("Тип курсов", "Course type")}>
-        {(["paths", "genres"] as const).map((k) => <button key={k} role="tab" aria-selected={tab === k} className={`btn ${tab === k ? "on" : ""}`} onClick={() => setTab(k)}>{k === "paths" ? t("Обучение", "Learning paths") : t("Жанры", "Genres")}</button>)}
+        {(["paths", "deep", "genres"] as const).map((k) => <button key={k} role="tab" aria-selected={tab === k} className={`btn ${tab === k ? "on" : ""}`} onClick={() => setTab(k)}>{k === "paths" ? t("Обучение", "Learning paths") : k === "deep" ? t("Жанры: глубже", "Genre deep-dives") : t("Жанры: паттерны", "Genre patterns")}</button>)}
       </div>
-      {tab === "paths" ? <Paths /> : <>
+      {tab === "paths" ? <Paths /> : tab === "deep" ? <Paths kind="genre" /> : <>
       {courseList.length === 0 && <p className="hint">{t("Загружаю курсы…", "Loading courses…")}</p>}
       <div className="course-grid" data-tour="courses">
         {courseList.map((c, i) => (

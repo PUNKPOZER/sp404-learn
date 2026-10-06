@@ -1,0 +1,92 @@
+{
+  "id": "hs-09-performance",
+  "type": "lesson",
+  "title": {
+    "ru": "House: Исполнение",
+    "en": "House: Performance"
+  },
+  "summary": {
+    "ru": "Фильтр, mute бочки и возвращение.",
+    "en": "Filter, kick mute and the return."
+  },
+  "category": "genre-house",
+  "tags": [
+    "lesson",
+    "genre:house",
+    "path:genre-house",
+    "slot:performance"
+  ],
+  "difficulty": "beginner",
+  "durationMin": 12,
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Muting the playback of a sample (Pad MUTE)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7894388378457995.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — Turning Effects on/off at the desired timing",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7902733978467211.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  "objectives": [
+    {
+      "ru": "Играть хаус вживую",
+      "en": "Play house live"
+    }
+  ],
+  "steps": [
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Mute пэда вживую: [SHIFT] + [REVERSE] + пэд (красный). Повтор — вернуть.",
+        "en": "Live pad mute: [SHIFT] + [REVERSE] + a pad (turns red). Repeat to bring it back."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "SHIFT",
+          "REVERSE"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "EFFECT GRAB: удерживая [VALUE], нажми кнопку эффекта — он звучит, пока нажата.",
+        "en": "EFFECT GRAB: hold [VALUE] and press an effect button — it sounds while held."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "VALUE",
+          "FILTER+DRIVE"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Пауза и стоп: [SHIFT] + [HOLD] — пауза, [SHIFT] + [EXIT] — остановить всё.",
+        "en": "Pause and stop: [SHIFT] + [HOLD] pauses, [SHIFT] + [EXIT] stops everything."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "SHIFT",
+          "HOLD",
+          "EXIT"
+        ]
+      },
+      "tryIt": {
+        "ru": "Убери бочку на 8 тактов и верни её с фильтром.",
+        "en": "Drop the kick for 8 bars and bring it back with the filter."
+      }
+    }
+  ],
+  "prerequisites": [
+    "hs-08-arrangement"
+  ]
+}

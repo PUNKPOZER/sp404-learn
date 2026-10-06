@@ -103,7 +103,7 @@
       "id": "pre-delay",
       "label": "PRE DELAY",
       "range": {
-        "ru": "0–100 mс",
+        "ru": "0–100 мс",
         "en": "0–100 msec"
       },
       "meaning": {

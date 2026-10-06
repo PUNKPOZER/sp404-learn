@@ -1,0 +1,96 @@
+{
+  "id": "bb-03-groove",
+  "type": "lesson",
+  "title": {
+    "ru": "Breakbeat: Грув",
+    "en": "Breakbeat: Groove"
+  },
+  "summary": {
+    "ru": "Свинг и живая динамика.",
+    "en": "Swing and live dynamics."
+  },
+  "category": "genre-breakbeat",
+  "tags": [
+    "lesson",
+    "genre:breakbeat",
+    "path:genre-breakbeat",
+    "slot:groove"
+  ],
+  "difficulty": "intermediate",
+  "durationMin": 12,
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Creating a new pattern (TR-REC)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7921805978489483.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — Adding unique rhythmic character to a sample (Groove)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/8591783590384523.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  "objectives": [
+    {
+      "ru": "Оживить паттерн свингом и динамикой",
+      "en": "Bring a pattern to life with swing and dynamics"
+    }
+  ],
+  "steps": [
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "SHUFFLE ([CTRL 3] в параметрах паттерна, −50…+50): +8…+12 для живости.",
+        "en": "SHUFFLE ([CTRL 3] in the pattern parameters, −50…+50): +8…+12 for life."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "CTRL 3"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "VELOCITY ([CTRL 3] при вводе шага, 0–127): чередуй сильный/слабый на хэтах.",
+        "en": "VELOCITY ([CTRL 3] while entering a step, 0–127): alternate strong and weak on the hats."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "CTRL 3"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Для лупа: Groove ([PITCH/SPEED] → [ROLL]): Humanize Mid, шаблон 8<.",
+        "en": "For a loop: Groove ([PITCH/SPEED] → [ROLL]): Humanize Mid, template 8<."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "PITCH/SPEED",
+          "ROLL"
+        ]
+      }
+    },
+    {
+      "kind": "concept",
+      "text": {
+        "ru": "Эффект сильнее на лупах в 4/4 с правильным темпом сэмпла.",
+        "en": "The effect is stronger on 4/4 loops with the correct sample tempo."
+      },
+      "tryIt": {
+        "ru": "Сравни шаблоны 8< и 16< на одном лупе.",
+        "en": "Compare the templates 8< and 16< on one loop."
+      }
+    }
+  ],
+  "prerequisites": [
+    "bb-02-drums"
+  ]
+}

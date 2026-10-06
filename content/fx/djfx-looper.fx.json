@@ -1,0 +1,173 @@
+{
+  "id": "djfx-looper",
+  "type": "fx",
+  "title": {
+    "ru": "DJFX Looper",
+    "en": "DJFX Looper"
+  },
+  "summary": {
+    "ru": "Зацикливает звук короткими циклами и меняет направление и скорость воспроизведения — получается эффект проигрывателя.",
+    "en": "Loops the sound in short cycles and changes the playback direction and speed — a turntable-style effect."
+  },
+  "category": "effects",
+  "tags": [
+    "fx",
+    "fx:djfx-looper"
+  ],
+  "difficulty": "intermediate",
+  "durationMin": 8,
+  "related": [],
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — DJFX Looper",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7976359578551691.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — Adding effects to a sample (BUS FX)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7899047578463371.html",
+        "note": "v4"
+      },
+      {
+        "title": "Roland Articles — SP-404: DJFX LOOPER and How to Use It",
+        "url": "https://articles.roland.com/sp-404-djfx-looper-and-how-to-use-it/",
+        "note": "about the SP-404SX; knob roles on the MK2 may differ"
+      }
+    ],
+    "verifiedOn": "2026-10-06"
+  },
+  "button": "DJFX LOOPER",
+  "whatItDoes": {
+    "ru": "Зацикливает звук короткими циклами и меняет направление и скорость воспроизведения — получается эффект проигрывателя.",
+    "en": "Loops the sound in short cycles and changes the playback direction and speed — a turntable-style effect."
+  },
+  "controls": [
+    {
+      "id": "length",
+      "label": "LENGTH",
+      "range": {
+        "ru": "0.230–0.012 с",
+        "en": "0.230–0.012 s"
+      },
+      "meaning": {
+        "ru": "Длина цикла.",
+        "en": "Loop length."
+      }
+    },
+    {
+      "id": "speed",
+      "label": "SPEED",
+      "range": {
+        "ru": "−100…100",
+        "en": "−100…100"
+      },
+      "meaning": {
+        "ru": "Направление и скорость: отрицательное — назад, 0 — остановка, положительное — вперёд.",
+        "en": "Direction and speed: negative is backwards, 0 is a stop, positive is forwards."
+      }
+    },
+    {
+      "id": "loop",
+      "label": "LOOP SW",
+      "range": {
+        "ru": "OFF / ON",
+        "en": "OFF / ON"
+      },
+      "meaning": {
+        "ru": "Включи, пока звук играет — он зациклится на длину LENGTH.",
+        "en": "Turn it on while the sound plays — it loops at the LENGTH."
+      }
+    }
+  ],
+  "goodFor": [
+    {
+      "ru": "Повтор коротких кусков (бит-репит)",
+      "en": "Repeating short pieces (beat repeat)"
+    },
+    {
+      "ru": "Звук «скретча»: вперёд, назад, остановка",
+      "en": "A “scratch” sound: forwards, backwards, stop"
+    },
+    {
+      "ru": "Остановка и разгон звука (SPEED = 0 и обратно)",
+      "en": "Stopping and speeding up a sound (SPEED = 0 and back)"
+    }
+  ],
+  "tips": [
+    {
+      "ru": "В статье Roland про SP-404SX CTRL 1 — длина цикла, CTRL 2 — скорость, CTRL 3 — вкл/выкл. На MK2 назначение ручек проверяй по дисплею.",
+      "en": "In Roland's article about the SP-404SX, CTRL 1 is loop length, CTRL 2 is speed, CTRL 3 is on/off. On the MK2, check the knob assignment on the display."
+    }
+  ],
+  "practice": {
+    "ru": "Запусти барабанный пэд, включи LOOP SW и сыграй три разные длины цикла подряд; затем один проход назад (SPEED < 0).",
+    "en": "Start a drum pad, turn on LOOP SW and play three different loop lengths in a row; then one pass backwards (SPEED < 0)."
+  },
+  "relatedEffects": [],
+  "tryThis": [
+    {
+      "text": {
+        "ru": "Нажми [DJFX LOOPER] — эффект включится.",
+        "en": "Press [DJFX LOOPER] — the effect turns on."
+      },
+      "kind": "hardware",
+      "deviceHighlight": {
+        "controls": [
+          "DJFX LOOPER"
+        ]
+      }
+    },
+    {
+      "text": {
+        "ru": "Нажимай пэды [1]–[16] и играй сэмпл.",
+        "en": "Press pads [1]–[16] and play the sample."
+      },
+      "kind": "hardware"
+    },
+    {
+      "text": {
+        "ru": "Покрути [CTRL 1]–[CTRL 3] и смотри на дисплей: так ты найдёшь, какая ручка отвечает за LENGTH, SPEED и LOOP SW.",
+        "en": "Turn [CTRL 1]–[CTRL 3] and watch the display: that's how you find which knob controls LENGTH, SPEED and LOOP SW."
+      },
+      "kind": "hardware",
+      "deviceHighlight": {
+        "controls": [
+          "CTRL 1",
+          "CTRL 2",
+          "CTRL 3"
+        ]
+      }
+    },
+    {
+      "text": {
+        "ru": "Включи LOOP SW, пока сэмпл звучит, — звук зациклится на длину LENGTH.",
+        "en": "Turn on LOOP SW while the sample sounds — it loops at the LENGTH."
+      },
+      "kind": "hardware"
+    },
+    {
+      "text": {
+        "ru": "Меняй LENGTH: цикл станет длиннее или короче. Меняй SPEED: звук пойдёт вперёд, назад или остановится.",
+        "en": "Change LENGTH: the loop gets longer or shorter. Change SPEED: the sound goes forwards, backwards or stops."
+      },
+      "kind": "hardware"
+    },
+    {
+      "text": {
+        "ru": "Нужны дополнительные параметры эффекта — удерживай [VALUE] и крути ручки.",
+        "en": "Need more effect parameters — hold [VALUE] and turn the knobs."
+      },
+      "kind": "hardware",
+      "deviceHighlight": {
+        "controls": [
+          "VALUE",
+          "CTRL 1",
+          "CTRL 2",
+          "CTRL 3"
+        ]
+      }
+    }
+  ]
+}

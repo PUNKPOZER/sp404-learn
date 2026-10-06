@@ -1,0 +1,39 @@
+{
+  "id": "ref-ctrl",
+  "type": "reference",
+  "title": {
+    "ru": "[CTRL 1]–[CTRL 3]",
+    "en": "[CTRL 1]–[CTRL 3]"
+  },
+  "summary": {
+    "ru": "Ручки, которыми меняют параметры включённого эффекта; какая за что — видно на дисплее.",
+    "en": "The knobs that change the parameters of the active effect; the display shows which does what."
+  },
+  "category": "controls",
+  "refCategory": "controls",
+  "tags": [
+    "reference",
+    "controls"
+  ],
+  "difficulty": "beginner",
+  "durationMin": 1,
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Adding effects to a sample (BUS FX)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7899047578463371.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-06"
+  },
+  "term": {
+    "ru": "[CTRL 1]–[CTRL 3]",
+    "en": "[CTRL 1]–[CTRL 3]"
+  },
+  "answer": {
+    "ru": "Ручки, которыми меняют параметры включённого эффекта; какая за что — видно на дисплее.",
+    "en": "The knobs that change the parameters of the active effect; the display shows which does what."
+  }
+}

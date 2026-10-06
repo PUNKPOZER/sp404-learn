@@ -1,0 +1,43 @@
+{
+  "id": "ref-fx-resonator",
+  "type": "reference",
+  "title": {
+    "ru": "Resonator",
+    "en": "Resonator"
+  },
+  "summary": {
+    "ru": "Резонаторы на нотах или аккорде: ROOT, BRIGHT, FEEDBACK, CHORD, PANNING, ENV MOD.",
+    "en": "Resonators on notes or a chord: ROOT, BRIGHT, FEEDBACK, CHORD, PANNING, ENV MOD."
+  },
+  "category": "effects",
+  "refCategory": "effects",
+  "tags": [
+    "reference",
+    "effects"
+  ],
+  "difficulty": "beginner",
+  "durationMin": 1,
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Resonator",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v200/eng/37138873.html",
+        "note": "v2.00"
+      }
+    ],
+    "verifiedOn": "2026-10-06"
+  },
+  "term": {
+    "ru": "Resonator",
+    "en": "Resonator"
+  },
+  "answer": {
+    "ru": "Резонаторы на нотах или аккорде: ROOT, BRIGHT, FEEDBACK, CHORD, PANNING, ENV MOD.",
+    "en": "Resonators on notes or a chord: ROOT, BRIGHT, FEEDBACK, CHORD, PANNING, ENV MOD."
+  },
+  "see": {
+    "type": "fx",
+    "id": "resonator"
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "id": "ref-exit",
+  "type": "reference",
+  "title": {
+    "ru": "[EXIT]",
+    "en": "[EXIT]"
+  },
+  "summary": {
+    "ru": "Завершает действие и возвращает к предыдущему экрану: в MUTE GROUP сохраняет настройки, в TR-REC два нажатия сохраняют паттерн. В skip-back без назначения на пэд память теряется.",
+    "en": "Finishes the action and returns to the previous screen: in MUTE GROUP it saves the settings, in TR-REC two presses save the pattern. In skip-back, the memory is lost if it isn't assigned to a pad."
+  },
+  "category": "controls",
+  "refCategory": "controls",
+  "tags": [
+    "reference",
+    "controls"
+  ],
+  "difficulty": "beginner",
+  "durationMin": 1,
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Preventing samples from playing back at the same time (MUTE GROUP)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7895796378459531.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — Sampling what you previously played (SKIP-BACK SAMPLING)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7907879578474123.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-06"
+  },
+  "term": {
+    "ru": "[EXIT]",
+    "en": "[EXIT]"
+  },
+  "answer": {
+    "ru": "Завершает действие и возвращает к предыдущему экрану: в MUTE GROUP сохраняет настройки, в TR-REC два нажатия сохраняют паттерн. В skip-back без назначения на пэд память теряется.",
+    "en": "Finishes the action and returns to the previous screen: in MUTE GROUP it saves the settings, in TR-REC two presses save the pattern. In skip-back, the memory is lost if it isn't assigned to a pad."
+  }
+}

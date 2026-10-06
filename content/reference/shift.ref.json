@@ -1,0 +1,39 @@
+{
+  "id": "ref-shift",
+  "type": "reference",
+  "title": {
+    "ru": "[SHIFT]",
+    "en": "[SHIFT]"
+  },
+  "summary": {
+    "ru": "Модификатор: вместе с пэдами открывает экраны и функции (например, [SHIFT] + пэд [8] — MUTE GROUP).",
+    "en": "Modifier: together with pads it opens screens and functions (for example [SHIFT] + pad [8] — MUTE GROUP)."
+  },
+  "category": "controls",
+  "refCategory": "controls",
+  "tags": [
+    "reference",
+    "controls"
+  ],
+  "difficulty": "beginner",
+  "durationMin": 1,
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Preventing samples from playing back at the same time (MUTE GROUP)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7895796378459531.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-06"
+  },
+  "term": {
+    "ru": "[SHIFT]",
+    "en": "[SHIFT]"
+  },
+  "answer": {
+    "ru": "Модификатор: вместе с пэдами открывает экраны и функции (например, [SHIFT] + пэд [8] — MUTE GROUP).",
+    "en": "Modifier: together with pads it opens screens and functions (for example [SHIFT] + pad [8] — MUTE GROUP)."
+  }
+}

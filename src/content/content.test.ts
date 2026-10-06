@@ -4,6 +4,7 @@ import { TRICKS, PLANNED_TOPICS } from "./tricks";
 import { REFERENCE, searchReference } from "./reference";
 import { verified, type Source } from "./types";
 import { stepsFromContent } from "./toSteps";
+import { PLANNED } from "./load";
 
 const roland = (s: Source) => /^https:\/\/(static|articles)\.roland\.com\//.test(s.url);
 
@@ -15,10 +16,10 @@ describe("verified-only content rule", () => {
       for (const s of item.sources) { expect(roland(s), `${item.id}: ${s.url}`).toBe(true); expect(s.verifiedOn).toMatch(/^\d{4}-\d{2}-\d{2}$/); }
     }
   });
-  it("todo items carry no instructional content", () => {
-    for (const f of FX.filter((x) => x.status === "todo")) { expect(f.tryThis).toHaveLength(0); expect(f.whatItDoes).toBe(""); }
-    for (const t of TRICKS.filter((x) => x.status === "todo")) { expect(t.steps).toHaveLength(0); expect(t.summary).toBe(""); }
+  it("unverified (needs_review / planned) items never reach the production lists", () => {
+    expect([...FX, ...TRICKS, ...REFERENCE].every((x) => x.status === "verified")).toBe(true);
     expect(PLANNED_TOPICS.length).toBeGreaterThan(5);
+    expect(PLANNED.fx.length).toBeGreaterThan(0);
   });
   it("verified items are complete", () => {
     for (const f of verified(FX)) { expect(f.params.length, f.id).toBeGreaterThan(0); expect(f.tryThis.length, f.id).toBeGreaterThan(1); expect(f.useFor.length, f.id).toBeGreaterThan(0); }

@@ -1,0 +1,44 @@
+{
+  "id": "ref-value",
+  "type": "reference",
+  "title": {
+    "ru": "[VALUE]",
+    "en": "[VALUE]"
+  },
+  "summary": {
+    "ru": "Ручка выбора значений (например, группа A–J в MUTE GROUP). Если удерживать её и крутить ручки CTRL, открываются дополнительные параметры эффекта.",
+    "en": "The value knob (for example the group A–J in MUTE GROUP). Hold it and turn the CTRL knobs to open extra effect parameters."
+  },
+  "category": "controls",
+  "refCategory": "controls",
+  "tags": [
+    "reference",
+    "controls"
+  ],
+  "difficulty": "beginner",
+  "durationMin": 1,
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Preventing samples from playing back at the same time (MUTE GROUP)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7895796378459531.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — Adding effects to a sample (BUS FX)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7899047578463371.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-06"
+  },
+  "term": {
+    "ru": "[VALUE]",
+    "en": "[VALUE]"
+  },
+  "answer": {
+    "ru": "Ручка выбора значений (например, группа A–J в MUTE GROUP). Если удерживать её и крутить ручки CTRL, открываются дополнительные параметры эффекта.",
+    "en": "The value knob (for example the group A–J in MUTE GROUP). Hold it and turn the CTRL knobs to open extra effect parameters."
+  }
+}

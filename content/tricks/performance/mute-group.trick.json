@@ -1,0 +1,91 @@
+{
+  "id": "mute-group",
+  "type": "trick",
+  "title": {
+    "ru": "Mute Group: не слоить сэмплы",
+    "en": "Mute Group: don't layer samples"
+  },
+  "summary": {
+    "ru": "Объедини сэмплы, которые не должны звучать одновременно (например, закрытый и открытый хэт).",
+    "en": "Group samples that shouldn't sound at the same time (for example closed and open hat)."
+  },
+  "category": "performance",
+  "categoryGroup": "performance",
+  "topic": "mute groups",
+  "tags": [
+    "trick",
+    "topic:mute groups"
+  ],
+  "difficulty": "beginner",
+  "durationMin": 4,
+  "related": [],
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Preventing samples from playing back at the same time (MUTE GROUP)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7895796378459531.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-06"
+  },
+  "steps": [
+    {
+      "text": {
+        "ru": "Удерживая [SHIFT], нажми пэд [8] — откроется экран MUTE GROUP.",
+        "en": "Holding [SHIFT], press pad [8] — the MUTE GROUP screen opens."
+      },
+      "kind": "hardware",
+      "deviceHighlight": {
+        "controls": [
+          "SHIFT"
+        ],
+        "pads": [
+          8
+        ]
+      }
+    },
+    {
+      "text": {
+        "ru": "Ручкой [VALUE] выбери группу (A–J).",
+        "en": "Use the [VALUE] knob to choose a group (A–J)."
+      },
+      "kind": "hardware",
+      "deviceHighlight": {
+        "controls": [
+          "VALUE"
+        ]
+      }
+    },
+    {
+      "text": {
+        "ru": "Нажми пэды [1]–[16] с сэмплами, которые войдут в группу.",
+        "en": "Press pads [1]–[16] with the samples that will join the group."
+      },
+      "kind": "hardware"
+    },
+    {
+      "text": {
+        "ru": "Нажми [EXIT], чтобы сохранить.",
+        "en": "Press [EXIT] to save."
+      },
+      "kind": "hardware",
+      "deviceHighlight": {
+        "controls": [
+          "EXIT"
+        ]
+      }
+    }
+  ],
+  "notes": [
+    {
+      "ru": "Из пэдов одной группы звучит только последний сыгранный.",
+      "en": "Of the pads in one group, only the last one played sounds."
+    },
+    {
+      "ru": "Всего до 10 групп (A–J), в группе до 16 сэмплов.",
+      "en": "Up to 10 groups (A–J) in total, up to 16 samples per group."
+    }
+  ]
+}

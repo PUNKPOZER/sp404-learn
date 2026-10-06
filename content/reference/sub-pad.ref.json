@@ -1,0 +1,44 @@
+{
+  "id": "ref-sub-pad",
+  "type": "reference",
+  "title": {
+    "ru": "[SUB PAD]",
+    "en": "[SUB PAD]"
+  },
+  "summary": {
+    "ru": "Удерживая её в TR-REC, выбираешь пэд с сэмплом; в цепочке паттернов запускает и останавливает воспроизведение.",
+    "en": "Held in TR-REC, you choose the pad with the sample; in a pattern chain it starts and stops playback."
+  },
+  "category": "controls",
+  "refCategory": "controls",
+  "tags": [
+    "reference",
+    "controls"
+  ],
+  "difficulty": "beginner",
+  "durationMin": 1,
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Creating a new pattern (TR-REC)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7921805978489483.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — Playing back patterns in order (PATTERN CHAIN)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v500/en-US/7925133978493323.html",
+        "note": "v5"
+      }
+    ],
+    "verifiedOn": "2026-10-06"
+  },
+  "term": {
+    "ru": "[SUB PAD]",
+    "en": "[SUB PAD]"
+  },
+  "answer": {
+    "ru": "Удерживая её в TR-REC, выбираешь пэд с сэмплом; в цепочке паттернов запускает и останавливает воспроизведение.",
+    "en": "Held in TR-REC, you choose the pad with the sample; in a pattern chain it starts and stops playback."
+  }
+}

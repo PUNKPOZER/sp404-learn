@@ -1,0 +1,99 @@
+{
+  "id": "skip-back",
+  "type": "trick",
+  "title": {
+    "ru": "Skip Back: поймать то, что только что сыграл",
+    "en": "Skip Back: catch what you just played"
+  },
+  "summary": {
+    "ru": "Сэмплируй звук, который играл до этого, даже если запись не была включена.",
+    "en": "Sample sound that played before, even if recording wasn't on."
+  },
+  "category": "resampling",
+  "categoryGroup": "resampling",
+  "topic": "skip back",
+  "tags": [
+    "trick",
+    "topic:skip back"
+  ],
+  "difficulty": "beginner",
+  "durationMin": 5,
+  "related": [],
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Sampling what you previously played (SKIP-BACK SAMPLING)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7907879578474123.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-06"
+  },
+  "steps": [
+    {
+      "text": {
+        "ru": "Играй сэмпл или паттерн — или включи [EXT SOURCE] и играй на подключённом инструменте.",
+        "en": "Play a sample or pattern — or turn on [EXT SOURCE] and play a connected instrument."
+      },
+      "kind": "hardware",
+      "deviceHighlight": {
+        "controls": [
+          "EXT SOURCE"
+        ]
+      }
+    },
+    {
+      "text": {
+        "ru": "Когда звук превысит уровень триггера, прибор пишет в skip-back память, а кнопка [MARK] мигает.",
+        "en": "When the sound exceeds the trigger level, the unit records into skip-back memory and the [MARK] button blinks."
+      },
+      "kind": "hardware"
+    },
+    {
+      "text": {
+        "ru": "Нажми [MARK]. После надписи «SKIP BACK…» на экране появится волна.",
+        "en": "Press [MARK]. After “SKIP BACK…” appears on the screen, the waveform shows up."
+      },
+      "kind": "hardware",
+      "deviceHighlight": {
+        "controls": [
+          "MARK"
+        ]
+      }
+    },
+    {
+      "text": {
+        "ru": "Нажми [REC]. Появится «Select Pad To Save»: пустые пэды мигают красным.",
+        "en": "Press [REC]. “Select Pad To Save” appears: empty pads blink red."
+      },
+      "kind": "hardware",
+      "deviceHighlight": {
+        "controls": [
+          "REC"
+        ]
+      }
+    },
+    {
+      "text": {
+        "ru": "Нажми один из пэдов [1]–[16] — аудио из skip-back памяти сохранится на него.",
+        "en": "Press one of pads [1]–[16] — the audio from skip-back memory is saved to it."
+      },
+      "kind": "hardware"
+    }
+  ],
+  "notes": [
+    {
+      "ru": "По умолчанию хранится до 25 секунд; при параметре Mark Function = «SBS Long» — до 40 секунд.",
+      "en": "Up to 25 seconds are kept by default; with Mark Function = “SBS Long”, up to 40 seconds."
+    },
+    {
+      "ru": "Если нажать [EXIT] или выключить прибор, не назначив память на пэд, она потеряется.",
+      "en": "If you press [EXIT] or power off without assigning the memory to a pad, it is lost."
+    },
+    {
+      "ru": "Skip-back и looper одновременно использовать нельзя.",
+      "en": "Skip-back and the looper can't be used at the same time."
+    }
+  ]
+}

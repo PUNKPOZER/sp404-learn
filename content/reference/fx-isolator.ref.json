@@ -1,0 +1,43 @@
+{
+  "id": "ref-fx-isolator",
+  "type": "reference",
+  "title": {
+    "ru": "Isolator",
+    "en": "Isolator"
+  },
+  "summary": {
+    "ru": "Раздельная регулировка низа, середины и верха (LOW, MID, HIGH).",
+    "en": "Separate control of lows, mids and highs (LOW, MID, HIGH)."
+  },
+  "category": "effects",
+  "refCategory": "effects",
+  "tags": [
+    "reference",
+    "effects"
+  ],
+  "difficulty": "beginner",
+  "durationMin": 1,
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Isolator",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference/eng/17805582.html",
+        "note": "original manual"
+      }
+    ],
+    "verifiedOn": "2026-10-06"
+  },
+  "term": {
+    "ru": "Isolator",
+    "en": "Isolator"
+  },
+  "answer": {
+    "ru": "Раздельная регулировка низа, середины и верха (LOW, MID, HIGH).",
+    "en": "Separate control of lows, mids and highs (LOW, MID, HIGH)."
+  },
+  "see": {
+    "type": "fx",
+    "id": "isolator"
+  }
+}

@@ -1,0 +1,120 @@
+{
+  "id": "resample-pattern",
+  "type": "trick",
+  "title": {
+    "ru": "Resample: превратить паттерн в сэмпл",
+    "en": "Resample: turn a pattern into a sample"
+  },
+  "summary": {
+    "ru": "Запиши играющий паттерн как новый сэмпл на пэд — и работай с ним дальше.",
+    "en": "Record the playing pattern as a new sample on a pad — and keep working with it."
+  },
+  "category": "resampling",
+  "categoryGroup": "resampling",
+  "topic": "resampling",
+  "tags": [
+    "trick",
+    "topic:resampling"
+  ],
+  "difficulty": "intermediate",
+  "durationMin": 6,
+  "related": [],
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Sampling a pattern (RESAMPLE)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7923444378491019.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-06"
+  },
+  "steps": [
+    {
+      "text": {
+        "ru": "Нажми [PATTERN SELECT].",
+        "en": "Press [PATTERN SELECT]."
+      },
+      "kind": "hardware",
+      "deviceHighlight": {
+        "controls": [
+          "PATTERN SELECT"
+        ]
+      }
+    },
+    {
+      "text": {
+        "ru": "Нажми [RESAMPLE].",
+        "en": "Press [RESAMPLE]."
+      },
+      "kind": "hardware",
+      "deviceHighlight": {
+        "controls": [
+          "RESAMPLE"
+        ]
+      }
+    },
+    {
+      "text": {
+        "ru": "Нажми [RECORD SETTING] и ручкой [CTRL 2] выставь ROUTING = «Mix».",
+        "en": "Press [RECORD SETTING] and set ROUTING = “Mix” with the [CTRL 2] knob."
+      },
+      "kind": "hardware",
+      "deviceHighlight": {
+        "controls": [
+          "CTRL 2"
+        ]
+      }
+    },
+    {
+      "text": {
+        "ru": "Нажми [EXIT].",
+        "en": "Press [EXIT]."
+      },
+      "kind": "hardware",
+      "deviceHighlight": {
+        "controls": [
+          "EXIT"
+        ]
+      }
+    },
+    {
+      "text": {
+        "ru": "Нажми красно мигающий пэд [1]–[16] — сюда сохранится новый сэмпл.",
+        "en": "Press the red blinking pad [1]–[16] — the new sample will be saved here."
+      },
+      "kind": "hardware"
+    },
+    {
+      "text": {
+        "ru": "Нажми пэд [1]–[16] паттерна, который хочешь засэмплировать.",
+        "en": "Press the pad [1]–[16] of the pattern you want to resample."
+      },
+      "kind": "hardware"
+    },
+    {
+      "text": {
+        "ru": "Сэмплирование начнётся само, когда паттерн заиграет. [REC] — закончить, [EXIT] — отменить.",
+        "en": "Sampling starts by itself when the pattern starts playing. [REC] finishes, [EXIT] cancels."
+      },
+      "kind": "hardware",
+      "deviceHighlight": {
+        "controls": [
+          "REC",
+          "EXIT"
+        ]
+      }
+    }
+  ],
+  "notes": [
+    {
+      "ru": "Пустые пэды мигают красным, пэды с записанным паттерном — синим.",
+      "en": "Empty pads blink red, pads with a recorded pattern blink blue."
+    },
+    {
+      "ru": "Если ROUTING = «ExtIn», сэмплируется только внешний звук, без собственного звука сэмпла.",
+      "en": "If ROUTING = “ExtIn”, only the external sound is sampled, without the sample's own sound."
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "id": "ref-rec",
+  "type": "reference",
+  "title": {
+    "ru": "[REC]",
+    "en": "[REC]"
+  },
+  "summary": {
+    "ru": "Начинает запись: в TR-REC — запись паттерна, в skip-back — сохранение захваченного звука на пэд.",
+    "en": "Starts recording: in TR-REC it records the pattern, in skip-back it saves the captured sound to a pad."
+  },
+  "category": "controls",
+  "refCategory": "controls",
+  "tags": [
+    "reference",
+    "controls"
+  ],
+  "difficulty": "beginner",
+  "durationMin": 1,
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Creating a new pattern (TR-REC)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7921805978489483.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — Sampling what you previously played (SKIP-BACK SAMPLING)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7907879578474123.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-06"
+  },
+  "term": {
+    "ru": "[REC]",
+    "en": "[REC]"
+  },
+  "answer": {
+    "ru": "Начинает запись: в TR-REC — запись паттерна, в skip-back — сохранение захваченного звука на пэд.",
+    "en": "Starts recording: in TR-REC it records the pattern, in skip-back it saves the captured sound to a pad."
+  }
+}

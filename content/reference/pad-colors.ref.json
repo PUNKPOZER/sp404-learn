@@ -1,0 +1,44 @@
+{
+  "id": "ref-pad-colors",
+  "type": "reference",
+  "title": {
+    "ru": "Цвет мигающих пэдов",
+    "en": "Colour of blinking pads"
+  },
+  "summary": {
+    "ru": "При записи паттерна пустые пэды мигают красным, а пэды с уже записанным паттерном — синим.",
+    "en": "When recording a pattern, empty pads blink red and pads with a recorded pattern blink blue."
+  },
+  "category": "concepts",
+  "refCategory": "concepts",
+  "tags": [
+    "reference",
+    "concepts"
+  ],
+  "difficulty": "beginner",
+  "durationMin": 1,
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Sampling a pattern (RESAMPLE)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7923444378491019.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — Creating a new pattern (TR-REC)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7921805978489483.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-06"
+  },
+  "term": {
+    "ru": "Цвет мигающих пэдов",
+    "en": "Colour of blinking pads"
+  },
+  "answer": {
+    "ru": "При записи паттерна пустые пэды мигают красным, а пэды с уже записанным паттерном — синим.",
+    "en": "When recording a pattern, empty pads blink red and pads with a recorded pattern blink blue."
+  }
+}

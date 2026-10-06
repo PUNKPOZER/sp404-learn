@@ -1,0 +1,43 @@
+{
+  "id": "ref-mark",
+  "type": "reference",
+  "title": {
+    "ru": "[MARK]",
+    "en": "[MARK]"
+  },
+  "summary": {
+    "ru": "В skip-back показывает волну захваченного звука; мигает, когда звук записывается в skip-back память.",
+    "en": "In skip-back it shows the waveform of the captured sound; it blinks while sound is being recorded into skip-back memory."
+  },
+  "category": "controls",
+  "refCategory": "controls",
+  "tags": [
+    "reference",
+    "controls"
+  ],
+  "difficulty": "beginner",
+  "durationMin": 1,
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Sampling what you previously played (SKIP-BACK SAMPLING)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7907879578474123.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-06"
+  },
+  "term": {
+    "ru": "[MARK]",
+    "en": "[MARK]"
+  },
+  "answer": {
+    "ru": "В skip-back показывает волну захваченного звука; мигает, когда звук записывается в skip-back память.",
+    "en": "In skip-back it shows the waveform of the captured sound; it blinks while sound is being recorded into skip-back memory."
+  },
+  "see": {
+    "type": "trick",
+    "id": "skip-back"
+  }
+}

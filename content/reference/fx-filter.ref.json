@@ -1,0 +1,43 @@
+{
+  "id": "ref-fx-filter",
+  "type": "reference",
+  "title": {
+    "ru": "Filter+Drive",
+    "en": "Filter+Drive"
+  },
+  "summary": {
+    "ru": "Фильтр с овердрайвом: CUTOFF, RESONANCE, DRIVE, FLT TYPE, LOW FREQ, LOW GAIN.",
+    "en": "A filter with overdrive: CUTOFF, RESONANCE, DRIVE, FLT TYPE, LOW FREQ, LOW GAIN."
+  },
+  "category": "effects",
+  "refCategory": "effects",
+  "tags": [
+    "reference",
+    "effects"
+  ],
+  "difficulty": "beginner",
+  "durationMin": 1,
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Filter+Drive",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v200/eng/37138874.html",
+        "note": "v2.00"
+      }
+    ],
+    "verifiedOn": "2026-10-06"
+  },
+  "term": {
+    "ru": "Filter+Drive",
+    "en": "Filter+Drive"
+  },
+  "answer": {
+    "ru": "Фильтр с овердрайвом: CUTOFF, RESONANCE, DRIVE, FLT TYPE, LOW FREQ, LOW GAIN.",
+    "en": "A filter with overdrive: CUTOFF, RESONANCE, DRIVE, FLT TYPE, LOW FREQ, LOW GAIN."
+  },
+  "see": {
+    "type": "fx",
+    "id": "filter-drive"
+  }
+}

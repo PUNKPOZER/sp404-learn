@@ -1,0 +1,130 @@
+{
+  "id": "isolator",
+  "type": "fx",
+  "title": {
+    "ru": "Isolator",
+    "en": "Isolator"
+  },
+  "summary": {
+    "ru": "Убирает звук в заданном диапазоне частот — раздельная регулировка низа, середины и верха.",
+    "en": "Removes sound in a chosen frequency range — separate control of lows, mids and highs."
+  },
+  "category": "effects",
+  "tags": [
+    "fx",
+    "fx:isolator"
+  ],
+  "difficulty": "beginner",
+  "durationMin": 5,
+  "related": [],
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Isolator",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference/eng/17805582.html",
+        "note": "original manual"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — Adding effects to a sample (BUS FX)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7899047578463371.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-06"
+  },
+  "button": "ISOLATOR",
+  "whatItDoes": {
+    "ru": "Убирает звук в заданном диапазоне частот — раздельная регулировка низа, середины и верха.",
+    "en": "Removes sound in a chosen frequency range — separate control of lows, mids and highs."
+  },
+  "controls": [
+    {
+      "id": "low",
+      "label": "LOW",
+      "range": {
+        "ru": "−∞…+12 дБ",
+        "en": "−∞…+12 dB"
+      },
+      "meaning": {
+        "ru": "Низкие частоты.",
+        "en": "Low frequencies."
+      }
+    },
+    {
+      "id": "mid",
+      "label": "MID",
+      "range": {
+        "ru": "−∞…+12 дБ",
+        "en": "−∞…+12 dB"
+      },
+      "meaning": {
+        "ru": "Средние частоты.",
+        "en": "Mid frequencies."
+      }
+    },
+    {
+      "id": "high",
+      "label": "HIGH",
+      "range": {
+        "ru": "−∞…+12 дБ",
+        "en": "−∞…+12 dB"
+      },
+      "meaning": {
+        "ru": "Высокие частоты.",
+        "en": "High frequencies."
+      }
+    }
+  ],
+  "goodFor": [
+    {
+      "ru": "Убрать низ, середину или верх из сэмпла",
+      "en": "Remove the lows, mids or highs from a sample"
+    },
+    {
+      "ru": "Оставить только один диапазон частот",
+      "en": "Keep only one frequency range"
+    }
+  ],
+  "tips": [],
+  "practice": {
+    "ru": "Играй полный луп и по очереди «выключай» LOW, MID и HIGH — запомни, что несёт каждый диапазон.",
+    "en": "Play a full loop and “switch off” LOW, MID and HIGH in turn — remember what each range carries."
+  },
+  "relatedEffects": [],
+  "tryThis": [
+    {
+      "text": {
+        "ru": "Нажми [ISOLATOR] — эффект включится.",
+        "en": "Press [ISOLATOR] — the effect turns on."
+      },
+      "kind": "hardware",
+      "deviceHighlight": {
+        "controls": [
+          "ISOLATOR"
+        ]
+      }
+    },
+    {
+      "text": {
+        "ru": "Нажимай пэды [1]–[16] и играй сэмпл.",
+        "en": "Press pads [1]–[16] and play the sample."
+      },
+      "kind": "hardware"
+    },
+    {
+      "text": {
+        "ru": "Крути [CTRL 1]–[CTRL 3], глядя на дисплей, и по очереди убирай диапазоны.",
+        "en": "Turn [CTRL 1]–[CTRL 3] while watching the display and remove the ranges one by one."
+      },
+      "kind": "hardware",
+      "deviceHighlight": {
+        "controls": [
+          "CTRL 1",
+          "CTRL 2",
+          "CTRL 3"
+        ]
+      }
+    }
+  ]
+}

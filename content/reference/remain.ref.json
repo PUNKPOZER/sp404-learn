@@ -1,0 +1,44 @@
+{
+  "id": "ref-remain",
+  "type": "reference",
+  "title": {
+    "ru": "[REMAIN]",
+    "en": "[REMAIN]"
+  },
+  "summary": {
+    "ru": "В режиме записи паттерна переключает способ записи на «TR-REC»; в редакторе цепочки паттернов переключает повтор (All / Current / Off).",
+    "en": "In pattern recording it switches the recording method to “TR-REC”; in the pattern chain editor it switches repeat (All / Current / Off)."
+  },
+  "category": "controls",
+  "refCategory": "controls",
+  "tags": [
+    "reference",
+    "controls"
+  ],
+  "difficulty": "beginner",
+  "durationMin": 1,
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Creating a new pattern (TR-REC)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7921805978489483.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — Playing back patterns in order (PATTERN CHAIN)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v500/en-US/7925133978493323.html",
+        "note": "v5"
+      }
+    ],
+    "verifiedOn": "2026-10-06"
+  },
+  "term": {
+    "ru": "[REMAIN]",
+    "en": "[REMAIN]"
+  },
+  "answer": {
+    "ru": "В режиме записи паттерна переключает способ записи на «TR-REC»; в редакторе цепочки паттернов переключает повтор (All / Current / Off).",
+    "en": "In pattern recording it switches the recording method to “TR-REC”; in the pattern chain editor it switches repeat (All / Current / Off)."
+  }
+}

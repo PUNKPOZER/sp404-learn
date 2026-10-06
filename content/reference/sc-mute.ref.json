@@ -1,0 +1,43 @@
+{
+  "id": "ref-sc-mute",
+  "type": "reference",
+  "title": {
+    "ru": "[SHIFT] + пэд [8]",
+    "en": "[SHIFT] + pad [8]"
+  },
+  "summary": {
+    "ru": "Открывает экран MUTE GROUP.",
+    "en": "Opens the MUTE GROUP screen."
+  },
+  "category": "shortcuts",
+  "refCategory": "shortcuts",
+  "tags": [
+    "reference",
+    "shortcuts"
+  ],
+  "difficulty": "beginner",
+  "durationMin": 1,
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Preventing samples from playing back at the same time (MUTE GROUP)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7895796378459531.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-06"
+  },
+  "term": {
+    "ru": "[SHIFT] + пэд [8]",
+    "en": "[SHIFT] + pad [8]"
+  },
+  "answer": {
+    "ru": "Открывает экран MUTE GROUP.",
+    "en": "Opens the MUTE GROUP screen."
+  },
+  "see": {
+    "type": "trick",
+    "id": "mute-group"
+  }
+}

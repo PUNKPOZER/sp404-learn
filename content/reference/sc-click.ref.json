@@ -1,0 +1,39 @@
+{
+  "id": "ref-sc-click",
+  "type": "reference",
+  "title": {
+    "ru": "[SHIFT] + пэд [9]",
+    "en": "[SHIFT] + pad [9]"
+  },
+  "summary": {
+    "ru": "Включает и выключает метроном (параметр SYSTEM «CLICK»).",
+    "en": "Turns the metronome on and off (SYSTEM parameter “CLICK”)."
+  },
+  "category": "shortcuts",
+  "refCategory": "shortcuts",
+  "tags": [
+    "reference",
+    "shortcuts"
+  ],
+  "difficulty": "beginner",
+  "durationMin": 1,
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Sampling a pattern (RESAMPLE)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7923444378491019.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-06"
+  },
+  "term": {
+    "ru": "[SHIFT] + пэд [9]",
+    "en": "[SHIFT] + pad [9]"
+  },
+  "answer": {
+    "ru": "Включает и выключает метроном (параметр SYSTEM «CLICK»).",
+    "en": "Turns the metronome on and off (SYSTEM parameter “CLICK”)."
+  }
+}

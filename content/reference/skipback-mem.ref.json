@@ -1,0 +1,43 @@
+{
+  "id": "ref-skipback-mem",
+  "type": "reference",
+  "title": {
+    "ru": "Skip-back память",
+    "en": "Skip-back memory"
+  },
+  "summary": {
+    "ru": "Хранит последние до 25 секунд звука (до 40 при Mark Function = «SBS Long»). Теряется, если не назначить на пэд до [EXIT] или выключения.",
+    "en": "Keeps up to the last 25 seconds of sound (up to 40 with Mark Function = “SBS Long”). It is lost if not assigned to a pad before [EXIT] or power-off."
+  },
+  "category": "concepts",
+  "refCategory": "concepts",
+  "tags": [
+    "reference",
+    "concepts"
+  ],
+  "difficulty": "beginner",
+  "durationMin": 1,
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Sampling what you previously played (SKIP-BACK SAMPLING)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7907879578474123.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-06"
+  },
+  "term": {
+    "ru": "Skip-back память",
+    "en": "Skip-back memory"
+  },
+  "answer": {
+    "ru": "Хранит последние до 25 секунд звука (до 40 при Mark Function = «SBS Long»). Теряется, если не назначить на пэд до [EXIT] или выключения.",
+    "en": "Keeps up to the last 25 seconds of sound (up to 40 with Mark Function = “SBS Long”). It is lost if not assigned to a pad before [EXIT] or power-off."
+  },
+  "see": {
+    "type": "trick",
+    "id": "skip-back"
+  }
+}

@@ -1,0 +1,182 @@
+{
+  "id": "filter-drive",
+  "type": "fx",
+  "title": {
+    "ru": "Filter+Drive",
+    "en": "Filter+Drive"
+  },
+  "summary": {
+    "ru": "Фильтр с овердрайвом: срезает заданные частоты и добавляет дисторшн.",
+    "en": "A filter with overdrive: cuts the chosen frequencies and adds distortion."
+  },
+  "category": "effects",
+  "tags": [
+    "fx",
+    "fx:filter-drive"
+  ],
+  "difficulty": "beginner",
+  "durationMin": 6,
+  "related": [],
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Filter+Drive",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v200/eng/37138874.html",
+        "note": "v2.00"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — Adding effects to a sample (BUS FX)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7899047578463371.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-06"
+  },
+  "button": "FILTER+DRIVE",
+  "whatItDoes": {
+    "ru": "Фильтр с овердрайвом: срезает заданные частоты и добавляет дисторшн.",
+    "en": "A filter with overdrive: cuts the chosen frequencies and adds distortion."
+  },
+  "controls": [
+    {
+      "id": "cutoff",
+      "label": "CUTOFF",
+      "range": {
+        "ru": "20–16000 Гц",
+        "en": "20–16000 Hz"
+      },
+      "meaning": {
+        "ru": "Частота среза.",
+        "en": "Cutoff frequency."
+      }
+    },
+    {
+      "id": "resonance",
+      "label": "RESONANCE",
+      "range": {
+        "ru": "0–100",
+        "en": "0–100"
+      },
+      "meaning": {
+        "ru": "Чем больше значение, тем сильнее подчёркивается область около CUTOFF.",
+        "en": "The higher the value, the more the area around CUTOFF is emphasised."
+      }
+    },
+    {
+      "id": "drive",
+      "label": "DRIVE",
+      "range": {
+        "ru": "0–100",
+        "en": "0–100"
+      },
+      "meaning": {
+        "ru": "Добавляет дисторшн.",
+        "en": "Adds distortion."
+      }
+    },
+    {
+      "id": "type",
+      "label": "FLT TYPE",
+      "range": {
+        "ru": "HPF / LPF",
+        "en": "HPF / LPF"
+      },
+      "meaning": {
+        "ru": "Тип фильтра: HPF срезает низкие частоты, LPF — высокие.",
+        "en": "Filter type: HPF cuts low frequencies, LPF cuts high ones."
+      }
+    },
+    {
+      "id": "lowfreq",
+      "label": "LOW FREQ",
+      "range": {
+        "ru": "20–16000 Гц",
+        "en": "20–16000 Hz"
+      },
+      "meaning": {
+        "ru": "Частота, которую поднимают или срезают.",
+        "en": "The frequency that is boosted or cut."
+      }
+    },
+    {
+      "id": "lowgain",
+      "label": "LOW GAIN",
+      "range": {
+        "ru": "−24…24 дБ",
+        "en": "−24…24 dB"
+      },
+      "meaning": {
+        "ru": "Величина подъёма или среза.",
+        "en": "Amount of boost or cut."
+      }
+    }
+  ],
+  "goodFor": [
+    {
+      "ru": "Срезать низкие или высокие частоты",
+      "en": "Cut low or high frequencies"
+    },
+    {
+      "ru": "Добавить дисторшн (DRIVE)",
+      "en": "Add distortion (DRIVE)"
+    },
+    {
+      "ru": "Подчеркнуть область около частоты среза (RESONANCE)",
+      "en": "Emphasise the area around the cutoff (RESONANCE)"
+    }
+  ],
+  "tips": [],
+  "practice": {
+    "ru": "Играй барабанный луп и медленно двигай CUTOFF от одного края к другому; затем добавь DRIVE.",
+    "en": "Play a drum loop and slowly move CUTOFF from one end to the other; then add DRIVE."
+  },
+  "relatedEffects": [],
+  "tryThis": [
+    {
+      "text": {
+        "ru": "Нажми [FILTER+DRIVE] — эффект включится.",
+        "en": "Press [FILTER+DRIVE] — the effect turns on."
+      },
+      "kind": "hardware",
+      "deviceHighlight": {
+        "controls": [
+          "FILTER+DRIVE"
+        ]
+      }
+    },
+    {
+      "text": {
+        "ru": "Нажимай пэды [1]–[16] и играй сэмпл.",
+        "en": "Press pads [1]–[16] and play the sample."
+      },
+      "kind": "hardware"
+    },
+    {
+      "text": {
+        "ru": "Крути [CTRL 1]–[CTRL 3], глядя на дисплей, — слушай, как меняется звук.",
+        "en": "Turn [CTRL 1]–[CTRL 3] while watching the display — hear how the sound changes."
+      },
+      "kind": "hardware",
+      "deviceHighlight": {
+        "controls": [
+          "CTRL 1",
+          "CTRL 2",
+          "CTRL 3"
+        ]
+      }
+    },
+    {
+      "text": {
+        "ru": "Дополнительные параметры (например FLT TYPE) открываются, если удерживать [VALUE] и крутить ручки.",
+        "en": "Extra parameters (for example FLT TYPE) open when you hold [VALUE] and turn the knobs."
+      },
+      "kind": "hardware",
+      "deviceHighlight": {
+        "controls": [
+          "VALUE"
+        ]
+      }
+    }
+  ]
+}

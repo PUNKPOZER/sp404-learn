@@ -1,0 +1,174 @@
+{
+  "id": "resonator",
+  "type": "fx",
+  "title": {
+    "ru": "Resonator",
+    "en": "Resonator"
+  },
+  "summary": {
+    "ru": "Резонатор на синтезе Карплуса–Стронга: окрашивает звук максимум шестью резонаторами, настроенными на ноты или аккорд.",
+    "en": "A resonator based on Karplus–Strong synthesis: colours the sound with up to six resonators tuned to notes or a chord."
+  },
+  "category": "effects",
+  "tags": [
+    "fx",
+    "fx:resonator"
+  ],
+  "difficulty": "intermediate",
+  "durationMin": 7,
+  "related": [],
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Resonator",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v200/eng/37138873.html",
+        "note": "v2.00"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — Adding effects to a sample (BUS FX)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7899047578463371.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-06"
+  },
+  "button": "RESONATOR",
+  "whatItDoes": {
+    "ru": "Резонатор на синтезе Карплуса–Стронга: окрашивает звук максимум шестью резонаторами, настроенными на ноты или аккорд.",
+    "en": "A resonator based on Karplus–Strong synthesis: colours the sound with up to six resonators tuned to notes or a chord."
+  },
+  "controls": [
+    {
+      "id": "root",
+      "label": "ROOT",
+      "range": {
+        "ru": "C1–G9",
+        "en": "C1–G9"
+      },
+      "meaning": {
+        "ru": "Опорная нота.",
+        "en": "Root note."
+      }
+    },
+    {
+      "id": "bright",
+      "label": "BRIGHT",
+      "range": {
+        "ru": "0–100",
+        "en": "0–100"
+      },
+      "meaning": {
+        "ru": "Яркость тембра.",
+        "en": "Brightness of the tone."
+      }
+    },
+    {
+      "id": "feedback",
+      "label": "FEEDBACK",
+      "range": {
+        "ru": "0–99 %",
+        "en": "0–99 %"
+      },
+      "meaning": {
+        "ru": "Величина обратной связи.",
+        "en": "Amount of feedback."
+      }
+    },
+    {
+      "id": "chord",
+      "label": "CHORD",
+      "meaning": {
+        "ru": "Какие ноты резонируют вместе.",
+        "en": "Which notes resonate together."
+      }
+    },
+    {
+      "id": "panning",
+      "label": "PANNING",
+      "range": {
+        "ru": "0–100",
+        "en": "0–100"
+      },
+      "meaning": {
+        "ru": "Панорама резонатора.",
+        "en": "Resonator panning."
+      }
+    },
+    {
+      "id": "envmod",
+      "label": "ENV MOD",
+      "range": {
+        "ru": "0–100",
+        "en": "0–100"
+      },
+      "meaning": {
+        "ru": "Чем больше значение, тем сильнее обратная связь растёт вместе с уровнем входного сигнала.",
+        "en": "The higher the value, the more the feedback grows with the input level."
+      }
+    }
+  ],
+  "goodFor": [
+    {
+      "ru": "Подстроить звук под тональность (ROOT) или аккорд (CHORD)",
+      "en": "Tune the sound to a key (ROOT) or chord (CHORD)"
+    },
+    {
+      "ru": "Добавить тональную окраску ударным и шумам",
+      "en": "Add tonal colour to drums and noise"
+    }
+  ],
+  "tips": [],
+  "practice": {
+    "ru": "Пропусти шумовой или барабанный сэмпл через Resonator и подбери ROOT, чтобы он звучал в тональности твоего баса.",
+    "en": "Run a noise or drum sample through Resonator and set ROOT so it sounds in the key of your bass."
+  },
+  "relatedEffects": [],
+  "tryThis": [
+    {
+      "text": {
+        "ru": "Нажми [RESONATOR] — эффект включится.",
+        "en": "Press [RESONATOR] — the effect turns on."
+      },
+      "kind": "hardware",
+      "deviceHighlight": {
+        "controls": [
+          "RESONATOR"
+        ]
+      }
+    },
+    {
+      "text": {
+        "ru": "Нажимай пэды [1]–[16] и играй сэмпл.",
+        "en": "Press pads [1]–[16] and play the sample."
+      },
+      "kind": "hardware"
+    },
+    {
+      "text": {
+        "ru": "Крути [CTRL 1]–[CTRL 3], глядя на дисплей.",
+        "en": "Turn [CTRL 1]–[CTRL 3] while watching the display."
+      },
+      "kind": "hardware",
+      "deviceHighlight": {
+        "controls": [
+          "CTRL 1",
+          "CTRL 2",
+          "CTRL 3"
+        ]
+      }
+    },
+    {
+      "text": {
+        "ru": "Дополнительные параметры открываются, если удерживать [VALUE] и крутить ручки.",
+        "en": "Extra parameters open when you hold [VALUE] and turn the knobs."
+      },
+      "kind": "hardware",
+      "deviceHighlight": {
+        "controls": [
+          "VALUE"
+        ]
+      }
+    }
+  ]
+}

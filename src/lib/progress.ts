@@ -44,3 +44,26 @@ export function latest(all: Record<string, CourseProgress>): CourseProgress | nu
   const list = Object.values(all);
   return list.length ? list.reduce((a, b) => (b.updated > a.updated ? b : a)) : null;
 }
+
+// ---- per-lesson completion (Learning Library 2.0). Separate key; the course-level progress above is never touched. ----
+const DONE_KEY = "sp404learn.lessonsDone";
+let done: Record<string, number> = {};
+
+export function loadDone(): Record<string, number> {
+  try { const raw = localStorage.getItem(DONE_KEY); if (raw) done = JSON.parse(raw) as Record<string, number>; } catch { /* in-memory only */ }
+  return done;
+}
+export function markDone(id: string, now = Date.now()): Record<string, number> {
+  done = { ...done, [id]: now };
+  try { localStorage.setItem(DONE_KEY, JSON.stringify(done)); } catch { /* ignore */ }
+  return done;
+}
+export function unmarkDone(id: string): Record<string, number> {
+  const { [id]: _drop, ...rest } = done; void _drop;
+  done = rest;
+  try { localStorage.setItem(DONE_KEY, JSON.stringify(done)); } catch { /* ignore */ }
+  return done;
+}
+export const isDone = (id: string): boolean => id in done;
+/** Share of a course's lessons completed, 0–100. */
+export const coursePercent = (lessonIds: string[]): number => (lessonIds.length ? Math.round((lessonIds.filter(isDone).length / lessonIds.length) * 100) : 0);

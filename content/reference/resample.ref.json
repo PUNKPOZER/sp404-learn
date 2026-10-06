@@ -1,0 +1,43 @@
+{
+  "id": "ref-resample",
+  "type": "reference",
+  "title": {
+    "ru": "[RESAMPLE]",
+    "en": "[RESAMPLE]"
+  },
+  "summary": {
+    "ru": "Сэмплирование паттерна в новый сэмпл на пэд.",
+    "en": "Sampling a pattern into a new sample on a pad."
+  },
+  "category": "controls",
+  "refCategory": "controls",
+  "tags": [
+    "reference",
+    "controls"
+  ],
+  "difficulty": "beginner",
+  "durationMin": 1,
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Sampling a pattern (RESAMPLE)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7923444378491019.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-06"
+  },
+  "term": {
+    "ru": "[RESAMPLE]",
+    "en": "[RESAMPLE]"
+  },
+  "answer": {
+    "ru": "Сэмплирование паттерна в новый сэмпл на пэд.",
+    "en": "Sampling a pattern into a new sample on a pad."
+  },
+  "see": {
+    "type": "trick",
+    "id": "resample-pattern"
+  }
+}

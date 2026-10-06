@@ -1,0 +1,43 @@
+{
+  "id": "ref-chain-def",
+  "type": "reference",
+  "title": {
+    "ru": "Цепочка паттернов",
+    "en": "Pattern chain"
+  },
+  "summary": {
+    "ru": "Порядок паттернов, который играет сам; номер цепочки выбирают удерживая [HOLD] и нажимая пэд.",
+    "en": "An order of patterns that plays by itself; the chain number is chosen by holding [HOLD] and pressing a pad."
+  },
+  "category": "workflow",
+  "refCategory": "workflow",
+  "tags": [
+    "reference",
+    "workflow"
+  ],
+  "difficulty": "beginner",
+  "durationMin": 1,
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Playing back patterns in order (PATTERN CHAIN)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v500/en-US/7925133978493323.html",
+        "note": "v5"
+      }
+    ],
+    "verifiedOn": "2026-10-06"
+  },
+  "term": {
+    "ru": "Цепочка паттернов",
+    "en": "Pattern chain"
+  },
+  "answer": {
+    "ru": "Порядок паттернов, который играет сам; номер цепочки выбирают удерживая [HOLD] и нажимая пэд.",
+    "en": "An order of patterns that plays by itself; the chain number is chosen by holding [HOLD] and pressing a pad."
+  },
+  "see": {
+    "type": "trick",
+    "id": "pattern-chain"
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "id": "ref-del",
+  "type": "reference",
+  "title": {
+    "ru": "[DEL]",
+    "en": "[DEL]"
+  },
+  "summary": {
+    "ru": "В редакторе цепочки паттернов удаляет паттерн под курсором; [SHIFT] + [DEL] отменяет правки.",
+    "en": "In the pattern chain editor it deletes the pattern under the cursor; [SHIFT] + [DEL] undoes edits."
+  },
+  "category": "controls",
+  "refCategory": "controls",
+  "tags": [
+    "reference",
+    "controls"
+  ],
+  "difficulty": "beginner",
+  "durationMin": 1,
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Playing back patterns in order (PATTERN CHAIN)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v500/en-US/7925133978493323.html",
+        "note": "v5"
+      }
+    ],
+    "verifiedOn": "2026-10-06"
+  },
+  "term": {
+    "ru": "[DEL]",
+    "en": "[DEL]"
+  },
+  "answer": {
+    "ru": "В редакторе цепочки паттернов удаляет паттерн под курсором; [SHIFT] + [DEL] отменяет правки.",
+    "en": "In the pattern chain editor it deletes the pattern under the cursor; [SHIFT] + [DEL] undoes edits."
+  }
+}

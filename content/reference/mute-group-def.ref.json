@@ -1,0 +1,43 @@
+{
+  "id": "ref-mute-group-def",
+  "type": "reference",
+  "title": {
+    "ru": "Mute Group",
+    "en": "Mute Group"
+  },
+  "summary": {
+    "ru": "До 10 групп (A–J) по 16 сэмплов; в группе звучит только последний сыгранный пэд.",
+    "en": "Up to 10 groups (A–J) of 16 samples; in a group only the last played pad sounds."
+  },
+  "category": "concepts",
+  "refCategory": "concepts",
+  "tags": [
+    "reference",
+    "concepts"
+  ],
+  "difficulty": "beginner",
+  "durationMin": 1,
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Preventing samples from playing back at the same time (MUTE GROUP)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7895796378459531.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-06"
+  },
+  "term": {
+    "ru": "Mute Group",
+    "en": "Mute Group"
+  },
+  "answer": {
+    "ru": "До 10 групп (A–J) по 16 сэмплов; в группе звучит только последний сыгранный пэд.",
+    "en": "Up to 10 groups (A–J) of 16 samples; in a group only the last played pad sounds."
+  },
+  "see": {
+    "type": "trick",
+    "id": "mute-group"
+  }
+}

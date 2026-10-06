@@ -1,0 +1,43 @@
+{
+  "id": "ref-pattern-select",
+  "type": "reference",
+  "title": {
+    "ru": "[PATTERN SELECT]",
+    "en": "[PATTERN SELECT]"
+  },
+  "summary": {
+    "ru": "Вход в паттерн-секвенсор: отсюда создают и выбирают паттерны.",
+    "en": "Enters the pattern sequencer: patterns are created and selected from here."
+  },
+  "category": "controls",
+  "refCategory": "controls",
+  "tags": [
+    "reference",
+    "controls"
+  ],
+  "difficulty": "beginner",
+  "durationMin": 1,
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Creating a new pattern (TR-REC)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7921805978489483.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-06"
+  },
+  "term": {
+    "ru": "[PATTERN SELECT]",
+    "en": "[PATTERN SELECT]"
+  },
+  "answer": {
+    "ru": "Вход в паттерн-секвенсор: отсюда создают и выбирают паттерны.",
+    "en": "Enters the pattern sequencer: patterns are created and selected from here."
+  },
+  "see": {
+    "type": "trick",
+    "id": "tr-rec"
+  }
+}

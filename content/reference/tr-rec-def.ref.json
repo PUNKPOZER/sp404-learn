@@ -1,0 +1,43 @@
+{
+  "id": "ref-tr-rec-def",
+  "type": "reference",
+  "title": {
+    "ru": "TR-REC",
+    "en": "TR-REC"
+  },
+  "summary": {
+    "ru": "Способ записи паттерна по шагам: пэды [1]–[16] — это шаги, сэмпл выбирается удержанием [SUB PAD].",
+    "en": "A step-by-step pattern recording method: pads [1]–[16] are the steps, the sample is chosen by holding [SUB PAD]."
+  },
+  "category": "workflow",
+  "refCategory": "workflow",
+  "tags": [
+    "reference",
+    "workflow"
+  ],
+  "difficulty": "beginner",
+  "durationMin": 1,
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Creating a new pattern (TR-REC)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7921805978489483.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-06"
+  },
+  "term": {
+    "ru": "TR-REC",
+    "en": "TR-REC"
+  },
+  "answer": {
+    "ru": "Способ записи паттерна по шагам: пэды [1]–[16] — это шаги, сэмпл выбирается удержанием [SUB PAD].",
+    "en": "A step-by-step pattern recording method: pads [1]–[16] are the steps, the sample is chosen by holding [SUB PAD]."
+  },
+  "see": {
+    "type": "trick",
+    "id": "tr-rec"
+  }
+}

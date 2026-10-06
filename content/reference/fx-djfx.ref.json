@@ -1,0 +1,43 @@
+{
+  "id": "ref-fx-djfx",
+  "type": "reference",
+  "title": {
+    "ru": "DJFX Looper",
+    "en": "DJFX Looper"
+  },
+  "summary": {
+    "ru": "Зацикливает звук короткими циклами, меняет направление и скорость (LENGTH, SPEED, LOOP SW).",
+    "en": "Loops the sound in short cycles, changes direction and speed (LENGTH, SPEED, LOOP SW)."
+  },
+  "category": "effects",
+  "refCategory": "effects",
+  "tags": [
+    "reference",
+    "effects"
+  ],
+  "difficulty": "beginner",
+  "durationMin": 1,
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — DJFX Looper",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7976359578551691.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-06"
+  },
+  "term": {
+    "ru": "DJFX Looper",
+    "en": "DJFX Looper"
+  },
+  "answer": {
+    "ru": "Зацикливает звук короткими циклами, меняет направление и скорость (LENGTH, SPEED, LOOP SW).",
+    "en": "Loops the sound in short cycles, changes direction and speed (LENGTH, SPEED, LOOP SW)."
+  },
+  "see": {
+    "type": "fx",
+    "id": "djfx-looper"
+  }
+}

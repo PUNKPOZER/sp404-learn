@@ -1,0 +1,99 @@
+{
+  "id": "pattern-chain",
+  "type": "trick",
+  "title": {
+    "ru": "Pattern Chain: паттерны по порядку",
+    "en": "Pattern Chain: patterns in order"
+  },
+  "summary": {
+    "ru": "Собери из паттернов цепочку и играй её целиком.",
+    "en": "Build a chain of patterns and play it through."
+  },
+  "category": "performance",
+  "categoryGroup": "performance",
+  "topic": "pattern chaining",
+  "tags": [
+    "trick",
+    "topic:pattern chaining"
+  ],
+  "difficulty": "intermediate",
+  "durationMin": 6,
+  "related": [],
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Playing back patterns in order (PATTERN CHAIN)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v500/en-US/7925133978493323.html",
+        "note": "v5"
+      }
+    ],
+    "verifiedOn": "2026-10-06"
+  },
+  "steps": [
+    {
+      "text": {
+        "ru": "Сначала создай паттерны в пэттерн-секвенсоре.",
+        "en": "First create patterns in the pattern sequencer."
+      },
+      "kind": "hardware"
+    },
+    {
+      "text": {
+        "ru": "Нажми [PATTERN SELECT].",
+        "en": "Press [PATTERN SELECT]."
+      },
+      "kind": "hardware",
+      "deviceHighlight": {
+        "controls": [
+          "PATTERN SELECT"
+        ]
+      }
+    },
+    {
+      "text": {
+        "ru": "Удерживая [HOLD], нажми пэд [1]–[16] — это номер цепочки.",
+        "en": "Holding [HOLD], press a pad [1]–[16] — this is the chain number."
+      },
+      "kind": "hardware",
+      "deviceHighlight": {
+        "controls": [
+          "HOLD"
+        ]
+      }
+    },
+    {
+      "text": {
+        "ru": "Нажимай пэды [1]–[16] паттернов в том порядке, в каком они должны звучать.",
+        "en": "Press the pads [1]–[16] of the patterns in the order you want them to play."
+      },
+      "kind": "hardware"
+    },
+    {
+      "text": {
+        "ru": "Нажми [EXIT] — вернёшься на экран PATTERN SELECT, цепочка сохранится сама.",
+        "en": "Press [EXIT] — you return to the PATTERN SELECT screen, the chain saves itself."
+      },
+      "kind": "hardware",
+      "deviceHighlight": {
+        "controls": [
+          "EXIT"
+        ]
+      }
+    }
+  ],
+  "notes": [
+    {
+      "ru": "Паттерны из разных банков добавляются кнопками банков [A/F]–[E/J].",
+      "en": "Patterns from other banks are added with the bank buttons [A/F]–[E/J]."
+    },
+    {
+      "ru": "Чтобы воспроизвести: [PATTERN SELECT] → удерживая [HOLD], нажми пэд цепочки → [SUB PAD] запускает и останавливает.",
+      "en": "To play: [PATTERN SELECT] → holding [HOLD], press the chain pad → [SUB PAD] starts and stops."
+    },
+    {
+      "ru": "Кнопка [REMAIN] переключает повтор: All / Current / Off.",
+      "en": "The [REMAIN] button switches repeat: All / Current / Off."
+    }
+  ]
+}

@@ -60,6 +60,10 @@ export function Tutorial() {
           <p className="lesson-text">{step.text}</p>
           {step.highlight.length > 0 && <p className="stepcall mono">{tx("Пэды-шаги", "Step pads")} {step.highlight.join(" / ")}</p>}
           {step.pad && !stepPads && <p className="padcall mono">{tx("Пэд", "Pad")} {step.pad}</p>}
+          {step.kind === "concept" && <p className="chip soft">{tx("Совет по музыке (не про кнопки)", "Music advice (not a button press)")}</p>}
+          {step.parameter && <p className="paramcall mono"><b>{step.parameter.control}</b> → {step.parameter.setting}: {step.parameter.effect}</p>}
+          {step.why && <p className="lesson-why"><b>{tx("Зачем", "Why")}:</b> {step.why}</p>}
+          {step.tryIt && <p className="lesson-try"><b>{tx("Попробуй", "Try it")}:</b> {step.tryIt}</p>}
         </div>
 
         <div className="lesson-visual">

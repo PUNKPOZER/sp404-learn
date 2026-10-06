@@ -1,4 +1,4 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="currentColor"><title>House</title>
-  <!-- one house (door is a notch in the outline) -->
-  <path d="M148 52H128V68L100 42L24 110H44V178H86V134H114V178H156V110H176L148 82Z"/>
+  <!-- one house: chimney, round window, door -->
+  <path fill-rule="evenodd" d="M150 34H128V54L100 28L18 104H38V176H162V104H182L150 74ZM100 72A14 14 0 1 0 100.01 72ZM84 176V122H116V176Z"/>
 </svg>

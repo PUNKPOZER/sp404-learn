@@ -1,0 +1,7 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="square" stroke-linejoin="miter"><title>IDM</title>
+  <!-- technical diagram: stepped control line with nodes over a sine -->
+  <path d="M16 74H54V52H88V90H122V36H156V62H184"/>
+  <circle cx="54" cy="74" r="7" fill="var(--genre-bg, var(--sp-white))"/><circle cx="88" cy="52" r="7" fill="var(--genre-bg, var(--sp-white))"/><circle cx="122" cy="90" r="7" fill="var(--genre-bg, var(--sp-white))"/><circle cx="156" cy="36" r="7" fill="var(--genre-bg, var(--sp-white))"/>
+  <path d="M14 168C36 100 58 100 80 150S120 196 142 140S172 112 188 132"/>
+  <circle cx="80" cy="150" r="6" fill="currentColor"/><circle cx="142" cy="140" r="6" fill="currentColor"/>
+</svg>

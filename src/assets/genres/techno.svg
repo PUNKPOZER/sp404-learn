@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="currentColor"><title>Techno</title>
-  <!-- factory: saw-tooth roof and two stacks -->
-  <path d="M150 22H168V120H150Z"/>
-  <path d="M120 38H138V120H120Z"/>
-  <path fill-rule="evenodd" d="M20 178V104L66 80V104L112 80V104L158 80V104L180 92V178ZM44 140H62V158H44ZM82 140H100V158H82ZM120 140H138V158H120Z"/>
+  <!-- factory: stacks, smoke, saw-tooth roof, windows -->
+  <path d="M142 36H160V122H142Z"/><path d="M112 54H130V122H112Z"/><path d="M82 70H100V122H82Z"/>
+  <circle cx="151" cy="26" r="9"/><circle cx="165" cy="16" r="7"/><circle cx="121" cy="44" r="8"/><circle cx="91" cy="60" r="7"/>
+  <path fill-rule="evenodd" d="M16 180V110L52 88V110L88 88V110L124 88V110L170 88V180ZM32 132H48V148H32ZM60 132H76V148H60ZM88 132H104V148H88ZM116 132H132V148H116ZM144 132H160V148H144ZM80 180V162H96V180Z"/>
 </svg>

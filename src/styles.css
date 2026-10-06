@@ -319,3 +319,71 @@ label.inline { display: inline-flex; align-items: center; gap: 10px; font: 700 v
 .step-title { font: 700 var(--sp-text-xl) var(--sp-font-display); color: var(--sp-ink); text-transform: uppercase; letter-spacing: .02em; margin: 0 0 var(--sp-space-2); }
 .lesson-visual { grid-column: 2; display: flex; flex-direction: column; gap: var(--sp-space-4); min-width: 0; }
 @media (max-width: 900px) { .lesson-body { grid-template-columns: 1fr; } .lesson-main, .lesson-visual { grid-column: 1; } .continue { grid-template-columns: 1fr; } }
+
+/* =====================================================================================
+   BOARD STYLE — matches the SP SYSTEM reference board: ink sidebar + top strip, soft 1 px cards,
+   heavy geometric display type, large genre symbols. Overrides the earlier rules by order.
+   ===================================================================================== */
+.app { grid-template-rows: auto minmax(0, 1fr); }
+.appbar { grid-column: 1 / -1; background: var(--sp-ink); color: var(--sp-paper); display: flex; justify-content: space-between; padding: 7px var(--sp-space-4); font: 600 var(--sp-text-2xs) var(--sp-font-mono); letter-spacing: .18em; text-transform: uppercase; border-bottom: 1px solid #000; }
+.sidebar { background: var(--sp-ink); color: var(--sp-paper); border-right: 0; padding: var(--sp-space-3) var(--sp-space-2); gap: 0; }
+.logo { margin: var(--sp-space-2) auto var(--sp-space-4); display: block; }
+.brand-mark { color: var(--sp-red); width: 40px; height: 45px; }
+.nav { color: var(--sp-paper); border: 0; border-bottom: 1px solid rgba(242, 241, 236, .12); border-radius: 0; padding: 14px var(--sp-space-3); gap: var(--sp-space-3); width: 100%; font-size: var(--sp-text-xs); }
+.nav:hover:not(:disabled) { background: rgba(242, 241, 236, .09); }
+.nav.on { background: var(--sp-blue); color: var(--sp-paper); border-radius: var(--sp-radius-2); border-bottom-color: transparent; }
+.nav .icon { flex: none; }
+.nav-label { display: flex; flex-direction: column; line-height: 1.1; text-align: left; }
+.nav-label small { font: 500 9px var(--sp-font-ui); text-transform: none; letter-spacing: 0; opacity: .85; margin-top: 3px; }
+.nav-subgroup { margin: 2px 0 6px var(--sp-space-3); padding-left: var(--sp-space-2); border-left: 1px solid rgba(242, 241, 236, .25); }
+.nav.sub { padding: 8px var(--sp-space-3); border-bottom: 0; font-weight: 600; text-transform: none; letter-spacing: .02em; font-size: var(--sp-text-sm); }
+.nav.sub.on { background: rgba(242, 241, 236, .16); border-left: 0; }
+.nav:disabled { opacity: .3; }
+.trackname { background: rgba(242, 241, 236, .1); color: var(--sp-paper); border-color: transparent; margin: var(--sp-space-1) 0 var(--sp-space-2); }
+.local { color: #B7CF7C; text-align: center; margin: var(--sp-space-3) 0 var(--sp-space-1); }
+.sidebar ::-webkit-scrollbar-thumb { background: #4a4944; border-color: var(--sp-ink); }
+
+h1 { font-weight: 800; letter-spacing: -.005em; }
+.btn, .seg, input[type=text], input[type=search], select { border-radius: var(--sp-radius-2); }
+.panel, .card, .course-card, .area-tile, .fx-card, .ref-item, .genre-tile, .continue, .device, .stage { border: 1px solid var(--sp-card-line); border-radius: var(--sp-radius-card); }
+.panel, .card { box-shadow: 0 1px 0 rgba(25, 25, 24, .05); }
+.card { border-top: 6px solid var(--c); }
+.arr-seg { border-width: 1px; border-top-width: 6px; border-radius: var(--sp-radius-2); }
+.wave-frame, .waveform { border-radius: var(--sp-radius-card); }
+
+/* home */
+.home-learn { gap: var(--sp-space-5); max-width: 1180px; }
+.home-title h1 { font-size: clamp(34px, 5vw, 60px); line-height: .95; letter-spacing: -.01em; }
+.home-tag { margin: var(--sp-space-2) 0 0; font: 500 var(--sp-text-xs) var(--sp-font-mono); letter-spacing: .32em; color: var(--sp-ink-2); text-transform: uppercase; }
+.continue { grid-template-columns: minmax(0, 1fr) minmax(160px, 270px); background: var(--sp-white); padding: var(--sp-space-5) var(--sp-space-6); align-items: center; border-width: 1px; }
+.continue-top { display: flex; align-items: center; gap: var(--sp-space-3); margin-bottom: var(--sp-space-4); }
+.continue-top .k.strong { color: var(--sp-ink); font-weight: 800; letter-spacing: .08em; white-space: nowrap; }
+.continue-top .progress { flex: 1; height: 4px; border: 0; background: var(--sp-paper-3); }
+.continue-top .progress i { background: var(--sp-ink); }
+.continue-top b { font: 700 var(--sp-text-sm) var(--sp-font-mono); }
+.continue-title { font: 800 clamp(34px, 4.4vw, 52px)/.95 var(--sp-font-display); text-transform: uppercase; letter-spacing: -.01em; margin: 0 0 var(--sp-space-3); color: var(--sp-ink); }
+.continue-lesson { font: 500 var(--sp-text-lg)/1.3 var(--sp-font-ui); text-transform: uppercase; letter-spacing: .06em; margin: 0 0 var(--sp-space-4); }
+.continue-art { width: 100%; max-width: 270px; justify-self: end; }
+.genre-tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: var(--sp-space-3); }
+.genre-tile { all: unset; box-sizing: border-box; cursor: pointer; background: var(--sp-white); border: 1px solid var(--sp-card-line); border-radius: var(--sp-radius-card); padding: var(--sp-space-4) var(--sp-space-3) var(--sp-space-3); display: flex; flex-direction: column; align-items: center; gap: var(--sp-space-3); position: relative; transition: background var(--sp-dur-fast) var(--sp-ease); }
+.genre-tile:hover { background: var(--sp-paper-2); } .genre-tile:focus-visible { outline: 3px solid var(--sp-focus); outline-offset: 2px; }
+.tile-art { width: 88px; }
+.tile-name { font: 800 var(--sp-text-sm) var(--sp-font-ui); letter-spacing: .08em; text-transform: uppercase; text-align: center; }
+.tile-pct { position: absolute; top: 8px; right: 10px; font-size: var(--sp-text-2xs); color: var(--sp-blue-hover); }
+.home-bottom { display: grid; grid-template-columns: 1.1fr 1fr; gap: var(--sp-space-4); align-items: stretch; }
+.recent { background: var(--sp-white); border: 1px solid var(--sp-card-line); border-radius: var(--sp-radius-card); padding: var(--sp-space-4) var(--sp-space-5); }
+.recent h3 { color: var(--sp-ink); font-weight: 800; }
+.recent ol { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
+.recent li button { all: unset; box-sizing: border-box; width: 100%; cursor: pointer; display: grid; grid-template-columns: 30px 1fr auto 52px; gap: var(--sp-space-3); align-items: center; padding: 10px 0; border-top: 1px solid var(--sp-card-line); font-size: var(--sp-text-sm); }
+.recent li:first-child button { border-top: 0; } .recent li button:hover { background: var(--sp-paper-2); } .recent li button:focus-visible { outline: 3px solid var(--sp-focus); outline-offset: 2px; }
+.rn { width: 24px; height: 24px; border-radius: 50%; background: var(--sp-ink); color: var(--sp-paper); display: grid; place-items: center; font: 700 var(--sp-text-xs) var(--sp-font-mono); }
+.rt { font-weight: 700; } .recent .mono:last-child { text-align: right; }
+.device-card { all: unset; box-sizing: border-box; cursor: pointer; position: relative; background: var(--sp-paper-2); border: 1px solid var(--sp-card-line); border-radius: var(--sp-radius-card); padding: var(--sp-space-4) var(--sp-space-5); display: grid; grid-template-columns: auto 1fr; gap: var(--sp-space-4); align-items: center; overflow: hidden; }
+.device-card:hover { background: var(--sp-paper-3); } .device-card:focus-visible { outline: 3px solid var(--sp-focus); outline-offset: 2px; }
+.dc-text { display: flex; flex-direction: column; gap: var(--sp-space-2); font: 600 var(--sp-text-xs) var(--sp-font-mono); letter-spacing: .12em; text-transform: uppercase; line-height: 1.5; }
+.dc-text b { font: 800 var(--sp-text-md) var(--sp-font-ui); letter-spacing: .02em; }
+.dc-art { transform: scale(.52); transform-origin: right center; margin: -90px -160px -90px 0; pointer-events: none; }
+.dc-arrow { position: absolute; right: var(--sp-space-4); bottom: var(--sp-space-3); }
+.area-tile .icon { color: var(--sp-blue); }
+.course-art { width: 120px; margin-bottom: var(--sp-space-2); }
+@media (max-width: 900px) { .home-bottom { grid-template-columns: 1fr; } }

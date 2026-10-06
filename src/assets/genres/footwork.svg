@@ -1,11 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="currentColor"><title>Footwork</title>
-  <!-- two sneakers mid-step: one planted, one lifted -->
-  <g transform="translate(6 18) rotate(-20 61 36) scale(1.5)">
-    <path d="M3 31C3 22 8 17 15 17L30 13C34 5 41 3 45 8C49 14 57 18 67 20C75 22 79 26 79 31L79 34H3Z"/>
-    <path d="M1 37H81V43C81 44 80 45 79 45H3C2 45 1 44 1 43Z"/>
+  <!-- two legs mid-stride in sneakers -->
+  <path d="M20 4H58L80 68L46 80Z"/>
+  <g transform="translate(34 70)">
+    <path fill-rule="evenodd" d="M2 18L28 8L36 22C50 26 60 32 62 42V50H-4V32C-4 26 -2 21 2 18ZM8 26L22 20L24 24L10 30ZM6 35L22 29L24 33L8 39Z"/>
+    <path d="M-6 54H64V62H-6Z"/>
   </g>
-  <g transform="translate(44 104) scale(1.5)">
-    <path d="M3 31C3 22 8 17 15 17L30 13C34 5 41 3 45 8C49 14 57 18 67 20C75 22 79 26 79 31L79 34H3Z"/>
-    <path d="M1 37H81V43C81 44 80 45 79 45H3C2 45 1 44 1 43Z"/>
+  <path d="M120 10H156L172 82L136 92Z"/>
+  <g transform="translate(112 82)">
+    <path fill-rule="evenodd" d="M2 18L28 8L36 22C50 26 60 32 62 42V50H-4V32C-4 26 -2 21 2 18ZM8 26L22 20L24 24L10 30ZM6 35L22 29L24 33L8 39Z"/>
+    <path d="M-6 54H64V62H-6Z"/>
   </g>
 </svg>

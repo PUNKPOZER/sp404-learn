@@ -7,7 +7,7 @@ const INK = "var(--sp-ink)", RED = "var(--sp-red)", BLUE = "var(--sp-blue)", GRE
 /** Each genre keeps its assigned identity colour; the rest of the UI is not recoloured per genre. */
 export const GENRE_COLOR: Record<string, string> = {
   footwork: RED, jungle: GREEN, ukgarage: BLUE, hiphop: INK, house: RED, techno: INK, breakbeat: RED, ambient: BLUE,
-  triphop: INK, lofihouse: GREEN, lofihiphop: BLUE,
+  triphop: INK, lofihouse: GREEN, lofihiphop: BLUE, idm: GREEN, dub: BLUE,
 };
 export const hasGenreArt = (id: string) => id in ART;
 

@@ -1,7 +1,8 @@
-<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="square" stroke-linejoin="miter"><title>Ambient</title>
-  <!-- technical diagram: perspective floor + one waveform above the horizon -->
-  <path d="M10 112H190"/>
-  <path d="M100 112V196M100 112L40 196M100 112L160 196M100 112L10 168M100 112L190 168"/>
-  <path d="M10 140H190M10 164H190" stroke-width="3"/>
-  <path stroke="var(--sp-green, currentColor)" d="M10 66C28 28 46 28 64 66S100 104 118 66S154 28 172 66S186 74 190 66"/>
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="square" stroke-linejoin="miter"><title>Ambient</title>
+  <!-- technical diagram: spatial sound field bursting from a point, over a perspective floor -->
+  <path d="M100 96L28 40M100 96L52 30M100 96L80 22M100 96L120 22M100 96L148 30M100 96L172 40M100 96L14 80M100 96L186 80"/>
+  <path d="M28 40L52 30L80 22L120 22L148 30L172 40M14 80L28 40M186 80L172 40" stroke-width="2.5"/>
+  <path d="M10 118H190M10 144H190M10 172H190" stroke-width="3"/>
+  <path d="M100 118V190M100 118L40 190M100 118L160 190M100 118L8 160M100 118L192 160" stroke-width="3"/>
+  <circle cx="100" cy="96" r="6" fill="currentColor"/>
 </svg>

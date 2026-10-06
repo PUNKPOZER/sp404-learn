@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="currentColor"><title>Breakbeat</title>
-  <!-- a record broken in two along a crack -->
-  <path fill-rule="evenodd" d="M96 18C54 20 20 54 20 98C20 124 32 148 52 163L80 120L68 98L92 74L82 54ZM74 100A8 8 0 1 0 74.01 100Z"/>
-  <path fill-rule="evenodd" d="M106 30C146 38 178 66 180 104C182 142 154 176 112 182L102 160L116 132L94 112L112 86L98 62ZM140 108A8 8 0 1 0 140.01 108Z"/>
+  <!-- a record with grooves, broken by a crack -->
+  <path fill-rule="evenodd" d="M100 14A86 86 0 1 0 100.01 14ZM100 84A16 16 0 1 0 100.01 84ZM100 34A66 66 0 1 0 100.01 34ZM100 38A62 62 0 1 0 100.01 38ZM100 54A46 46 0 1 0 100.01 54ZM100 58A42 42 0 1 0 100.01 58Z"/>
+  <path fill="var(--genre-bg, var(--sp-white))" d="M90 6L108 44L92 78L114 108L96 142L118 194H128L106 142L124 108L102 78L118 44L100 6Z"/>
 </svg>

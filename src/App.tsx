@@ -76,6 +76,7 @@ export function App() {
 
   return (
     <div className={`app ${inspector ? "" : "no-inspector"}`}>
+      <div className="appbar"><span>SP SYSTEM / LEARN</span><span>FOR SP-404MKII</span></div>
       <Sidebar />
       <main className="main">
         <div className="topbar">

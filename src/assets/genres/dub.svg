@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="currentColor"><title>Dub</title>
+  <!-- satellite dish with signal arcs -->
+  <path d="M26 112C24 70 56 40 94 40L118 108C92 134 54 138 26 112Z" transform="rotate(-8 70 90)"/>
+  <path d="M84 84L120 130L112 138L76 92Z"/>
+  <path d="M96 128H132L142 172H86Z"/><path d="M70 176H158V190H70Z"/>
+  <path fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round" d="M128 58C148 62 164 78 168 100M130 30C168 34 192 62 194 98"/>
+</svg>

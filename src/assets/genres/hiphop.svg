@@ -1,7 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="currentColor"><title>Hip-Hop</title>
-  <!-- one graffiti tag: crown with drips -->
-  <path d="M28 128L40 64L74 98L100 46L126 98L160 64L172 128C150 138 50 138 28 128Z"/>
-  <path d="M46 142C46 142 52 146 56 144L56 176C56 184 46 184 46 176Z"/>
-  <path d="M92 146C98 150 106 150 110 146L110 192C110 200 92 200 92 192Z"/>
-  <path d="M134 142C140 146 148 146 150 142L150 160C150 168 134 168 134 160Z"/>
+  <!-- graffiti crown tag with jewels and drips -->
+  <path fill-rule="evenodd" d="M26 132L38 62L74 98L100 44L126 98L162 62L174 132C150 142 50 142 26 132ZM46 100A6 6 0 1 0 46.01 100ZM100 84A7 7 0 1 0 100.01 84ZM154 100A6 6 0 1 0 154.01 100Z"/>
+  <path d="M44 146C50 150 58 150 62 146L62 178C62 188 44 188 44 178Z"/>
+  <path d="M90 150C96 154 106 154 112 150L112 194C112 202 90 202 90 194Z"/>
+  <path d="M136 146C142 150 150 150 154 146L154 166C154 174 136 174 136 166Z"/>
+  <circle cx="30" cy="164" r="5"/><circle cx="172" cy="158" r="4"/>
 </svg>

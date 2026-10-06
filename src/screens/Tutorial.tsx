@@ -29,8 +29,6 @@ export function Tutorial() {
   const back = t.back ?? "home";
   const exit = () => { stopPlay(); setState({ screen: back }); };
   const total = t.steps.length;
-  const showTransport = hasGrid;
-  void showTransport;
   return (
     <div className="screen lesson">
       <header className="lesson-head">

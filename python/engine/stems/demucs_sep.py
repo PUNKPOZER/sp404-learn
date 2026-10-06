@@ -6,6 +6,7 @@ from __future__ import annotations
 
 import os
 import ssl
+import threading
 from pathlib import Path
 
 import numpy as np
@@ -15,6 +16,18 @@ from engine.stems.base import StemResult, Progress
 MODEL_NAME = "htdemucs"
 MODEL_URL_HOST = "dl.fbaipublicfiles.com"
 MODEL_SIZE_MB = 80
+
+
+# The sidecar serves each request on its own thread. Importing torch twice at the same moment from two threads
+# (e.g. Settings asking for model status while an analysis starts) corrupts torch's registration
+# ("RpcBackendOptions: an object with that name is already defined"), so every torch import goes through this lock.
+_import_lock = threading.Lock()
+
+
+def ensure_torch():
+    with _import_lock:
+        import torch  # noqa: F401
+        return torch
 
 
 def models_dir() -> Path:
@@ -43,7 +56,7 @@ def runtime_present() -> bool:
 
 
 def device_name() -> str:
-    import torch
+    torch = ensure_torch()
     if torch.cuda.is_available():
         return "cuda"
     if getattr(torch.backends, "mps", None) and torch.backends.mps.is_available():
@@ -53,6 +66,7 @@ def device_name() -> str:
 
 def download_model() -> None:
     _setup_env()
+    ensure_torch()
     from demucs.pretrained import get_model
     get_model(MODEL_NAME)
 
@@ -73,6 +87,7 @@ class DemucsSeparator:
     def _load(self):
         if self._model is None:
             _setup_env()
+            ensure_torch()
             from demucs.pretrained import get_model
             m = get_model(MODEL_NAME)
             m.eval()
@@ -80,7 +95,7 @@ class DemucsSeparator:
         return self._model
 
     def separate(self, audio: np.ndarray, sample_rate: int, progress: Progress | None = None) -> StemResult:
-        import torch
+        torch = ensure_torch()
         from demucs.apply import apply_model
         model = self._load()
         assert sample_rate == model.samplerate, "decode at the model sample rate"

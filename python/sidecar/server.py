@@ -37,7 +37,7 @@ class Server:
 
     # ---- methods -----------------------------------------------------------------
     def m_ping(self, p, rid):
-        return {"ok": True, "version": "0.1.0"}
+        return {"ok": True, "version": "0.3.0"}
 
     def m_probe(self, p, rid):
         i = decode.probe(p["path"])

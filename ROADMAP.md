@@ -21,6 +21,10 @@ Status key: ✅ done · 🟡 partial · ⬜ not started
 | 14 | Structure | 🟡 energy+pattern novelty; no vocal/sample detection |
 | 15 | Packaging | 🟡 macOS arm64 `.app` with frozen sidecar (~1 GB with PyTorch); Windows, signing/notarisation, FFmpeg bundling decision pending |
 
+## SP SYSTEM redesign (this branch)
+✅ tokens + paper/ink UI · ✅ cow brand mark (® omitted) · ✅ genre SVG set · ✅ six-area IA · ✅ FX Lab / Tricks / Reference (verified-only) · ✅ device diagram + lesson view ·
+✅ app icon · 🟡 more verified FX/Tricks content (Delay, MFX, chopping, swing… listed as `todo`) · ⬜ DROP ↔ LEARN interchange (spec only) · ⬜ UK Garage / Ambient courses (art exists).
+
 ## Known gaps
 - Lead and vocal parts are separated and playable but not transcribed to notes.
 - Vocal activity beyond a per-bar presence measure, swing/triplet substeps, ghost-note velocity analysis: not implemented.

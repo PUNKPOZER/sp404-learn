@@ -40,6 +40,12 @@ and a tutorial: ordered steps that each carry the full visible state (pad highli
 renderer of those steps. `learn.py` builds the Footwork course in the same schema from original patterns.
 All Russian tutorial wording and SP button names are isolated in `text.py` / `tutorial.py`.
 
+## Information architecture (UI)
+Six areas — Home, Courses, FX Lab, Tricks, Track Lab, Reference. Track Lab wraps the full analysis workflow (Track · Stems · Drums · Bass · Structure · SP Recipe);
+nothing in it was removed. Lessons (courses, track tutorials, FX Lab "Try this", Tricks) share **one renderer** (`screens/Tutorial.tsx`) and one step shape (`TutorialStep`),
+with a simplified `DeviceDiagram` that lights the pads/controls a step talks about. Content for FX Lab / Tricks / Reference lives in `src/content/*` with `status` + Roland `sources`;
+only `verified` items render. Course progress is stored locally (`lib/progress.ts`).
+
 ## Frontend
 `state/store.ts` (tiny external store), `state/actions.ts` (all side effects), `components/` (SP404PadGrid is a strict
 CSS-grid 4×4; StepSequencer is generic over voices/cells), `screens/`, `lib/audio/` (Web Audio synth voices +

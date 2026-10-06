@@ -1,5 +1,3 @@
-<p align="center"><img src="docs/logo.svg" width="360" alt="SP-404 LEARN"></p>
-
 # SP-404 LEARN
 
 Drop a reference track; get a practical, step-by-step way to rebuild its rhythm on a Roland SP-404MKII.
@@ -8,6 +6,11 @@ Local-only: your audio never leaves the computer, no accounts, no telemetry.
 **Audio → analysis → rhythmic transcription → SP-404MKII translation → interactive tutorial.**
 It does not claim a perfect copy of the original — it gives a playable interpretation, with a confidence on every
 detected hit and full manual correction.
+
+## Six areas
+**Home** (continue learning) · **Courses** (9 genre courses) · **FX Lab** (verified effect exercises) · **Tricks** (short verified procedures) ·
+**Track Lab** (your track: tempo, stems, drums, bass, structure, SP recipe, chop/export) · **Reference** (searchable short answers).
+FX Lab, Tricks and Reference only show content checked against Roland's SP-404MK2 documentation.
 
 ## What it does
 - Tempo / beat grid / downbeat (with ÷2, ×2, edit), waveform from the real audio
@@ -19,6 +22,9 @@ detected hit and full manual correction.
 - Rough structure → patterns A–D → SP-404 recipe (pad mapping, which steps on which pad)
 - “LEARN THIS TRACK” walks through the recipe pad by pad; built-in genre courses need no track — Footwork, Jungle, Breakbeat, House, Hip-Hop, Techno, Trip-Hop, Lo-Fi House, Lo-Fi Hip-Hop (original educational patterns)
 - Synth-based preview (no copyrighted audio is ever played back)
+
+## Design
+See [DESIGN_SYSTEM.md](DESIGN_SYSTEM.md) (SP SYSTEM tokens, components, logo/icon and genre-art rules) and [SP_SYSTEM_INTERCHANGE.md](SP_SYSTEM_INTERCHANGE.md) (future DROP ↔ LEARN exchange, design only).
 
 ## Screenshots
 _(placeholder)_

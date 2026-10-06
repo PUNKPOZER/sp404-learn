@@ -46,3 +46,18 @@ def test_whole_and_export_format(tmp_path):
     many = chop.export_regions(y, SR, [(0, 0.5), (0.5, 1.0)], str(tmp_path / "m"), "v", normalize=True)
     assert [f.split("/")[-1] for f in many] == ["v_01.wav", "v_02.wav"]
     assert wavfile.read(many[0])[1].max() > 25000        # normalised near full scale
+
+
+def test_torch_import_is_serialised_across_threads():
+    """Regression: concurrent first-time torch imports from sidecar request threads must not race."""
+    import threading
+    from engine.stems import demucs_sep
+    if not demucs_sep.runtime_present():
+        return
+    errs = []
+    def work():
+        try: demucs_sep.device_name()
+        except Exception as e: errs.append(e)
+    ts = [threading.Thread(target=work) for _ in range(4)]
+    [t.start() for t in ts]; [t.join() for t in ts]
+    assert not errs, errs

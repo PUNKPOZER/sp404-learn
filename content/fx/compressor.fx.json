@@ -1,0 +1,157 @@
+{
+  "id": "compressor",
+  "type": "fx",
+  "title": {
+    "ru": "Compressor",
+    "en": "Compressor"
+  },
+  "summary": {
+    "ru": "Уменьшает громкие уровни и поднимает тихие, сглаживая громкость.",
+    "en": "Reduces high levels while bringing up quieter sounds, smoothing the overall volume."
+  },
+  "category": "dynamics",
+  "tags": [
+    "fx",
+    "fx:compressor",
+    "fx-kind:bus"
+  ],
+  "difficulty": "intermediate",
+  "durationMin": 6,
+  "related": [],
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Using the MFX effects",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7900737178465675.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — MFX List — Compressor",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7996276378576267.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  "whatItDoes": {
+    "ru": "Уменьшает громкие уровни и поднимает тихие, сглаживая громкость.",
+    "en": "Reduces high levels while bringing up quieter sounds, smoothing the overall volume."
+  },
+  "controls": [
+    {
+      "id": "sustain",
+      "label": "SUSTAIN",
+      "range": {
+        "ru": "0–100",
+        "en": "0–100"
+      },
+      "meaning": {
+        "ru": "Как долго эффект действует на затухающий звук.",
+        "en": "How long the effect is applied to the decaying sound."
+      }
+    },
+    {
+      "id": "attack",
+      "label": "ATTACK",
+      "range": {
+        "ru": "0–100",
+        "en": "0–100"
+      },
+      "meaning": {
+        "ru": "Время, за которое громкость снижается при сильном входном сигнале.",
+        "en": "How long it takes to reduce the volume when a high input is detected."
+      }
+    },
+    {
+      "id": "ratio",
+      "label": "RATIO",
+      "range": {
+        "ru": "0–100",
+        "en": "0–100"
+      },
+      "meaning": {
+        "ru": "Степень компрессии.",
+        "en": "The compression ratio."
+      }
+    },
+    {
+      "id": "level",
+      "label": "LEVEL",
+      "range": {
+        "ru": "0–100",
+        "en": "0–100"
+      },
+      "meaning": {
+        "ru": "Громкость эффектного звука.",
+        "en": "Volume of the effect sound."
+      }
+    }
+  ],
+  "goodFor": [
+    {
+      "ru": "Уплотнить барабанный луп",
+      "en": "Making a drum loop punchier"
+    },
+    {
+      "ru": "Выровнять вокальный чоп",
+      "en": "Evening out a vocal chop"
+    },
+    {
+      "ru": "«Накачка» басом",
+      "en": "Pumping with bass"
+    }
+  ],
+  "tips": [
+    {
+      "ru": "Эффект может быть очень громким — поднимай значения осторожно.",
+      "en": "This effect can be very loud — raise values carefully."
+    }
+  ],
+  "practice": {
+    "ru": "Подними RATIO на луп-сэмпле и поиграй с ATTACK — слушай, как меняется «щелчок».",
+    "en": "Raise RATIO on a loop and play with ATTACK — hear the snap change."
+  },
+  "relatedEffects": [
+    "equalizer",
+    "wrm-saturator"
+  ],
+  "tryThis": [
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Выбери эффект: удерживая [MFX], вращай [VALUE] или [CTRL 3], пока не появится «Compressor»; отпусти [MFX].",
+        "en": "Choose the effect: hold [MFX] and turn [VALUE] or [CTRL 3] until “Compressor” appears, then release [MFX]."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "MFX",
+          "VALUE",
+          "CTRL 3"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Играй сэмпл или паттерн — эффект обрабатывает звук шины.",
+        "en": "Play a sample or pattern — the effect processes the bus sound."
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Правь параметры ручками [CTRL 1]–[CTRL 3] и смотри на экран; дополнительные параметры — с зажатой [VALUE].",
+        "en": "Edit parameters with [CTRL 1]–[CTRL 3] while watching the screen; hold [VALUE] for the sub-parameters."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "CTRL 1",
+          "CTRL 2",
+          "CTRL 3",
+          "VALUE"
+        ]
+      }
+    }
+  ]
+}

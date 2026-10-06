@@ -59,6 +59,10 @@ export function validateItem(item: ContentItem, all: ContentItem[]): string[] {
   // 5. relations resolve
   const ids = new Set(all.map((x) => x.id));
   for (const r of [...(item.prerequisites ?? []), ...(item.related ?? [])]) if (!ids.has(r)) p.push(`${id}: unknown relation "${r}"`);
+  if (item.type === "fx") {
+    for (const r of item.relatedEffects) if (!all.some((x) => x.id === r && x.type === "fx")) p.push(`${id}: relatedEffects → "${r}" is not an effect`);
+    for (const t of item.tricks ?? []) if (!all.some((x) => x.id === t && x.type === "trick")) p.push(`${id}: tricks → "${t}" is not a trick`);
+  }
   if (item.type === "course") for (const l of item.lessons) if (!ids.has(l)) p.push(`${id}: course references unknown lesson "${l}"`);
   if (item.type === "reference" && item.see && !all.some((x) => x.id === item.see!.id && x.type === item.see!.type)) p.push(`${id}: see → ${item.see.id} not found`);
   return p;

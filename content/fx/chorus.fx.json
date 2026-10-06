@@ -1,0 +1,182 @@
+{
+  "id": "chorus",
+  "type": "fx",
+  "title": {
+    "ru": "Chorus",
+    "en": "Chorus"
+  },
+  "summary": {
+    "ru": "Добавляет объём и «богатство» звуку.",
+    "en": "Adds spaciousness and richness to the sound."
+  },
+  "category": "modulation",
+  "tags": [
+    "fx",
+    "fx:chorus",
+    "fx-kind:bus"
+  ],
+  "difficulty": "beginner",
+  "durationMin": 5,
+  "related": [],
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Using the MFX effects",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7900737178465675.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — MFX List — Chorus",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7987418778565515.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  "whatItDoes": {
+    "ru": "Добавляет объём и «богатство» звуку.",
+    "en": "Adds spaciousness and richness to the sound."
+  },
+  "controls": [
+    {
+      "id": "depth",
+      "label": "DEPTH",
+      "range": {
+        "ru": "0–100",
+        "en": "0–100"
+      },
+      "meaning": {
+        "ru": "Глубина эффекта.",
+        "en": "Depth of the effect sound."
+      }
+    },
+    {
+      "id": "rate",
+      "label": "RATE",
+      "range": {
+        "ru": "0.33–2.30 с",
+        "en": "0.33–2.30 sec"
+      },
+      "meaning": {
+        "ru": "Период эффекта.",
+        "en": "Cycle (period) of the effect sound."
+      }
+    },
+    {
+      "id": "balance",
+      "label": "BALANCE",
+      "range": {
+        "ru": "100-0 – 0-100 %",
+        "en": "100-0 – 0-100 %"
+      },
+      "meaning": {
+        "ru": "Баланс между исходным (dry) и обработанным звуком.",
+        "en": "Volume balance between the dry (original) and the effect sound."
+      }
+    },
+    {
+      "id": "eq-low",
+      "label": "EQ LOW",
+      "range": {
+        "ru": "−15…15 dB",
+        "en": "−15…15 dB"
+      },
+      "meaning": {
+        "ru": "Подъём или срез низких частот.",
+        "en": "Boost or cut of the low-frequency range."
+      }
+    },
+    {
+      "id": "eq-high",
+      "label": "EQ HIGH",
+      "range": {
+        "ru": "−15…15 dB",
+        "en": "−15…15 dB"
+      },
+      "meaning": {
+        "ru": "Подъём или срез высоких частот.",
+        "en": "Boost or cut of the high-frequency range."
+      }
+    },
+    {
+      "id": "level",
+      "label": "LEVEL",
+      "range": {
+        "ru": "0–100",
+        "en": "0–100"
+      },
+      "meaning": {
+        "ru": "Громкость эффектного звука.",
+        "en": "Volume of the effect sound."
+      }
+    }
+  ],
+  "goodFor": [
+    {
+      "ru": "Расширение синтезаторных аккордов",
+      "en": "Widening synth chords"
+    },
+    {
+      "ru": "Мягкая «толщина» вокала",
+      "en": "A soft thickness for vocals"
+    },
+    {
+      "ru": "Оживление статичных пэдов",
+      "en": "Bringing static pads to life"
+    }
+  ],
+  "tips": [
+    {
+      "ru": "Небольшой BALANCE, мягкий DEPTH — это хорошая отправная точка.",
+      "en": "A small BALANCE and a gentle DEPTH make a good starting point."
+    }
+  ],
+  "practice": {
+    "ru": "Пропусти аккордовый пэд через Chorus с RATE около 1 сек.",
+    "en": "Run a chord pad through Chorus with RATE around 1 sec."
+  },
+  "relatedEffects": [
+    "juno-chorus",
+    "flanger",
+    "phaser"
+  ],
+  "tryThis": [
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Выбери эффект: удерживая [MFX], вращай [VALUE] или [CTRL 3], пока не появится «Chorus»; отпусти [MFX].",
+        "en": "Choose the effect: hold [MFX] and turn [VALUE] or [CTRL 3] until “Chorus” appears, then release [MFX]."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "MFX",
+          "VALUE",
+          "CTRL 3"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Играй сэмпл или паттерн — эффект обрабатывает звук шины.",
+        "en": "Play a sample or pattern — the effect processes the bus sound."
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Правь параметры ручками [CTRL 1]–[CTRL 3] и смотри на экран; дополнительные параметры — с зажатой [VALUE].",
+        "en": "Edit parameters with [CTRL 1]–[CTRL 3] while watching the screen; hold [VALUE] for the sub-parameters."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "CTRL 1",
+          "CTRL 2",
+          "CTRL 3",
+          "VALUE"
+        ]
+      }
+    }
+  ]
+}

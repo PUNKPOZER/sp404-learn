@@ -1,0 +1,173 @@
+{
+  "id": "stopper",
+  "type": "fx",
+  "title": {
+    "ru": "Stopper",
+    "en": "Stopper"
+  },
+  "summary": {
+    "ru": "Замедляет воспроизведение — звук проигрывателя, который останавливается.",
+    "en": "Slows the playback — the sound of a turntable stopping."
+  },
+  "category": "dj",
+  "tags": [
+    "fx",
+    "fx:stopper",
+    "fx-kind:bus"
+  ],
+  "difficulty": "intermediate",
+  "durationMin": 5,
+  "related": [],
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Using the MFX effects",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7900737178465675.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — MFX List — Stopper",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7981146778557835.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  "whatItDoes": {
+    "ru": "Замедляет воспроизведение — звук проигрывателя, который останавливается.",
+    "en": "Slows the playback — the sound of a turntable stopping."
+  },
+  "controls": [
+    {
+      "id": "depth",
+      "label": "DEPTH",
+      "range": {
+        "ru": "0–100",
+        "en": "0–100"
+      },
+      "meaning": {
+        "ru": "Насколько замедлить.",
+        "en": "How much to slow down."
+      }
+    },
+    {
+      "id": "rate",
+      "label": "RATE",
+      "range": {
+        "ru": "4/1 … 1/64",
+        "en": "4/1 … 1/64"
+      },
+      "meaning": {
+        "ru": "Период изменения скорости.",
+        "en": "Period at which the speed changes."
+      }
+    },
+    {
+      "id": "resonance",
+      "label": "RESONANCE",
+      "range": {
+        "ru": "0–100",
+        "en": "0–100"
+      },
+      "meaning": {
+        "ru": "Резонанс фильтра: чем больше, тем заметнее эффект.",
+        "en": "Filter resonance: the higher, the more pronounced the effect."
+      }
+    },
+    {
+      "id": "flt-mod",
+      "label": "FLT MOD",
+      "range": {
+        "ru": "0–100",
+        "en": "0–100"
+      },
+      "meaning": {
+        "ru": "Приглушает верха по скорости воспроизведения.",
+        "en": "Attenuates the highs according to the playback speed."
+      }
+    },
+    {
+      "id": "amp-mod",
+      "label": "AMP MOD",
+      "range": {
+        "ru": "0–100",
+        "en": "0–100"
+      },
+      "meaning": {
+        "ru": "Снижает громкость по скорости воспроизведения.",
+        "en": "Lowers the volume according to the playback speed."
+      }
+    }
+  ],
+  "goodFor": [
+    {
+      "ru": "Остановка пластинки на сильной доле",
+      "en": "A record stop on the downbeat"
+    },
+    {
+      "ru": "Завершение фразы",
+      "en": "Ending a phrase"
+    },
+    {
+      "ru": "Эффект «выключения»",
+      "en": "A power-down effect"
+    }
+  ],
+  "tips": [
+    {
+      "ru": "Подними AMP MOD, чтобы звук затухал вместе с замедлением.",
+      "en": "Raise AMP MOD so the sound fades as it slows."
+    }
+  ],
+  "practice": {
+    "ru": "Поставь RATE 1/1 и включи эффект на последний такт фразы.",
+    "en": "Set RATE 1/1 and bring the effect in for the last bar of a phrase."
+  },
+  "relatedEffects": [
+    "downer",
+    "back-spin",
+    "djfx-looper"
+  ],
+  "tryThis": [
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Выбери эффект: удерживая [MFX], вращай [VALUE] или [CTRL 3], пока не появится «Stopper»; отпусти [MFX].",
+        "en": "Choose the effect: hold [MFX] and turn [VALUE] or [CTRL 3] until “Stopper” appears, then release [MFX]."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "MFX",
+          "VALUE",
+          "CTRL 3"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Играй сэмпл или паттерн — эффект обрабатывает звук шины.",
+        "en": "Play a sample or pattern — the effect processes the bus sound."
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Правь параметры ручками [CTRL 1]–[CTRL 3] и смотри на экран; дополнительные параметры — с зажатой [VALUE].",
+        "en": "Edit parameters with [CTRL 1]–[CTRL 3] while watching the screen; hold [VALUE] for the sub-parameters."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "CTRL 1",
+          "CTRL 2",
+          "CTRL 3",
+          "VALUE"
+        ]
+      }
+    }
+  ],
+  "tricks": [
+    "tape-stop-style"
+  ]
+}

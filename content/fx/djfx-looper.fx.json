@@ -9,7 +9,7 @@
     "ru": "Зацикливает звук короткими циклами и меняет направление и скорость воспроизведения — получается эффект проигрывателя.",
     "en": "Loops the sound in short cycles and changes the playback direction and speed — a turntable-style effect."
   },
-  "category": "effects",
+  "category": "dj",
   "tags": [
     "fx",
     "fx:djfx-looper"
@@ -105,7 +105,11 @@
     "ru": "Запусти барабанный пэд, включи LOOP SW и сыграй три разные длины цикла подряд; затем один проход назад (SPEED < 0).",
     "en": "Start a drum pad, turn on LOOP SW and play three different loop lengths in a row; then one pass backwards (SPEED < 0)."
   },
-  "relatedEffects": [],
+  "relatedEffects": [
+    "dj-fx-delay",
+    "scatter",
+    "back-spin"
+  ],
   "tryThis": [
     {
       "text": {
@@ -169,5 +173,10 @@
         ]
       }
     }
+  ],
+  "tricks": [
+    "tape-stop-style",
+    "dj-style-repeat",
+    "performance-transition"
   ]
 }

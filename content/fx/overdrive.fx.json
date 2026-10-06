@@ -1,0 +1,161 @@
+{
+  "id": "overdrive",
+  "type": "fx",
+  "title": {
+    "ru": "Overdrive",
+    "en": "Overdrive"
+  },
+  "summary": {
+    "ru": "Мягкое искажение.",
+    "en": "Mildly distorts the sound."
+  },
+  "category": "distortion",
+  "tags": [
+    "fx",
+    "fx:overdrive",
+    "fx-kind:bus"
+  ],
+  "difficulty": "beginner",
+  "durationMin": 5,
+  "related": [],
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Using the MFX effects",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7900737178465675.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — MFX List — Overdrive",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7994509978573963.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  "whatItDoes": {
+    "ru": "Мягкое искажение.",
+    "en": "Mildly distorts the sound."
+  },
+  "controls": [
+    {
+      "id": "drive",
+      "label": "DRIVE",
+      "range": {
+        "ru": "0–100",
+        "en": "0–100"
+      },
+      "meaning": {
+        "ru": "Количество искажения.",
+        "en": "Amount of distortion."
+      }
+    },
+    {
+      "id": "tone",
+      "label": "TONE",
+      "range": {
+        "ru": "−100…100",
+        "en": "−100…100"
+      },
+      "meaning": {
+        "ru": "Тембр: большие значения подчёркивают верха, малые — низы.",
+        "en": "Tone: larger values emphasize the highs, smaller ones the lows."
+      }
+    },
+    {
+      "id": "balance",
+      "label": "BALANCE",
+      "range": {
+        "ru": "100-0 – 0-100 %",
+        "en": "100-0 – 0-100 %"
+      },
+      "meaning": {
+        "ru": "Баланс между исходным (dry) и обработанным звуком.",
+        "en": "Volume balance between the dry (original) and the effect sound."
+      }
+    },
+    {
+      "id": "level",
+      "label": "LEVEL",
+      "range": {
+        "ru": "0–100",
+        "en": "0–100"
+      },
+      "meaning": {
+        "ru": "Громкость эффектного звука.",
+        "en": "Volume of the effect sound."
+      }
+    }
+  ],
+  "goodFor": [
+    {
+      "ru": "Тёплая «грязь» на басе",
+      "en": "Warm grit on bass"
+    },
+    {
+      "ru": "Подчёркивание барабанов",
+      "en": "Emphasising drums"
+    },
+    {
+      "ru": "Мягкий «винтажный» дрейв",
+      "en": "Soft vintage drive"
+    }
+  ],
+  "tips": [
+    {
+      "ru": "Следи за LEVEL — искажение поднимает громкость.",
+      "en": "Watch LEVEL — distortion raises the loudness."
+    }
+  ],
+  "practice": {
+    "ru": "Пропусти бочку через DRIVE 30 и сравни.",
+    "en": "Run a kick through DRIVE 30 and compare."
+  },
+  "relatedEffects": [
+    "distortion",
+    "wrm-saturator",
+    "filter-drive"
+  ],
+  "tryThis": [
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Выбери эффект: удерживая [MFX], вращай [VALUE] или [CTRL 3], пока не появится «Overdrive»; отпусти [MFX].",
+        "en": "Choose the effect: hold [MFX] and turn [VALUE] or [CTRL 3] until “Overdrive” appears, then release [MFX]."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "MFX",
+          "VALUE",
+          "CTRL 3"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Играй сэмпл или паттерн — эффект обрабатывает звук шины.",
+        "en": "Play a sample or pattern — the effect processes the bus sound."
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Правь параметры ручками [CTRL 1]–[CTRL 3] и смотри на экран; дополнительные параметры — с зажатой [VALUE].",
+        "en": "Edit parameters with [CTRL 1]–[CTRL 3] while watching the screen; hold [VALUE] for the sub-parameters."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "CTRL 1",
+          "CTRL 2",
+          "CTRL 3",
+          "VALUE"
+        ]
+      }
+    }
+  ],
+  "tricks": [
+    "bake-effect"
+  ]
+}

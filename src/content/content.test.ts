@@ -20,7 +20,7 @@ describe("verified-only content rule", () => {
   it("unverified (needs_review / planned) items never reach the production lists", () => {
     expect([...FX, ...TRICKS, ...REFERENCE].every((x) => x.status === "verified")).toBe(true);
     expect(PLANNED_TOPICS.length).toBeGreaterThan(5);
-    expect(PLANNED.fx.length).toBeGreaterThan(0);
+    expect(PLANNED.fx).toEqual([]);          // every effect in the manual's MFX list is now covered
   });
   it("verified items are complete", () => {
     for (const f of verified(FX)) { expect(f.params.length, f.id).toBeGreaterThan(0); expect(f.tryThis.length, f.id).toBeGreaterThan(1); expect(f.useFor.length, f.id).toBeGreaterThan(0); }

@@ -46,7 +46,7 @@ export interface Trick extends ContentBase { type: "trick"; categoryGroup: Trick
 export interface FxParamV2 { id: string; label: string; range?: Loc; meaning: Loc }
 export interface FxEntryV2 extends ContentBase {
   type: "fx"; button?: string; whatItDoes: Loc; controls: FxParamV2[]; goodFor: Loc[]; tips: Loc[]; practice?: Loc;
-  relatedEffects: string[]; lesson?: string; exercise?: string; tryThis: LessonStep[];
+  relatedEffects: string[]; tricks?: string[]; lesson?: string; exercise?: string; tryThis: LessonStep[];
 }
 export interface ReferenceV2 extends ContentBase { type: "reference"; term: Loc; answer: Loc; refCategory: "controls" | "concepts" | "shortcuts" | "effects" | "workflow"; see?: { type: "fx" | "trick"; id: string } }
 export interface PracticeSpec { voices: Record<string, number[]>; bpm: number; bars?: number }

@@ -1,0 +1,184 @@
+{
+  "id": "slicer",
+  "type": "fx",
+  "title": {
+    "ru": "Slicer",
+    "en": "Slicer"
+  },
+  "summary": {
+    "ru": "Режет звук на мелкие куски — получается «подыгрыш» партии.",
+    "en": "Slices the sound into small pieces so it seems a backing phrase is being played."
+  },
+  "category": "dj",
+  "tags": [
+    "fx",
+    "fx:slicer",
+    "fx-kind:bus"
+  ],
+  "difficulty": "intermediate",
+  "durationMin": 7,
+  "related": [],
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Using the MFX effects",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7900737178465675.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — MFX List — Slicer",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7990362778569355.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  "whatItDoes": {
+    "ru": "Режет звук на мелкие куски — получается «подыгрыш» партии.",
+    "en": "Slices the sound into small pieces so it seems a backing phrase is being played."
+  },
+  "controls": [
+    {
+      "id": "pattern",
+      "label": "PATTERN",
+      "range": {
+        "ru": "1–32",
+        "en": "1–32"
+      },
+      "meaning": {
+        "ru": "Рисунок последовательности.",
+        "en": "The sequence pattern."
+      }
+    },
+    {
+      "id": "speed",
+      "label": "SPEED",
+      "range": {
+        "ru": "0–100 / 2/1–1/64T",
+        "en": "0–100 / 2/1–1/64T"
+      },
+      "meaning": {
+        "ru": "Период повторения рисунка.",
+        "en": "Period over which the pattern repeats."
+      }
+    },
+    {
+      "id": "depth",
+      "label": "DEPTH",
+      "range": {
+        "ru": "0–100",
+        "en": "0–100"
+      },
+      "meaning": {
+        "ru": "Глубина нарезки.",
+        "en": "Slicing depth."
+      }
+    },
+    {
+      "id": "shuffle",
+      "label": "SHUFFLE",
+      "range": {
+        "ru": "0–100",
+        "en": "0–100"
+      },
+      "meaning": {
+        "ru": "Большие значения сдвигают чётные шаги.",
+        "en": "Larger settings delay the even-numbered steps."
+      }
+    },
+    {
+      "id": "mode",
+      "label": "MODE",
+      "range": {
+        "ru": "LEGATO, SLASH",
+        "en": "LEGATO, SLASH"
+      },
+      "meaning": {
+        "ru": "LEGATO — громкость между шагами не меняется; SLASH — сбрасывается в ноль.",
+        "en": "LEGATO leaves volume unchanged between steps; SLASH resets it to zero."
+      }
+    },
+    {
+      "id": "sync",
+      "label": "SYNC",
+      "range": {
+        "ru": "OFF, ON",
+        "en": "OFF, ON"
+      },
+      "meaning": {
+        "ru": "При ON эффект синхронизируется с темпом.",
+        "en": "When ON, the effect synchronizes with the tempo."
+      }
+    }
+  ],
+  "goodFor": [
+    {
+      "ru": "Ритмическая «нарезка» длинных пэдов и аккордов",
+      "en": "Rhythmic chopping of long pads and chords"
+    },
+    {
+      "ru": "Gate-эффект в темпе",
+      "en": "A tempo-locked gate"
+    },
+    {
+      "ru": "Новые грувы из одной ноты",
+      "en": "New grooves from a single note"
+    }
+  ],
+  "tips": [
+    {
+      "ru": "Лучше всего работает на тянущихся звуках.",
+      "en": "Works best on sustaining sounds."
+    }
+  ],
+  "practice": {
+    "ru": "Пропусти длинный аккорд через PATTERN 5 и SPEED 1/16, потом поменяй MODE на SLASH.",
+    "en": "Run a long chord through PATTERN 5 at SPEED 1/16, then switch MODE to SLASH."
+  },
+  "relatedEffects": [
+    "scatter",
+    "tremolo-pan"
+  ],
+  "tryThis": [
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Выбери эффект: удерживая [MFX], вращай [VALUE] или [CTRL 3], пока не появится «Slicer»; отпусти [MFX].",
+        "en": "Choose the effect: hold [MFX] and turn [VALUE] or [CTRL 3] until “Slicer” appears, then release [MFX]."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "MFX",
+          "VALUE",
+          "CTRL 3"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Играй сэмпл или паттерн — эффект обрабатывает звук шины.",
+        "en": "Play a sample or pattern — the effect processes the bus sound."
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Правь параметры ручками [CTRL 1]–[CTRL 3] и смотри на экран; дополнительные параметры — с зажатой [VALUE].",
+        "en": "Edit parameters with [CTRL 1]–[CTRL 3] while watching the screen; hold [VALUE] for the sub-parameters."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "CTRL 1",
+          "CTRL 2",
+          "CTRL 3",
+          "VALUE"
+        ]
+      }
+    }
+  ],
+  "tricks": [
+    "build-up"
+  ]
+}

@@ -1,0 +1,181 @@
+{
+  "id": "ha-dou",
+  "type": "fx",
+  "title": {
+    "ru": "Ha-Dou",
+    "en": "Ha-Dou"
+  },
+  "summary": {
+    "ru": "Создаёт «волнообразный» звук на основе входного.",
+    "en": "Generates a wave-like sound based on the input."
+  },
+  "category": "reverb",
+  "tags": [
+    "fx",
+    "fx:ha-dou",
+    "fx-kind:bus"
+  ],
+  "difficulty": "advanced",
+  "durationMin": 6,
+  "related": [],
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Using the MFX effects",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7900737178465675.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — MFX List — Ha-Dou",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7978202778553995.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  "whatItDoes": {
+    "ru": "Создаёт «волнообразный» звук на основе входного.",
+    "en": "Generates a wave-like sound based on the input."
+  },
+  "controls": [
+    {
+      "id": "mod-depth",
+      "label": "MOD DEPTH",
+      "range": {
+        "ru": "0–100",
+        "en": "0–100"
+      },
+      "meaning": {
+        "ru": "Глубина эффектного звука.",
+        "en": "Depth of the effect sound."
+      }
+    },
+    {
+      "id": "time",
+      "label": "TIME",
+      "range": {
+        "ru": "0–100",
+        "en": "0–100"
+      },
+      "meaning": {
+        "ru": "Длина эффектного звука.",
+        "en": "Length of the effect sound."
+      }
+    },
+    {
+      "id": "level",
+      "label": "LEVEL",
+      "range": {
+        "ru": "0–100",
+        "en": "0–100"
+      },
+      "meaning": {
+        "ru": "Громкость эффектного звука.",
+        "en": "Volume of the effect sound."
+      }
+    },
+    {
+      "id": "low-cut",
+      "label": "LOW CUT",
+      "range": {
+        "ru": "FLAT, 20–800 Hz",
+        "en": "FLAT, 20–800 Hz"
+      },
+      "meaning": {
+        "ru": "Низкие частоты эффектного звука, которые приглушаются.",
+        "en": "The low-frequency range at which the effect sound is attenuated."
+      }
+    },
+    {
+      "id": "high-cut",
+      "label": "HIGH CUT",
+      "range": {
+        "ru": "630–12500 Hz, FLAT",
+        "en": "630–12500 Hz, FLAT"
+      },
+      "meaning": {
+        "ru": "Высокие частоты эффектного звука, которые приглушаются.",
+        "en": "The high-frequency range at which the effect sound is attenuated."
+      }
+    },
+    {
+      "id": "pre-delay",
+      "label": "PRE DELAY",
+      "range": {
+        "ru": "0–100 mс",
+        "en": "0–100 msec"
+      },
+      "meaning": {
+        "ru": "Время до появления эффекта.",
+        "en": "Time it takes for the effect to sound."
+      }
+    }
+  ],
+  "goodFor": [
+    {
+      "ru": "Размытые «волны» после короткого удара",
+      "en": "Wave-like wash after a short hit"
+    },
+    {
+      "ru": "Необычные переходы",
+      "en": "Unusual transitions"
+    },
+    {
+      "ru": "Фоновые текстуры",
+      "en": "Background textures"
+    }
+  ],
+  "tips": [
+    {
+      "ru": "Поиграй короткими звуками: эффект «раскрывается» на хвосте.",
+      "en": "Try short sounds: the effect blooms on the tail."
+    }
+  ],
+  "practice": {
+    "ru": "Ударь пэд один раз и подними TIME — слушай, как растёт «волна».",
+    "en": "Hit a pad once and raise TIME — hear the wave grow."
+  },
+  "relatedEffects": [
+    "reverb",
+    "zan-zou"
+  ],
+  "tryThis": [
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Выбери эффект: удерживая [MFX], вращай [VALUE] или [CTRL 3], пока не появится «Ha-Dou»; отпусти [MFX].",
+        "en": "Choose the effect: hold [MFX] and turn [VALUE] or [CTRL 3] until “Ha-Dou” appears, then release [MFX]."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "MFX",
+          "VALUE",
+          "CTRL 3"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Играй сэмпл или паттерн — эффект обрабатывает звук шины.",
+        "en": "Play a sample or pattern — the effect processes the bus sound."
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Правь параметры ручками [CTRL 1]–[CTRL 3] и смотри на экран; дополнительные параметры — с зажатой [VALUE].",
+        "en": "Edit parameters with [CTRL 1]–[CTRL 3] while watching the screen; hold [VALUE] for the sub-parameters."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "CTRL 1",
+          "CTRL 2",
+          "CTRL 3",
+          "VALUE"
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,181 @@
+{
+  "id": "hyper-reso",
+  "type": "fx",
+  "title": {
+    "ru": "Hyper-Reso",
+    "en": "Hyper-Reso"
+  },
+  "summary": {
+    "ru": "Резонатор, настроенный для мелодий и басовых линий.",
+    "en": "A resonator adjusted to make creating melodies and bass lines easier."
+  },
+  "category": "pitch",
+  "tags": [
+    "fx",
+    "fx:hyper-reso",
+    "fx-kind:bus"
+  ],
+  "difficulty": "advanced",
+  "durationMin": 7,
+  "related": [],
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Using the MFX effects",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7900737178465675.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — MFX List — Hyper-Reso",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7992513178571659.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  "whatItDoes": {
+    "ru": "Резонатор, настроенный для мелодий и басовых линий.",
+    "en": "A resonator adjusted to make creating melodies and bass lines easier."
+  },
+  "controls": [
+    {
+      "id": "note",
+      "label": "NOTE",
+      "range": {
+        "ru": "−17…−1, 1…18",
+        "en": "−17…−1, 1…18"
+      },
+      "meaning": {
+        "ru": "Какая нота хроматической шкалы звучит (отсчёт от корня SCALE).",
+        "en": "Which note of the chromatic scale resonates, counting from the root of SCALE."
+      }
+    },
+    {
+      "id": "spread",
+      "label": "SPREAD",
+      "range": {
+        "ru": "UNISON … HUGE",
+        "en": "UNISON … HUGE"
+      },
+      "meaning": {
+        "ru": "Октавное расширение резонатора.",
+        "en": "The octave spread of the resonator."
+      }
+    },
+    {
+      "id": "character",
+      "label": "CHARACTER",
+      "range": {
+        "ru": "0–100",
+        "en": "0–100"
+      },
+      "meaning": {
+        "ru": "Яркость и расстройка.",
+        "en": "Brightness and detuning."
+      }
+    },
+    {
+      "id": "scale",
+      "label": "SCALE",
+      "range": {
+        "ru": "C Maj–B Maj, C min–B min",
+        "en": "C Maj–B Maj, C min–B min"
+      },
+      "meaning": {
+        "ru": "Лад и корень.",
+        "en": "The scale and root."
+      }
+    },
+    {
+      "id": "feedback",
+      "label": "FEEDBACK",
+      "range": {
+        "ru": "0–99 %",
+        "en": "0–99 %"
+      },
+      "meaning": {
+        "ru": "Сколько звука возвращается на вход — больше повторов.",
+        "en": "How much of the effect is fed back — more repeats."
+      }
+    },
+    {
+      "id": "env-mod",
+      "label": "ENV MOD",
+      "range": {
+        "ru": "0–100",
+        "en": "0–100"
+      },
+      "meaning": {
+        "ru": "Большие значения увеличивают фидбэк по входному уровню.",
+        "en": "Larger values increase feedback according to the input level."
+      }
+    }
+  ],
+  "goodFor": [
+    {
+      "ru": "Мелодии из шумов и ударных",
+      "en": "Melodies from noise and drums"
+    },
+    {
+      "ru": "Бас из перкуссии",
+      "en": "Bass from percussion"
+    },
+    {
+      "ru": "Звуковой дизайн",
+      "en": "Sound design"
+    }
+  ],
+  "tips": [
+    {
+      "ru": "Выбери SCALE по ключу трека, затем меняй NOTE.",
+      "en": "Choose SCALE from the track's key, then change NOTE."
+    }
+  ],
+  "practice": {
+    "ru": "Пропусти хэт-луп через Hyper-Reso, SCALE C min, и сыграй NOTE 1, 3, 5.",
+    "en": "Run a hat loop through Hyper-Reso in SCALE C min and play NOTE 1, 3, 5."
+  },
+  "relatedEffects": [
+    "resonator",
+    "chromatic-ps"
+  ],
+  "tryThis": [
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Выбери эффект: удерживая [MFX], вращай [VALUE] или [CTRL 3], пока не появится «Hyper-Reso»; отпусти [MFX].",
+        "en": "Choose the effect: hold [MFX] and turn [VALUE] or [CTRL 3] until “Hyper-Reso” appears, then release [MFX]."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "MFX",
+          "VALUE",
+          "CTRL 3"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Играй сэмпл или паттерн — эффект обрабатывает звук шины.",
+        "en": "Play a sample or pattern — the effect processes the bus sound."
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Правь параметры ручками [CTRL 1]–[CTRL 3] и смотри на экран; дополнительные параметры — с зажатой [VALUE].",
+        "en": "Edit parameters with [CTRL 1]–[CTRL 3] while watching the screen; hold [VALUE] for the sub-parameters."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "CTRL 1",
+          "CTRL 2",
+          "CTRL 3",
+          "VALUE"
+        ]
+      }
+    }
+  ]
+}

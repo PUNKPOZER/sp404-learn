@@ -1,0 +1,181 @@
+{
+  "id": "zan-zou",
+  "type": "fx",
+  "title": {
+    "ru": "Zan-Zou",
+    "en": "Zan-Zou"
+  },
+  "summary": {
+    "ru": "Задержка в противофазе — эффект «послеобраза». Работает только со стерео.",
+    "en": "A delay of the negative phase — the lingering “afterimage” effect. Works on stereo sound only."
+  },
+  "category": "delay",
+  "tags": [
+    "fx",
+    "fx:zan-zou",
+    "fx-kind:bus"
+  ],
+  "difficulty": "advanced",
+  "durationMin": 6,
+  "related": [],
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Using the MFX effects",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7900737178465675.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — MFX List — Zan-Zou",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7979380378555531.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  "whatItDoes": {
+    "ru": "Задержка в противофазе — эффект «послеобраза». Работает только со стерео.",
+    "en": "A delay of the negative phase — the lingering “afterimage” effect. Works on stereo sound only."
+  },
+  "controls": [
+    {
+      "id": "time",
+      "label": "TIME",
+      "range": {
+        "ru": "0–100 / 1/32–1/1",
+        "en": "0–100 / 1/32–1/1"
+      },
+      "meaning": {
+        "ru": "Время задержки.",
+        "en": "Delay time."
+      }
+    },
+    {
+      "id": "feedback",
+      "label": "FEEDBACK",
+      "range": {
+        "ru": "0–99",
+        "en": "0–99"
+      },
+      "meaning": {
+        "ru": "Сколько звука возвращается на вход — больше повторов.",
+        "en": "How much of the effect is fed back — more repeats."
+      }
+    },
+    {
+      "id": "hf-damp",
+      "label": "HF DAMP",
+      "range": {
+        "ru": "200–8000 Hz, OFF",
+        "en": "200–8000 Hz, OFF"
+      },
+      "meaning": {
+        "ru": "Частота, выше которой эффектный звук приглушается (чёткость «послеобраза»).",
+        "en": "Frequency above which the effect sound is attenuated (how defined the afterimage sounds)."
+      }
+    },
+    {
+      "id": "level",
+      "label": "LEVEL",
+      "range": {
+        "ru": "0–100",
+        "en": "0–100"
+      },
+      "meaning": {
+        "ru": "Громкость эффектного звука.",
+        "en": "Volume of the effect sound."
+      }
+    },
+    {
+      "id": "mode",
+      "label": "MODE",
+      "range": {
+        "ru": "2TAP, 3TAP, 4TAP",
+        "en": "2TAP, 3TAP, 4TAP"
+      },
+      "meaning": {
+        "ru": "Как «тянется» эффектный звук.",
+        "en": "How the effect sound lingers."
+      }
+    },
+    {
+      "id": "sync",
+      "label": "SYNC",
+      "range": {
+        "ru": "OFF, ON",
+        "en": "OFF, ON"
+      },
+      "meaning": {
+        "ru": "При ON эффект синхронизируется с темпом.",
+        "en": "When ON, the effect synchronizes with the tempo."
+      }
+    }
+  ],
+  "goodFor": [
+    {
+      "ru": "Широкий «шлейф» за стерео-сэмплами",
+      "en": "A wide trail behind stereo samples"
+    },
+    {
+      "ru": "Необычная пространственность",
+      "en": "Unusual spaciousness"
+    },
+    {
+      "ru": "Переходы на стерео-лупах",
+      "en": "Transitions on stereo loops"
+    }
+  ],
+  "tips": [
+    {
+      "ru": "На моно-звуке эффекта нет — используй стерео-сэмплы.",
+      "en": "It does nothing to mono sound — use stereo samples."
+    }
+  ],
+  "practice": {
+    "ru": "Включи MODE 4TAP и сыграй стерео-луп — слышно «след» за звуком.",
+    "en": "Switch to MODE 4TAP and play a stereo loop — you hear the trail behind the sound."
+  },
+  "relatedEffects": [
+    "ko-da-ma",
+    "ha-dou"
+  ],
+  "tryThis": [
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Выбери эффект: удерживая [MFX], вращай [VALUE] или [CTRL 3], пока не появится «Zan-Zou»; отпусти [MFX].",
+        "en": "Choose the effect: hold [MFX] and turn [VALUE] or [CTRL 3] until “Zan-Zou” appears, then release [MFX]."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "MFX",
+          "VALUE",
+          "CTRL 3"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Играй сэмпл или паттерн — эффект обрабатывает звук шины.",
+        "en": "Play a sample or pattern — the effect processes the bus sound."
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Правь параметры ручками [CTRL 1]–[CTRL 3] и смотри на экран; дополнительные параметры — с зажатой [VALUE].",
+        "en": "Edit parameters with [CTRL 1]–[CTRL 3] while watching the screen; hold [VALUE] for the sub-parameters."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "CTRL 1",
+          "CTRL 2",
+          "CTRL 3",
+          "VALUE"
+        ]
+      }
+    }
+  ]
+}

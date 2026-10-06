@@ -1,0 +1,206 @@
+{
+  "id": "gt-amp-sim",
+  "type": "fx",
+  "title": {
+    "ru": "Gt Amp Sim",
+    "en": "Gt Amp Sim"
+  },
+  "summary": {
+    "ru": "Моделирует гитарный усилитель (INPUT FX).",
+    "en": "Models a guitar amplifier (INPUT FX)."
+  },
+  "category": "creative",
+  "tags": [
+    "fx",
+    "fx:gt-amp-sim",
+    "fx-kind:input"
+  ],
+  "difficulty": "intermediate",
+  "durationMin": 6,
+  "related": [],
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Configuring the input effects (INPUT FX)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7957057178535563.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — Inputting sound from an electronic musical instrument, mic or guitar",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7943233178517131.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — MFX List — Gt Amp Sim",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/8001754778582411.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  "whatItDoes": {
+    "ru": "Моделирует гитарный усилитель (INPUT FX).",
+    "en": "Models a guitar amplifier (INPUT FX)."
+  },
+  "controls": [
+    {
+      "id": "amp-type",
+      "label": "AMP TYPE",
+      "range": {
+        "ru": "JC, TWIN, BG, MATCH, MS, SLDN",
+        "en": "JC, TWIN, BG, MATCH, MS, SLDN"
+      },
+      "meaning": {
+        "ru": "Модель усилителя.",
+        "en": "The guitar amp type."
+      }
+    },
+    {
+      "id": "drive",
+      "label": "DRIVE",
+      "range": {
+        "ru": "0–100",
+        "en": "0–100"
+      },
+      "meaning": {
+        "ru": "Громкость и искажение усилителя.",
+        "en": "Volume and distortion of the amp."
+      }
+    },
+    {
+      "id": "level",
+      "label": "LEVEL",
+      "range": {
+        "ru": "0–100",
+        "en": "0–100"
+      },
+      "meaning": {
+        "ru": "Громкость эффектного звука.",
+        "en": "Volume of the effect sound."
+      }
+    },
+    {
+      "id": "bass",
+      "label": "BASS",
+      "range": {
+        "ru": "−100…100",
+        "en": "−100…100"
+      },
+      "meaning": {
+        "ru": "Тембр низов.",
+        "en": "Low-frequency tonal character."
+      }
+    },
+    {
+      "id": "middle",
+      "label": "MIDDLE",
+      "range": {
+        "ru": "−100…100",
+        "en": "−100…100"
+      },
+      "meaning": {
+        "ru": "Тембр середины.",
+        "en": "Midrange tonal character."
+      }
+    },
+    {
+      "id": "treble",
+      "label": "TREBLE",
+      "range": {
+        "ru": "−100…100",
+        "en": "−100…100"
+      },
+      "meaning": {
+        "ru": "Тембр верхов.",
+        "en": "High-frequency tonal character."
+      }
+    }
+  ],
+  "goodFor": [
+    {
+      "ru": "Гитара прямо в SP",
+      "en": "Plugging a guitar straight into the SP"
+    },
+    {
+      "ru": "Грязный бас-сэмпл",
+      "en": "A gritty bass sample"
+    },
+    {
+      "ru": "Тембр для синтезатора",
+      "en": "A tone for a synth"
+    }
+  ],
+  "tips": [
+    {
+      "ru": "Для гитары и баса поставь переключатель [MIC/GUITAR] вправо.",
+      "en": "For guitars and basses set the [MIC/GUITAR] switch to the right."
+    }
+  ],
+  "practice": {
+    "ru": "Запиши гитарную фразу через TWIN, затем через MS — сравни.",
+    "en": "Record a guitar phrase through TWIN, then MS — compare."
+  },
+  "relatedEffects": [
+    "overdrive",
+    "distortion"
+  ],
+  "tryThis": [
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Открой настройки входа: [SHIFT] + [EXT SOURCE]; нажми [VALUE] (INPUT FX Setting), в EFX Type выбери «Gt Amp Sim».",
+        "en": "Open input settings: [SHIFT] + [EXT SOURCE]; press [VALUE] (INPUT FX Setting) and choose “Gt Amp Sim” in EFX Type."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "SHIFT",
+          "EXT SOURCE",
+          "VALUE"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Подключи микрофон или инструмент к INPUT (или LINE IN) и нажми [EXT SOURCE] — кнопка загорится.",
+        "en": "Connect a mic or instrument to INPUT (or LINE IN) and press [EXT SOURCE] — the button lights up."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "EXT SOURCE"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "[VALUE] перемещает курсор к параметру, [CTRL 1]–[CTRL 3] меняют его.",
+        "en": "[VALUE] moves the cursor to a parameter and [CTRL 1]–[CTRL 3] change it."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "VALUE",
+          "CTRL 1",
+          "CTRL 2",
+          "CTRL 3"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "INPUT FX работает при сэмплировании и ресэмплинге: нажми [REC], чтобы сохранить обработанный звук на пэд.",
+        "en": "INPUT FX applies when sampling and resampling: press [REC] to save the processed sound to a pad."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "REC"
+        ]
+      }
+    }
+  ],
+  "tricks": [
+    "sp-as-external-fx"
+  ]
+}

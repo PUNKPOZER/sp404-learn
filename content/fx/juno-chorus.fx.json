@@ -1,0 +1,145 @@
+{
+  "id": "juno-chorus",
+  "type": "fx",
+  "title": {
+    "ru": "JUNO Chorus",
+    "en": "JUNO Chorus"
+  },
+  "summary": {
+    "ru": "Моделирует хорус синтезаторов Roland JUNO-106 и серии JX.",
+    "en": "Models the chorus of the Roland JUNO-106 and JX series."
+  },
+  "category": "modulation",
+  "tags": [
+    "fx",
+    "fx:juno-chorus",
+    "fx-kind:bus"
+  ],
+  "difficulty": "beginner",
+  "durationMin": 5,
+  "related": [],
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Using the MFX effects",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7900737178465675.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — MFX List — JUNO Chorus",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7988007578566283.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  "whatItDoes": {
+    "ru": "Моделирует хорус синтезаторов Roland JUNO-106 и серии JX.",
+    "en": "Models the chorus of the Roland JUNO-106 and JX series."
+  },
+  "controls": [
+    {
+      "id": "mode",
+      "label": "MODE",
+      "range": {
+        "ru": "JUNO 1, JUNO 2, JUNO12, JX-1 1, JX-1 2",
+        "en": "JUNO 1, JUNO 2, JUNO12, JX-1 1, JX-1 2"
+      },
+      "meaning": {
+        "ru": "Тип эффекта.",
+        "en": "The type of effect."
+      }
+    },
+    {
+      "id": "noise",
+      "label": "NOISE",
+      "range": {
+        "ru": "0–100",
+        "en": "0–100"
+      },
+      "meaning": {
+        "ru": "Громкость шума, который даёт эффект.",
+        "en": "Volume of the noise the effect generates."
+      }
+    },
+    {
+      "id": "balance",
+      "label": "BALANCE",
+      "range": {
+        "ru": "100-0 – 0-100 %",
+        "en": "100-0 – 0-100 %"
+      },
+      "meaning": {
+        "ru": "Баланс между исходным (dry) и обработанным звуком.",
+        "en": "Volume balance between the dry (original) and the effect sound."
+      }
+    }
+  ],
+  "goodFor": [
+    {
+      "ru": "Классическое «роландовское» расширение",
+      "en": "The classic Roland widening"
+    },
+    {
+      "ru": "Мягкие аккорды в lo-fi хаусе",
+      "en": "Soft chords in lo-fi house"
+    },
+    {
+      "ru": "Тёплые басовые лупы",
+      "en": "Warm bass loops"
+    }
+  ],
+  "tips": [
+    {
+      "ru": "MODE JUNO12 — эффект обеих режимов одновременно; послушай разницу.",
+      "en": "MODE JUNO12 combines both modes; listen to the difference."
+    }
+  ],
+  "practice": {
+    "ru": "Сравни MODE JUNO 1 и JUNO 2 на одном аккорде.",
+    "en": "Compare MODE JUNO 1 and JUNO 2 on the same chord."
+  },
+  "relatedEffects": [
+    "chorus",
+    "phaser"
+  ],
+  "tryThis": [
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Выбери эффект: удерживая [MFX], вращай [VALUE] или [CTRL 3], пока не появится «JUNO Chorus»; отпусти [MFX].",
+        "en": "Choose the effect: hold [MFX] and turn [VALUE] or [CTRL 3] until “JUNO Chorus” appears, then release [MFX]."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "MFX",
+          "VALUE",
+          "CTRL 3"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Играй сэмпл или паттерн — эффект обрабатывает звук шины.",
+        "en": "Play a sample or pattern — the effect processes the bus sound."
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Правь параметры ручками [CTRL 1]–[CTRL 3] и смотри на экран; дополнительные параметры — с зажатой [VALUE].",
+        "en": "Edit parameters with [CTRL 1]–[CTRL 3] while watching the screen; hold [VALUE] for the sub-parameters."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "CTRL 1",
+          "CTRL 2",
+          "CTRL 3",
+          "VALUE"
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,182 @@
+{
+  "id": "time-ctrl-dly",
+  "type": "fx",
+  "title": {
+    "ru": "TimeCtrlDly",
+    "en": "TimeCtrlDly"
+  },
+  "summary": {
+    "ru": "Задержка, у которой время можно менять плавно.",
+    "en": "A delay whose time can be varied smoothly."
+  },
+  "category": "delay",
+  "tags": [
+    "fx",
+    "fx:time-ctrl-dly",
+    "fx-kind:bus"
+  ],
+  "difficulty": "intermediate",
+  "durationMin": 6,
+  "related": [],
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Using the MFX effects",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7900737178465675.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — MFX List — TimeCtrlDly",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7982401178559371.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  "whatItDoes": {
+    "ru": "Задержка, у которой время можно менять плавно.",
+    "en": "A delay whose time can be varied smoothly."
+  },
+  "controls": [
+    {
+      "id": "time",
+      "label": "TIME",
+      "range": {
+        "ru": "0–100 mс (SYNC OFF) / 1/32–1/1 (SYNC ON)",
+        "en": "0–100 msec (SYNC OFF) / 1/32–1/1 (SYNC ON)"
+      },
+      "meaning": {
+        "ru": "Время задержки.",
+        "en": "Delay time."
+      }
+    },
+    {
+      "id": "feedback",
+      "label": "FEEDBACK",
+      "range": {
+        "ru": "0–99 %",
+        "en": "0–99 %"
+      },
+      "meaning": {
+        "ru": "Сколько звука возвращается на вход — больше повторов.",
+        "en": "How much of the effect is fed back — more repeats."
+      }
+    },
+    {
+      "id": "level",
+      "label": "LEVEL",
+      "range": {
+        "ru": "0–100",
+        "en": "0–100"
+      },
+      "meaning": {
+        "ru": "Громкость эффекта.",
+        "en": "Volume of the effect."
+      }
+    },
+    {
+      "id": "l-damp-f",
+      "label": "L DAMP F",
+      "range": {
+        "ru": "FLAT, 80–800 Hz",
+        "en": "FLAT, 80–800 Hz"
+      },
+      "meaning": {
+        "ru": "Диапазон низких частот, приглушаемый при каждом повторе.",
+        "en": "The low-frequency range that is attenuated on each repeat."
+      }
+    },
+    {
+      "id": "h-damp-f",
+      "label": "H DAMP F",
+      "range": {
+        "ru": "630–12500 Hz, FLAT",
+        "en": "630–12500 Hz, FLAT"
+      },
+      "meaning": {
+        "ru": "Диапазон высоких частот, приглушаемый при каждом повторе.",
+        "en": "The high-frequency range that is attenuated on each repeat."
+      }
+    },
+    {
+      "id": "sync",
+      "label": "SYNC",
+      "range": {
+        "ru": "OFF, ON",
+        "en": "OFF, ON"
+      },
+      "meaning": {
+        "ru": "При ON эффект синхронизируется с темпом.",
+        "en": "When ON, the effect synchronizes with the tempo."
+      }
+    }
+  ],
+  "goodFor": [
+    {
+      "ru": "Плавающие «пого»-эффекты при вращении TIME",
+      "en": "Pitch-bending sweeps when you turn TIME"
+    },
+    {
+      "ru": "Эхо с ручным временем",
+      "en": "Echo with a hand-set time"
+    },
+    {
+      "ru": "Ритмические повторы при включённом SYNC",
+      "en": "Rhythmic repeats with SYNC on"
+    }
+  ],
+  "tips": [
+    {
+      "ru": "Плавная смена TIME меняет высоту повторов — используй как «ленточный» приём.",
+      "en": "Smoothly changing TIME changes the pitch of the repeats — use it as a tape-style move."
+    }
+  ],
+  "practice": {
+    "ru": "Поставь SYNC OFF, FEEDBACK около 50 % и медленно вращай TIME во время повторов.",
+    "en": "Set SYNC OFF, FEEDBACK around 50 % and slowly turn TIME while the repeats ring."
+  },
+  "relatedEffects": [
+    "sync-delay",
+    "tape-echo",
+    "dj-fx-delay"
+  ],
+  "tryThis": [
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Выбери эффект: удерживая [MFX], вращай [VALUE] или [CTRL 3], пока не появится «TimeCtrlDly»; отпусти [MFX].",
+        "en": "Choose the effect: hold [MFX] and turn [VALUE] or [CTRL 3] until “TimeCtrlDly” appears, then release [MFX]."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "MFX",
+          "VALUE",
+          "CTRL 3"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Играй сэмпл или паттерн — эффект обрабатывает звук шины.",
+        "en": "Play a sample or pattern — the effect processes the bus sound."
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Правь параметры ручками [CTRL 1]–[CTRL 3] и смотри на экран; дополнительные параметры — с зажатой [VALUE].",
+        "en": "Edit parameters with [CTRL 1]–[CTRL 3] while watching the screen; hold [VALUE] for the sub-parameters."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "CTRL 1",
+          "CTRL 2",
+          "CTRL 3",
+          "VALUE"
+        ]
+      }
+    }
+  ]
+}

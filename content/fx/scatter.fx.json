@@ -1,0 +1,162 @@
+{
+  "id": "scatter",
+  "type": "fx",
+  "title": {
+    "ru": "Scatter",
+    "en": "Scatter"
+  },
+  "summary": {
+    "ru": "Переставляет куски лупа ступенями, меняя направление и длину — «цифровой» грув.",
+    "en": "Swaps the pieces of a looping sound in steps, altering direction and gate length — a digital groove."
+  },
+  "category": "dj",
+  "tags": [
+    "fx",
+    "fx:scatter",
+    "fx-kind:bus"
+  ],
+  "difficulty": "intermediate",
+  "durationMin": 7,
+  "related": [],
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Using the MFX effects",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7900737178465675.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — MFX List — Scatter",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7977025178552459.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  "whatItDoes": {
+    "ru": "Переставляет куски лупа ступенями, меняя направление и длину — «цифровой» грув.",
+    "en": "Swaps the pieces of a looping sound in steps, altering direction and gate length — a digital groove."
+  },
+  "controls": [
+    {
+      "id": "type",
+      "label": "TYPE",
+      "range": {
+        "ru": "1–10",
+        "en": "1–10"
+      },
+      "meaning": {
+        "ru": "Тип scatter.",
+        "en": "Scatter type."
+      }
+    },
+    {
+      "id": "depth",
+      "label": "DEPTH",
+      "range": {
+        "ru": "10–100",
+        "en": "10–100"
+      },
+      "meaning": {
+        "ru": "Глубина scatter.",
+        "en": "Scatter depth."
+      }
+    },
+    {
+      "id": "scatter",
+      "label": "SCATTER",
+      "range": {
+        "ru": "OFF, ON",
+        "en": "OFF, ON"
+      },
+      "meaning": {
+        "ru": "Включает и выключает эффект.",
+        "en": "Switches the effect on and off."
+      }
+    },
+    {
+      "id": "speed",
+      "label": "SPEED",
+      "range": {
+        "ru": "SINGLE, DOUBLE",
+        "en": "SINGLE, DOUBLE"
+      },
+      "meaning": {
+        "ru": "Скорость scatter.",
+        "en": "Scatter speed."
+      }
+    }
+  ],
+  "goodFor": [
+    {
+      "ru": "Рваные «цифровые» лупы",
+      "en": "Stuttering digital loops"
+    },
+    {
+      "ru": "Живые брейки на барабанном лупе",
+      "en": "Live breaks on a drum loop"
+    },
+    {
+      "ru": "Быстрая смена грува без паттерна",
+      "en": "Quick groove changes without a pattern"
+    }
+  ],
+  "tips": [
+    {
+      "ru": "Работает лучше всего на зацикленных сэмплах.",
+      "en": "Works best on looping samples."
+    }
+  ],
+  "practice": {
+    "ru": "Включи барабанный луп, переключай TYPE по одному значению каждые 4 такта.",
+    "en": "Run a drum loop and change TYPE by one every four bars."
+  },
+  "relatedEffects": [
+    "djfx-looper",
+    "slicer",
+    "back-spin"
+  ],
+  "tryThis": [
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Выбери эффект: удерживая [MFX], вращай [VALUE] или [CTRL 3], пока не появится «Scatter»; отпусти [MFX].",
+        "en": "Choose the effect: hold [MFX] and turn [VALUE] or [CTRL 3] until “Scatter” appears, then release [MFX]."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "MFX",
+          "VALUE",
+          "CTRL 3"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Играй сэмпл или паттерн — эффект обрабатывает звук шины.",
+        "en": "Play a sample or pattern — the effect processes the bus sound."
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Правь параметры ручками [CTRL 1]–[CTRL 3] и смотри на экран; дополнительные параметры — с зажатой [VALUE].",
+        "en": "Edit parameters with [CTRL 1]–[CTRL 3] while watching the screen; hold [VALUE] for the sub-parameters."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "CTRL 1",
+          "CTRL 2",
+          "CTRL 3",
+          "VALUE"
+        ]
+      }
+    }
+  ],
+  "tricks": [
+    "dj-style-repeat",
+    "build-up"
+  ]
+}

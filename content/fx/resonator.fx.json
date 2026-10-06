@@ -9,7 +9,7 @@
     "ru": "Резонатор на синтезе Карплуса–Стронга: окрашивает звук максимум шестью резонаторами, настроенными на ноты или аккорд.",
     "en": "A resonator based on Karplus–Strong synthesis: colours the sound with up to six resonators tuned to notes or a chord."
   },
-  "category": "effects",
+  "category": "pitch",
   "tags": [
     "fx",
     "fx:resonator"
@@ -123,7 +123,10 @@
     "ru": "Пропусти шумовой или барабанный сэмпл через Resonator и подбери ROOT, чтобы он звучал в тональности твоего баса.",
     "en": "Run a noise or drum sample through Resonator and set ROOT so it sounds in the key of your bass."
   },
-  "relatedEffects": [],
+  "relatedEffects": [
+    "hyper-reso",
+    "chromatic-ps"
+  ],
   "tryThis": [
     {
       "text": {

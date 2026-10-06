@@ -1,7 +1,10 @@
 import { Knob } from "../components/Knob";
 import { SourceList } from "../components/SourceList";
 import { DeviceDiagram } from "../components/DeviceDiagram";
+import { DifficultyBadge, DurationChip } from "../components/Chips";
 import { FX } from "../content/fx";
+import { TRICKS } from "../content/tricks";
+import { fxCategoryName } from "./FxLab";
 import { startGuide } from "../state/actions";
 import { setState, useStore } from "../state/store";
 import { t } from "../lib/i18n";
@@ -15,6 +18,7 @@ export function FxDetail() {
       <header className="screen-head">
         <button className="btn sm" onClick={() => setState({ screen: "fxlab" })}>← FX Lab</button>
         <h1>{e.name}</h1>{e.button && <span className="chip">[{e.button}]</span>}
+        <span className="chip soft">{e.kind === "input" ? "INPUT FX" : "MFX / BUS FX"}</span><span className="chip soft">{fxCategoryName(e.category)}</span><DifficultyBadge level={e.difficulty} /><DurationChip min={e.durationMin} />
         <div className="grow" />
         <button className="btn primary big" onClick={() => startGuide("fx", e.name, e.tryThis, "fx")}>{t("Попробовать →", "Try it →")}</button>
       </header>
@@ -38,10 +42,21 @@ export function FxDetail() {
         </section>
         <div className="stack">
           <section className="panel"><h2>{t("Для чего", "Use it for")}</h2><ul className="bullets">{e.useFor.map((u) => <li key={u}>{u}</li>)}</ul></section>
+          {(() => {
+            const tricks = (e.tricks ?? []).map((id) => TRICKS.find((x) => x.id === id)).filter((x): x is NonNullable<typeof x> => !!x);
+            return tricks.length > 0 && (
+              <section className="panel"><h2>{t("Приём", "Trick")}</h2>
+                <ul className="bullets">{tricks.map((x) => <li key={x.id}><button className="link" onClick={() => setState({ screen: "trick", trickId: x.id })}>{x.title}</button></li>)}</ul></section>
+            );
+          })()}
           {e.tip && <section className="panel"><h2>{t("Заметка", "Note")}</h2><p>{e.tip}</p></section>}
           {e.practice && <section className="panel"><h2>{t("Практика", "Practice")}</h2><p>{e.practice}</p></section>}
         </div>
       </div>
+      {(e.related ?? []).length > 0 && (
+        <section className="panel"><h2>{t("Связанные эффекты", "Related effects")}</h2>
+          <div className="row">{(e.related ?? []).map((id) => { const r = FX.find((x) => x.id === id); return r && <button key={id} className="btn sm" onClick={() => setState({ fxId: id })}>{r.name}</button>; })}</div></section>
+      )}
       <SourceList sources={e.sources} />
     </div>
   );

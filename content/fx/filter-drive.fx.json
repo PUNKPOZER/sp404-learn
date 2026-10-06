@@ -9,7 +9,7 @@
     "ru": "Фильтр с овердрайвом: срезает заданные частоты и добавляет дисторшн.",
     "en": "A filter with overdrive: cuts the chosen frequencies and adds distortion."
   },
-  "category": "effects",
+  "category": "filter",
   "tags": [
     "fx",
     "fx:filter-drive"
@@ -131,7 +131,11 @@
     "ru": "Играй барабанный луп и медленно двигай CUTOFF от одного края к другому; затем добавь DRIVE.",
     "en": "Play a drum loop and slowly move CUTOFF from one end to the other; then add DRIVE."
   },
-  "relatedEffects": [],
+  "relatedEffects": [
+    "super-filter",
+    "isolator",
+    "equalizer"
+  ],
   "tryThis": [
     {
       "text": {
@@ -178,5 +182,8 @@
         ]
       }
     }
+  ],
+  "tricks": [
+    "filter-sweep"
   ]
 }

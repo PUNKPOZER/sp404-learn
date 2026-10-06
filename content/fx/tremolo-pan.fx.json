@@ -1,0 +1,169 @@
+{
+  "id": "tremolo-pan",
+  "type": "fx",
+  "title": {
+    "ru": "Tremolo/Pan",
+    "en": "Tremolo/Pan"
+  },
+  "summary": {
+    "ru": "Циклически меняет громкость (тремоло) или панораму.",
+    "en": "Cyclically varies the volume (tremolo) or the panning."
+  },
+  "category": "modulation",
+  "tags": [
+    "fx",
+    "fx:tremolo-pan",
+    "fx-kind:bus"
+  ],
+  "difficulty": "beginner",
+  "durationMin": 5,
+  "related": [],
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Using the MFX effects",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7900737178465675.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — MFX List — Tremolo/Pan",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7991028378570123.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  "whatItDoes": {
+    "ru": "Циклически меняет громкость (тремоло) или панораму.",
+    "en": "Cyclically varies the volume (tremolo) or the panning."
+  },
+  "controls": [
+    {
+      "id": "depth",
+      "label": "DEPTH",
+      "range": {
+        "ru": "0–100",
+        "en": "0–100"
+      },
+      "meaning": {
+        "ru": "Глубина эффекта.",
+        "en": "Depth of the effect."
+      }
+    },
+    {
+      "id": "rate",
+      "label": "RATE",
+      "range": {
+        "ru": "0–100 / 1.000–0.010",
+        "en": "0–100 / 1.000–0.010"
+      },
+      "meaning": {
+        "ru": "Период эффекта.",
+        "en": "Cycle of the effect."
+      }
+    },
+    {
+      "id": "type",
+      "label": "TYPE",
+      "range": {
+        "ru": "TRE, PAN",
+        "en": "TRE, PAN"
+      },
+      "meaning": {
+        "ru": "TRE — громкость, PAN — панорама.",
+        "en": "TRE varies the volume; PAN varies the panning."
+      }
+    },
+    {
+      "id": "wave",
+      "label": "WAVE",
+      "range": {
+        "ru": "TRI, SQR, SIN, SAW1, SAW2, TRP",
+        "en": "TRI, SQR, SIN, SAW1, SAW2, TRP"
+      },
+      "meaning": {
+        "ru": "Форма модуляции.",
+        "en": "The modulation shape."
+      }
+    },
+    {
+      "id": "sync",
+      "label": "SYNC",
+      "range": {
+        "ru": "OFF, ON",
+        "en": "OFF, ON"
+      },
+      "meaning": {
+        "ru": "При ON эффект синхронизируется с темпом.",
+        "en": "When ON, the effect synchronizes with the tempo."
+      }
+    }
+  ],
+  "goodFor": [
+    {
+      "ru": "Ритмичное «дрожание» аккордов",
+      "en": "Rhythmic shimmer on chords"
+    },
+    {
+      "ru": "Автопан на хэтах",
+      "en": "Auto-pan on hats"
+    },
+    {
+      "ru": "Gate-подобный эффект при SQR",
+      "en": "A gate-like effect with SQR"
+    }
+  ],
+  "tips": [
+    {
+      "ru": "WAVE SQR превращает тремоло в «ступеньки» — хорошо для ритма.",
+      "en": "WAVE SQR turns the tremolo into steps — good for rhythm."
+    }
+  ],
+  "practice": {
+    "ru": "Поставь TYPE PAN, SYNC ON и RATE 1/8 на хэтах.",
+    "en": "Set TYPE PAN, SYNC ON and RATE 1/8 on hats."
+  },
+  "relatedEffects": [
+    "slicer",
+    "chorus"
+  ],
+  "tryThis": [
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Выбери эффект: удерживая [MFX], вращай [VALUE] или [CTRL 3], пока не появится «Tremolo/Pan»; отпусти [MFX].",
+        "en": "Choose the effect: hold [MFX] and turn [VALUE] or [CTRL 3] until “Tremolo/Pan” appears, then release [MFX]."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "MFX",
+          "VALUE",
+          "CTRL 3"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Играй сэмпл или паттерн — эффект обрабатывает звук шины.",
+        "en": "Play a sample or pattern — the effect processes the bus sound."
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Правь параметры ручками [CTRL 1]–[CTRL 3] и смотри на экран; дополнительные параметры — с зажатой [VALUE].",
+        "en": "Edit parameters with [CTRL 1]–[CTRL 3] while watching the screen; hold [VALUE] for the sub-parameters."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "CTRL 1",
+          "CTRL 2",
+          "CTRL 3",
+          "VALUE"
+        ]
+      }
+    }
+  ]
+}

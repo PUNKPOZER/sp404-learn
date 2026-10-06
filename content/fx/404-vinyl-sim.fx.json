@@ -1,0 +1,148 @@
+{
+  "id": "404-vinyl-sim",
+  "type": "fx",
+  "title": {
+    "ru": "404 VinylSim",
+    "en": "404 VinylSim"
+  },
+  "summary": {
+    "ru": "Моделирует Vinyl Sim с SP-404SX: звук играющей пластинки.",
+    "en": "Models the Vinyl Sim of the SP-404SX: the sound of an analog record playing."
+  },
+  "category": "lofi",
+  "tags": [
+    "fx",
+    "fx:404-vinyl-sim",
+    "fx-kind:bus"
+  ],
+  "difficulty": "beginner",
+  "durationMin": 5,
+  "related": [],
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Using the MFX effects",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7900737178465675.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — MFX List — 404 VinylSim",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7984833178562443.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  "whatItDoes": {
+    "ru": "Моделирует Vinyl Sim с SP-404SX: звук играющей пластинки.",
+    "en": "Models the Vinyl Sim of the SP-404SX: the sound of an analog record playing."
+  },
+  "controls": [
+    {
+      "id": "frequency",
+      "label": "FREQUENCY",
+      "range": {
+        "ru": "0–100",
+        "en": "0–100"
+      },
+      "meaning": {
+        "ru": "Частотная характеристика системы воспроизведения.",
+        "en": "The frequency characteristics of the playback system."
+      }
+    },
+    {
+      "id": "noise",
+      "label": "NOISE",
+      "range": {
+        "ru": "0–100",
+        "en": "0–100"
+      },
+      "meaning": {
+        "ru": "Громкость шума.",
+        "en": "Volume of the noise."
+      }
+    },
+    {
+      "id": "wow-flut",
+      "label": "WOW FLUT",
+      "range": {
+        "ru": "0–100",
+        "en": "0–100"
+      },
+      "meaning": {
+        "ru": "Неровность вращения.",
+        "en": "Inconsistencies as the record rotates."
+      }
+    }
+  ],
+  "goodFor": [
+    {
+      "ru": "Классический звук SP-404 на семплах",
+      "en": "The classic SP-404 sound on samples"
+    },
+    {
+      "ru": "Текстура поверх бита",
+      "en": "Texture over a beat"
+    },
+    {
+      "ru": "Вставка «старого проигрывателя»",
+      "en": "An old-turntable moment"
+    }
+  ],
+  "tips": [
+    {
+      "ru": "Три ручки — быстро найдёшь нужный «пыльный» звук.",
+      "en": "Three knobs — you find a dusty sound quickly."
+    }
+  ],
+  "practice": {
+    "ru": "Сравни с 303 VinylSim на одном луп-сэмпле.",
+    "en": "Compare with 303 VinylSim on the same loop."
+  },
+  "relatedEffects": [
+    "303-vinyl-sim",
+    "cassette-sim"
+  ],
+  "tryThis": [
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Выбери эффект: удерживая [MFX], вращай [VALUE] или [CTRL 3], пока не появится «404 VinylSim»; отпусти [MFX].",
+        "en": "Choose the effect: hold [MFX] and turn [VALUE] or [CTRL 3] until “404 VinylSim” appears, then release [MFX]."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "MFX",
+          "VALUE",
+          "CTRL 3"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Играй сэмпл или паттерн — эффект обрабатывает звук шины.",
+        "en": "Play a sample or pattern — the effect processes the bus sound."
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Правь параметры ручками [CTRL 1]–[CTRL 3] и смотри на экран; дополнительные параметры — с зажатой [VALUE].",
+        "en": "Edit parameters with [CTRL 1]–[CTRL 3] while watching the screen; hold [VALUE] for the sub-parameters."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "CTRL 1",
+          "CTRL 2",
+          "CTRL 3",
+          "VALUE"
+        ]
+      }
+    }
+  ],
+  "tricks": [
+    "lo-fi-texture"
+  ]
+}

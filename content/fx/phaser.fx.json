@@ -1,0 +1,181 @@
+{
+  "id": "phaser",
+  "type": "fx",
+  "title": {
+    "ru": "Phaser",
+    "en": "Phaser"
+  },
+  "summary": {
+    "ru": "Модуляция за счёт добавления звука со сдвигом фазы.",
+    "en": "Modulation by adding a phase-shifted sound."
+  },
+  "category": "modulation",
+  "tags": [
+    "fx",
+    "fx:phaser",
+    "fx-kind:bus"
+  ],
+  "difficulty": "intermediate",
+  "durationMin": 6,
+  "related": [],
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Using the MFX effects",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7900737178465675.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — MFX List — Phaser",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7989185178567819.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  "whatItDoes": {
+    "ru": "Модуляция за счёт добавления звука со сдвигом фазы.",
+    "en": "Modulation by adding a phase-shifted sound."
+  },
+  "controls": [
+    {
+      "id": "depth",
+      "label": "DEPTH",
+      "range": {
+        "ru": "0–100",
+        "en": "0–100"
+      },
+      "meaning": {
+        "ru": "Глубина эффекта.",
+        "en": "Depth of the effect."
+      }
+    },
+    {
+      "id": "rate",
+      "label": "RATE",
+      "range": {
+        "ru": "0–100 / 4.000–0.016 bar",
+        "en": "0–100 / 4.000–0.016 bar"
+      },
+      "meaning": {
+        "ru": "Период (скорость) эффекта.",
+        "en": "Cycle (period) of the effect."
+      }
+    },
+    {
+      "id": "manual",
+      "label": "MANUAL",
+      "range": {
+        "ru": "0–100",
+        "en": "0–100"
+      },
+      "meaning": {
+        "ru": "Диапазон эффекта; большие значения уменьшают фазинг в низах.",
+        "en": "Frequency range of the effect; larger values reduce phasing in the lows."
+      }
+    },
+    {
+      "id": "resonance",
+      "label": "RESONANCE",
+      "range": {
+        "ru": "0–100",
+        "en": "0–100"
+      },
+      "meaning": {
+        "ru": "Резонанс фильтра: чем больше, тем заметнее эффект.",
+        "en": "Filter resonance: the higher, the more pronounced the effect."
+      }
+    },
+    {
+      "id": "balance",
+      "label": "BALANCE",
+      "range": {
+        "ru": "100-0 – 0-100 %",
+        "en": "100-0 – 0-100 %"
+      },
+      "meaning": {
+        "ru": "Баланс между исходным (dry) и обработанным звуком.",
+        "en": "Volume balance between the dry (original) and the effect sound."
+      }
+    },
+    {
+      "id": "sync",
+      "label": "SYNC",
+      "range": {
+        "ru": "OFF, ON",
+        "en": "OFF, ON"
+      },
+      "meaning": {
+        "ru": "При ON эффект синхронизируется с темпом.",
+        "en": "When ON, the effect synchronizes with the tempo."
+      }
+    }
+  ],
+  "goodFor": [
+    {
+      "ru": "Медленные «вихри» на аккордах",
+      "en": "Slow swirls on chords"
+    },
+    {
+      "ru": "Мягкое движение в лупе",
+      "en": "Gentle movement in a loop"
+    },
+    {
+      "ru": "Вокальные чопы с «космосом»",
+      "en": "Spacey vocal chops"
+    }
+  ],
+  "tips": [
+    {
+      "ru": "Большой RATE и средний DEPTH — звучит как плывущий «космос».",
+      "en": "A slow RATE and medium DEPTH sound like a drifting cosmos."
+    }
+  ],
+  "practice": {
+    "ru": "Включи SYNC и сравни RATE 4 бара и 1 бар на пэде.",
+    "en": "Turn SYNC on and compare RATE of four bars and one bar on a pad."
+  },
+  "relatedEffects": [
+    "flanger",
+    "chorus"
+  ],
+  "tryThis": [
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Выбери эффект: удерживая [MFX], вращай [VALUE] или [CTRL 3], пока не появится «Phaser»; отпусти [MFX].",
+        "en": "Choose the effect: hold [MFX] and turn [VALUE] or [CTRL 3] until “Phaser” appears, then release [MFX]."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "MFX",
+          "VALUE",
+          "CTRL 3"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Играй сэмпл или паттерн — эффект обрабатывает звук шины.",
+        "en": "Play a sample or pattern — the effect processes the bus sound."
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Правь параметры ручками [CTRL 1]–[CTRL 3] и смотри на экран; дополнительные параметры — с зажатой [VALUE].",
+        "en": "Edit parameters with [CTRL 1]–[CTRL 3] while watching the screen; hold [VALUE] for the sub-parameters."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "CTRL 1",
+          "CTRL 2",
+          "CTRL 3",
+          "VALUE"
+        ]
+      }
+    }
+  ]
+}

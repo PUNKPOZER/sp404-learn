@@ -1,0 +1,184 @@
+{
+  "id": "dj-fx-delay",
+  "type": "fx",
+  "title": {
+    "ru": "DJFX Delay",
+    "en": "DJFX Delay"
+  },
+  "summary": {
+    "ru": "Сочетание DJFX Looper и TimeCtrlDly: задержка работает только при включённом цикле.",
+    "en": "A combination of DJFX Looper and TimeCtrlDly: the delay is applied only while the loop is on."
+  },
+  "category": "dj",
+  "tags": [
+    "fx",
+    "fx:dj-fx-delay",
+    "fx-kind:bus"
+  ],
+  "difficulty": "intermediate",
+  "durationMin": 7,
+  "related": [],
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Using the MFX effects",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7900737178465675.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — MFX List — DJFX Delay",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/9038337190354443.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  "whatItDoes": {
+    "ru": "Сочетание DJFX Looper и TimeCtrlDly: задержка работает только при включённом цикле.",
+    "en": "A combination of DJFX Looper and TimeCtrlDly: the delay is applied only while the loop is on."
+  },
+  "controls": [
+    {
+      "id": "length",
+      "label": "LENGTH",
+      "range": {
+        "ru": "0.230–0.012 с",
+        "en": "0.230–0.012 sec"
+      },
+      "meaning": {
+        "ru": "Длина цикла.",
+        "en": "Loop length."
+      }
+    },
+    {
+      "id": "time",
+      "label": "TIME",
+      "range": {
+        "ru": "0–100 mс / 1/32–1/1",
+        "en": "0–100 msec / 1/32–1/1"
+      },
+      "meaning": {
+        "ru": "Время задержки.",
+        "en": "Delay time."
+      }
+    },
+    {
+      "id": "loop-sw",
+      "label": "LOOP SW",
+      "range": {
+        "ru": "OFF, ON",
+        "en": "OFF, ON"
+      },
+      "meaning": {
+        "ru": "Включи во время звучания — звук зациклится на длину LENGTH.",
+        "en": "Turn on while sound plays — it loops at LENGTH."
+      }
+    },
+    {
+      "id": "feedback",
+      "label": "FEEDBACK",
+      "range": {
+        "ru": "0–99",
+        "en": "0–99"
+      },
+      "meaning": {
+        "ru": "Сколько звука возвращается на вход — больше повторов.",
+        "en": "How much of the effect is fed back — more repeats."
+      }
+    },
+    {
+      "id": "level",
+      "label": "LEVEL",
+      "range": {
+        "ru": "0–100",
+        "en": "0–100"
+      },
+      "meaning": {
+        "ru": "Громкость задержки.",
+        "en": "Volume of the delay."
+      }
+    },
+    {
+      "id": "sync",
+      "label": "SYNC",
+      "range": {
+        "ru": "OFF, ON",
+        "en": "OFF, ON"
+      },
+      "meaning": {
+        "ru": "При ON эффект синхронизируется с темпом.",
+        "en": "When ON, the effect synchronizes with the tempo."
+      }
+    }
+  ],
+  "goodFor": [
+    {
+      "ru": "Зацикливание с «эхом» на переходах",
+      "en": "Loop-with-echo on transitions"
+    },
+    {
+      "ru": "Диджейские повторы с хвостом",
+      "en": "DJ repeats with a tail"
+    },
+    {
+      "ru": "Перкуссионные фразы из одного удара",
+      "en": "Percussion phrases from a single hit"
+    }
+  ],
+  "tips": [
+    {
+      "ru": "Задержка применяется только при LOOP SW = ON; выключи LOOP SW, чтобы убрать цикл.",
+      "en": "The delay is applied only when LOOP SW is ON; turn LOOP SW off to remove the loop."
+    }
+  ],
+  "practice": {
+    "ru": "Сыграй хэт, включи LOOP SW на 1 такт, затем выключи — хвост задержки остаётся.",
+    "en": "Play a hat, turn LOOP SW on for a bar, then off — the delay tail stays."
+  },
+  "relatedEffects": [
+    "djfx-looper",
+    "time-ctrl-dly"
+  ],
+  "tryThis": [
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Выбери эффект: удерживая [MFX], вращай [VALUE] или [CTRL 3], пока не появится «DJFX Delay»; отпусти [MFX].",
+        "en": "Choose the effect: hold [MFX] and turn [VALUE] or [CTRL 3] until “DJFX Delay” appears, then release [MFX]."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "MFX",
+          "VALUE",
+          "CTRL 3"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Играй сэмпл или паттерн — эффект обрабатывает звук шины.",
+        "en": "Play a sample or pattern — the effect processes the bus sound."
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Правь параметры ручками [CTRL 1]–[CTRL 3] и смотри на экран; дополнительные параметры — с зажатой [VALUE].",
+        "en": "Edit parameters with [CTRL 1]–[CTRL 3] while watching the screen; hold [VALUE] for the sub-parameters."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "CTRL 1",
+          "CTRL 2",
+          "CTRL 3",
+          "VALUE"
+        ]
+      }
+    }
+  ],
+  "tricks": [
+    "dj-style-repeat"
+  ]
+}

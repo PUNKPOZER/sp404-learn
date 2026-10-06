@@ -1,0 +1,181 @@
+{
+  "id": "ko-da-ma",
+  "type": "fx",
+  "title": {
+    "ru": "Ko-Da-Ma",
+    "en": "Ko-Da-Ma"
+  },
+  "summary": {
+    "ru": "Создаёт «отзвуки» — повторяющееся эхо.",
+    "en": "Creates reverberating echoes."
+  },
+  "category": "delay",
+  "tags": [
+    "fx",
+    "fx:ko-da-ma",
+    "fx-kind:bus"
+  ],
+  "difficulty": "intermediate",
+  "durationMin": 6,
+  "related": [],
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Using the MFX effects",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7900737178465675.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — MFX List — Ko-Da-Ma",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7978791578554763.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  "whatItDoes": {
+    "ru": "Создаёт «отзвуки» — повторяющееся эхо.",
+    "en": "Creates reverberating echoes."
+  },
+  "controls": [
+    {
+      "id": "time",
+      "label": "TIME",
+      "range": {
+        "ru": "1/32 … 1/1",
+        "en": "1/32 … 1/1"
+      },
+      "meaning": {
+        "ru": "Насколько задержан эффектный звук.",
+        "en": "How much the effect sound is delayed."
+      }
+    },
+    {
+      "id": "feedback",
+      "label": "FEEDBACK",
+      "range": {
+        "ru": "0–99 %",
+        "en": "0–99 %"
+      },
+      "meaning": {
+        "ru": "Сколько раз повторяется звук.",
+        "en": "How much the effect sound is repeated."
+      }
+    },
+    {
+      "id": "send",
+      "label": "SEND",
+      "range": {
+        "ru": "0–100",
+        "en": "0–100"
+      },
+      "meaning": {
+        "ru": "Громкость звука, отправляемого в эффект.",
+        "en": "Volume of sound sent to the effect."
+      }
+    },
+    {
+      "id": "l-damp-f",
+      "label": "L DAMP F",
+      "range": {
+        "ru": "FLAT, 80–800 Hz",
+        "en": "FLAT, 80–800 Hz"
+      },
+      "meaning": {
+        "ru": "Диапазон низких частот, приглушаемый при каждом повторе.",
+        "en": "The low-frequency range that is attenuated on each repeat."
+      }
+    },
+    {
+      "id": "h-damp-f",
+      "label": "H DAMP F",
+      "range": {
+        "ru": "630–12500 Hz, FLAT",
+        "en": "630–12500 Hz, FLAT"
+      },
+      "meaning": {
+        "ru": "Диапазон высоких частот, приглушаемый при каждом повторе.",
+        "en": "The high-frequency range that is attenuated on each repeat."
+      }
+    },
+    {
+      "id": "mode",
+      "label": "MODE",
+      "range": {
+        "ru": "SINGLE, PAN",
+        "en": "SINGLE, PAN"
+      },
+      "meaning": {
+        "ru": "SINGLE — эффект по центру; PAN — слева и справа.",
+        "en": "SINGLE puts the effect in the centre; PAN spreads it left and right."
+      }
+    }
+  ],
+  "goodFor": [
+    {
+      "ru": "Эхо вокального «выкрика»",
+      "en": "Echo on a vocal shout"
+    },
+    {
+      "ru": "Стерео-пинг-понг в MODE PAN",
+      "en": "Stereo ping-pong in PAN mode"
+    },
+    {
+      "ru": "Длинные хвосты перед паузой",
+      "en": "Long tails before a pause"
+    }
+  ],
+  "tips": [
+    {
+      "ru": "SEND управляет тем, сколько звука идёт в эффект: подними его только на нужный миг.",
+      "en": "SEND controls how much sound goes into the effect: raise it only for the moment you need."
+    }
+  ],
+  "practice": {
+    "ru": "Переключи MODE на PAN и сыграй пэды слева направо — эхо «гуляет» по панораме.",
+    "en": "Switch MODE to PAN and play pads left to right — the echo travels across the stereo field."
+  },
+  "relatedEffects": [
+    "sync-delay",
+    "zan-zou"
+  ],
+  "tryThis": [
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Выбери эффект: удерживая [MFX], вращай [VALUE] или [CTRL 3], пока не появится «Ko-Da-Ma»; отпусти [MFX].",
+        "en": "Choose the effect: hold [MFX] and turn [VALUE] or [CTRL 3] until “Ko-Da-Ma” appears, then release [MFX]."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "MFX",
+          "VALUE",
+          "CTRL 3"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Играй сэмпл или паттерн — эффект обрабатывает звук шины.",
+        "en": "Play a sample or pattern — the effect processes the bus sound."
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Правь параметры ручками [CTRL 1]–[CTRL 3] и смотри на экран; дополнительные параметры — с зажатой [VALUE].",
+        "en": "Edit parameters with [CTRL 1]–[CTRL 3] while watching the screen; hold [VALUE] for the sub-parameters."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "CTRL 1",
+          "CTRL 2",
+          "CTRL 3",
+          "VALUE"
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,181 @@
+{
+  "id": "to-gu-ro",
+  "type": "fx",
+  "title": {
+    "ru": "To-Gu-Ro",
+    "en": "To-Gu-Ro"
+  },
+  "summary": {
+    "ru": "«Извивающийся» эффект по образу свернувшейся змеи.",
+    "en": "An undulating effect, based on the image of a coiled snake."
+  },
+  "category": "dj",
+  "tags": [
+    "fx",
+    "fx:to-gu-ro",
+    "fx-kind:bus"
+  ],
+  "difficulty": "advanced",
+  "durationMin": 6,
+  "related": [],
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Using the MFX effects",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7900737178465675.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — MFX List — To-Gu-Ro",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7979969178556299.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  "whatItDoes": {
+    "ru": "«Извивающийся» эффект по образу свернувшейся змеи.",
+    "en": "An undulating effect, based on the image of a coiled snake."
+  },
+  "controls": [
+    {
+      "id": "depth",
+      "label": "DEPTH",
+      "range": {
+        "ru": "0–100",
+        "en": "0–100"
+      },
+      "meaning": {
+        "ru": "Насколько замедляется воспроизведение.",
+        "en": "How much the playback is slowed."
+      }
+    },
+    {
+      "id": "rate",
+      "label": "RATE",
+      "range": {
+        "ru": "0–100 / 2/1–1/128",
+        "en": "0–100 / 2/1–1/128"
+      },
+      "meaning": {
+        "ru": "Период замедления.",
+        "en": "Period of the slow-down."
+      }
+    },
+    {
+      "id": "resonance",
+      "label": "RESONANCE",
+      "range": {
+        "ru": "0–100",
+        "en": "0–100"
+      },
+      "meaning": {
+        "ru": "Резонанс фильтра: чем больше, тем заметнее эффект.",
+        "en": "Filter resonance: the higher, the more pronounced the effect."
+      }
+    },
+    {
+      "id": "flt-mod",
+      "label": "FLT MOD",
+      "range": {
+        "ru": "0–100",
+        "en": "0–100"
+      },
+      "meaning": {
+        "ru": "Приглушает верха по скорости.",
+        "en": "Attenuates highs by speed."
+      }
+    },
+    {
+      "id": "amp-mod",
+      "label": "AMP MOD",
+      "range": {
+        "ru": "0–100",
+        "en": "0–100"
+      },
+      "meaning": {
+        "ru": "Снижает громкость по скорости.",
+        "en": "Lowers volume by speed."
+      }
+    },
+    {
+      "id": "sync",
+      "label": "SYNC",
+      "range": {
+        "ru": "OFF, ON",
+        "en": "OFF, ON"
+      },
+      "meaning": {
+        "ru": "При ON эффект синхронизируется с темпом.",
+        "en": "When ON, the effect synchronizes with the tempo."
+      }
+    }
+  ],
+  "goodFor": [
+    {
+      "ru": "Волнообразное «тянущееся» движение",
+      "en": "Wave-like dragging motion"
+    },
+    {
+      "ru": "Необычные басовые линии из лупа",
+      "en": "Odd bass lines from a loop"
+    },
+    {
+      "ru": "Психоделические вставки",
+      "en": "Psychedelic inserts"
+    }
+  ],
+  "tips": [
+    {
+      "ru": "Включи SYNC, чтобы «змея» ходила в такт.",
+      "en": "Turn SYNC on so the snake moves in time."
+    }
+  ],
+  "practice": {
+    "ru": "Поставь SYNC ON, RATE 1/8 и DEPTH 60 — слушай «дыхание» лупа.",
+    "en": "Set SYNC ON, RATE 1/8 and DEPTH 60 — hear the loop breathe."
+  },
+  "relatedEffects": [
+    "downer",
+    "stopper"
+  ],
+  "tryThis": [
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Выбери эффект: удерживая [MFX], вращай [VALUE] или [CTRL 3], пока не появится «To-Gu-Ro»; отпусти [MFX].",
+        "en": "Choose the effect: hold [MFX] and turn [VALUE] or [CTRL 3] until “To-Gu-Ro” appears, then release [MFX]."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "MFX",
+          "VALUE",
+          "CTRL 3"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Играй сэмпл или паттерн — эффект обрабатывает звук шины.",
+        "en": "Play a sample or pattern — the effect processes the bus sound."
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Правь параметры ручками [CTRL 1]–[CTRL 3] и смотри на экран; дополнительные параметры — с зажатой [VALUE].",
+        "en": "Edit parameters with [CTRL 1]–[CTRL 3] while watching the screen; hold [VALUE] for the sub-parameters."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "CTRL 1",
+          "CTRL 2",
+          "CTRL 3",
+          "VALUE"
+        ]
+      }
+    }
+  ]
+}

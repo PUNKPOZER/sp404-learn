@@ -1,0 +1,198 @@
+{
+  "id": "tape-echo",
+  "type": "fx",
+  "title": {
+    "ru": "Tape Echo",
+    "en": "Tape Echo"
+  },
+  "summary": {
+    "ru": "Виртуальное ленточное эхо в духе Roland RE-201 Space Echo.",
+    "en": "A virtual tape echo in the spirit of the Roland RE-201 Space Echo."
+  },
+  "category": "delay",
+  "tags": [
+    "fx",
+    "fx:tape-echo",
+    "fx-kind:bus"
+  ],
+  "difficulty": "intermediate",
+  "durationMin": 7,
+  "related": [],
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Using the MFX effects",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7900737178465675.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — MFX List — Tape Echo",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7981812378558603.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  "whatItDoes": {
+    "ru": "Виртуальное ленточное эхо в духе Roland RE-201 Space Echo.",
+    "en": "A virtual tape echo in the spirit of the Roland RE-201 Space Echo."
+  },
+  "controls": [
+    {
+      "id": "time",
+      "label": "TIME",
+      "range": {
+        "ru": "10–800 mс",
+        "en": "10–800 msec"
+      },
+      "meaning": {
+        "ru": "Скорость ленты: чем больше значение, тем медленнее лента и длиннее интервал между повторами.",
+        "en": "Tape speed: larger values slow the tape and lengthen the gap between repeats."
+      }
+    },
+    {
+      "id": "feedback",
+      "label": "FEEDBACK",
+      "range": {
+        "ru": "0–99 %",
+        "en": "0–99 %"
+      },
+      "meaning": {
+        "ru": "Громкость повторов.",
+        "en": "Volume of the repeats."
+      }
+    },
+    {
+      "id": "level",
+      "label": "LEVEL",
+      "range": {
+        "ru": "0–100",
+        "en": "0–100"
+      },
+      "meaning": {
+        "ru": "Громкость эффектного звука.",
+        "en": "Volume of the effect sound."
+      }
+    },
+    {
+      "id": "mode",
+      "label": "MODE",
+      "range": {
+        "ru": "S, M, L, S+M, S+L, M+L, S+M+L",
+        "en": "S, M, L, S+M, S+L, M+L, S+M+L"
+      },
+      "meaning": {
+        "ru": "Комбинация головок воспроизведения.",
+        "en": "Which combination of playback heads is used."
+      }
+    },
+    {
+      "id": "w-f-rate",
+      "label": "W/F RATE",
+      "range": {
+        "ru": "0–100",
+        "en": "0–100"
+      },
+      "meaning": {
+        "ru": "Скорость wow/flutter (плавающей высоты из-за износа ленты).",
+        "en": "Speed of wow/flutter (the pitch wobble of worn tape)."
+      }
+    },
+    {
+      "id": "w-f-depth",
+      "label": "W/F DEPTH",
+      "range": {
+        "ru": "0–100",
+        "en": "0–100"
+      },
+      "meaning": {
+        "ru": "Глубина wow/flutter.",
+        "en": "Depth of the wow/flutter."
+      }
+    }
+  ],
+  "goodFor": [
+    {
+      "ru": "Тёплое эхо для сэмплов и вокала",
+      "en": "Warm echo for samples and vocals"
+    },
+    {
+      "ru": "Дабовые «хвосты»",
+      "en": "Dub-style tails"
+    },
+    {
+      "ru": "Лёгкий «плывущий» тембр через W/F",
+      "en": "A gently drifting tone via W/F"
+    }
+  ],
+  "tips": [
+    {
+      "ru": "Начни с MODE S+M и небольшим W/F DEPTH — звучит «живее», чем чистое цифровое эхо.",
+      "en": "Start with MODE S+M and a small W/F DEPTH — it feels livelier than a clean digital echo."
+    }
+  ],
+  "practice": {
+    "ru": "Кинь один снейр в Tape Echo с FEEDBACK около 60 % и убери всё остальное через MUTE BUS: слышен только затухающий хвост.",
+    "en": "Throw one snare into Tape Echo at about 60 % FEEDBACK and use MUTE BUS: you hear only the fading tail."
+  },
+  "relatedEffects": [
+    "sync-delay",
+    "cloud-delay",
+    "cassette-sim"
+  ],
+  "tryThis": [
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Выбери эффект: удерживая [MFX], вращай [VALUE] или [CTRL 3], пока не появится «Tape Echo»; отпусти [MFX].",
+        "en": "Choose the effect: hold [MFX] and turn [VALUE] or [CTRL 3] until “Tape Echo” appears, then release [MFX]."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "MFX",
+          "VALUE",
+          "CTRL 3"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Играй сэмпл или паттерн — эффект обрабатывает звук шины.",
+        "en": "Play a sample or pattern — the effect processes the bus sound."
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Правь параметры ручками [CTRL 1]–[CTRL 3] и смотри на экран; дополнительные параметры — с зажатой [VALUE].",
+        "en": "Edit parameters with [CTRL 1]–[CTRL 3] while watching the screen; hold [VALUE] for the sub-parameters."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "CTRL 1",
+          "CTRL 2",
+          "CTRL 3",
+          "VALUE"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Для «эффекта хвоста»: [SHIFT] + [BUS FX] включает MUTE BUS — слышно только эффект.",
+        "en": "For the tail-only sound: [SHIFT] + [BUS FX] turns on MUTE BUS — only the effect is heard."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "SHIFT",
+          "BUS FX"
+        ]
+      }
+    }
+  ],
+  "tricks": [
+    "reverb-transition"
+  ]
+}

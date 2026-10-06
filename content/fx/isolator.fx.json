@@ -9,7 +9,7 @@
     "ru": "Убирает звук в заданном диапазоне частот — раздельная регулировка низа, середины и верха.",
     "en": "Removes sound in a chosen frequency range — separate control of lows, mids and highs."
   },
-  "category": "effects",
+  "category": "filter",
   "tags": [
     "fx",
     "fx:isolator"
@@ -91,7 +91,10 @@
     "ru": "Играй полный луп и по очереди «выключай» LOW, MID и HIGH — запомни, что несёт каждый диапазон.",
     "en": "Play a full loop and “switch off” LOW, MID and HIGH in turn — remember what each range carries."
   },
-  "relatedEffects": [],
+  "relatedEffects": [
+    "equalizer",
+    "filter-drive"
+  ],
   "tryThis": [
     {
       "text": {

@@ -1,0 +1,185 @@
+{
+  "id": "super-filter",
+  "type": "fx",
+  "title": {
+    "ru": "Super Filter",
+    "en": "Super Filter"
+  },
+  "summary": {
+    "ru": "Фильтр с очень крутым срезом, частота среза может циклически меняться.",
+    "en": "A filter with an extremely sharp slope; the cutoff can vary cyclically."
+  },
+  "category": "filter",
+  "tags": [
+    "fx",
+    "fx:super-filter",
+    "fx-kind:bus"
+  ],
+  "difficulty": "intermediate",
+  "durationMin": 6,
+  "related": [],
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Using the MFX effects",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7900737178465675.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — MFX List — Super Filter",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7982989978560139.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  "whatItDoes": {
+    "ru": "Фильтр с очень крутым срезом, частота среза может циклически меняться.",
+    "en": "A filter with an extremely sharp slope; the cutoff can vary cyclically."
+  },
+  "controls": [
+    {
+      "id": "cutoff",
+      "label": "CUTOFF",
+      "range": {
+        "ru": "0–100",
+        "en": "0–100"
+      },
+      "meaning": {
+        "ru": "Частота среза: большие значения расширяют диапазон.",
+        "en": "The cutoff frequency: higher values raise the range."
+      }
+    },
+    {
+      "id": "resonance",
+      "label": "RESONANCE",
+      "range": {
+        "ru": "0–100",
+        "en": "0–100"
+      },
+      "meaning": {
+        "ru": "Резонанс фильтра: чем больше, тем заметнее эффект.",
+        "en": "Filter resonance: the higher, the more pronounced the effect."
+      }
+    },
+    {
+      "id": "flt-type",
+      "label": "FLT TYPE",
+      "range": {
+        "ru": "LPF, BPF, HPF",
+        "en": "LPF, BPF, HPF"
+      },
+      "meaning": {
+        "ru": "Тип фильтра.",
+        "en": "Filter type."
+      }
+    },
+    {
+      "id": "depth",
+      "label": "DEPTH",
+      "range": {
+        "ru": "0–100",
+        "en": "0–100"
+      },
+      "meaning": {
+        "ru": "Глубина эффекта.",
+        "en": "Depth of the effect."
+      }
+    },
+    {
+      "id": "rate",
+      "label": "RATE",
+      "range": {
+        "ru": "0–100 / 2/1–1/64T",
+        "en": "0–100 / 2/1–1/64T"
+      },
+      "meaning": {
+        "ru": "Период изменения.",
+        "en": "Period of the change."
+      }
+    },
+    {
+      "id": "sync",
+      "label": "SYNC",
+      "range": {
+        "ru": "OFF, ON",
+        "en": "OFF, ON"
+      },
+      "meaning": {
+        "ru": "При ON эффект синхронизируется с темпом.",
+        "en": "When ON, the effect synchronizes with the tempo."
+      }
+    }
+  ],
+  "goodFor": [
+    {
+      "ru": "Автоматические фильтр-свипы в темпе",
+      "en": "Automatic tempo-locked filter sweeps"
+    },
+    {
+      "ru": "Резкие вырезы частот",
+      "en": "Sharp frequency cuts"
+    },
+    {
+      "ru": "«Дышащие» басовые лупы",
+      "en": "Breathing bass loops"
+    }
+  ],
+  "tips": [
+    {
+      "ru": "Для самостоятельных свипов поставь DEPTH ближе к нулю и крути CUTOFF руками.",
+      "en": "For manual sweeps keep DEPTH near zero and turn CUTOFF by hand."
+    }
+  ],
+  "practice": {
+    "ru": "Поставь FLT TYPE BPF, SYNC ON и RATE 1/4 — слушай ритмичное «вау».",
+    "en": "Set FLT TYPE BPF, SYNC ON and RATE 1/4 — hear a rhythmic wah."
+  },
+  "relatedEffects": [
+    "filter-drive",
+    "wah",
+    "isolator"
+  ],
+  "tryThis": [
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Выбери эффект: удерживая [MFX], вращай [VALUE] или [CTRL 3], пока не появится «Super Filter»; отпусти [MFX].",
+        "en": "Choose the effect: hold [MFX] and turn [VALUE] or [CTRL 3] until “Super Filter” appears, then release [MFX]."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "MFX",
+          "VALUE",
+          "CTRL 3"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Играй сэмпл или паттерн — эффект обрабатывает звук шины.",
+        "en": "Play a sample or pattern — the effect processes the bus sound."
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Правь параметры ручками [CTRL 1]–[CTRL 3] и смотри на экран; дополнительные параметры — с зажатой [VALUE].",
+        "en": "Edit parameters with [CTRL 1]–[CTRL 3] while watching the screen; hold [VALUE] for the sub-parameters."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "CTRL 1",
+          "CTRL 2",
+          "CTRL 3",
+          "VALUE"
+        ]
+      }
+    }
+  ],
+  "tricks": [
+    "filter-sweep"
+  ]
+}

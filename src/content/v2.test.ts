@@ -17,7 +17,10 @@ describe("shipped content (data files under /content)", () => {
     expect(validateAll(ITEMS).join("\n")).toBe("");
   });
   it("legacy FX / TRICKS / REFERENCE survive the move to data (ids, counts, bilingual)", () => {
-    expect(fxEntries().map((f) => f.id).sort()).toEqual(["djfx-looper", "filter-drive", "isolator", "resonator"]);
+    const fxIds = fxEntries().map((f) => f.id);
+    for (const id of ["djfx-looper", "filter-drive", "isolator", "resonator"]) expect(fxIds).toContain(id);
+    expect(fxIds.length).toBe(46);                          // every effect in the manual's MFX list
+    expect(new Set(fxIds).size).toBe(46);
     const tricks = trickEntries().map((t) => t.id);
     for (const id of ["mute-group", "pattern-chain", "resample-pattern", "skip-back", "tr-rec"]) expect(tricks).toContain(id);
     expect(referenceEntries().length).toBe(itemsOf("reference").length);

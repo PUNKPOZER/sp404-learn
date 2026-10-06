@@ -1,0 +1,147 @@
+{
+  "id": "sx-reverb",
+  "type": "fx",
+  "title": {
+    "ru": "SX Reverb",
+    "en": "SX Reverb"
+  },
+  "summary": {
+    "ru": "Простой реверб в стиле SP-404SX.",
+    "en": "A simple reverb in the SP-404SX style."
+  },
+  "category": "reverb",
+  "tags": [
+    "fx",
+    "fx:sx-reverb",
+    "fx-kind:bus"
+  ],
+  "difficulty": "beginner",
+  "durationMin": 5,
+  "related": [],
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Using the MFX effects",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7900737178465675.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — MFX List — SX Reverb",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7996865178577035.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  "whatItDoes": {
+    "ru": "Простой реверб в стиле SP-404SX.",
+    "en": "A simple reverb in the SP-404SX style."
+  },
+  "controls": [
+    {
+      "id": "time",
+      "label": "TIME",
+      "range": {
+        "ru": "0–100",
+        "en": "0–100"
+      },
+      "meaning": {
+        "ru": "Время реверберации.",
+        "en": "Reverb time."
+      }
+    },
+    {
+      "id": "tone",
+      "label": "TONE",
+      "range": {
+        "ru": "−100…100",
+        "en": "−100…100"
+      },
+      "meaning": {
+        "ru": "Тембр реверберации.",
+        "en": "Tonal character of the reverb."
+      }
+    },
+    {
+      "id": "balance",
+      "label": "BALANCE",
+      "range": {
+        "ru": "100-0 – 0-100 %",
+        "en": "100-0 – 0-100 %"
+      },
+      "meaning": {
+        "ru": "Баланс между исходным (dry) и обработанным звуком.",
+        "en": "Volume balance between the dry (original) and the effect sound."
+      }
+    }
+  ],
+  "goodFor": [
+    {
+      "ru": "Быстрый «воздух» без настроек",
+      "en": "Quick air with minimal settings"
+    },
+    {
+      "ru": "Реверб на вокале",
+      "en": "Reverb on vocals"
+    },
+    {
+      "ru": "Играть вживую",
+      "en": "Live playing"
+    }
+  ],
+  "tips": [
+    {
+      "ru": "Три параметра — достаточно, чтобы быстро «оживить» звук.",
+      "en": "Three parameters are enough to bring a sound to life."
+    }
+  ],
+  "practice": {
+    "ru": "Поставь TONE ниже нуля для тёмного реверба и выше — для яркого.",
+    "en": "Set TONE below zero for a dark reverb and above for a bright one."
+  },
+  "relatedEffects": [
+    "reverb"
+  ],
+  "tryThis": [
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Выбери эффект: удерживая [MFX], вращай [VALUE] или [CTRL 3], пока не появится «SX Reverb»; отпусти [MFX].",
+        "en": "Choose the effect: hold [MFX] and turn [VALUE] or [CTRL 3] until “SX Reverb” appears, then release [MFX]."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "MFX",
+          "VALUE",
+          "CTRL 3"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Играй сэмпл или паттерн — эффект обрабатывает звук шины.",
+        "en": "Play a sample or pattern — the effect processes the bus sound."
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Правь параметры ручками [CTRL 1]–[CTRL 3] и смотри на экран; дополнительные параметры — с зажатой [VALUE].",
+        "en": "Edit parameters with [CTRL 1]–[CTRL 3] while watching the screen; hold [VALUE] for the sub-parameters."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "CTRL 1",
+          "CTRL 2",
+          "CTRL 3",
+          "VALUE"
+        ]
+      }
+    }
+  ],
+  "tricks": [
+    "reverb-transition"
+  ]
+}

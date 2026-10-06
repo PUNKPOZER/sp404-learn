@@ -1,0 +1,181 @@
+{
+  "id": "sync-delay",
+  "type": "fx",
+  "title": {
+    "ru": "Sync Delay",
+    "en": "Sync Delay"
+  },
+  "summary": {
+    "ru": "Эхо, синхронное с темпом.",
+    "en": "An echo in sync with the tempo."
+  },
+  "category": "delay",
+  "tags": [
+    "fx",
+    "fx:sync-delay",
+    "fx-kind:bus"
+  ],
+  "difficulty": "beginner",
+  "durationMin": 6,
+  "related": [],
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Using the MFX effects",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7900737178465675.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — MFX List — Sync Delay",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7975258778550155.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  "whatItDoes": {
+    "ru": "Эхо, синхронное с темпом.",
+    "en": "An echo in sync with the tempo."
+  },
+  "controls": [
+    {
+      "id": "time",
+      "label": "TIME",
+      "range": {
+        "ru": "1/32 … 1/1",
+        "en": "1/32 … 1/1"
+      },
+      "meaning": {
+        "ru": "Время задержки — долями такта (триоли и пунктир тоже есть).",
+        "en": "Delay time as a note value (triplets and dotted values included)."
+      }
+    },
+    {
+      "id": "feedback",
+      "label": "FEEDBACK",
+      "range": {
+        "ru": "0–99 %",
+        "en": "0–99 %"
+      },
+      "meaning": {
+        "ru": "Сколько звука возвращается на вход — больше повторов.",
+        "en": "How much of the effect is fed back — more repeats."
+      }
+    },
+    {
+      "id": "level",
+      "label": "LEVEL",
+      "range": {
+        "ru": "0–100",
+        "en": "0–100"
+      },
+      "meaning": {
+        "ru": "Громкость эффектного звука.",
+        "en": "Volume of the effect sound."
+      }
+    },
+    {
+      "id": "l-damp-f",
+      "label": "L DAMP F",
+      "range": {
+        "ru": "FLAT, 80–800 Hz",
+        "en": "FLAT, 80–800 Hz"
+      },
+      "meaning": {
+        "ru": "Диапазон низких частот, приглушаемый при каждом повторе.",
+        "en": "The low-frequency range that is attenuated on each repeat."
+      }
+    },
+    {
+      "id": "h-damp-f",
+      "label": "H DAMP F",
+      "range": {
+        "ru": "630–12500 Hz, FLAT",
+        "en": "630–12500 Hz, FLAT"
+      },
+      "meaning": {
+        "ru": "Диапазон высоких частот, приглушаемый при каждом повторе.",
+        "en": "The high-frequency range that is attenuated on each repeat."
+      }
+    }
+  ],
+  "goodFor": [
+    {
+      "ru": "Эхо «в долю» на снейре и вокале",
+      "en": "Tempo-locked echoes on snare and vocals"
+    },
+    {
+      "ru": "Ритмические «хвосты» перед переходом",
+      "en": "Rhythmic tails before a transition"
+    },
+    {
+      "ru": "Утолщение коротких хэтов",
+      "en": "Thickening short hats"
+    }
+  ],
+  "tips": [
+    {
+      "ru": "Следи за FEEDBACK: большие значения быстро превращаются в бесконечное эхо.",
+      "en": "Watch FEEDBACK: high values quickly turn into endless echo."
+    }
+  ],
+  "practice": {
+    "ru": "Сыграй снейр с TIME 1/8 и FEEDBACK около 40 %, затем поменяй TIME на 1/4 — слышно, как сдвигаются повторы.",
+    "en": "Play a snare with TIME 1/8 and FEEDBACK around 40 %, then change TIME to 1/4 — hear the repeats move."
+  },
+  "relatedEffects": [
+    "tape-echo",
+    "time-ctrl-dly",
+    "sx-delay",
+    "cloud-delay"
+  ],
+  "tryThis": [
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Выбери эффект: удерживая [MFX], вращай [VALUE] или [CTRL 3], пока не появится «Sync Delay»; отпусти [MFX].",
+        "en": "Choose the effect: hold [MFX] and turn [VALUE] or [CTRL 3] until “Sync Delay” appears, then release [MFX]."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "MFX",
+          "VALUE",
+          "CTRL 3"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Играй сэмпл или паттерн — эффект обрабатывает звук шины.",
+        "en": "Play a sample or pattern — the effect processes the bus sound."
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Правь параметры ручками [CTRL 1]–[CTRL 3] и смотри на экран; дополнительные параметры — с зажатой [VALUE].",
+        "en": "Edit parameters with [CTRL 1]–[CTRL 3] while watching the screen; hold [VALUE] for the sub-parameters."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "CTRL 1",
+          "CTRL 2",
+          "CTRL 3",
+          "VALUE"
+        ]
+      }
+    },
+    {
+      "kind": "concept",
+      "text": {
+        "ru": "Установи темп банка или проекта заранее — эхо следует ему.",
+        "en": "Set the bank or project tempo first — the echo follows it."
+      }
+    }
+  ],
+  "tricks": [
+    "performance-transition"
+  ]
+}

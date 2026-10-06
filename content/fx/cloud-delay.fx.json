@@ -1,0 +1,184 @@
+{
+  "id": "cloud-delay",
+  "type": "fx",
+  "title": {
+    "ru": "Cloud Delay",
+    "en": "Cloud Delay"
+  },
+  "summary": {
+    "ru": "Множество задержек и реверберации — густой «облачный» звук.",
+    "en": "Many delays plus reverberation — a thick “cloudy” sound."
+  },
+  "category": "delay",
+  "tags": [
+    "fx",
+    "fx:cloud-delay",
+    "fx-kind:bus"
+  ],
+  "difficulty": "advanced",
+  "durationMin": 7,
+  "related": [],
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Using the MFX effects",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7900737178465675.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — MFX List — Cloud Delay",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7998349978578571.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  "whatItDoes": {
+    "ru": "Множество задержек и реверберации — густой «облачный» звук.",
+    "en": "Many delays plus reverberation — a thick “cloudy” sound."
+  },
+  "controls": [
+    {
+      "id": "window",
+      "label": "WINDOW",
+      "range": {
+        "ru": "0–100",
+        "en": "0–100"
+      },
+      "meaning": {
+        "ru": "Интервал между задержанными звуками; большие значения дают более глубокую реверберацию.",
+        "en": "Spacing of the delayed sounds; larger settings give deeper reverberation."
+      }
+    },
+    {
+      "id": "pitch",
+      "label": "PITCH",
+      "range": {
+        "ru": "−12.0 … +12.0",
+        "en": "−12.0 … +12.0"
+      },
+      "meaning": {
+        "ru": "Громкость питч-шифтера в эффектном звуке.",
+        "en": "Volume of the pitch shifter in the effect sound."
+      }
+    },
+    {
+      "id": "balance",
+      "label": "BALANCE",
+      "range": {
+        "ru": "100-0 – 0-100 %",
+        "en": "100-0 – 0-100 %"
+      },
+      "meaning": {
+        "ru": "Баланс между исходным (dry) и обработанным звуком.",
+        "en": "Volume balance between the dry (original) and the effect sound."
+      }
+    },
+    {
+      "id": "feedback",
+      "label": "FEEDBACK",
+      "range": {
+        "ru": "−100…100",
+        "en": "−100…100"
+      },
+      "meaning": {
+        "ru": "Сколько звука возвращается на вход — больше повторов.",
+        "en": "How much of the effect is fed back — more repeats."
+      }
+    },
+    {
+      "id": "cloudy",
+      "label": "CLOUDY",
+      "range": {
+        "ru": "0–100",
+        "en": "0–100"
+      },
+      "meaning": {
+        "ru": "Плотность эффектного звука.",
+        "en": "Thickness of the effect sound."
+      }
+    },
+    {
+      "id": "lofi",
+      "label": "LOFI",
+      "range": {
+        "ru": "OFF, ON",
+        "en": "OFF, ON"
+      },
+      "meaning": {
+        "ru": "При ON тембр эффектного звука деградирует.",
+        "en": "When ON, the tonal character of the effect sound is degraded."
+      }
+    }
+  ],
+  "goodFor": [
+    {
+      "ru": "Атмосферные «облака» над аккордами",
+      "en": "Atmospheric clouds over chords"
+    },
+    {
+      "ru": "Размытые переходы",
+      "en": "Washed-out transitions"
+    },
+    {
+      "ru": "Эмбиент-текстуры из коротких звуков",
+      "en": "Ambient textures from short sounds"
+    }
+  ],
+  "tips": [
+    {
+      "ru": "Начни с небольшого BALANCE: эффект очень плотный.",
+      "en": "Start with a small BALANCE: the effect is very dense."
+    }
+  ],
+  "practice": {
+    "ru": "Сыграй один аккорд, подними CLOUDY и PITCH — а потом ресэмплируй результат на новый пэд.",
+    "en": "Play one chord, raise CLOUDY and PITCH — then resample the result onto a new pad."
+  },
+  "relatedEffects": [
+    "tape-echo",
+    "reverb"
+  ],
+  "tryThis": [
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Выбери эффект: удерживая [MFX], вращай [VALUE] или [CTRL 3], пока не появится «Cloud Delay»; отпусти [MFX].",
+        "en": "Choose the effect: hold [MFX] and turn [VALUE] or [CTRL 3] until “Cloud Delay” appears, then release [MFX]."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "MFX",
+          "VALUE",
+          "CTRL 3"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Играй сэмпл или паттерн — эффект обрабатывает звук шины.",
+        "en": "Play a sample or pattern — the effect processes the bus sound."
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Правь параметры ручками [CTRL 1]–[CTRL 3] и смотри на экран; дополнительные параметры — с зажатой [VALUE].",
+        "en": "Edit parameters with [CTRL 1]–[CTRL 3] while watching the screen; hold [VALUE] for the sub-parameters."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "CTRL 1",
+          "CTRL 2",
+          "CTRL 3",
+          "VALUE"
+        ]
+      }
+    }
+  ],
+  "tricks": [
+    "reverb-transition"
+  ]
+}

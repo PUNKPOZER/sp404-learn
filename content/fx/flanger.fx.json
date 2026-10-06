@@ -1,0 +1,181 @@
+{
+  "id": "flanger",
+  "type": "fx",
+  "title": {
+    "ru": "Flanger",
+    "en": "Flanger"
+  },
+  "summary": {
+    "ru": "Модуляция, как у взлетающего и садящегося самолёта.",
+    "en": "Modulation like a jet airplane taking off and landing."
+  },
+  "category": "modulation",
+  "tags": [
+    "fx",
+    "fx:flanger",
+    "fx-kind:bus"
+  ],
+  "difficulty": "intermediate",
+  "durationMin": 6,
+  "related": [],
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Using the MFX effects",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7900737178465675.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — MFX List — Flanger",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7988596378567051.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  "whatItDoes": {
+    "ru": "Модуляция, как у взлетающего и садящегося самолёта.",
+    "en": "Modulation like a jet airplane taking off and landing."
+  },
+  "controls": [
+    {
+      "id": "depth",
+      "label": "DEPTH",
+      "range": {
+        "ru": "0–100",
+        "en": "0–100"
+      },
+      "meaning": {
+        "ru": "Глубина эффекта.",
+        "en": "Depth of the effect."
+      }
+    },
+    {
+      "id": "rate",
+      "label": "RATE",
+      "range": {
+        "ru": "0–100 / 4.000–0.016 bar",
+        "en": "0–100 / 4.000–0.016 bar"
+      },
+      "meaning": {
+        "ru": "Период эффекта.",
+        "en": "Cycle of the effect sound."
+      }
+    },
+    {
+      "id": "manual",
+      "label": "MANUAL",
+      "range": {
+        "ru": "0–100",
+        "en": "0–100"
+      },
+      "meaning": {
+        "ru": "Диапазон, в котором работает эффект; малые значения уменьшают фленжинг в низах.",
+        "en": "The frequency range of the effect; smaller values reduce flanging in the lows."
+      }
+    },
+    {
+      "id": "resonance",
+      "label": "RESONANCE",
+      "range": {
+        "ru": "0–100",
+        "en": "0–100"
+      },
+      "meaning": {
+        "ru": "Резонанс фильтра: чем больше, тем заметнее эффект.",
+        "en": "Filter resonance: the higher, the more pronounced the effect."
+      }
+    },
+    {
+      "id": "balance",
+      "label": "BALANCE",
+      "range": {
+        "ru": "100-0 – 0-100 %",
+        "en": "100-0 – 0-100 %"
+      },
+      "meaning": {
+        "ru": "Баланс между исходным (dry) и обработанным звуком.",
+        "en": "Volume balance between the dry (original) and the effect sound."
+      }
+    },
+    {
+      "id": "sync",
+      "label": "SYNC",
+      "range": {
+        "ru": "OFF, ON",
+        "en": "OFF, ON"
+      },
+      "meaning": {
+        "ru": "При ON эффект синхронизируется с темпом.",
+        "en": "When ON, the effect synchronizes with the tempo."
+      }
+    }
+  ],
+  "goodFor": [
+    {
+      "ru": "Реактивные свипы на хэтах и брейках",
+      "en": "Jet sweeps on hats and breaks"
+    },
+    {
+      "ru": "Переходы между секциями",
+      "en": "Transitions between sections"
+    },
+    {
+      "ru": "Психоделические пэды",
+      "en": "Psychedelic pads"
+    }
+  ],
+  "tips": [
+    {
+      "ru": "Подними RESONANCE для более «металлического» звука.",
+      "en": "Raise RESONANCE for a more metallic sound."
+    }
+  ],
+  "practice": {
+    "ru": "Включи SYNC и RATE около 2 бар на барабанном лупе.",
+    "en": "Turn SYNC on and set RATE around two bars on a drum loop."
+  },
+  "relatedEffects": [
+    "phaser",
+    "chorus"
+  ],
+  "tryThis": [
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Выбери эффект: удерживая [MFX], вращай [VALUE] или [CTRL 3], пока не появится «Flanger»; отпусти [MFX].",
+        "en": "Choose the effect: hold [MFX] and turn [VALUE] or [CTRL 3] until “Flanger” appears, then release [MFX]."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "MFX",
+          "VALUE",
+          "CTRL 3"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Играй сэмпл или паттерн — эффект обрабатывает звук шины.",
+        "en": "Play a sample or pattern — the effect processes the bus sound."
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Правь параметры ручками [CTRL 1]–[CTRL 3] и смотри на экран; дополнительные параметры — с зажатой [VALUE].",
+        "en": "Edit parameters with [CTRL 1]–[CTRL 3] while watching the screen; hold [VALUE] for the sub-parameters."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "CTRL 1",
+          "CTRL 2",
+          "CTRL 3",
+          "VALUE"
+        ]
+      }
+    }
+  ]
+}

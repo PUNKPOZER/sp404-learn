@@ -1,0 +1,198 @@
+{
+  "id": "reverb",
+  "type": "fx",
+  "title": {
+    "ru": "Reverb",
+    "en": "Reverb"
+  },
+  "summary": {
+    "ru": "Добавляет реверберацию.",
+    "en": "Adds reverberation."
+  },
+  "category": "reverb",
+  "tags": [
+    "fx",
+    "fx:reverb",
+    "fx-kind:bus"
+  ],
+  "difficulty": "beginner",
+  "durationMin": 6,
+  "related": [],
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Using the MFX effects",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7900737178465675.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — MFX List — Reverb",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7986753178564747.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  "whatItDoes": {
+    "ru": "Добавляет реверберацию.",
+    "en": "Adds reverberation."
+  },
+  "controls": [
+    {
+      "id": "type",
+      "label": "TYPE",
+      "range": {
+        "ru": "AMBI, ROOM, HALL1, HALL2",
+        "en": "AMBI, ROOM, HALL1, HALL2"
+      },
+      "meaning": {
+        "ru": "Тип реверберации.",
+        "en": "The type of reverb."
+      }
+    },
+    {
+      "id": "time",
+      "label": "TIME",
+      "range": {
+        "ru": "0–100",
+        "en": "0–100"
+      },
+      "meaning": {
+        "ru": "Время реверберации.",
+        "en": "Reverb time."
+      }
+    },
+    {
+      "id": "level",
+      "label": "LEVEL",
+      "range": {
+        "ru": "0–100",
+        "en": "0–100"
+      },
+      "meaning": {
+        "ru": "Громкость эффектного звука.",
+        "en": "Volume of the effect sound."
+      }
+    },
+    {
+      "id": "low-cut",
+      "label": "LOW CUT",
+      "range": {
+        "ru": "FLAT, 20–800 Hz",
+        "en": "FLAT, 20–800 Hz"
+      },
+      "meaning": {
+        "ru": "Низкие частоты эффектного звука, которые приглушаются.",
+        "en": "The low-frequency range at which the effect sound is attenuated."
+      }
+    },
+    {
+      "id": "high-cut",
+      "label": "HIGH CUT",
+      "range": {
+        "ru": "630–12500 Hz, FLAT",
+        "en": "630–12500 Hz, FLAT"
+      },
+      "meaning": {
+        "ru": "Высокие частоты эффектного звука, которые приглушаются.",
+        "en": "The high-frequency range at which the effect sound is attenuated."
+      }
+    },
+    {
+      "id": "pre-delay",
+      "label": "PRE DELAY",
+      "range": {
+        "ru": "0–100 ms",
+        "en": "0–100 ms"
+      },
+      "meaning": {
+        "ru": "Время до появления эффекта.",
+        "en": "Time before the effect sound appears."
+      }
+    }
+  ],
+  "goodFor": [
+    {
+      "ru": "Пространство для снейра и вокала",
+      "en": "Space for snare and vocals"
+    },
+    {
+      "ru": "Хвост перед паузой",
+      "en": "A tail before a pause"
+    },
+    {
+      "ru": "Склейка слоёв в одном «зале»",
+      "en": "Gluing layers in one room"
+    }
+  ],
+  "tips": [
+    {
+      "ru": "Подрежь низ через LOW CUT, чтобы реверб не «мылил» бочку и бас.",
+      "en": "Trim the lows with LOW CUT so the reverb doesn't muddy kick and bass."
+    }
+  ],
+  "practice": {
+    "ru": "Сыграй снейр с TYPE ROOM, потом с HALL2 — послушай, как растёт «комната».",
+    "en": "Play a snare with TYPE ROOM, then HALL2 — hear the room grow."
+  },
+  "relatedEffects": [
+    "sx-reverb",
+    "cloud-delay",
+    "ha-dou"
+  ],
+  "tryThis": [
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Выбери эффект: удерживая [MFX], вращай [VALUE] или [CTRL 3], пока не появится «Reverb»; отпусти [MFX].",
+        "en": "Choose the effect: hold [MFX] and turn [VALUE] or [CTRL 3] until “Reverb” appears, then release [MFX]."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "MFX",
+          "VALUE",
+          "CTRL 3"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Играй сэмпл или паттерн — эффект обрабатывает звук шины.",
+        "en": "Play a sample or pattern — the effect processes the bus sound."
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Правь параметры ручками [CTRL 1]–[CTRL 3] и смотри на экран; дополнительные параметры — с зажатой [VALUE].",
+        "en": "Edit parameters with [CTRL 1]–[CTRL 3] while watching the screen; hold [VALUE] for the sub-parameters."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "CTRL 1",
+          "CTRL 2",
+          "CTRL 3",
+          "VALUE"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Чтобы слышать только хвост: [SHIFT] + [BUS FX] (MUTE BUS) в момент удара.",
+        "en": "To hear only the tail: [SHIFT] + [BUS FX] (MUTE BUS) at the moment of the hit."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "SHIFT",
+          "BUS FX"
+        ]
+      }
+    }
+  ],
+  "tricks": [
+    "reverb-transition"
+  ]
+}

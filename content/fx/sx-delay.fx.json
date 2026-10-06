@@ -1,0 +1,145 @@
+{
+  "id": "sx-delay",
+  "type": "fx",
+  "title": {
+    "ru": "SX Delay",
+    "en": "SX Delay"
+  },
+  "summary": {
+    "ru": "Простое эхо в темпе, как на SP-404SX.",
+    "en": "A simple tempo-synced echo, as on the SP-404SX."
+  },
+  "category": "delay",
+  "tags": [
+    "fx",
+    "fx:sx-delay",
+    "fx-kind:bus"
+  ],
+  "difficulty": "beginner",
+  "durationMin": 5,
+  "related": [],
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Using the MFX effects",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7900737178465675.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — MFX List — SX Delay",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7997607578577803.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  "whatItDoes": {
+    "ru": "Простое эхо в темпе, как на SP-404SX.",
+    "en": "A simple tempo-synced echo, as on the SP-404SX."
+  },
+  "controls": [
+    {
+      "id": "time",
+      "label": "TIME",
+      "range": {
+        "ru": "1/32 … 1/1",
+        "en": "1/32 … 1/1"
+      },
+      "meaning": {
+        "ru": "Время задержки — долями такта.",
+        "en": "Delay time as a note value."
+      }
+    },
+    {
+      "id": "feedback",
+      "label": "FEEDBACK",
+      "range": {
+        "ru": "0–99 %",
+        "en": "0–99 %"
+      },
+      "meaning": {
+        "ru": "Сколько звука возвращается на вход — больше повторов.",
+        "en": "How much of the effect is fed back — more repeats."
+      }
+    },
+    {
+      "id": "balance",
+      "label": "BALANCE",
+      "range": {
+        "ru": "100-0 – 0-100 %",
+        "en": "100-0 – 0-100 %"
+      },
+      "meaning": {
+        "ru": "Баланс между исходным (dry) и обработанным звуком.",
+        "en": "Volume balance between the dry (original) and the effect sound."
+      }
+    }
+  ],
+  "goodFor": [
+    {
+      "ru": "Быстрое эхо без лишних настроек",
+      "en": "Quick echo with few settings"
+    },
+    {
+      "ru": "Эхо на вокальном чопе",
+      "en": "Echo on a vocal chop"
+    },
+    {
+      "ru": "Ритмический повтор",
+      "en": "A rhythmic repeat"
+    }
+  ],
+  "tips": [
+    {
+      "ru": "Три параметра — удобно для игры вживую.",
+      "en": "Three parameters — handy for playing live."
+    }
+  ],
+  "practice": {
+    "ru": "Подними BALANCE до середины и поиграй пэдами с TIME 1/16.",
+    "en": "Bring BALANCE to the middle and play pads with TIME 1/16."
+  },
+  "relatedEffects": [
+    "sync-delay",
+    "tape-echo"
+  ],
+  "tryThis": [
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Выбери эффект: удерживая [MFX], вращай [VALUE] или [CTRL 3], пока не появится «SX Delay»; отпусти [MFX].",
+        "en": "Choose the effect: hold [MFX] and turn [VALUE] or [CTRL 3] until “SX Delay” appears, then release [MFX]."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "MFX",
+          "VALUE",
+          "CTRL 3"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Играй сэмпл или паттерн — эффект обрабатывает звук шины.",
+        "en": "Play a sample or pattern — the effect processes the bus sound."
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Правь параметры ручками [CTRL 1]–[CTRL 3] и смотри на экран; дополнительные параметры — с зажатой [VALUE].",
+        "en": "Edit parameters with [CTRL 1]–[CTRL 3] while watching the screen; hold [VALUE] for the sub-parameters."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "CTRL 1",
+          "CTRL 2",
+          "CTRL 3",
+          "VALUE"
+        ]
+      }
+    }
+  ]
+}

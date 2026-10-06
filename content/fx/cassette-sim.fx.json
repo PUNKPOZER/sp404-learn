@@ -1,0 +1,185 @@
+{
+  "id": "cassette-sim",
+  "type": "fx",
+  "title": {
+    "ru": "Cassette Sim",
+    "en": "Cassette Sim"
+  },
+  "summary": {
+    "ru": "Имитирует звук воспроизводимой кассеты.",
+    "en": "Simulates the sound of a cassette tape playing."
+  },
+  "category": "lofi",
+  "tags": [
+    "fx",
+    "fx:cassette-sim",
+    "fx-kind:bus"
+  ],
+  "difficulty": "beginner",
+  "durationMin": 6,
+  "related": [],
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Using the MFX effects",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7900737178465675.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — MFX List — Cassette Sim",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7985575578563211.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  "whatItDoes": {
+    "ru": "Имитирует звук воспроизводимой кассеты.",
+    "en": "Simulates the sound of a cassette tape playing."
+  },
+  "controls": [
+    {
+      "id": "tone",
+      "label": "TONE",
+      "range": {
+        "ru": "0–100",
+        "en": "0–100"
+      },
+      "meaning": {
+        "ru": "Тембр.",
+        "en": "Sets the tone."
+      }
+    },
+    {
+      "id": "hiss",
+      "label": "HISS",
+      "range": {
+        "ru": "0–100",
+        "en": "0–100"
+      },
+      "meaning": {
+        "ru": "Громкость шума.",
+        "en": "Volume of the noise."
+      }
+    },
+    {
+      "id": "age",
+      "label": "AGE",
+      "range": {
+        "ru": "0–60 лет",
+        "en": "0–60 years"
+      },
+      "meaning": {
+        "ru": "Насколько «состарена» кассета.",
+        "en": "How many years the tape has deteriorated."
+      }
+    },
+    {
+      "id": "drive",
+      "label": "DRIVE",
+      "range": {
+        "ru": "0–100",
+        "en": "0–100"
+      },
+      "meaning": {
+        "ru": "Количество искажений.",
+        "en": "Amount of distortion."
+      }
+    },
+    {
+      "id": "wow-flut",
+      "label": "WOW FLUT",
+      "range": {
+        "ru": "0–100",
+        "en": "0–100"
+      },
+      "meaning": {
+        "ru": "Неровности (wow/flutter) при воспроизведении.",
+        "en": "Inconsistencies (wow/flutter) when the tape plays."
+      }
+    },
+    {
+      "id": "catch",
+      "label": "Catch",
+      "range": {
+        "ru": "0–100",
+        "en": "0–100"
+      },
+      "meaning": {
+        "ru": "Насколько растянута лента.",
+        "en": "How much the tape has stretched."
+      }
+    }
+  ],
+  "goodFor": [
+    {
+      "ru": "Lo-fi аккордовые лупы",
+      "en": "Lo-fi chord loops"
+    },
+    {
+      "ru": "«Тёплая» перкуссия",
+      "en": "Warm percussion"
+    },
+    {
+      "ru": "Старые «магнитофонные» вокальные чопы",
+      "en": "Old-tape vocal chops"
+    }
+  ],
+  "tips": [
+    {
+      "ru": "Начни с небольшого AGE и WOW FLUT — перебор звучит как поломка.",
+      "en": "Start with a small AGE and WOW FLUT — too much sounds like damage."
+    }
+  ],
+  "practice": {
+    "ru": "Пропусти аккордовый луп через AGE 20 и ресэмпли на пэд 16.",
+    "en": "Run a chord loop through AGE 20 and resample onto pad 16."
+  },
+  "relatedEffects": [
+    "lo-fi",
+    "404-vinyl-sim",
+    "303-vinyl-sim"
+  ],
+  "tryThis": [
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Выбери эффект: удерживая [MFX], вращай [VALUE] или [CTRL 3], пока не появится «Cassette Sim»; отпусти [MFX].",
+        "en": "Choose the effect: hold [MFX] and turn [VALUE] or [CTRL 3] until “Cassette Sim” appears, then release [MFX]."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "MFX",
+          "VALUE",
+          "CTRL 3"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Играй сэмпл или паттерн — эффект обрабатывает звук шины.",
+        "en": "Play a sample or pattern — the effect processes the bus sound."
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Правь параметры ручками [CTRL 1]–[CTRL 3] и смотри на экран; дополнительные параметры — с зажатой [VALUE].",
+        "en": "Edit parameters with [CTRL 1]–[CTRL 3] while watching the screen; hold [VALUE] for the sub-parameters."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "CTRL 1",
+          "CTRL 2",
+          "CTRL 3",
+          "VALUE"
+        ]
+      }
+    }
+  ],
+  "tricks": [
+    "lo-fi-texture"
+  ]
+}

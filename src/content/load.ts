@@ -25,6 +25,7 @@ const step = (s: LessonStep): Step => ({ text: loc(s.text), controls: s.deviceHi
 export function fxEntries(): FxEntry[] {
   return itemsOf<FxEntryV2>("fx").filter((f) => isPublishable(f.verification)).map((f) => ({
     id: f.id, name: loc(f.title), button: f.button, status: statusOf(f.verification), whatItDoes: loc(f.whatItDoes),
+    category: f.category, difficulty: f.difficulty, durationMin: f.durationMin, kind: f.tags.includes("fx-kind:input") ? "input" : "bus", related: f.relatedEffects, tricks: f.tricks,
     params: f.controls.map((c) => ({ id: c.id, label: c.label, range: c.range ? loc(c.range) : undefined, meaning: loc(c.meaning) })),
     tryThis: f.tryThis.map(step), useFor: f.goodFor.map(loc), tip: f.tips[0] ? loc(f.tips[0]) : undefined, practice: f.practice ? loc(f.practice) : undefined,
     sources: (f.verification.verifiedAgainst ?? []).map((s) => source(s, f.verification)),

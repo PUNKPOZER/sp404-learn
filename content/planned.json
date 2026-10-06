@@ -11,12 +11,5 @@
     "DJ-style transitions",
     "SP + mixer workflows"
   ],
-  "fx": [
-    "Delay",
-    "MFX",
-    "Cassette Sim",
-    "Vinyl Sim",
-    "Lo-fi",
-    "Tape Echo"
-  ]
+  "fx": []
 }

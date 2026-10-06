@@ -1,0 +1,149 @@
+{
+  "id": "crusher",
+  "type": "fx",
+  "title": {
+    "ru": "Crusher",
+    "en": "Crusher"
+  },
+  "summary": {
+    "ru": "Lo-fi через снижение частоты дискретизации.",
+    "en": "A lo-fi effect through reduced sample rate."
+  },
+  "category": "lofi",
+  "tags": [
+    "fx",
+    "fx:crusher",
+    "fx-kind:bus"
+  ],
+  "difficulty": "intermediate",
+  "durationMin": 5,
+  "related": [],
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Using the MFX effects",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7900737178465675.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — MFX List — Crusher",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7993921178573195.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  "whatItDoes": {
+    "ru": "Lo-fi через снижение частоты дискретизации.",
+    "en": "A lo-fi effect through reduced sample rate."
+  },
+  "controls": [
+    {
+      "id": "filter",
+      "label": "FILTER",
+      "range": {
+        "ru": "331–15392 Hz",
+        "en": "331–15392 Hz"
+      },
+      "meaning": {
+        "ru": "Частота пред-фильтра.",
+        "en": "The frequency of the pre-filter."
+      }
+    },
+    {
+      "id": "rate",
+      "label": "RATE",
+      "range": {
+        "ru": "0–100",
+        "en": "0–100"
+      },
+      "meaning": {
+        "ru": "Частота дискретизации эффекта: большие значения — ниже частота и грубее звук.",
+        "en": "Sample rate of the effect: larger values lower the rate for a more lo-fi sound."
+      }
+    },
+    {
+      "id": "balance",
+      "label": "BALANCE",
+      "range": {
+        "ru": "100-0 – 0-100 %",
+        "en": "100-0 – 0-100 %"
+      },
+      "meaning": {
+        "ru": "Баланс между исходным (dry) и обработанным звуком.",
+        "en": "Volume balance between the dry (original) and the effect sound."
+      }
+    }
+  ],
+  "goodFor": [
+    {
+      "ru": "Грубые 8-битные хэты и снейры",
+      "en": "Gritty 8-bit hats and snares"
+    },
+    {
+      "ru": "Битовая «каша» на переходах",
+      "en": "Bit-crushed transitions"
+    },
+    {
+      "ru": "Ломаный вокал",
+      "en": "Broken vocals"
+    }
+  ],
+  "tips": [
+    {
+      "ru": "Подмешивай через BALANCE — полный эффект часто слишком грубый.",
+      "en": "Blend in with BALANCE — the full effect is often too harsh."
+    }
+  ],
+  "practice": {
+    "ru": "Подними RATE до 70 на снейре и смешай BALANCE примерно 50/50.",
+    "en": "Raise RATE to 70 on a snare and blend roughly 50/50."
+  },
+  "relatedEffects": [
+    "lo-fi",
+    "distortion"
+  ],
+  "tryThis": [
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Выбери эффект: удерживая [MFX], вращай [VALUE] или [CTRL 3], пока не появится «Crusher»; отпусти [MFX].",
+        "en": "Choose the effect: hold [MFX] and turn [VALUE] or [CTRL 3] until “Crusher” appears, then release [MFX]."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "MFX",
+          "VALUE",
+          "CTRL 3"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Играй сэмпл или паттерн — эффект обрабатывает звук шины.",
+        "en": "Play a sample or pattern — the effect processes the bus sound."
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Правь параметры ручками [CTRL 1]–[CTRL 3] и смотри на экран; дополнительные параметры — с зажатой [VALUE].",
+        "en": "Edit parameters with [CTRL 1]–[CTRL 3] while watching the screen; hold [VALUE] for the sub-parameters."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "CTRL 1",
+          "CTRL 2",
+          "CTRL 3",
+          "VALUE"
+        ]
+      }
+    }
+  ],
+  "tricks": [
+    "lo-fi-texture",
+    "destructive-sound-design"
+  ]
+}

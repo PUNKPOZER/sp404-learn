@@ -1,0 +1,184 @@
+{
+  "id": "wah",
+  "type": "fx",
+  "title": {
+    "ru": "Wah",
+    "en": "Wah"
+  },
+  "summary": {
+    "ru": "«Вау-вау»: тон циклически меняется.",
+    "en": "A wah-wah sound by cyclically changing the tone."
+  },
+  "category": "filter",
+  "tags": [
+    "fx",
+    "fx:wah",
+    "fx-kind:bus"
+  ],
+  "difficulty": "intermediate",
+  "durationMin": 5,
+  "related": [],
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Using the MFX effects",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7900737178465675.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — MFX List — Wah",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7989773978568587.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  "whatItDoes": {
+    "ru": "«Вау-вау»: тон циклически меняется.",
+    "en": "A wah-wah sound by cyclically changing the tone."
+  },
+  "controls": [
+    {
+      "id": "peak",
+      "label": "PEAK",
+      "range": {
+        "ru": "0–100",
+        "en": "0–100"
+      },
+      "meaning": {
+        "ru": "Большие значения сужают диапазон, где работает эффект.",
+        "en": "Larger values narrow the frequency range the effect is applied to."
+      }
+    },
+    {
+      "id": "rate",
+      "label": "RATE",
+      "range": {
+        "ru": "0–100 / 1.000–0.010 bar",
+        "en": "0–100 / 1.000–0.010 bar"
+      },
+      "meaning": {
+        "ru": "Период эффекта.",
+        "en": "Cycle of the effect."
+      }
+    },
+    {
+      "id": "manual",
+      "label": "MANUAL",
+      "range": {
+        "ru": "0–100",
+        "en": "0–100"
+      },
+      "meaning": {
+        "ru": "Диапазон частот эффекта.",
+        "en": "Frequency range of the effect."
+      }
+    },
+    {
+      "id": "depth",
+      "label": "DEPTH",
+      "range": {
+        "ru": "0–100",
+        "en": "0–100"
+      },
+      "meaning": {
+        "ru": "Глубина эффекта.",
+        "en": "Depth of the effect."
+      }
+    },
+    {
+      "id": "flt-type",
+      "label": "FLT TYPE",
+      "range": {
+        "ru": "LPF, BPF",
+        "en": "LPF, BPF"
+      },
+      "meaning": {
+        "ru": "LPF — эффект шире, BPF — уже.",
+        "en": "LPF applies the effect over a wide range; BPF over a narrow range."
+      }
+    },
+    {
+      "id": "sync",
+      "label": "SYNC",
+      "range": {
+        "ru": "OFF, ON",
+        "en": "OFF, ON"
+      },
+      "meaning": {
+        "ru": "При ON эффект синхронизируется с темпом.",
+        "en": "When ON, the effect synchronizes with the tempo."
+      }
+    }
+  ],
+  "goodFor": [
+    {
+      "ru": "Фанковые «вау» на семпле",
+      "en": "Funky wah on a sample"
+    },
+    {
+      "ru": "Ритмическая модуляция баса",
+      "en": "Rhythmic bass modulation"
+    },
+    {
+      "ru": "Звук «педали» на гитаре",
+      "en": "Wah-pedal sound on a guitar"
+    }
+  ],
+  "tips": [
+    {
+      "ru": "Выключи SYNC и крути MANUAL руками — получается педаль.",
+      "en": "Turn SYNC off and turn MANUAL by hand — you get a pedal."
+    }
+  ],
+  "practice": {
+    "ru": "Сыграй гитарный сэмпл с SYNC ON и RATE 1/4.",
+    "en": "Play a guitar sample with SYNC ON and RATE 1/4."
+  },
+  "relatedEffects": [
+    "super-filter",
+    "tremolo-pan"
+  ],
+  "tryThis": [
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Выбери эффект: удерживая [MFX], вращай [VALUE] или [CTRL 3], пока не появится «Wah»; отпусти [MFX].",
+        "en": "Choose the effect: hold [MFX] and turn [VALUE] or [CTRL 3] until “Wah” appears, then release [MFX]."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "MFX",
+          "VALUE",
+          "CTRL 3"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Играй сэмпл или паттерн — эффект обрабатывает звук шины.",
+        "en": "Play a sample or pattern — the effect processes the bus sound."
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Правь параметры ручками [CTRL 1]–[CTRL 3] и смотри на экран; дополнительные параметры — с зажатой [VALUE].",
+        "en": "Edit parameters with [CTRL 1]–[CTRL 3] while watching the screen; hold [VALUE] for the sub-parameters."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "CTRL 1",
+          "CTRL 2",
+          "CTRL 3",
+          "VALUE"
+        ]
+      }
+    }
+  ],
+  "tricks": [
+    "filter-sweep"
+  ]
+}

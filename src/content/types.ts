@@ -23,6 +23,8 @@ export interface FxParam { id: string; label: string; range?: string; meaning: s
 
 export interface FxEntry {
   id: string;
+  /** Learning Library 2.0 metadata (optional for legacy data) */
+  category?: string; difficulty?: "beginner" | "intermediate" | "advanced"; durationMin?: number; kind?: "bus" | "input"; related?: string[]; tricks?: string[];
   name: string;
   /** effect button on the unit, when the manual assigns one */
   button?: string;

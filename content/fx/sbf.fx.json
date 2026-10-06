@@ -1,0 +1,169 @@
+{
+  "id": "sbf",
+  "type": "fx",
+  "title": {
+    "ru": "SBF",
+    "en": "SBF"
+  },
+  "summary": {
+    "ru": "Sideband-фильтр: пропускает только выбранные частотные компоненты.",
+    "en": "A sideband filter that lets specific frequency components pass."
+  },
+  "category": "filter",
+  "tags": [
+    "fx",
+    "fx:sbf",
+    "fx-kind:bus"
+  ],
+  "difficulty": "advanced",
+  "durationMin": 6,
+  "related": [],
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Using the MFX effects",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7900737178465675.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — MFX List — SBF",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7980557978557067.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  "whatItDoes": {
+    "ru": "Sideband-фильтр: пропускает только выбранные частотные компоненты.",
+    "en": "A sideband filter that lets specific frequency components pass."
+  },
+  "controls": [
+    {
+      "id": "interval",
+      "label": "INTERVAL",
+      "range": {
+        "ru": "0–100",
+        "en": "0–100"
+      },
+      "meaning": {
+        "ru": "Интервал между полосами: больше — шире и выше по частоте.",
+        "en": "Band interval: larger values widen the spacing and raise the frequencies."
+      }
+    },
+    {
+      "id": "width",
+      "label": "WIDTH",
+      "range": {
+        "ru": "0–100",
+        "en": "0–100"
+      },
+      "meaning": {
+        "ru": "Ширина полосы: чем больше значение, тем уже полоса.",
+        "en": "Bandwidth: larger values narrow it."
+      }
+    },
+    {
+      "id": "balance",
+      "label": "BALANCE",
+      "range": {
+        "ru": "100-0 – 0-100 %",
+        "en": "100-0 – 0-100 %"
+      },
+      "meaning": {
+        "ru": "Баланс между исходным (dry) и обработанным звуком.",
+        "en": "Volume balance between the dry (original) and the effect sound."
+      }
+    },
+    {
+      "id": "type",
+      "label": "TYPE",
+      "range": {
+        "ru": "SBF1–SBF6",
+        "en": "SBF1–SBF6"
+      },
+      "meaning": {
+        "ru": "Диапазон работы фильтра.",
+        "en": "The range in which the filter works."
+      }
+    },
+    {
+      "id": "gain",
+      "label": "GAIN",
+      "range": {
+        "ru": "−INF, −52.3…+10.0 dB",
+        "en": "−INF, −52.3…+10.0 dB"
+      },
+      "meaning": {
+        "ru": "Громкость эффектного звука.",
+        "en": "Volume of the effect sound."
+      }
+    }
+  ],
+  "goodFor": [
+    {
+      "ru": "Роботизированные, «гребенчатые» тембры",
+      "en": "Robotic, comb-like tones"
+    },
+    {
+      "ru": "Необычная обработка перкуссии",
+      "en": "Odd treatment of percussion"
+    },
+    {
+      "ru": "Звуковой дизайн",
+      "en": "Sound design"
+    }
+  ],
+  "tips": [
+    {
+      "ru": "Двигай INTERVAL медленно — полосы «разъезжаются».",
+      "en": "Move INTERVAL slowly — the bands drift apart."
+    }
+  ],
+  "practice": {
+    "ru": "Пропусти шум или хэт через SBF3 и меняй WIDTH от малого к большому.",
+    "en": "Run noise or a hat through SBF3 and sweep WIDTH from small to large."
+  },
+  "relatedEffects": [
+    "super-filter",
+    "hyper-reso"
+  ],
+  "tryThis": [
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Выбери эффект: удерживая [MFX], вращай [VALUE] или [CTRL 3], пока не появится «SBF»; отпусти [MFX].",
+        "en": "Choose the effect: hold [MFX] and turn [VALUE] or [CTRL 3] until “SBF” appears, then release [MFX]."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "MFX",
+          "VALUE",
+          "CTRL 3"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Играй сэмпл или паттерн — эффект обрабатывает звук шины.",
+        "en": "Play a sample or pattern — the effect processes the bus sound."
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Правь параметры ручками [CTRL 1]–[CTRL 3] и смотри на экран; дополнительные параметры — с зажатой [VALUE].",
+        "en": "Edit parameters with [CTRL 1]–[CTRL 3] while watching the screen; hold [VALUE] for the sub-parameters."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "CTRL 1",
+          "CTRL 2",
+          "CTRL 3",
+          "VALUE"
+        ]
+      }
+    }
+  ]
+}

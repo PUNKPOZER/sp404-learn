@@ -13,7 +13,7 @@ from engine.genre import evidence
 
 CONFIG = Path(__file__).with_name("fusion.default.json")
 FAMILY = {"footwork": "footwork", "jungle": "uk_breaks", "drum_and_bass": "uk_breaks", "breakbeat": "uk_breaks", "uk_garage": "uk_breaks",
-          "house": "house", "techno": "techno", "hip_hop": "hip_hop", "trip_hop": "hip_hop", "ambient": "ambient", "idm": "electronic_other", "dub": "electronic_other", "dubstep": "electronic_other"}
+          "house": "house", "techno": "techno", "hip_hop": "hip_hop", "trip_hop": "hip_hop", "ambient": "ambient", "idm": "electronic_other", "dub": "electronic_other", "dubstep": "uk_breaks"}
 
 
 def load_config(path: str | Path | None = None) -> dict:
@@ -60,7 +60,7 @@ def fuse(model_labels: dict[str, float] | None, bpm: float | None, bpm_candidate
     cands = [{"genre": g, "confidence": round(v, 4), "family": FAMILY.get(g)} for g, v in ranked[:5]]
     hint = None
     if hints:
-        by_label = {"footwork": ("juke",), "house": ("deep_house", "acid_house"), "techno": ("acid_techno",), "hip_hop": ("boom_bap", "instrumental_hip_hop")}
+        by_label = {"footwork": ("juke",), "uk_garage": ("bassline",), "house": ("deep_house", "acid_house"), "techno": ("acid_techno",), "hip_hop": ("boom_bap", "instrumental_hip_hop")}
         opts = [(h, hints.get(h, 0.0)) for h in by_label.get(top[0], ())]
         if opts:
             h, v = max(opts, key=lambda kv: kv[1])

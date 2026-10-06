@@ -13,7 +13,7 @@ GENRES: dict[str, tuple[str, str]] = {
     "footwork": ("footwork", "Footwork"), "juke": ("footwork", "Juke"),
     "hip_hop": ("hip_hop", "Hip-Hop"), "boom_bap": ("hip_hop", "Boom Bap"), "instrumental_hip_hop": ("hip_hop", "Instrumental Hip-Hop"),
     "ambient": ("ambient", "Ambient"),
-    "idm": ("electronic_other", "IDM"), "dub": ("electronic_other", "Dub"), "dubstep": ("electronic_other", "Dubstep"), "trip_hop": ("hip_hop", "Trip-Hop"),
+    "idm": ("electronic_other", "IDM"), "dub": ("electronic_other", "Dub"), "dubstep": ("uk_breaks", "Dubstep"), "trip_hop": ("hip_hop", "Trip-Hop"),
 }
 UNKNOWN = "unknown"
 

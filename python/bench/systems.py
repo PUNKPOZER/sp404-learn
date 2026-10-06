@@ -69,7 +69,7 @@ def _model_candidates(labels: dict[str, float]) -> list[dict]:
 
 
 @register("genre-model")
-def genre_model(path: str, pooling: str = "mean") -> dict:
+def genre_model(path: str, pooling: str = "p75") -> dict:
     """Discogs-EffNet (Genre Pack) only — no rhythm analysis. Needs the pack installed."""
     from engine.audio import decode
     from engine.genre import aggregate, embed

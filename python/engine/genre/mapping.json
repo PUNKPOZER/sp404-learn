@@ -5,7 +5,7 @@
     "jungle":        {"classes": ["Electronic---Jungle"]},
     "drum_and_bass": {"classes": ["Electronic---Drum n Bass"]},
     "breakbeat":     {"classes": ["Electronic---Breakbeat", "Electronic---Breaks", "Electronic---Big Beat", "Electronic---Progressive Breaks", "Electronic---Broken Beat"]},
-    "uk_garage":     {"classes": ["Electronic---UK Garage", "Electronic---Speed Garage", "Electronic---Bassline"]},
+    "uk_garage":     {"classes": ["Electronic---UK Garage", "Electronic---Speed Garage"], "hints": {"bassline": ["Electronic---Bassline"]}},
     "house":         {"classes": ["Electronic---House", "Electronic---Deep House", "Electronic---Tech House", "Electronic---Progressive House", "Electronic---Electro House",
                                    "Electronic---Hard House", "Electronic---Euro House", "Electronic---Italo House", "Electronic---Tribal House", "Electronic---Tropical House",
                                    "Electronic---Acid House", "Electronic---Garage House", "Electronic---Hip-House"],

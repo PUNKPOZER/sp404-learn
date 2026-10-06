@@ -1,6 +1,6 @@
 // Transport to the local Python engine. In the desktop app this is Tauri IPC → child process
 // (JSON lines). In a plain browser (dev only) it talks to python/sidecar/dev_http.py on localhost.
-import type { TrackAnalysis, Recipe, Course, CourseMeta, StageInfo, ModelStatus } from "./types";
+import type { TrackAnalysis, Recipe, Course, CourseMeta, StageInfo, ModelStatus, GenrePackStatus, GenrePrediction } from "./types";
 
 import { lang } from "./i18n";
 export const isTauri = typeof window !== "undefined" && "__TAURI_INTERNALS__" in window;
@@ -67,6 +67,10 @@ export const api = {
   course: (name: string, kit?: Record<number, string>) => rpc<Course>("course", { name, kit }),
   modelsStatus: () => rpc<ModelStatus>("models_status"),
   modelsDownload: () => rpc<ModelStatus>("models_download"),
+  genrePackStatus: () => rpc<GenrePackStatus>("genre_pack_status"),
+  genrePackDownload: () => rpc<GenrePackStatus>("genre_pack_download"),
+  genrePredict: (analysis: TrackAnalysis) => rpc<GenrePrediction>("genre_predict", { analysis }),
+  genreCorrect: (audio_hash: string, raw: GenrePrediction | null | undefined, user: string | null) => rpc("genre_correct", { audio_hash, raw, user }),
   chopPlan: (p: { path: string; mode: string; bars?: number; grid: { bpm: number; origin: number }; sensitivity?: number }) =>
     rpc<{ regions: { start: number; end: number }[]; duration: number }>("chop_plan", p),
   exportChops: (p: { path: string; regions: { start: number; end: number }[]; outdir: string; basename: string; normalize: boolean }) =>

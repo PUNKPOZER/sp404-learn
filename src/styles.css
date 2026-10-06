@@ -408,3 +408,10 @@ h1 { font-weight: 800; letter-spacing: -.005em; }
 .gc-name { display: flex; justify-content: space-between; align-items: center; border-top: 1.5px solid var(--sp-ink); padding-top: var(--sp-space-2); font: 800 var(--sp-text-lg) var(--sp-font-ui); letter-spacing: .01em; text-transform: uppercase; }
 .gc-foot { display: flex; flex-direction: column; gap: var(--sp-space-2); padding: 0 var(--sp-space-4) var(--sp-space-4); margin-top: auto; }
 .gc-short { font-size: var(--sp-text-xs); color: var(--sp-ink-2); line-height: 1.4; }
+
+/* genre card */
+.genre-main { font: 800 var(--sp-text-xl) var(--sp-font-ui); margin: 0 0 var(--sp-space-3); display: flex; gap: var(--sp-space-2); align-items: center; flex-wrap: wrap; }
+.genre-status { margin: 0 0 var(--sp-space-1); }
+.genre-cands { display: flex; flex-direction: column; gap: var(--sp-space-2); margin-bottom: var(--sp-space-3); }
+.genre-actions { display: flex; gap: var(--sp-space-3); align-items: center; flex-wrap: wrap; }
+.genre-details { margin-top: var(--sp-space-3); font-size: var(--sp-text-xs); } .genre-details summary { cursor: pointer; font-weight: 700; }

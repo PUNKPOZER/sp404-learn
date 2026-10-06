@@ -1,0 +1,25 @@
+{
+  "_note": "Discogs-EffNet 400 styles -> our labels. Edit here, not in code. A label's score = max (or 'noisy_or') over its classes of the track-mean activation. 'hints' name sub-genres that the model can distinguish inside a label. Footwork and 2-Step are NOT Discogs styles: footwork borrows Juke/Ghetto(House), 2-Step is derived by rhythm evidence in the fusion stage.",
+  "labels": {
+    "footwork":      {"classes": ["Electronic---Juke", "Electronic---Ghetto", "Electronic---Ghetto House"], "hints": {"juke": ["Electronic---Juke"]}},
+    "jungle":        {"classes": ["Electronic---Jungle"]},
+    "drum_and_bass": {"classes": ["Electronic---Drum n Bass"]},
+    "breakbeat":     {"classes": ["Electronic---Breakbeat", "Electronic---Breaks", "Electronic---Big Beat", "Electronic---Progressive Breaks", "Electronic---Broken Beat"]},
+    "uk_garage":     {"classes": ["Electronic---UK Garage", "Electronic---Speed Garage", "Electronic---Bassline"]},
+    "house":         {"classes": ["Electronic---House", "Electronic---Deep House", "Electronic---Tech House", "Electronic---Progressive House", "Electronic---Electro House",
+                                   "Electronic---Hard House", "Electronic---Euro House", "Electronic---Italo House", "Electronic---Tribal House", "Electronic---Tropical House",
+                                   "Electronic---Acid House", "Electronic---Garage House", "Electronic---Hip-House"],
+                      "hints": {"deep_house": ["Electronic---Deep House"], "acid_house": ["Electronic---Acid House"]}},
+    "techno":        {"classes": ["Electronic---Techno", "Electronic---Deep Techno", "Electronic---Dub Techno", "Electronic---Hard Techno", "Electronic---Minimal Techno"],
+                      "hints": {"acid_techno": ["Electronic---Acid"]}},
+    "hip_hop":       {"classes": ["Hip Hop---Boom Bap", "Hip Hop---Instrumental", "Hip Hop---Jazzy Hip-Hop", "Hip Hop---Turntablism", "Hip Hop---Conscious", "Hip Hop---Cut-up/DJ",
+                                   "Hip Hop---Hardcore Hip-Hop", "Hip Hop---Gangsta", "Hip Hop---G-Funk", "Hip Hop---Pop Rap", "Hip Hop---Thug Rap", "Hip Hop---Britcore",
+                                   "Hip Hop---Horrorcore", "Hip Hop---Cloud Rap", "Hip Hop---Crunk", "Hip Hop---Trap", "Hip Hop---Bounce", "Hip Hop---DJ Battle Tool", "Electronic---Hip Hop"],
+                      "hints": {"boom_bap": ["Hip Hop---Boom Bap"], "instrumental_hip_hop": ["Hip Hop---Instrumental"]}},
+    "ambient":       {"classes": ["Electronic---Ambient", "Electronic---Dark Ambient", "Electronic---Drone", "Electronic---Illbient", "Electronic---New Age"]},
+    "idm":           {"classes": ["Electronic---IDM", "Electronic---Glitch", "Electronic---Abstract", "Electronic---Experimental", "Electronic---Leftfield"]},
+    "dub":           {"classes": ["Electronic---Dub", "Reggae---Dub"]},
+    "dubstep":       {"classes": ["Electronic---Dubstep", "Electronic---Halftime"]},
+    "trip_hop":      {"classes": ["Hip Hop---Trip Hop", "Electronic---Trip Hop", "Electronic---Downtempo"]}
+  }
+}

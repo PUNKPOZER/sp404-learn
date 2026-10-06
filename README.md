@@ -61,7 +61,9 @@ Output: `src-tauri/target/release/bundle/macos/SP-404 LEARN.app` (ad-hoc signed,
 Not yet tested. Same steps with `.venv\Scripts\python`; the Rust shell already looks for `sp404-sidecar.exe`.
 
 ## Models
-None bundled. Stem separation uses HT-Demucs; download the weights from Settings → Model storage (the only network request the app makes, on your click). Dev setup: `.venv/bin/pip install torch torchaudio certifi einops julius pyyaml tqdm && .venv/bin/pip install --no-deps demucs`.
+None bundled. Stem separation uses HT-Demucs; download the weights from Settings → Model storage (the only network request the app makes, on your click). Dev setup: `.venv/bin/pip install torch torchaudio certifi einops julius pyyaml tqdm onnxruntime && .venv/bin/pip install --no-deps demucs`.
+
+**Genre Pack (optional).** Reliable genre detection uses the Discogs-EffNet model (≈ 18 MB, **CC BY-NC-SA 4.0 — non-commercial**). It is not bundled; Settings → Genre Pack downloads it on your click. Without it the app shows only a rough rhythm hint. See `GENRE_MODEL_RESEARCH.md` and `GENRE_BASELINE.md`.
 
 ## Privacy
 Everything runs locally; the only child process is the bundled analysis engine, talking over stdin/stdout.

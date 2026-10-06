@@ -20,6 +20,8 @@ def score(entry: manifest.Entry, res: dict) -> dict:
     s: dict = {}
     if t.bpm and res.get("bpm"):
         s["bpm"] = {"pred": res["bpm"], **metrics.bpm_scores(res["bpm"], t.bpm)}
+    if t.bpm_ref and res.get("bpm"):
+        s["bpm_ref"] = {"pred": res["bpm"], "ref": t.bpm_ref, **metrics.bpm_scores(res["bpm"], (t.bpm_ref, t.bpm_ref), tol=0.03)}
     if t.beats and res.get("beats"):
         s["beats"] = metrics.beat_fmeasure(res["beats"], t.beats)
     if t.key and res.get("key"):
@@ -40,6 +42,10 @@ def summarize(entries, results) -> dict:
     if bp:
         out["bpm"] = {"n": len(bp), "acc1": sum(b["acc1"] for b in bp) / len(bp), "acc2": sum(b["acc2"] for b in bp) / len(bp),
                       "octave_errors": [b["octave_error"] for b in bp if b["octave_error"]]}
+    br = [r["scores"]["bpm_ref"] for e, r in ok if "bpm_ref" in r.get("scores", {})]
+    if br:
+        out["bpm_ref"] = {"n": len(br), "acc1": sum(b["acc1"] for b in br) / len(br), "acc2": sum(b["acc2"] for b in br) / len(br),
+                          "octave_kinds": sorted({b["octave_error"] for b in br if b["octave_error"]})}
     for key in ("beats", "key", "sections"):
         v = [r["scores"][key] for e, r in ok if key in r.get("scores", {})]
         if v:
@@ -72,6 +78,9 @@ def report_md(system: str, entries, results, summ: dict) -> str:
     if "bpm" in summ:
         b = summ["bpm"]
         L += ["## Tempo", "", f"Acc1 **{pct(b['acc1'])}** · Acc2 (octave-tolerant) **{pct(b['acc2'])}** (n={b['n']}); octave errors: {b['octave_errors'] or 'none'}", ""]
+    if "bpm_ref" in summ:
+        b = summ["bpm_ref"]
+        L += ["## Agreement with reference BPM (DJ software — a reading, not truth)", "", f"exact(±3%) **{pct(b['acc1'])}** · octave-tolerant **{pct(b['acc2'])}** (n={b['n']}); relations seen: {b['octave_kinds'] or 'none'}", ""]
     for key, title in (("beats", "Beat F-measure"), ("key", "Key (MIREX score)"), ("sections", "Section boundaries")):
         if key in summ:
             L += [f"## {title}", "", ", ".join(f"{k}={v:.3f}" for k, v in summ[key].items() if k != "n") + f" (n={summ[key]['n']})", ""]

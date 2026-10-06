@@ -1,0 +1,15 @@
+{
+  "_note": "Chosen on 58 owner-labelled tracks (folder labels): region w_rhythm 0.75-1.0, T\u22480.6 is stable; differences inside it are 1-2 tracks and NOT significant. Pattern term off by default (did not help). Re-fit when the private set grows; never report on the tracks used to fit.",
+  "w_model": 1.0,
+  "w_rhythm": 0.75,
+  "eps": 0.02,
+  "temperature": 0.6,
+  "temperature_rhythm_only": 2.0,
+  "use_tempo": true,
+  "use_pattern": false,
+  "rhythm_only_confidence_cap": 0.6,
+  "confident_at": 0.7,
+  "hybrid_margin": 0.12,
+  "unknown_below": 0.25,
+  "hint_min": 0.15
+}

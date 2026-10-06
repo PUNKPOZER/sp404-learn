@@ -16,7 +16,16 @@ export interface TrackAnalysis {
   characteristics: Record<string, number>; likely_styles: { style: string; score: number; why: string }[];
   warnings: string[]; stages: StageInfo[]; resolution: number;
   stems: Record<string, StemInfo>; stems_model: string;
+  /** Genre Engine 2.0 (only with the Genre Pack) and the user's own correction (never overwrites `genre`) */
+  genre?: GenrePrediction | null; genre_user?: string | null;
 }
+export interface GenreCandidate { genre: string; confidence: number; family?: string | null }
+export interface GenrePrediction {
+  available: boolean; error?: string; reason?: string;
+  primaryGenre?: string; primaryConfidence?: number; status?: "confident" | "hybrid" | "unknown"; family?: string | null; subgenre?: string | null;
+  candidates?: GenreCandidate[]; evidence?: { source: string; text: string }[]; model?: string; sources?: { model: boolean; rhythm: boolean };
+}
+export interface GenrePackStatus { id: string; runtime: boolean; installed: boolean; filesPresent: boolean; sizeMb: number; license: string; path: string; sources: string[] }
 export interface StemInfo { path: string; peaks: number[][]; activity: number[]; duration: number; rms: number }
 export interface ModelStatus { runtime: boolean; weights: boolean; name: string; size_mb: number; host: string; path: string; device: string; bytes: number }
 export type StepMap = Record<Voice, number[]>; // 1-based steps

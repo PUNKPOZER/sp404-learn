@@ -25,6 +25,8 @@ class Truth:
     downbeats: list[float] | None = None
     drums: list[dict] | None = None                         # [{"time": s, "type": "KICK|SNARE|CLAP|CLOSED_HAT|OPEN_HAT|PERCUSSION"}]
     sections: list[float] | None = None                     # boundary times (s)
+    bpm_ref: float | None = None                            # a *reference reading* (e.g. DJ software), NOT truth; reported as agreement
+    key_ref: str | None = None
 
 
 @dataclass
@@ -75,7 +77,8 @@ def parse_entry(d: dict, base: Path | None = None) -> Entry:
             raise ManifestError("'bpm' must be a number or [low, high]")
         bpm = (float(bpm[0]), float(bpm[1]))
     t = Truth(genre=_genres(exp.get("genre")), bpm=bpm, meter=exp.get("meter"), key=exp.get("key"),
-              beats=exp.get("beats"), downbeats=exp.get("downbeats"), drums=exp.get("drums"), sections=exp.get("sections"))
+              beats=exp.get("beats"), downbeats=exp.get("downbeats"), drums=exp.get("drums"), sections=exp.get("sections"),
+              bpm_ref=exp.get("bpm_ref"), key_ref=exp.get("key_ref"))
     return Entry(path=path, truth=t, id=d.get("id") or os.path.basename(path), notes=d.get("notes", ""))
 
 

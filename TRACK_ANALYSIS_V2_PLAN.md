@@ -133,6 +133,12 @@ cache/<fileHash>/
 * **Systems registry**: `current-mix`, `current-stems` registered today; V2 modules register the same way and are scored by the same code and the same manifest.
 * **Baseline** run on the 10 local footwork tracks: `GENRE_BASELINE.md`. Honest limit: no BPM/beat/key/section/drum truth exists locally, so those metrics are implemented and unit-tested but **not yet run on real data**.
 
+### 8b. Measured on 58 tracks (2026-10-07)
+* Current tempo engine vs DJ-software BPM (a reference reading, not truth): **81 % within ±3 %, 97 % octave-tolerant**. So tempo is mostly sound; the genre problem was the six-rule classifier, not the grid.
+* Cost: mix-only analysis 2.7 s/track, with HT-Demucs 18.9 s/track (Apple Silicon; longer files up to 34 s); Genre Pack embedding 1.0 s.
+* Genre: see `GENRE_BASELINE.md` (heuristic 36–41 % → Genre Engine 2.0 78 % Top-1 on owner-labelled folders).
+* Still unmeasured for lack of truth: beats/downbeats, key, drum labels, sections.
+
 ## 9. Recommendation: keep / upgrade / replace
 
 | Module | Decision | Why / condition |

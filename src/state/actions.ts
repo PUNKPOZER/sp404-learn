@@ -42,6 +42,26 @@ export async function openTrack(path: string, useCache = true) {
 const STAGE_ORDER = ["prepare", "tempo", "stems", "drums", "bass", "structure", "recipe"];
 const order = (a: { id: string }, b: { id: string }) => STAGE_ORDER.indexOf(a.id) - STAGE_ORDER.indexOf(b.id);
 
+/** Genre Engine 2.0: ask the engine for a prediction once per track (needs the optional Genre Pack; silent otherwise). */
+let genreFor = "";
+export async function loadGenre(force = false) {
+  const a = getState().analysis;
+  if (!a || (!force && (genreFor === a.audio_hash || a.genre?.available))) return;
+  genreFor = a.audio_hash;
+  try {
+    const g = await api.genrePredict(a);
+    const cur = getState().analysis;
+    if (cur && cur.audio_hash === a.audio_hash) setState({ analysis: { ...cur, genre: g } });
+  } catch { /* engine unavailable: the old style hint stays */ }
+}
+/** The user's own genre (null = back to the detected one). Stored next to — never over — the model output; also appended to the local corrections dataset. */
+export async function setGenreUser(genre: string | null) {
+  const a = getState().analysis;
+  if (!a) return;
+  setState({ analysis: { ...a, genre_user: genre }, dirty: true });
+  try { await api.genreCorrect(a.audio_hash, a.genre, genre); } catch { /* the correction still applies to the project */ }
+}
+
 export async function cancelAnalysis() { try { await api.cancel(); } catch { /* engine already gone */ } }
 
 // ---- recipe --------------------------------------------------------------------------------

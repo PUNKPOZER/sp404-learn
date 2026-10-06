@@ -1,17 +1,20 @@
+import { useEffect } from "react";
 import { seekStems } from "../lib/audio/stemPlayer";
 import { SectionStrip } from "../components/ArrangementStrip";
 import { SECTION_LEGEND } from "../lib/sections";
 import { playingSection, toggleSection } from "../lib/sectionPlay";
 import { Waveform } from "../components/Waveform";
-import { doubleBpm, halveBpm, nudgeDownbeat, nudgeStep, setGrid } from "../state/actions";
+import { doubleBpm, halveBpm, loadGenre, nudgeDownbeat, nudgeStep, setGrid } from "../state/actions";
 import { setState, useStore } from "../state/store";
 import { t } from "../lib/i18n";
+import { GenreCard, GenrePackHint } from "../components/GenreCard";
 import { engineText } from "../lib/engineText";
 
 const fmt = (t: number) => `${Math.floor(t / 60)}:${String(Math.floor(t % 60)).padStart(2, "0")}`;
 
 export function Track() {
   const { analysis: a, peaks, currentBar, stemTime, audioTag, stemPlaying, recipe } = useStore((s) => s);
+  useEffect(() => { void loadGenre(); }, [a?.audio_hash]);
   if (!a) return null;
   const c = a.characteristics;
   return (
@@ -59,12 +62,18 @@ export function Track() {
               .map(([k, v, pct]) => <tr key={k as string}><td>{k as string}</td><td className="mono">{pct ? `${((v as number) * 100).toFixed(0)}%` : (v as number).toFixed(1)}</td></tr>)}
           </tbody></table>
         </section>
-        <section className="panel">
-          <h2>{t("Вероятный стиль", "Likely style")} <small>{t("подсказка, не вердикт", "a hint, not a verdict")}</small></h2>
-          {a.likely_styles.map((s) => (
-            <div key={s.style} className="style"><span>{engineText(s.style)}</span><div className="meter"><i style={{ width: `${s.score * 100}%` }} /></div><small>{engineText(s.why)}</small></div>
-          ))}
-        </section>
+        {a.genre?.available && a.genre.candidates?.length ? <GenreCard a={a} /> : (
+          <>
+            <section className="panel">
+              <h2>{t("Вероятный стиль", "Likely style")} <small>{t("подсказка, не вердикт", "a hint, not a verdict")}</small></h2>
+              {a.likely_styles.map((s) => (
+                <div key={s.style} className="style"><span>{engineText(s.style)}</span><div className="meter"><i style={{ width: `${s.score * 100}%` }} /></div><small>{engineText(s.why)}</small></div>
+              ))}
+              <p className="hint">{t("Грубая оценка по темпу и ритму — не жанр.", "A rough guess from tempo and rhythm — not a genre.")}</p>
+            </section>
+            {a.genre?.reason === "pack_missing" && <GenrePackHint />}
+          </>
+        )}
       </div>
       {a.warnings.length > 0 && <section className="panel warnbox"><h2>{t("ЗАМЕТКИ", "NOTES")}</h2>{a.warnings.map((w, i) => <p key={i}>{engineText(w)}</p>)}</section>}
     </div>

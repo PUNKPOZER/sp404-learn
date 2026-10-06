@@ -13,6 +13,7 @@ GENRES: dict[str, tuple[str, str]] = {
     "footwork": ("footwork", "Footwork"), "juke": ("footwork", "Juke"),
     "hip_hop": ("hip_hop", "Hip-Hop"), "boom_bap": ("hip_hop", "Boom Bap"), "instrumental_hip_hop": ("hip_hop", "Instrumental Hip-Hop"),
     "ambient": ("ambient", "Ambient"),
+    "idm": ("electronic_other", "IDM"), "dub": ("electronic_other", "Dub"), "dubstep": ("electronic_other", "Dubstep"), "trip_hop": ("hip_hop", "Trip-Hop"),
 }
 UNKNOWN = "unknown"
 
@@ -24,7 +25,7 @@ ALIASES: dict[str, list[str]] = {
     "hip hop": ["hip_hop"], "hip-hop": ["hip_hop"], "hiphop": ["hip_hop"], "хип-хоп": ["hip_hop"], "boom-bap": ["boom_bap"],
     "boom bap": ["boom_bap"], "instrumental hip hop": ["instrumental_hip_hop"], "instrumental hip-hop": ["instrumental_hip_hop"],
     "break beat": ["breakbeat"], "breaks": ["breakbeat"], "big beat": ["breakbeat"],
-    "deep house": ["deep_house"], "acid house": ["acid_house"], "acid techno": ["acid_techno"],
+    "deep house": ["deep_house"], "trip hop": ["trip_hop"], "trip-hop": ["trip_hop"], "triphop": ["trip_hop"], "acid house": ["acid_house"], "acid techno": ["acid_techno"],
 }
 
 

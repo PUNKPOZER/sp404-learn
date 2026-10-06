@@ -27,7 +27,7 @@ jobs:
         run: |
           python -m venv .venv
           .venv/bin/pip install --upgrade pip
-          .venv/bin/pip install numpy scipy pytest certifi einops julius pyyaml tqdm torch torchaudio
+          .venv/bin/pip install numpy scipy pytest certifi einops julius pyyaml tqdm torch torchaudio onnxruntime
           .venv/bin/pip install --no-deps demucs
 
       - run: npm ci

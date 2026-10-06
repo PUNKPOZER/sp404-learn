@@ -115,6 +115,23 @@ class Server:
         d.download_model()
         return self.m_models_status(p, rid)
 
+    # ---- Genre Pack (optional; CC BY-NC-SA, downloaded on request) ------------------
+    def m_genre_pack_status(self, p, rid):
+        from engine.genre import pack
+        return pack.status()
+
+    def m_genre_pack_download(self, p, rid):
+        from engine.genre import pack
+        return pack.download()
+
+    def m_genre_predict(self, p, rid):
+        from engine.genre import predict
+        return predict.predict(p["analysis"], str(self.cache.root))
+
+    def m_genre_correct(self, p, rid):
+        from engine.genre import corrections
+        return corrections.record(p.get("audio_hash", ""), p.get("raw"), p.get("user"), "0.3.0")
+
     def m_cache_clear(self, p, rid):
         self.cache.clear()
         return {"ok": True}

@@ -16,6 +16,7 @@ Licenses were read from each project's published package metadata when the depen
 | Demucs (code) | HT-Demucs stem separation | MIT |
 | einops, julius, PyYAML, tqdm, certifi | Demucs / TLS helpers | MIT, MIT, MIT, MPL-2.0/MIT, MPL-2.0 |
 | CPython | runtime inside the frozen sidecar | PSF-2.0 |
+| ONNX Runtime (`onnxruntime`) | runs the optional Genre Pack model (≈ 80 MB installed on macOS arm64, measured) | MIT |
 
 ## Build/dev tooling (not shipped)
 
@@ -41,3 +42,10 @@ included. Tests generate their own audio. Footwork course patterns are original 
 
 No other models. Before adding another, record its license and weights
 license here — code and weights are often licensed differently.
+
+## Optional downloads (never bundled in the app)
+
+| Component | Use | Licence | Notes |
+|---|---|---|---|
+| HT-Demucs weights | stem separation | see Demucs repo (MIT code) | downloaded from Settings on the user's click |
+| **Genre Pack — Discogs-EffNet** (`discogs-effnet-bsdynamic-1.onnx`, 18 MB) | genre detection + track embeddings | **CC BY-NC-SA 4.0 — non-commercial** (MTG-UPF, Essentia Models; a proprietary licence is available from MTG) | downloaded only on the user's click from essentia.upf.edu (fallback: the project owner's mirror), SHA-256 verified. If this project ever becomes commercial, obtain a licence from MTG-UPF first. The Essentia *library* (AGPL-3.0) is **not** used: the mel front-end is re-implemented in NumPy (`python/engine/genre/effnet_onnx.py`, ported from the owner's MIT-licensed `noesis`). |

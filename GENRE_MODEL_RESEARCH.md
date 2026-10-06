@@ -8,6 +8,11 @@ Items marked **[reported]** come from search-result summaries of project pages a
 
 ---
 
+## 0. Update 2026-10-07 — measured
+* **Owner decision D1: approved** the optional Genre Pack (Discogs-EffNet, CC BY-NC-SA, download on click).
+* **Measured** on 58 owner tracks: embedding **≈ 1.0 s/track** (0.4 s model); `onnxruntime` 1.30.0 installs and runs on Python 3.14 / Apple Silicon (**80 MB on disk**); model-only Top-1/Top-3 = 69 %/95 %, fusion 78 %/93 % (`GENRE_BASELINE.md`). The ONNX backbone already outputs the 400 style activations, so the separate `genre_discogs400` head (listed above as a 2 MB download) is **not needed**.
+* Class check **[checked on the model JSON]**: `Footwork` and `2-Step` are *not* classes; `Juke`, `Ghetto`, `Ghetto House`, `UK Garage`, `Speed Garage`, `Bassline`, `Jungle`, `Drum n Bass`, `Breakbeat`, `Breaks`, `Big Beat`, `Halftime`, `Dubstep`, `Dub`, `IDM`, `Trip Hop`, `Hip Hop---Boom Bap`, `Hip Hop---Instrumental` exist.
+
 ## 1. What we need
 
 * Ranked genre candidates with honest confidence, local and offline, usable on a laptop in a few seconds per track.

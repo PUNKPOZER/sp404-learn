@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { api } from "../lib/sidecar";
-import type { ModelStatus } from "../lib/types";
+import type { GenrePackStatus, ModelStatus } from "../lib/types";
+import { loadGenre } from "../state/actions";
 import { t } from "../lib/i18n";
 
 const mb = (b: number) => `${(b / 1048576).toFixed(1)} MB`;
@@ -9,10 +10,14 @@ export function Settings() {
   const [cache, setCache] = useState<{ bytes: number; path: string } | null>(null);
   const [model, setModel] = useState<ModelStatus | null>(null);
   const [dl, setDl] = useState<"idle" | "busy" | "err">("idle");
+  const [gp, setGp] = useState<GenrePackStatus | null>(null);
+  const [gdl, setGdl] = useState<"idle" | "busy" | "err">("idle");
+  const [gerr, setGerr] = useState("");
   const [err, setErr] = useState("");
   const refresh = () => {
     api.cacheInfo().then(setCache).catch(() => setCache(null));
     api.modelsStatus().then(setModel).catch(() => setModel(null));
+    api.genrePackStatus().then(setGp).catch(() => setGp(null));
   };
   useEffect(refresh, []);
   return (
@@ -39,6 +44,25 @@ export function Settings() {
               </>
             )}
             {model.weights && <p className="hint">{t("Новые анализы будут делить трек на стемы автоматически. Треки, проанализированные раньше без стемов, пересчитаются при следующем открытии.", "New analyses will split the track into stems automatically. Tracks analysed earlier without stems are recomputed the next time you open them.")}</p>}
+          </>
+        )}
+      </section>
+      <section className="panel" data-tour="genrepack">
+        <h2>Genre Pack · {t("определение жанра", "genre detection")}</h2>
+        {!gp ? <p className="hint">{t("Движок недоступен.", "The engine is unavailable.")}</p> : !gp.runtime ? (
+          <p>{t("Среда ONNX Runtime не входит в эту сборку.", "ONNX Runtime is not part of this build.")}</p>
+        ) : (
+          <>
+            <div className="row2"><span>Discogs-EffNet <span className="dim">· {t("400 стилей, ~", "400 styles, ~")}{gp.sizeMb} {t("МБ", "MB")}</span></span>
+              <span className={`chip ${gp.installed ? "" : "soft"}`}>{gp.installed ? t("установлен", "installed") : t("не скачан", "not downloaded")}</span></div>
+            <p className="hint">{t("Лицензия модели", "Model licence")}: {gp.license}. {t("Только для некоммерческого использования; в приложение не вшита и скачивается только по вашей кнопке с сервера MTG-UPF (essentia.upf.edu). Без пакета приложение работает, но жанр показывается лишь как грубая подсказка по ритму.", "Non-commercial use only; not bundled in the app and downloaded only when you press the button, from the MTG-UPF server (essentia.upf.edu). Without it the app still works, but genre is only a rough rhythm hint.")}</p>
+            {!gp.installed && (
+              <button className="btn primary" disabled={gdl === "busy"} onClick={async () => {
+                setGdl("busy"); setGerr("");
+                try { setGp(await api.genrePackDownload()); setGdl("idle"); void loadGenre(true); } catch (e) { setGerr((e as Error).message); setGdl("err"); }
+              }}>{gdl === "busy" ? t("Загрузка…", "Downloading…") : t(`Скачать Genre Pack (${gp.sizeMb} МБ)`, `Download the Genre Pack (${gp.sizeMb} MB)`)}</button>
+            )}
+            {gdl === "err" && <div className="err">{gerr}</div>}
           </>
         )}
       </section>

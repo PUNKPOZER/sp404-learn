@@ -59,3 +59,35 @@ def current_mix(path: str) -> dict:
 @register("current-stems")
 def current_stems(path: str) -> dict:
     return {"system": "current-stems", **_run_current(path, stems=True)}
+
+
+# ---------------------------------------------------------------------------------------------------- Genre Engine 2.0
+def _model_candidates(labels: dict[str, float]) -> list[dict]:
+    """Model-only: label score share (not calibrated). Fusion calibrates later."""
+    tot = sum(labels.values()) or 1.0
+    return sorted(({"genre": g, "confidence": round(v / tot, 4)} for g, v in labels.items()), key=lambda c: -c["confidence"])
+
+
+@register("genre-model")
+def genre_model(path: str, pooling: str = "mean") -> dict:
+    """Discogs-EffNet (Genre Pack) only — no rhythm analysis. Needs the pack installed."""
+    from engine.audio import decode
+    from engine.genre import aggregate, embed
+    t0 = time.time()
+    r = embed.embed_file(path)
+    ag = aggregate.aggregate(r["activations"], embed.classes(), pooling)
+    return {"system": "genre-model", "seconds": round(time.time() - t0, 2), "embed_seconds": round(r["seconds"], 2),
+            "genre": {"candidates": _model_candidates(ag["labels"]), "hints": ag["hints"], "top_styles": ag["top_styles"][:5]}}
+
+
+@register("genre-fusion")
+def genre_fusion(path: str) -> dict:
+    """Current analysis (mix-only; stems do not change the genre outcome — GENRE_BASELINE) + Genre Pack, fused."""
+    from engine.genre import aggregate, embed, fusion
+    base = _run_current(path, stems=False)
+    r = embed.embed_file(path)
+    ag = aggregate.aggregate(r["activations"], embed.classes())
+    pred = fusion.fuse(ag["labels"], base["bpm"], base["bpm_candidates"], base["characteristics"], ag["hints"])
+    base.update({"system": "genre-fusion", "embed_seconds": round(r["seconds"], 2), "genre_model": {"labels": ag["labels"], "hints": ag["hints"]},
+                 "genre": {**pred, "raw": pred["candidates"]}})
+    return base

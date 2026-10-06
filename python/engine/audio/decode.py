@@ -9,6 +9,7 @@ from dataclasses import dataclass
 from pathlib import Path
 
 import numpy as np
+from translator.sp404.i18n import L
 
 SUPPORTED = {".wav", ".aif", ".aiff", ".mp3", ".flac", ".m4a"}
 
@@ -25,7 +26,7 @@ def find_tool(name: str) -> str:
         cand = Path(base) / name
         if cand.exists():
             return str(cand)
-    raise AudioError(f"{name} не найден. Установи FFmpeg (например, `brew install ffmpeg`).")
+    raise AudioError(L(f"{name} не найден. Установи FFmpeg (например, `brew install ffmpeg`).", f"{name} not found. Install FFmpeg (for example `brew install ffmpeg`)."))
 
 
 @dataclass
@@ -61,7 +62,7 @@ def probe(path: str) -> AudioInfo:
         if path.lower().endswith(".wav"):
             sr, d = _wav_fallback(path)
             return AudioInfo(len(d) / sr, sr, d.shape[1])
-        raise AudioError("Для этого формата нужен FFmpeg. Установи его (например, `brew install ffmpeg`).")
+        raise AudioError(L("Для этого формата нужен FFmpeg. Установи его (например, `brew install ffmpeg`).", "This format needs FFmpeg. Install it (for example `brew install ffmpeg`)."))
     out = subprocess.run(
         [find_tool("ffprobe"), "-v", "error", "-select_streams", "a:0",
          "-show_entries", "stream=sample_rate,channels:format=duration",
@@ -71,7 +72,7 @@ def probe(path: str) -> AudioInfo:
         raise AudioError(out.stderr.strip() or "ffprobe failed")
     j = json.loads(out.stdout)
     if not j.get("streams"):
-        raise AudioError("Аудиодорожка не найдена")
+        raise AudioError(L("Аудиодорожка не найдена", "No audio track found"))
     s = j["streams"][0]
     return AudioInfo(float(j["format"]["duration"]), int(s["sample_rate"]), int(s["channels"]))
 
@@ -89,7 +90,7 @@ def decode(path: str, sr: int = 22050, mono: bool = True) -> np.ndarray:
                 g = gcd(src, sr)
                 d = resample_poly(d, sr // g, src // g, axis=-1)
             return np.ascontiguousarray(d, dtype=np.float32)
-        raise AudioError("Для этого формата нужен FFmpeg. Установи его (например, `brew install ffmpeg`).")
+        raise AudioError(L("Для этого формата нужен FFmpeg. Установи его (например, `brew install ffmpeg`).", "This format needs FFmpeg. Install it (for example `brew install ffmpeg`)."))
     p = subprocess.run(
         [find_tool("ffmpeg"), "-v", "error", "-i", path, "-vn", "-ac", str(ch), "-ar", str(sr),
          "-f", "f32le", "-"], capture_output=True)

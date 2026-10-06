@@ -4,6 +4,7 @@ import type { StemInfo, TrackAnalysis } from "../lib/types";
 import { STEM_COLORS, STEM_LABELS, STEM_ORDER } from "../lib/voices";
 import { applyGains, seekStems } from "../lib/audio/stemPlayer";
 import { setState, useStore } from "../state/store";
+import { t } from "../lib/i18n";
 
 function Lane({ part, info, a, time, regions, off }: { part: string; info: StemInfo; a: TrackAnalysis; time: number; regions: Region[]; off: Set<number> }) {
   const ref = useRef<HTMLCanvasElement>(null);
@@ -66,12 +67,11 @@ export function Stems() {
   if (!have.length) {
     return (
       <div className="screen">
-        <header className="screen-head"><h1>Стемы</h1></header>
+        <header className="screen-head"><h1>{t("Стемы", "Stems")}</h1></header>
         <section className="panel empty">
-          <h2>Для этого трека нет стемов</h2>
-          <p>Стемы делят трек на <b>ударные, бас, лид и вокал</b> и сильно повышают точность определения ударных и баса.
-            Модель разделения (~80 МБ) ещё не скачана — она загружается один раз, дальше всё работает локально.</p>
-          <button className="btn primary" onClick={() => setState({ screen: "settings" })}>Открыть Настройки → Хранилище моделей</button>
+          <h2>{t("Для этого трека нет стемов", "This track has no stems")}</h2>
+          <p>{t(<>Стемы делят трек на <b>ударные, бас, лид и вокал</b> и сильно повышают точность определения ударных и баса. Модель разделения (~80 МБ) ещё не скачана — она загружается один раз, дальше всё работает локально.</>, <>Stems split the track into <b>drums, bass, lead and vocals</b> and greatly improve drum and bass detection. The separation model (~80 MB) is not downloaded yet — it is fetched once, then everything runs locally.</>)}</p>
+          <button className="btn primary" onClick={() => setState({ screen: "settings" })}>{t("Открыть Настройки → Хранилище моделей", "Open Settings → Model storage")}</button>
         </section>
       </div>
     );
@@ -80,17 +80,16 @@ export function Stems() {
   return (
     <div className="screen">
       <header className="screen-head">
-        <h1>Стемы</h1>
+        <h1>{t("Стемы", "Stems")}</h1>
         <span className="chip">{a.stems_model}</span>
-        {vocal != null && <span className="chip soft">вокал в {(vocal * 100).toFixed(0)}% тактов</span>}
-        {stemLoading && <span className="mono dim">загрузка…</span>}
+        {vocal != null && <span className="chip soft">{t("вокал в", "vocals in")} {(vocal * 100).toFixed(0)}% {t("тактов", "of bars")}</span>}
+        {stemLoading && <span className="mono dim">{t("загрузка…", "loading…")}</span>}
       </header>
       <section className="panel lanes" data-tour="lanes">
         {have.map((p) => <Lane key={p} part={p} info={a.stems[p]} a={a} time={stemTime} regions={p === part ? plan.regions : []} off={plan.off} />)}
       </section>
       <ChopPanel analysis={a} part={have.includes(part) ? part : have[0]} onPart={setPart} onRegions={onRegions} />
-      <p className="hint">Нажми «Играть», чтобы послушать партии вместе; M — выключить, S — солировать. Клик по дорожке — перемотка. Стемы — это твой файл, обработанный и воспроизводимый локально.
-        «Лид» — всё, что не ударные, бас и вокал (клавиши, гитары, синтезаторы, сэмплы).</p>
+      <p className="hint">{t("Нажми «Играть», чтобы послушать партии вместе; M — выключить, S — солировать. Клик по дорожке — перемотка. Стемы — это твой файл, обработанный и воспроизводимый локально. «Лид» — всё, что не ударные, бас и вокал (клавиши, гитары, синтезаторы, сэмплы).", "Press Play to hear the parts together; M mutes, S solos. Click a lane to seek. Stems are your own file, processed and played locally. “Lead” is everything that isn't drums, bass or vocals (keys, guitars, synths, samples).")}</p>
     </div>
   );
 }

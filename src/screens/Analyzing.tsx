@@ -1,15 +1,16 @@
 import { cancelAnalysis, openTrack } from "../state/actions";
 import { setState, useStore } from "../state/store";
+import { t } from "../lib/i18n";
 
-const ORDER = [["prepare", "Подготовка аудио"], ["tempo", "Определение темпа"], ["stems", "Разделение на стемы"], ["drums", "Поиск ударных"],
-  ["bass", "Анализ баса"], ["structure", "Определение структуры"], ["recipe", "Сборка рецепта SP-404"]];
+const ORDER = [["prepare", t("Подготовка аудио", "Preparing audio")], ["tempo", t("Определение темпа", "Detecting tempo")], ["stems", t("Разделение на стемы", "Separating stems")], ["drums", t("Поиск ударных", "Finding drums")],
+  ["bass", t("Анализ баса", "Analysing bass")], ["structure", t("Определение структуры", "Detecting structure")], ["recipe", t("Сборка рецепта SP-404", "Building the SP-404 recipe")]];
 const ICON: Record<string, string> = { pending: "·", running: "▸", done: "✓", warn: "!", skipped: "–" };
 
 export function Analyzing() {
   const { stages, trackName, error, busy, trackPath } = useStore((s) => s);
   return (
     <div className="center-col">
-      <h1>Анализ трека</h1>
+      <h1>{t("Анализ трека", "Track analysis")}</h1>
       <p className="mono dim">{trackName}</p>
       <ol className="stages">
         {ORDER.map(([id, label]) => {
@@ -25,9 +26,9 @@ export function Analyzing() {
       </ol>
       {error && <div className="err">{error}</div>}
       <div className="row">
-        {busy ? <button className="btn" onClick={cancelAnalysis}>Отмена</button>
-          : <><button className="btn" onClick={() => trackPath && openTrack(trackPath, false)}>Повторить</button>
-              <button className="btn" onClick={() => setState({ screen: "home", error: null })}>Назад</button></>}
+        {busy ? <button className="btn" onClick={cancelAnalysis}>{t("Отмена", "Cancel")}</button>
+          : <><button className="btn" onClick={() => trackPath && openTrack(trackPath, false)}>{t("Повторить", "Retry")}</button>
+              <button className="btn" onClick={() => setState({ screen: "home", error: null })}>{t("Назад", "Back")}</button></>}
       </div>
     </div>
   );

@@ -5,6 +5,7 @@ import { tutorialGo } from "../state/actions";
 import { setState, useStore } from "../state/store";
 import { stopPlay } from "../lib/audio/preview";
 import type { TutorialStep } from "../lib/types";
+import { t as tx } from "../lib/i18n";
 
 const VOICES = ["KICK", "SNARE", "CLAP", "CLOSED_HAT", "OPEN_HAT", "PERCUSSION", "BASS", "VOCAL", "CHOP", "TEXTURE", "FX"];
 const CORE = ["KICK", "SNARE", "CLAP", "CLOSED_HAT", "OPEN_HAT", "PERCUSSION"];
@@ -32,19 +33,19 @@ export function Tutorial() {
   return (
     <div className="screen lesson">
       <header className="lesson-head">
-        <button className="btn sm" onClick={exit}>← Выйти</button>
+        <button className="btn sm" onClick={exit}>{tx("← Выйти", "← Exit")}</button>
         {t.mode === "course" && t.courseId && <GenreArt id={t.courseId} className="lesson-art" />}
         <div className="lesson-titles">
-          <span className="k">{step.lesson ? `${t.title} · урок ${String(step.lesson).padStart(2, "0")} / ${String(step.lessonsTotal ?? "").padStart(2, "0")}` : t.mode === "fx" || t.mode === "trick" ? `Шаг ${t.index + 1} из ${total}` : `${t.title} · ${step.section}`}</span>
+          <span className="k">{step.lesson ? `${t.title} · ${tx("урок", "lesson")} ${String(step.lesson).padStart(2, "0")} / ${String(step.lessonsTotal ?? "").padStart(2, "0")}` : t.mode === "fx" || t.mode === "trick" ? `${tx("Шаг", "Step")} ${t.index + 1} ${tx("из", "of")} ${total}` : `${t.title} · ${step.section}`}</span>
           <h1>{step.lessonTitle ?? (t.mode === "fx" || t.mode === "trick" ? t.title : step.title)}</h1>
         </div>
         <div className="grow" />
         <span className="mono" aria-live="polite">{t.index + 1} / {total}</span>
       </header>
-      <div className="progress" role="progressbar" aria-valuemin={0} aria-valuemax={total} aria-valuenow={t.index + 1} aria-label="Прогресс"><i style={{ width: `${((t.index + 1) / total) * 100}%` }} /></div>
+      <div className="progress" role="progressbar" aria-valuemin={0} aria-valuemax={total} aria-valuenow={t.index + 1} aria-label={tx("Прогресс", "Progress")}><i style={{ width: `${((t.index + 1) / total) * 100}%` }} /></div>
 
       <div className="lesson-body">
-        <ol className="step-list" aria-label="Шаги урока">
+        <ol className="step-list" aria-label={tx("Шаги урока", "Lesson steps")}>
           {group.map(({ s, i }) => (
             <li key={i} className={i === t.index ? "cur" : i < t.index ? "done" : ""}>
               <button onClick={() => tutorialGo(i - t.index)} aria-current={i === t.index ? "step" : undefined}>
@@ -57,8 +58,8 @@ export function Tutorial() {
         <div className="lesson-main">
           <h2 className="step-title">{step.title}</h2>
           <p className="lesson-text">{step.text}</p>
-          {step.highlight.length > 0 && <p className="stepcall mono">Пэды-шаги {step.highlight.join(" / ")}</p>}
-          {step.pad && !stepPads && <p className="padcall mono">Пэд {step.pad}</p>}
+          {step.highlight.length > 0 && <p className="stepcall mono">{tx("Пэды-шаги", "Step pads")} {step.highlight.join(" / ")}</p>}
+          {step.pad && !stepPads && <p className="padcall mono">{tx("Пэд", "Pad")} {step.pad}</p>}
         </div>
 
         <div className="lesson-visual">
@@ -72,8 +73,8 @@ export function Tutorial() {
       </div>
 
       <div className="tut-nav">
-        <button className="btn big" disabled={t.index === 0} onClick={() => tutorialGo(-1)}>← Назад</button>
-        {last ? <button className="btn primary big" onClick={exit}>Готово ✓</button> : <button className="btn primary big" onClick={() => tutorialGo(1)}>Далее →</button>}
+        <button className="btn big" disabled={t.index === 0} onClick={() => tutorialGo(-1)}>{tx("← Назад", "← Back")}</button>
+        {last ? <button className="btn primary big" onClick={exit}>{tx("Готово ✓", "Done ✓")}</button> : <button className="btn primary big" onClick={() => tutorialGo(1)}>{tx("Далее →", "Next →")}</button>}
       </div>
     </div>
   );

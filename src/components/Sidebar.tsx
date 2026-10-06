@@ -1,16 +1,17 @@
 import { BrandMark } from "./BrandMark";
 import { Icon } from "./Icon";
 import { setState, TRACK_LAB_SCREENS, useStore, type Screen } from "../state/store";
+import { t } from "../lib/i18n";
 
 const AREAS: { id: Screen; label: string; sub?: string; icon: string; also?: Screen[] }[] = [
-  { id: "home", label: "Главная", sub: "Практика и уроки", icon: "learn" },
-  { id: "courses", label: "Курсы", icon: "courses" },
+  { id: "home", label: t("Главная", "Home"), sub: t("Практика и уроки", "Practice and lessons"), icon: "learn" },
+  { id: "courses", label: t("Курсы", "Courses"), icon: "courses" },
   { id: "fxlab", label: "FX Lab", icon: "fx", also: ["fx"] },
   { id: "tricks", label: "Tricks", icon: "tricks", also: ["trick"] },
 ];
 const LAB: { id: Screen; label: string }[] = [
-  { id: "track", label: "Трек" }, { id: "stems", label: "Стемы" }, { id: "drums", label: "Ударные" }, { id: "bass", label: "Бас" },
-  { id: "structure", label: "Структура" }, { id: "recipe", label: "Рецепт SP" },
+  { id: "track", label: t("Трек", "Track") }, { id: "stems", label: t("Стемы", "Stems") }, { id: "drums", label: t("Ударные", "Drums") }, { id: "bass", label: t("Бас", "Bass") },
+  { id: "structure", label: t("Структура", "Structure") }, { id: "recipe", label: t("Рецепт SP", "SP Recipe") },
 ];
 
 export function Sidebar() {
@@ -26,8 +27,8 @@ export function Sidebar() {
     </button>
   );
   return (
-    <nav className="sidebar" data-tour="sidebar" aria-label="Разделы">
-      <button className="logo" aria-label="SP-404 LEARN — на главную" onClick={() => setState({ screen: "home" })}><BrandMark className="brand-mark" /></button>
+    <nav className="sidebar" data-tour="sidebar" aria-label={t("Разделы", "Sections")}>
+      <button className="logo" aria-label={t("SP-404 LEARN — на главную", "SP-404 LEARN — home")} onClick={() => setState({ screen: "home" })}><BrandMark className="brand-mark" /></button>
       {AREAS.map((a) => item(effective === a.id || !!a.also?.includes(effective), a.icon, a.label, () => setState({ screen: a.id }), `nav-${a.id}`, a.sub))}
       {item(inLab, "tracklab", "Track Lab", () => setState({ screen: has ? "track" : "tracklab" }), "nav-tracklab")}
       {(inLab || has) && (
@@ -40,8 +41,8 @@ export function Sidebar() {
       )}
       {item(effective === "reference", "reference", "Reference", () => setState({ screen: "reference" }), "nav-reference")}
       <div className="grow" />
-      {item(effective === "settings", "settings", "Настройки", () => setState({ screen: "settings" }), "nav-settings")}
-      <div className="local">● Локально</div>
+      {item(effective === "settings", "settings", t("Настройки", "Settings"), () => setState({ screen: "settings" }), "nav-settings")}
+      <div className="local">● {t("Локально", "Local")}</div>
     </nav>
   );
 }

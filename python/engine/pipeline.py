@@ -20,15 +20,16 @@ from engine.structure import segment
 from engine.stems.base import PARTS
 from engine.tempo import tempo
 from engine.transcription import characteristics
+from translator.sp404.i18n import L
 
 STAGES = [
-    ("prepare", "Подготовка аудио"),
-    ("tempo", "Определение темпа"),
-    ("stems", "Разделение на стемы"),
-    ("drums", "Поиск ударных"),
-    ("bass", "Анализ баса"),
-    ("structure", "Определение структуры"),
-    ("recipe", "Сборка рецепта SP-404"),
+    ("prepare", L("Подготовка аудио", "Preparing audio")),
+    ("tempo", L("Определение темпа", "Detecting tempo")),
+    ("stems", L("Разделение на стемы", "Separating stems")),
+    ("drums", L("Поиск ударных", "Finding drums")),
+    ("bass", L("Анализ баса", "Analysing bass")),
+    ("structure", L("Определение структуры", "Detecting structure")),
+    ("recipe", L("Сборка рецепта SP-404", "Building the SP-404 recipe")),
 ]
 
 Emit = Callable[[dict], None]
@@ -63,7 +64,7 @@ class Analyzer:
         t0 = time.time()
         stage("prepare", "running")
         if not os.path.isfile(path):
-            raise decode.AudioError(f"Файл не найден: {path}")
+            raise decode.AudioError(L(f"Файл не найден: {path}", f"File not found: {path}"))
         info = decode.probe(path)
         h = decode.file_hash(path)
         sep = stems_base.default_separator()
@@ -75,19 +76,19 @@ class Analyzer:
                 a = TrackAnalysis.from_dict(hit)
                 a.path, a.filename = path, os.path.basename(path)
                 for sid, _ in STAGES:
-                    stage(sid, "done", "из кэша")
+                    stage(sid, "done", L("из кэша", "from cache"))
                 a.stages = list(stages)
                 return a
         y = decode.decode(path, spectro.SR, mono=True)
         if len(y) < spectro.SR * 4:
-            raise decode.AudioError("Трек короче 4 секунд.")
+            raise decode.AudioError(L("Трек короче 4 секунд.", "The track is shorter than 4 seconds."))
         S = spectro.magnitude(y)
-        stage("prepare", "done", f"{info.duration:.1f} с, {info.sample_rate} Гц, {info.channels} кан.", time.time() - t0)
+        stage("prepare", "done", L(f"{info.duration:.1f} с, {info.sample_rate} Гц, {info.channels} кан.", f"{info.duration:.1f} s, {info.sample_rate} Hz, {info.channels} ch."), time.time() - t0)
         self._check()
 
         t = time.time(); stage("tempo", "running")
         grid, env = tempo.estimate_grid(y, S)
-        stage("tempo", "done", f"{grid.bpm:.1f} BPM (уверенность {grid.confidence:.0%})", time.time() - t)
+        stage("tempo", "done", L(f"{grid.bpm:.1f} BPM (уверенность {grid.confidence:.0%})", f"{grid.bpm:.1f} BPM (confidence {grid.confidence:.0%})"), time.time() - t)
         self._check()
 
         mix_meta = None
@@ -118,7 +119,7 @@ class Analyzer:
                         if self.cache:
                             stem_meta[part] = stems_io.save(self.cache.stems_dir(h), part, res.stems[part], 44100)
                 analysis_S = spectro.magnitude(stems_y["drums"]) if "drums" in stems_y else S
-                stage("stems", "done", f"{sep.name} · партий: {len(stems_y)}", time.time() - t)
+                stage("stems", "done", L(f"{sep.name} · партий: {len(stems_y)}", f"{sep.name} · parts: {len(stems_y)}"), time.time() - t)
             except Cancelled:
                 raise
             except Exception as e:  # optional stage: degrade, don't die
@@ -154,7 +155,7 @@ class Analyzer:
             if k != 0:
                 grid = Grid(grid.bpm, grid.origin + k * bar, grid.beats_per_bar, grid.candidates, grid.confidence)
                 events = transcribe.to_events(raw, grid, resolution)
-        stage("drums", "done", f"событий: {len(events)}", time.time() - t)
+        stage("drums", "done", L(f"событий: {len(events)}", f"events: {len(events)}"), time.time() - t)
         self._check()
 
         t = time.time(); stage("bass", "running")
@@ -163,7 +164,7 @@ class Analyzer:
         try:
             src = stems_y.get("bass")
             bass = ba.analyze(src if src is not None else y, grid, resolution, from_stem=src is not None)
-            detail = f"нот: {len(bass)}" + ("" if src is not None else " (из полного микса — низкая уверенность)")
+            detail = L(f"нот: {len(bass)}", f"notes: {len(bass)}") + ("" if src is not None else L(" (из полного микса — низкая уверенность)", " (from the full mix — low confidence)"))
             if src is None:
                 warnings.append("Ноты баса взяты из полного микса (без стемов) и приблизительны.")
             stage("bass", "done", detail, time.time() - t)
@@ -175,7 +176,7 @@ class Analyzer:
         t = time.time(); stage("structure", "running")
         try:
             sections = segment.segment(S, grid, events, info.duration)
-            stage("structure", "done", f"секций: {len(sections)}", time.time() - t)
+            stage("structure", "done", L(f"секций: {len(sections)}", f"sections: {len(sections)}"), time.time() - t)
         except Exception as e:
             sections = []
             warnings.append(f"Анализ структуры не удался ({e}).")

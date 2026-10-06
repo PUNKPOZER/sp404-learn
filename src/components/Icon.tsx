@@ -9,6 +9,7 @@ const P: Record<string, string> = {
   settings: "M12 8.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7zM12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M5 19l2-2M17 7l2-2",
   arrow: "M4 12h15M13 6l6 6-6 6",
   play: "M7 4v16l13-8z",
+  "up-right": "M6 18L18 6M8 6h10v10",
 };
 
 export function Icon({ name, size = 20, className = "" }: { name: keyof typeof P | string; size?: number; className?: string }) {

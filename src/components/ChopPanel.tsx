@@ -5,14 +5,15 @@ import { mmss } from "../lib/sections";
 import type { TrackAnalysis } from "../lib/types";
 import { STEM_COLORS, STEM_LABELS, STEM_ORDER } from "../lib/voices";
 import { useStore } from "../state/store";
+import { t } from "../lib/i18n";
 
 export interface Region { start: number; end: number }
 type Mode = "whole" | "bars" | "phrases" | "hits";
 const MODES: [Mode, string, string][] = [
-  ["whole", "Целиком", "Вся партия одним файлом"],
-  ["bars", "По тактам", "Равные куски по сетке трека"],
-  ["phrases", "По фразам", "Резать по паузам — удобно для вокала"],
-  ["hits", "По ударам", "От одного звука до следующего — для нот и стабов"],
+  ["whole", t("Целиком", "Whole"), t("Вся партия одним файлом", "The whole part as one file")],
+  ["bars", t("По тактам", "By bars"), t("Равные куски по сетке трека", "Equal pieces on the track grid")],
+  ["phrases", t("По фразам", "By phrases"), t("Резать по паузам — удобно для вокала", "Cut at pauses — handy for vocals")],
+  ["hits", t("По ударам", "By hits"), t("От одного звука до следующего — для нот и стабов", "From one sound to the next — for notes and stabs")],
 ];
 const DEFAULT_MODE: Record<string, Mode> = { drums: "whole", bass: "whole", lead: "bars", vocals: "phrases" };
 
@@ -48,13 +49,13 @@ export function ChopPanel({ analysis: a, part, onPart, onRegions }: Props) {
   async function pickDir(): Promise<string | null> {
     if (!isTauri) return "/tmp/sp404learn-export";
     const { open } = await import("@tauri-apps/plugin-dialog");
-    const p = await open({ directory: true, multiple: false, title: "Куда сохранить сэмплы для SP-404" });
+    const p = await open({ directory: true, multiple: false, title: t("Куда сохранить сэмплы для SP-404", "Where to save the samples for SP-404") });
     return typeof p === "string" ? p : null;
   }
   async function run(jobs: { part: string; regions: Region[] }[]) {
     const dir = await pickDir();
     if (!dir) return;
-    setStatus({ kind: "busy", text: "Сохраняю…" });
+    setStatus({ kind: "busy", text: t("Сохраняю…", "Saving…") });
     try {
       const out = `${dir}/${base}_stems`;
       let n = 0;
@@ -62,7 +63,7 @@ export function ChopPanel({ analysis: a, part, onPart, onRegions }: Props) {
         const r = await api.exportChops({ path: a.stems[j.part].path, regions: j.regions, outdir: out, basename: `${base}_${j.part}`, normalize: norm });
         n += r.files.length;
       }
-      setStatus({ kind: "ok", text: `Готово: ${n} файл(ов) в папке ${out}` });
+      setStatus({ kind: "ok", text: t(t(`Готово: ${n} файл(ов) в папке ${out}`, `Done: ${n} file(s) in ${out}`), `Done: ${n} file(s) in ${out}`) });
     } catch (e) { setStatus({ kind: "err", text: (e as Error).message }); }
   }
 
@@ -73,7 +74,7 @@ export function ChopPanel({ analysis: a, part, onPart, onRegions }: Props) {
 
   return (
     <section className="panel chop" data-tour="chop">
-      <h2>Выгрузка для SP-404MKII <small>WAV · 16 бит · 48 кГц · моно</small></h2>
+      <h2>{t("Выгрузка для SP-404MKII", "Export for SP-404MKII")} <small>{t("WAV · 16 бит · 48 кГц · моно", "WAV · 16-bit · 48 kHz · mono")}</small></h2>
       <div className="chop-parts">
         {STEM_ORDER.filter((p) => a.stems[p]).map((p) => (
           <button key={p} className={`btn ${part === p ? "on" : ""}`} style={{ ["--c" as string]: STEM_COLORS[p] }} onClick={() => { stopStems(); onPart(p); }}>
@@ -85,23 +86,23 @@ export function ChopPanel({ analysis: a, part, onPart, onRegions }: Props) {
           <button key={m} className={`btn sm ${mode === m ? "on" : ""}`} title={hint} onClick={() => setMode(m)}>{label}</button>
         ))}
         {mode === "bars" && (
-          <label className="inline">такта в куске
+          <label className="inline">{t("такта в куске", "bars per piece")}
             <select value={bars} onChange={(e) => setBars(+e.target.value)}>{[1, 2, 4, 8].map((n) => <option key={n} value={n}>{n}</option>)}</select></label>
         )}
-        <label className="inline"><input type="checkbox" checked={norm} onChange={(e) => setNorm(e.target.checked)} /> выровнять громкость (−1 дБ)</label>
+        <label className="inline"><input type="checkbox" checked={norm} onChange={(e) => setNorm(e.target.checked)} /> {t("выровнять громкость (−1 дБ)", "normalize level (−1 dB)")}</label>
       </div>
-      <p className="hint" style={{ margin: "0 0 10px" }}>{MODES.find((m) => m[0] === mode)![2]}. Найдено кусков: <b>{regions.length}</b>, в выгрузку пойдёт <b>{chosen.length}</b>. Сними галочку у лишнего; ▶ — послушать кусок.</p>
+      <p className="hint" style={{ margin: "0 0 10px" }}>{MODES.find((m) => m[0] === mode)![2]}. {t("Найдено кусков", "Pieces found")}: <b>{regions.length}</b>, {t("в выгрузку пойдёт", "to export")} <b>{chosen.length}</b>. {t("Сними галочку у лишнего; ▶ — послушать кусок.", "Untick what you don't need; ▶ plays a piece.")}</p>
       {regions.length > 0 && mode !== "whole" && (
         <div className="chop-list">
           {regions.map((r, i) => {
             const on = playing && audioTag === `chop:${part}:${i}`;
             return (
               <div key={i} className={`chop-item ${off.has(i) ? "off" : ""}`}>
-                <input type="checkbox" checked={!off.has(i)} aria-label={`Кусок ${i + 1}`}
+                <input type="checkbox" checked={!off.has(i)} aria-label={`${t("Кусок", "Piece")} ${i + 1}`}
                   onChange={() => setOff((s) => { const n = new Set(s); if (n.has(i)) n.delete(i); else n.add(i); return n; })} />
                 <b className="mono">{String(i + 1).padStart(2, "0")}</b>
                 <button className="btn xs" onClick={() => audition(i)}>{on ? "■" : "▶"}</button>
-                <span className="mono dim">{mmss(r.start)} · {(r.end - r.start).toFixed(1)} с</span>
+                <span className="mono dim">{mmss(r.start)} · {(r.end - r.start).toFixed(1)} {t("с", "s")}</span>
               </div>
             );
           })}
@@ -109,9 +110,9 @@ export function ChopPanel({ analysis: a, part, onPart, onRegions }: Props) {
       )}
       <div className="chop-actions">
         <button className="btn primary" disabled={!chosen.length || status?.kind === "busy"} onClick={() => run([{ part, regions: chosen }])}>
-          {mode === "whole" ? `Сохранить ${STEM_LABELS[part].toLowerCase()} одним файлом` : `Сохранить ${chosen.length} кусков`}…</button>
-        <button className="btn" disabled={status?.kind === "busy"} title="Все четыре партии целиком, по одному файлу"
-          onClick={() => run(STEM_ORDER.filter((p) => a.stems[p]).map((p) => ({ part: p, regions: [{ start: 0, end: a.stems[p].duration }] })))}>Все партии целиком…</button>
+          {mode === "whole" ? t(`Сохранить ${STEM_LABELS[part].toLowerCase()} одним файлом`, `Save ${STEM_LABELS[part].toLowerCase()} as one file`) : t(`Сохранить ${chosen.length} кусков`, `Save ${chosen.length} pieces`)}…</button>
+        <button className="btn" disabled={status?.kind === "busy"} title={t("Все четыре партии целиком, по одному файлу", "All four parts whole, one file each")}
+          onClick={() => run(STEM_ORDER.filter((p) => a.stems[p]).map((p) => ({ part: p, regions: [{ start: 0, end: a.stems[p].duration }] })))}>{t("Все партии целиком…", "All parts whole…")}</button>
       </div>
       {status && <div className={`chop-status ${status.kind}`}>{status.text}</div>}
     </section>

@@ -1,3 +1,4 @@
+import { lang, setLang, t } from "./lib/i18n";
 import { useEffect } from "react";
 import { Inspector } from "./components/Inspector";
 import { Sidebar } from "./components/Sidebar";
@@ -57,7 +58,7 @@ export function App() {
           const p = e.payload.paths.find(isAudioPath);
           const proj = e.payload.paths.find((x) => x.endsWith(".sp404learn"));
           if (p) void openTrack(p); else if (proj) void openProject(proj);
-          else setState({ error: "Неподдерживаемый файл. Перетащи WAV, AIFF, MP3, FLAC или M4A." });
+          else setState({ error: t("Неподдерживаемый файл. Перетащи WAV, AIFF, MP3, FLAC или M4A.", "Unsupported file. Drop WAV, AIFF, MP3, FLAC or M4A.") });
         });
       });
       return () => un?.();
@@ -76,22 +77,23 @@ export function App() {
 
   return (
     <div className={`app ${inspector ? "" : "no-inspector"}`}>
-      <div className="appbar"><span>SP SYSTEM / LEARN</span><span>FOR SP-404MKII</span></div>
+      <div className="appbar"><span>SP SYSTEM / LEARN</span><span className="appbar-right">FOR SP-404MKII
+          <span className="langsw" role="group" aria-label="Language">{(["ru", "en"] as const).map((l) => <button key={l} className={lang === l ? "on" : ""} aria-pressed={lang === l} onClick={() => lang !== l && setLang(l)}>{l.toUpperCase()}</button>)}</span></span></div>
       <Sidebar />
       <main className="main">
         <div className="topbar">
-          <button className="btn sm" onClick={pickTrack}>Открыть трек</button>
-          <button className="btn sm" onClick={() => openProject()}>Открыть проект</button>
-          <button className="btn sm" disabled={!analysis} onClick={() => saveProject(false)}>Сохранить{dirty ? " ●" : ""}</button>
-          <button className="btn sm" disabled={!analysis} onClick={() => saveProject(true)}>Сохранить как</button>
+          <button className="btn sm" onClick={pickTrack}>{t("Открыть трек", "Open track")}</button>
+          <button className="btn sm" onClick={() => openProject()}>{t("Открыть проект", "Open project")}</button>
+          <button className="btn sm" disabled={!analysis} onClick={() => saveProject(false)}>{t("Сохранить", "Save")}{dirty ? " ●" : ""}</button>
+          <button className="btn sm" disabled={!analysis} onClick={() => saveProject(true)}>{t("Сохранить как", "Save as")}</button>
           <span className="mono dim">{projectPath ?? ""}</span>
           <div className="grow" />
-          <button className="btn sm" title="Показать подсказки по этому экрану" onClick={() => { const id = tourForScreen(screen) ?? "welcome"; setState({ tour: { id, i: 0 } }); }}>? Подсказки</button>
-          {busy === "regrid" && <span className="mono dim">пересчёт сетки…</span>}
-          {!isTauri && <span className="chip">режим разработки в браузере</span>}
+          <button className="btn sm" title={t("Показать подсказки по этому экрану", "Show tips for this screen")} onClick={() => { const id = tourForScreen(screen) ?? "welcome"; setState({ tour: { id, i: 0 } }); }}>{t("? Подсказки", "? Tips")}</button>
+          {busy === "regrid" && <span className="mono dim">{t("пересчёт сетки…", "recomputing grid…")}</span>}
+          {!isTauri && <span className="chip">{t("режим разработки в браузере", "browser dev mode")}</span>}
         </div>
         <div className="content">
-        {error && screen !== "analyzing" && <div className="err" role="alert">{error}<button className="link" onClick={() => setState({ error: null })}>закрыть</button></div>}
+        {error && screen !== "analyzing" && <div className="err" role="alert">{error}<button className="link" onClick={() => setState({ error: null })}>{t("закрыть", "close")}</button></div>}
           <Screen />
         </div>
         {showTransport ? <Transport /> : <div />}

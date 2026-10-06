@@ -2,6 +2,7 @@
 // (JSON lines). In a plain browser (dev only) it talks to python/sidecar/dev_http.py on localhost.
 import type { TrackAnalysis, Recipe, Course, CourseMeta, StageInfo, ModelStatus } from "./types";
 
+import { lang } from "./i18n";
 export const isTauri = typeof window !== "undefined" && "__TAURI_INTERNALS__" in window;
 const DEV_BRIDGE = "http://127.0.0.1:8404";
 
@@ -31,8 +32,9 @@ async function startTauri(): Promise<void> {
   await invoke("sidecar_start");
 }
 
-export async function rpc<T>(method: string, params: object = {}, onEvent?: (d: StageInfo) => void): Promise<T> {
+export async function rpc<T>(method: string, params0: object = {}, onEvent?: (d: StageInfo) => void): Promise<T> {
   const id = nextId++;
+  const params = { ...params0, lang };
   if (!isTauri) {
     const r = await fetch(`${DEV_BRIDGE}/rpc`, { method: "POST", body: JSON.stringify({ id, method, params }) });
     const m = await r.json();

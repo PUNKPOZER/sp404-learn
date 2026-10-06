@@ -1,4 +1,5 @@
 import { VOICE_COLORS, VOICE_LABELS } from "../lib/voices";
+import { t } from "../lib/i18n";
 
 export interface Cell { id?: string; confidence?: number; velocity?: number; manual?: boolean; label?: string }
 interface Props {
@@ -53,8 +54,8 @@ export function StepSequencer({ voices, cells, stepsPerBar = 16, playStep = -1, 
                     return (
                       <button key={s} className={cls} style={{ ["--c" as string]: VOICE_COLORS[v], ["--v" as string]: String(cell?.velocity ?? 0.8) }}
                         disabled={readOnly}
-                        aria-label={`${VOICE_LABELS[v] ?? v} шаг ${s}${cell ? " вкл" : " выкл"}`}
-                        title={cell?.confidence !== undefined && !cell.manual ? `уверенность ${(cell.confidence * 100).toFixed(0)}%` : undefined}
+                        aria-label={`${VOICE_LABELS[v] ?? v} ${t("шаг", "step")} ${s}${cell ? t(" вкл", " on") : t(" выкл", " off")}`}
+                        title={cell?.confidence !== undefined && !cell.manual ? `${t("уверенность", "confidence")} ${(cell.confidence * 100).toFixed(0)}%` : undefined}
                         onClick={() => (cell?.id ? onSelect?.(cell.id) : onToggle?.(v, s, cell))}
                         onContextMenu={(e) => { if (cell) { e.preventDefault(); onMenu?.(v, s, cell, e.clientX, e.clientY); } }}>
                         {cell ? (low ? "?" : cell.label ?? "") : ""}

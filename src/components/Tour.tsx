@@ -1,6 +1,7 @@
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { TOURS, markSeen } from "../lib/tours";
 import { setState, useStore } from "../state/store";
+import { t } from "../lib/i18n";
 
 interface Box { x: number; y: number; w: number; h: number }
 const PAD = 8, TIP_W = 340;
@@ -76,18 +77,18 @@ export function Tour() {
   }
   const last = tour.i === def.steps.length - 1;
   return (
-    <div className="tour" role="dialog" aria-label="Подсказки">
+    <div className="tour" role="dialog" aria-label={t("Подсказки", "Tips")}>
       <div className="tour-block" onClick={close} />
       {box ? <div className="tour-spot" style={{ left: box.x, top: box.y, width: box.w, height: box.h }} /> : <div className="tour-dim" />}
       <div className="tour-tip" ref={tipRef} style={{ left, top, width: TIP_W }}>
-        <div className="tour-count">{tour.i + 1} из {def.steps.length}</div>
+        <div className="tour-count">{tour.i + 1} {t("из", "of")} {def.steps.length}</div>
         <h4>{step.title}</h4>
         <p>{step.text}</p>
         <div className="tour-nav">
-          <button className="btn sm" onClick={close}>Пропустить</button>
+          <button className="btn sm" onClick={close}>{t("Пропустить", "Skip")}</button>
           <div className="grow" />
-          {tour.i > 0 && <button className="btn sm" onClick={() => go(-1)}>Назад</button>}
-          <button className="btn sm primary" onClick={() => go(1)}>{last ? "Понятно" : "Далее"}</button>
+          {tour.i > 0 && <button className="btn sm" onClick={() => go(-1)}>{t("Назад", "Back")}</button>}
+          <button className="btn sm primary" onClick={() => go(1)}>{last ? t("Понятно", "Got it") : t("Далее", "Next")}</button>
         </div>
       </div>
     </div>

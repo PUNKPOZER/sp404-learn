@@ -1,6 +1,7 @@
-import { mmss, sectionColor } from "../lib/sections";
+import { mmss, sectionColor, sectionName } from "../lib/sections";
 import type { Recipe, TrackAnalysis } from "../lib/types";
 import { useStore } from "../state/store";
+import { t } from "../lib/i18n";
 
 interface Props {
   analysis: TrackAnalysis;
@@ -27,9 +28,9 @@ export function SectionStrip({ analysis, recipe, activePattern, onPick, playingI
         return (
           <button key={i} role="listitem" className={`arr-seg ${playing ? "playing" : ""} ${dim ? "dim" : ""} ${(s.end - s.start) / total < 0.07 ? "tiny" : ""} ${activePattern && !dim ? "on" : ""}`}
             style={{ flexGrow: Math.max(0.08, (s.end - s.start) / total), flexBasis: 0, ["--c" as string]: sectionColor(s) }}
-            onClick={() => onPick?.(i)} title={`${s.label} · ${mmss(s.start)}–${mmss(s.end)} · такты ${s.start_bar + 1}–${s.end_bar}`}>
+            onClick={() => onPick?.(i)} title={`${sectionName(s.label)} · ${mmss(s.start)}–${mmss(s.end)} · ${t("такты","bars")} ${s.start_bar + 1}–${s.end_bar}`}>
             {playing && <i className="arr-prog" style={{ width: `${prog * 100}%` }} />}
-            <span className="arr-top"><span className="arr-name">{showPlay ? (playing ? "■ " : "▶ ") : ""}{s.label}</span>{pat && <span className="arr-pat">{pat}</span>}</span>
+            <span className="arr-top"><span className="arr-name">{showPlay ? (playing ? "■ " : "▶ ") : ""}{sectionName(s.label)}</span>{pat && <span className="arr-pat">{pat}</span>}</span>
             <span className="arr-time">{mmss(s.start)} – {mmss(s.end)}</span>
           </button>
         );

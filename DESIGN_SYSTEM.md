@@ -107,3 +107,6 @@ FX LAB, TRICKS and REFERENCE show **only** items with `status: "verified"`, each
 
 ## 11. Relationship to SP404 DROP and future work
 DROP shares the tokens (`web/sp-system.css`, same `--sp-*` names), the 4×4 pad geometry and the brand mark. Interchange between the apps is specified in `SP_SYSTEM_INTERCHANGE.md` (not implemented). A shared npm/CSS package is **not** created yet; the token files are intentionally identical so they can be extracted later. A React migration of DROP is documented as a possible future phase only.
+
+## 12. Languages (RU / EN)
+Russian is the source language, English is inline: `t("Курсы", "Courses")` (`src/lib/i18n.ts`) in the UI and `L(ru, en)` (`python/translator/sp404/i18n.py`) in generated lessons. The choice (RU/EN switch in the top strip, stored in `localStorage`, default from the system language) reloads the window; the frontend sends `lang` with every sidecar request. Analysis notes cached by the engine stay Russian and are mapped at display time (`src/lib/engineText.ts`, `sectionName`). Course covers are the genre cards of §8 (number, symbol, name + arrow).

@@ -5,6 +5,8 @@ import { playingSection, toggleSection } from "../lib/sectionPlay";
 import { Waveform } from "../components/Waveform";
 import { doubleBpm, halveBpm, nudgeDownbeat, nudgeStep, setGrid } from "../state/actions";
 import { setState, useStore } from "../state/store";
+import { t } from "../lib/i18n";
+import { engineText } from "../lib/engineText";
 
 const fmt = (t: number) => `${Math.floor(t / 60)}:${String(Math.floor(t % 60)).padStart(2, "0")}`;
 
@@ -21,12 +23,12 @@ export function Track() {
       <Waveform peaks={peaks} analysis={a} currentBar={currentBar} playTime={a.stems.mix ? stemTime : null}
         onBar={(b) => setState({ currentBar: b })} onSeek={(t) => a.stems.mix && seekStems(t)} />
       <section className="panel" data-tour="sections">
-        <h2>Структура трека <small>нажми на блок — он заиграет</small></h2>
+        <h2>{t("Структура трека", "Track structure")} <small>{t("нажми на блок — он заиграет", "click a block to play it")}</small></h2>
         <SectionStrip analysis={a} recipe={recipe} showPlay={!!a.stems.mix} playingIndex={stemPlaying ? playingSection(audioTag) : null}
           onPick={(i) => a.stems.mix && void toggleSection(a.sections[i], i)} />
         <div className="legend" style={{ marginTop: 10 }}>{SECTION_LEGEND.map(([n, c]) => <span key={n}><i style={{ background: c }} />{n}</span>)}</div>
       </section>
-      {!a.stems.mix && <p className="hint">Воспроизведение недоступно для этого анализа — открой трек заново.</p>}
+      {!a.stems.mix && <p className="hint">{t("Воспроизведение недоступно для этого анализа — открой трек заново.", "Playback is not available for this analysis — open the track again.")}</p>}
       <div className="bpm-panel" data-tour="bpm">
         <div className="bpm-big"><span className="k">BPM</span><b>{a.grid.bpm.toFixed(1)}</b></div>
         <button className="btn" onClick={halveBpm}>÷2</button>
@@ -34,37 +36,37 @@ export function Track() {
         <button className="btn" onClick={() => {
           const v = window.prompt("BPM", a.grid.bpm.toFixed(2)); const n = v ? parseFloat(v) : NaN;
           if (n >= 40 && n <= 260) void setGrid({ bpm: n });
-        }}>Править</button>
-        <span className="k">ПЕРВАЯ ДОЛЯ</span>
-        <button className="btn sm" title="Сдвинуть шаг 1 на долю раньше" onClick={() => nudgeDownbeat(-1)}>◀ Доля</button>
-        <button className="btn sm" title="Сдвинуть шаг 1 на долю позже" onClick={() => nudgeDownbeat(1)}>Доля ▶</button>
-        <button className="btn sm" title="Сдвинуть шаг 1 на шестнадцатую раньше" onClick={() => nudgeStep(-1)}>◀ Шаг</button>
-        <button className="btn sm" title="Сдвинуть шаг 1 на шестнадцатую позже" onClick={() => nudgeStep(1)}>Шаг ▶</button>
-        <span className="k">КВАНТАЙЗ</span>
+        }}>{t("Править", "Edit")}</button>
+        <span className="k">{t("ПЕРВАЯ ДОЛЯ", "FIRST BEAT")}</span>
+        <button className="btn sm" title={t("Сдвинуть шаг 1 на долю раньше", "Move step 1 one beat earlier")} onClick={() => nudgeDownbeat(-1)}>{t("◀ Доля", "◀ Beat")}</button>
+        <button className="btn sm" title={t("Сдвинуть шаг 1 на долю позже", "Move step 1 one beat later")} onClick={() => nudgeDownbeat(1)}>{t("Доля ▶", "Beat ▶")}</button>
+        <button className="btn sm" title={t("Сдвинуть шаг 1 на шестнадцатую раньше", "Move step 1 one 16th earlier")} onClick={() => nudgeStep(-1)}>{t("◀ Шаг", "◀ Step")}</button>
+        <button className="btn sm" title={t("Сдвинуть шаг 1 на шестнадцатую позже", "Move step 1 one 16th later")} onClick={() => nudgeStep(1)}>{t("Шаг ▶", "Step ▶")}</button>
+        <span className="k">{t("КВАНТАЙЗ", "QUANTIZE")}</span>
         <div className="seg">{[4, 8, 16, 32].map((r) => (
           <button key={r} className={`btn sm ${a.resolution === r ? "on" : ""}`} onClick={() => setGrid({}, r)}>1/{r}</button>
         ))}</div>
-        <span className="k">УВЕРЕННОСТЬ В ТЕМПЕ</span><b className={`mono ${a.grid.confidence < 0.4 ? "warn" : ""}`}>{(a.grid.confidence * 100).toFixed(0)}%</b>
+        <span className="k">{t("УВЕРЕННОСТЬ В ТЕМПЕ", "TEMPO CONFIDENCE")}</span><b className={`mono ${a.grid.confidence < 0.4 ? "warn" : ""}`}>{(a.grid.confidence * 100).toFixed(0)}%</b>
       </div>
-      {a.grid.candidates.length > 0 && <p className="hint">Другие вероятные значения: {a.grid.candidates.map((c) => (
+      {a.grid.candidates.length > 0 && <p className="hint">{t("Другие вероятные значения", "Other likely values")}: {a.grid.candidates.map((c) => (
         <button key={c} className="link" onClick={() => setGrid({ bpm: c })}>{c}</button>))}</p>}
       <div className="grid2">
         <section className="panel">
-          <h2>Характеристики</h2>
+          <h2>{t("Характеристики", "Characteristics")}</h2>
           <table className="kv"><tbody>
-            {[["Бочек / такт", c.kick_density], ["Снейр+клэп / такт", c.snare_density], ["Хэтов / такт", c.hat_density], ["Перк. / такт", c.perc_density],
-              ["Синкопа", c.syncopation, true], ["Четыре в пол", c.four_on_floor, true], ["Разброс тайминга, мс", c.timing_variation_ms]]
+            {[[t("Бочек / такт", "Kicks / bar"), c.kick_density], [t("Снейр+клэп / такт", "Snare+clap / bar"), c.snare_density], [t("Хэтов / такт", "Hats / bar"), c.hat_density], [t("Перк. / такт", "Perc. / bar"), c.perc_density],
+              [t("Синкопа", "Syncopation"), c.syncopation, true], [t("Четыре в пол", "Four on the floor"), c.four_on_floor, true], [t("Разброс тайминга, мс", "Timing spread, ms"), c.timing_variation_ms]]
               .map(([k, v, pct]) => <tr key={k as string}><td>{k as string}</td><td className="mono">{pct ? `${((v as number) * 100).toFixed(0)}%` : (v as number).toFixed(1)}</td></tr>)}
           </tbody></table>
         </section>
         <section className="panel">
-          <h2>Вероятный стиль <small>подсказка, не вердикт</small></h2>
+          <h2>{t("Вероятный стиль", "Likely style")} <small>{t("подсказка, не вердикт", "a hint, not a verdict")}</small></h2>
           {a.likely_styles.map((s) => (
-            <div key={s.style} className="style"><span>{s.style}</span><div className="meter"><i style={{ width: `${s.score * 100}%` }} /></div><small>{s.why}</small></div>
+            <div key={s.style} className="style"><span>{engineText(s.style)}</span><div className="meter"><i style={{ width: `${s.score * 100}%` }} /></div><small>{engineText(s.why)}</small></div>
           ))}
         </section>
       </div>
-      {a.warnings.length > 0 && <section className="panel warnbox"><h2>ЗАМЕТКИ</h2>{a.warnings.map((w, i) => <p key={i}>{w}</p>)}</section>}
+      {a.warnings.length > 0 && <section className="panel warnbox"><h2>{t("ЗАМЕТКИ", "NOTES")}</h2>{a.warnings.map((w, i) => <p key={i}>{engineText(w)}</p>)}</section>}
     </div>
   );
 }

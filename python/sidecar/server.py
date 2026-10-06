@@ -18,7 +18,7 @@ from engine.audio import decode, spectro
 from engine.cache import Cache
 from engine.drums import transcribe
 from engine.model import DrumEvent, Grid, TrackAnalysis
-from translator.sp404 import learn, pads
+from translator.sp404 import i18n, learn, pads
 from translator.sp404.recipe import build_recipe
 
 _out_lock = threading.Lock()
@@ -127,6 +127,7 @@ class Server:
             return
         rid, method = req.get("id"), req.get("method", "")
         fn = getattr(self, "m_" + method, None)
+        i18n.set_lang((req.get("params") or {}).get("lang", "ru"))
         try:
             if fn is None:
                 raise ValueError(f"unknown method {method}")

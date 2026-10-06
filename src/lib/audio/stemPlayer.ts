@@ -2,6 +2,7 @@ import { readStem } from "../sidecar";
 import { getState, setState } from "../../state/store";
 import { STEM_ORDER } from "../voices";
 import { audio } from "./synth";
+import { t } from "../i18n";
 
 // Plays the user's own audio locally: the whole-track copy, the four stems, or a single stem,
 // optionally limited to a time range (a section or one bar) that loops.
@@ -26,7 +27,7 @@ async function ensure(parts: string[]): Promise<boolean> {
     for (const p of missing) bufs[p] = await c.decodeAudioData(await readStem(a.stems[p].path));
     return parts.some((p) => bufs[p]);
   } catch (e) {
-    setState({ error: `Не удалось загрузить аудио: ${e instanceof Error ? e.message : String(e)}` });
+    setState({ error: t("Не удалось загрузить аудио", "Could not load the audio") + `: ${e instanceof Error ? e.message : String(e)}` });
     return false;
   } finally { setState({ stemLoading: false }); }
 }

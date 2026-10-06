@@ -11,6 +11,7 @@ from scipy.ndimage import maximum_filter1d, uniform_filter1d
 
 from engine.audio import spectro
 from engine.model import Grid
+from translator.sp404.i18n import L
 
 
 def normalize_bpm(bpm: float, lo: float = 70.0, hi: float = 180.0) -> float:
@@ -65,7 +66,7 @@ def estimate_grid(y: np.ndarray, S: np.ndarray | None = None, sr: int = spectro.
     env = onset_envelope(S)
     fps = sr / spectro.HOP
     if len(env) < fps * 4:
-        raise ValueError("Трек слишком короткий для определения темпа (нужно минимум 4 с).")
+        raise ValueError(L("Трек слишком короткий для определения темпа (нужно минимум 4 с).", "The track is too short to detect the tempo (4 s minimum)."))
 
     bpms, score = _autocorr_scores(env, fps, 60.0, 200.0)
     # local maxima → candidate tempi

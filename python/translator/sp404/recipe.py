@@ -6,6 +6,7 @@ from typing import Any
 
 from engine.model import TrackAnalysis, SCHEMA_VERSION
 from translator.sp404 import pads, patterns, tutorial
+from translator.sp404.i18n import L
 
 
 @dataclass
@@ -57,13 +58,13 @@ def build_recipe(a: TrackAnalysis, kit_map: dict[int, str] | None = None,
             p["edited"] = True
     notes = []
     if a.grid.confidence < 0.4:
-        notes.append("Темп определён неуверенно — проверь BPM (÷2 / ×2) до того, как строить паттерн.")
+        notes.append(L("Темп определён неуверенно — проверь BPM (÷2 / ×2) до того, как строить паттерн.", "The tempo is uncertain — check the BPM (÷2 / ×2) before building the pattern."))
     low = [e for e in a.events if e.confidence < min_confidence]
     if low:
-        notes.append(f"{len(low)} событий с низкой уверенностью исключены из паттернов.")
+        notes.append(L(f"{len(low)} событий с низкой уверенностью исключены из паттернов.", f"{len(low)} low-confidence events were left out of the patterns."))
     if any(p.get("notes") for p in pats):
-        notes.append("Басовые ноты определены приблизительно — проверь на слух." +
-                     ("" if a.stems_model else " Стемы не использовались: бас взят из полного микса."))
+        notes.append(L("Басовые ноты определены приблизительно — проверь на слух.", "Bass notes are approximate — check by ear.") +
+                     ("" if a.stems_model else L(" Стемы не использовались: бас взят из полного микса.", " Stems were not used: the bass was taken from the full mix.")))
     r = SP404Recipe(bpm=round(a.grid.bpm, 2), kit=make_kit(kit_map), patterns=pats,
                     arrangement=arr, notes=notes, title=a.filename)
     r.tutorial_steps = tutorial.build_steps(r, kit_map)

@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import { sectionColor } from "../lib/sections";
 import type { Section, TrackAnalysis } from "../lib/types";
+import { t } from "../lib/i18n";
 
 interface Props { peaks: number[][]; analysis: TrackAnalysis | null; currentBar?: number; onBar?: (bar: number) => void; onSeek?: (t: number) => void; playTime?: number | null; height?: number;
   /** time marks (s) drawn as ticks, e.g. where each bass note starts */ markers?: number[]; markerColor?: string }
@@ -54,7 +55,7 @@ export function Waveform({ peaks, analysis, currentBar, onBar, onSeek, playTime,
 
   return (
     <div className="wave-wrap" data-tour="waveform">
-      <canvas ref={ref} className="waveform" style={{ height }} aria-label="Волна"
+      <canvas ref={ref} className="waveform" style={{ height }} aria-label={t("Волна", "Waveform")}
         onClick={(e) => {
           if (!analysis) return;
           const r = e.currentTarget.getBoundingClientRect();

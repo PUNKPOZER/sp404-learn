@@ -571,3 +571,68 @@ def test_semantic_timestamps_use_the_real_clock_unless_pinned(tmp_path):
     assert r.package.modules["analysis"].data["producedAt"].startswith(year)
     zi = zipfile.ZipFile(f).getinfo("manifest.json")
     assert zi.date_time[0] == time.localtime().tm_year                                  # ZIP entry time = DOS time of the save, not project state
+
+
+# ----------------------------------------------------------------------------------------------------------- LEARN -> DROP export (PREPARE IN DROP)
+def _audio(tmp_path):
+    import wave
+    w = tmp_path / "track.wav"
+    with wave.open(str(w), "wb") as f:
+        f.setnchannels(1)
+        f.setsampwidth(2)
+        f.setframerate(22050)
+        f.writeframes(b"\x00\x01" * 22050)
+    return w
+
+
+def test_export_new_package_embeds_the_source_and_suggests_sections(tmp_path):
+    from engine.spsystem.export import export_for_drop
+    w = _audio(tmp_path)
+    a = track().to_dict()
+    a["path"], a["filename"], a["audio_hash"] = str(w), "track.wav", hashlib.sha256(w.read_bytes()).hexdigest()[:32]      # LEARN's cache key = sha256 prefix of the same file
+    out = export_for_drop(a, str(tmp_path / "t.spsystem"), app_version="0.3.0", now=1791549000)
+    assert out["embedded"] and not out["updated"] and out["revision"] == 1 and out["candidates"] == 2
+    r = open_path(out["path"])
+    assert r.level == "VALID" and r.manifest["source"]["mode"] == "portable" and r.manifest["source"]["sha256"] == hashlib.sha256(w.read_bytes()).hexdigest()
+    assert r.manifest["tempo"]["bpm"] == 120.0 and r.manifest["tempo"]["setBy"] == "sp404-learn" and r.manifest["meter"] == {"beatsPerBar": 4}
+    assert r.package.modules["chops"].status == "absent"                                   # suggestions are NOT chops
+    an = r.package.modules["analysis"].data
+    assert an["audioSha256"] == hashlib.sha256(w.read_bytes()).hexdigest()[:32] and all(c["state"] == "suggested" for c in an["chopCandidates"])
+    assert not [i for i in r.issues if i.code == "W_STALE_ANALYSIS"]                       # source hash and analysis hash agree
+
+
+def test_export_lightweight_when_not_embeddable(tmp_path):
+    from engine.spsystem.export import export_for_drop
+    w = tmp_path / "x.wma"
+    w.write_bytes(b"not embeddable")
+    a = track().to_dict()
+    a["path"], a["filename"], a["audio_hash"] = str(w), "x.wma", hashlib.sha256(w.read_bytes()).hexdigest()[:32]
+    out = export_for_drop(a, str(tmp_path / "l.spsystem"))
+    r = open_path(out["path"])
+    assert not out["embedded"] and r.manifest["source"]["mode"] == "lightweight" and r.manifest["source"]["externalSource"]["path"] == str(w)
+    assert r.level == "VALID"
+
+
+def test_export_onto_an_existing_drop_project_keeps_drop_data_and_decisions(tmp_path):
+    from engine.spsystem.export import export_for_drop
+    f = tmp_path / "p.spsystem"
+    shutil.copy(REAL_DROP, f)
+    before = payloads(f)
+    a = track().to_dict()
+    out = export_for_drop(a, str(f), app_version="0.3.0", now=1791549000)
+    assert out["updated"] and out["revision"] == 6 and out["id"] == UUID
+    after = payloads(f)
+    for n in DROP_OWNED + BINARY_PAYLOADS:
+        assert after[n] == before[n], n
+    an = open_path(str(f)).package.modules["analysis"].data
+    assert an["x-learn-private"] == {"weights": [0.1, 0.2]} and an["tempo"]["userOverride"] == {"bpm": 118.0}   # the user's override is not lost
+    assert {c["id"] for c in an["chopCandidates"]} >= {"cand-01", "cand-02"}
+
+
+def test_export_refuses_an_existing_file_that_is_not_a_project(tmp_path):
+    from engine.spsystem.export import export_for_drop
+    f = tmp_path / "notes.spsystem"
+    f.write_bytes(b"hello")
+    with pytest.raises(SpError) as e:
+        export_for_drop(track().to_dict(), str(f))
+    assert e.value.code == "E_NOT_USABLE" and f.read_bytes() == b"hello"

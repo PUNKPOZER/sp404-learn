@@ -107,6 +107,21 @@ fn autotest_path() -> Option<String> {
     if cfg!(debug_assertions) { std::env::var("SP404LEARN_AUTOTEST").ok() } else { None }
 }
 
+/// Show a file in Finder (macOS) / the file manager. Only paths that exist; nothing is executed.
+#[tauri::command]
+fn reveal_path(path: String) -> Result<(), String> {
+    if !std::path::Path::new(&path).exists() {
+        return Err(format!("{path}: not found"));
+    }
+    #[cfg(target_os = "macos")]
+    let r = std::process::Command::new("open").args(["-R", &path]).status();
+    #[cfg(target_os = "windows")]
+    let r = std::process::Command::new("explorer").arg(format!("/select,{path}")).status();
+    #[cfg(all(not(target_os = "macos"), not(target_os = "windows")))]
+    let r = std::process::Command::new("xdg-open").arg(std::path::Path::new(&path).parent().unwrap_or(std::path::Path::new("/"))).status();
+    r.map(|_| ()).map_err(|e| e.to_string())
+}
+
 #[tauri::command]
 fn path_exists(path: String) -> bool {
     std::path::Path::new(&path).exists()
@@ -117,7 +132,7 @@ pub fn run() {
         .plugin(tauri_plugin_dialog::init())
         .manage(Sidecar::default())
         .invoke_handler(tauri::generate_handler![
-            sidecar_start, sidecar_send, read_text_file, write_text_file, path_exists, autotest_path, read_stem_file
+            sidecar_start, sidecar_send, read_text_file, write_text_file, path_exists, autotest_path, read_stem_file, reveal_path
         ])
         .build(tauri::generate_context!())
         .expect("error while building SP-404 LEARN")

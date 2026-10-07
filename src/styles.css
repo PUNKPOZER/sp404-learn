@@ -486,3 +486,5 @@ h1 { font-weight: 800; letter-spacing: -.005em; }
 .gc-wave { margin-left: auto; opacity: .7; }
 
 .gc-all-label { display: grid; place-items: center; text-align: center; font: 800 var(--sp-text-xl, 1.4rem) var(--sp-font-ui); text-transform: uppercase; line-height: 1.05; max-width: none; }
+
+.notice { margin: var(--sp-space-1) var(--sp-space-5) var(--sp-space-2); padding: var(--sp-space-2) var(--sp-space-3); border: var(--sp-border-w) solid var(--sp-ink); border-left: 8px solid var(--sp-green); background: var(--sp-white); font-size: var(--sp-text-sm); display: flex; justify-content: space-between; gap: var(--sp-space-3); user-select: text; }

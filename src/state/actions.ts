@@ -243,6 +243,28 @@ export async function saveProject(saveAs = false) {
   } catch (e) { setState({ error: String(e) }); }
 }
 
+/** LEARN -> DROP: write the analysed track as an SP SYSTEM package (.spsystem) and show it in Finder.
+ *  Suggested regions go in as analysis candidates only — a person confirms them in DROP. DROP opens .spsystem files in its own next phase. */
+export async function prepareInDrop() {
+  const s = getState();
+  if (!s.analysis) return;
+  if (!isTauri) { setState({ error: t("Подготовка для DROP работает в десктоп-приложении.", "Preparing for DROP works in the desktop app.") }); return; }
+  try {
+    const { save } = await import("@tauri-apps/plugin-dialog");
+    const def = (s.trackName ?? "track").replace(/\.[^.]+$/, "") + ".spsystem";
+    const path = await save({ defaultPath: def, filters: [{ name: "SP SYSTEM project", extensions: ["spsystem"] }] });
+    if (!path) return;
+    setState({ busy: "spsystem", error: null, notice: null });
+    const r = await api.spsystemExport(s.analysis, path);
+    const { invoke } = await import("@tauri-apps/api/core");
+    await invoke("reveal_path", { path }).catch(() => undefined);
+    setState({ busy: null, notice: r.updated
+      ? t(`Проект SP SYSTEM обновлён (версия ${r.revision}). Данные DROP в нём не тронуты.`, `SP SYSTEM project updated (revision ${r.revision}). DROP's data in it was left untouched.`)
+      : t(`Готово: файл SP SYSTEM создан (${r.embedded ? "трек внутри" : "ссылка на трек"}, ${r.candidates} предложенных участков — в DROP их подтверждает человек). DROP откроет такие файлы в следующей версии.`,
+          `Done: SP SYSTEM file created (${r.embedded ? "track embedded" : "track referenced"}, ${r.candidates} suggested regions — a person confirms them in DROP). DROP will open such files in its next version.`) });
+  } catch (e) { setState({ busy: null, error: String((e as Error).message ?? e) }); }
+}
+
 export async function openProject(path?: string) {
   if (!isTauri) { setState({ error: t("Открытие проектов работает в десктоп-приложении.", "Opening projects works in the desktop app.") }); return; }
   if (!path) {

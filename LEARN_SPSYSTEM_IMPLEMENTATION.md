@@ -67,3 +67,7 @@ No migration; nothing converts a `.sp404learn` into `.spsystem` (or back). Linki
 
 ## 8. Not done (by instruction or by necessity)
 No OPEN IN LEARN / PREPARE IN DROP buttons, no Library, no URL schemes, no pad editor, no analysis UI. No RPC writes a package yet (only `spsystem_open`, read-only); the lesson plan is built in the front-end, so `recipe_from_plan` needs the UI to hand it the plan. The full frozen sidecar was **not** built locally (a mini PyInstaller build with the same flags reads packages fine; CI will run the full build and the new smoke check).
+
+## 9. Update — "Prepare in DROP →" (LEARN → file)
+Track screen → *What the analysis found* → **Prepare in DROP →**: save dialog (`.spsystem`), then `spsystem_export` (`engine/spsystem/export.py`): a new package (manifest, source audio embedded when ≤ 200 MB and a known audio type, otherwise `lightweight`; `analysis/track.json`; the structure sections as **suggested** `chopCandidates`) or, if the chosen file is already a usable project, an update of LEARN's own files only (DROP's chops/samples/pads/loops and unknown data stay byte-identical, the user's overrides and decided candidates survive). The file is shown in Finder.
+**Not possible yet:** DROP has no UI/IPC to open a `.spsystem` (its Phase 2); the button therefore produces a correct package but cannot hand it over — the message says so. No URL scheme, no library.

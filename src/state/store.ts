@@ -12,6 +12,7 @@ export interface AppState {
   screen: Screen;
   busy: string | null;
   error: string | null;
+  notice: string | null;
   trackPath: string | null;
   trackName: string | null;
   peaks: number[][];
@@ -56,7 +57,7 @@ export interface AppState {
 }
 
 const initial: AppState = {
-  screen: "home", busy: null, error: null, trackPath: null, trackName: null, peaks: [], analysis: null, stages: [],
+  screen: "home", busy: null, error: null, notice: null, trackPath: null, trackName: null, peaks: [], analysis: null, stages: [],
   recipe: null, kit: { ...DEFAULT_KIT }, patternEdits: {}, minConfidence: 0.3, selectedEventId: null, selectedPad: null,
   currentBar: 0, activePattern: "A", tutorial: null, progress: loadProgress(), lessonsDone: loadDone(), practiceId: null, fxId: null, coursesTab: null, searchQuery: "", onboarding: false, searchBack: "home", trickId: null, course: null, courseList: [], projectPath: null, dirty: false,
   playing: false, playStep: -1, loop: true, resumeIndex: 0, stemMute: {}, stemSolo: null, stemTime: 0, stemPlaying: false, stemLoading: false, audioTag: null, tour: null, previewBpm: null, previewSource: "pattern",

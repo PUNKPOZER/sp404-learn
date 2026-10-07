@@ -38,7 +38,7 @@ const SCREENS = { home: HomeLearn, courses: Courses, fxlab: FxLab, fx: FxDetail,
   tutorial: Tutorial, practice: Practice, learn: LearnThisTrack, search: SearchScreen, settings: Settings };
 
 export function App() {
-  const { screen, error, analysis, dirty, projectPath, busy } = useStore((s) => s);
+  const { screen, error, notice, analysis, dirty, projectPath, busy } = useStore((s) => s);
   const Screen = SCREENS[screen];
 
   useEffect(() => { stopPlay(); stopStems(); }, [screen]);
@@ -100,6 +100,7 @@ export function App() {
           {!isTauri && <span className="chip">{t("режим разработки в браузере", "browser dev mode")}</span>}
         </div>
         <div className="content">
+        {notice && <div className="notice" role="status">{notice}<button className="link" onClick={() => setState({ notice: null })}>{t("закрыть", "close")}</button></div>}
         {error && screen !== "analyzing" && <div className="err" role="alert">{error}<button className="link" onClick={() => setState({ error: null })}>{t("закрыть", "close")}</button></div>}
           <Screen />
         </div>

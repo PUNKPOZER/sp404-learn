@@ -143,6 +143,15 @@ class Server:
                 "manifest": {k: m.get(k) for k in ("id", "title", "createdBy", "modifiedBy", "revision", "formatVersion", "tempo")} if m else None,
                 "modules": {n: mod.status for n, mod in r.package.modules.items()} if r.package else {}}
 
+    def m_spsystem_export(self, p, rid):
+        """LEARN -> DROP: write or update a .spsystem for the analysed track (analysis + suggested regions, never confirmed chops)."""
+        from engine.spsystem.export import export_for_drop
+        from engine.spsystem import SpError
+        try:
+            return export_for_drop(p["analysis"], p["path"], app_version="0.3.0", embed=p.get("embed", True))
+        except SpError as e:
+            raise ValueError(f"{e.code}: {e.message}")
+
     def m_cache_clear(self, p, rid):
         self.cache.clear()
         return {"ok": True}

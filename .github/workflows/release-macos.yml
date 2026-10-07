@@ -27,7 +27,7 @@ jobs:
         run: |
           python -m venv .venv
           .venv/bin/pip install --upgrade pip
-          .venv/bin/pip install numpy scipy pytest certifi einops julius pyyaml tqdm torch torchaudio onnxruntime
+          .venv/bin/pip install numpy scipy pytest certifi einops julius pyyaml tqdm torch torchaudio onnxruntime jsonschema
           .venv/bin/pip install --no-deps demucs
 
       - run: npm ci
@@ -44,12 +44,15 @@ jobs:
       - name: Smoke-test the frozen engine (must start, and carry the genre data and content)
         run: |
           printf '%s\n' '{"id":1,"method":"ping"}' '{"id":2,"method":"courses"}' \
+            '{"id":3,"method":"spsystem_open","params":{"path":"python/tests/fixtures/spsystem/drop-created.spsystem"}}' \
             | src-tauri/resources/sp404-sidecar/sp404-sidecar > /tmp/smoke.txt || true
           cut -c1-200 /tmp/smoke.txt
           grep -q '"ok": true' /tmp/smoke.txt
+          grep -q '"level": "VALID"' /tmp/smoke.txt          # the frozen engine validates a real .spsystem against the bundled canonical schemas
           find src-tauri/resources/sp404-sidecar -name mapping.json | grep -q .
           find src-tauri/resources/sp404-sidecar -name fusion.default.json | grep -q .
           find src-tauri/resources/sp404-sidecar -name sp404-from-zero.course.json | grep -q .
+          find src-tauri/resources/sp404-sidecar -name manifest.schema.json | grep -q .
 
       - name: Build app
         run: npx tauri build --config '{"bundle":{"resources":["resources/sp404-sidecar/**/*"]}}'

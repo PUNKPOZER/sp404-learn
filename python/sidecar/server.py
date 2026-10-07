@@ -11,6 +11,7 @@ import json
 import os
 import sys
 import threading
+import time
 import traceback
 
 from engine import pipeline
@@ -132,6 +133,16 @@ class Server:
         from engine.genre import corrections
         return corrections.record(p.get("audio_hash", ""), p.get("raw"), p.get("user"), "0.3.0", p.get("kind") or "genre")
 
+    def m_spsystem_open(self, p, rid):
+        """Read-only: validate a .spsystem package and summarise it (level, issues, manifest, module status). Writes nothing."""
+        from engine.spsystem import open_path
+        r = open_path(p["path"])
+        m = r.manifest or {}
+        return {"level": r.level, "ok": r.ok, "code": r.code, "message": r.message,
+                "issues": [{"severity": i.severity, "code": i.code, "message": i.message, "where": i.where} for i in r.issues],
+                "manifest": {k: m.get(k) for k in ("id", "title", "createdBy", "modifiedBy", "revision", "formatVersion", "tempo")} if m else None,
+                "modules": {n: mod.status for n, mod in r.package.modules.items()} if r.package else {}}
+
     def m_cache_clear(self, p, rid):
         self.cache.clear()
         return {"ok": True}
@@ -156,12 +167,20 @@ class Server:
             send({"id": rid, "error": {"message": str(e)}})
 
     def serve(self):
+        workers: list[threading.Thread] = []
         for line in sys.stdin:
             line = line.strip()
             if not line:
                 continue
             # long jobs run on a worker so `cancel` can still be read
-            threading.Thread(target=self.handle, args=(line,), daemon=True).start()
+            t = threading.Thread(target=self.handle, args=(line,), daemon=True)
+            t.start()
+            workers.append(t)
+            workers = [w for w in workers if w.is_alive()]
+        # stdin closed: let requests that are already running answer before the process exits (bounded, so a stuck job cannot hang shutdown)
+        deadline = time.time() + 30
+        for w in workers:
+            w.join(max(0.0, deadline - time.time()))
 
 
 def main():

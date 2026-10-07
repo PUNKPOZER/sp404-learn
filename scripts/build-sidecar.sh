@@ -7,5 +7,5 @@ HERE="$PWD"; ROOT="$(cd .. && pwd)"   # --add-data paths are resolved against th
 "$PY" -m pip install -q pyinstaller
 "$PY" -m PyInstaller --noconfirm --onedir --name sp404-sidecar \
   --distpath ../src-tauri/resources --workpath ../build/pyi --specpath ../build/pyi \
-  --paths . --collect-submodules demucs --collect-submodules numpy.core --hidden-import numpy.core.multiarray --collect-data demucs --collect-data certifi --add-data "$ROOT/content:content" --add-data "$HERE/engine/genre/mapping.json:engine/genre" --add-data "$HERE/engine/genre/fusion.default.json:engine/genre" --hidden-import onnxruntime --exclude-module matplotlib --exclude-module torchvision --exclude-module tkinter --exclude-module pytest \
+  --paths . --collect-submodules demucs --collect-submodules numpy.core --hidden-import numpy.core.multiarray --collect-data demucs --collect-data certifi --add-data "$ROOT/content:content" --add-data "$ROOT/sp-system-spec/schemas:sp-system-spec/schemas" --collect-data jsonschema --collect-data jsonschema_specifications --hidden-import jsonschema --hidden-import referencing --add-data "$HERE/engine/genre/mapping.json:engine/genre" --add-data "$HERE/engine/genre/fusion.default.json:engine/genre" --hidden-import onnxruntime --exclude-module matplotlib --exclude-module torchvision --exclude-module tkinter --exclude-module pytest \
   sidecar/entry.py

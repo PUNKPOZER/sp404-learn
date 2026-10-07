@@ -16,6 +16,7 @@ Licenses were read from each project's published package metadata when the depen
 | Demucs (code) | HT-Demucs stem separation | MIT |
 | einops, julius, PyYAML, tqdm, certifi | Demucs / TLS helpers | MIT, MIT, MIT, MPL-2.0/MIT, MPL-2.0 |
 | CPython | runtime inside the frozen sidecar | PSF-2.0 |
+| jsonschema, referencing, jsonschema-specifications, rpds-py, attrs | validate `.spsystem` packages against the canonical SP SYSTEM schemas | MIT, MIT, MIT, MIT, MIT |
 | ONNX Runtime (`onnxruntime`) | runs the optional Genre Pack model (≈ 80 MB installed on macOS arm64, measured) | MIT |
 
 ## Build/dev tooling (not shipped)

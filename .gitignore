@@ -14,3 +14,7 @@ build/
 # private benchmark material (manifests with local paths, results) — audio is never committed
 /python/bench/local/
 /python/bench/results/
+
+# Finder/sync duplicates ("name 2.ext") must never be committed
+* 2.*
+* 2

@@ -1,0 +1,124 @@
+{
+  "id": "zero-21-create-a-transition",
+  "type": "lesson",
+  "title": {
+    "ru": "Сделай переход",
+    "en": "Create a transition"
+  },
+  "summary": {
+    "ru": "Ролл, эффект и пропуск — три быстрых способа соединить части.",
+    "en": "Roll, effect and drop-out — three quick ways to join sections."
+  },
+  "category": "zero",
+  "tags": [
+    "lesson",
+    "path:sp404-from-zero",
+    "skill:arrangement"
+  ],
+  "difficulty": "beginner",
+  "durationMin": 12,
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Playing back samples in detailed steps (ROLL)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7889831578454155.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — Setting the roll interval",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7890497178454923.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — Recording a roll in the pattern",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/9359437993646859.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — Recording effect operations to a pattern (EFX MOTION REC)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7925799578494091.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  "objectives": [
+    {
+      "ru": "Записать ролл в паттерн",
+      "en": "Record a roll into a pattern"
+    },
+    {
+      "ru": "Записать движение эффекта",
+      "en": "Record an effect move"
+    }
+  ],
+  "steps": [
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Ролл на пэдах: удерживая [ROLL], нажимай пэды — сэмпл играет дробью. [SHIFT] + [ROLL] меняет интервал ролла.",
+        "en": "A roll on pads: hold [ROLL] and press pads — the sample plays as a roll. [SHIFT] + [ROLL] changes the roll interval."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "ROLL",
+          "SHIFT"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Запись ролла в паттерн: начни запись в реальном времени, затем удерживай [ROLL] и играй пэдами.",
+        "en": "To record a roll in a pattern: start real-time recording, then hold [ROLL] and play pads."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "ROLL",
+          "REC"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Движение эффекта: запусти паттерн, [REC] (реальное время), затем [MARK] — «MOTION REC START». Крути эффект в такт и нажми [EXIT].",
+        "en": "An effect move: play the pattern, press [REC] (real-time), then [MARK] — “MOTION REC START”. Operate the effect in time and press [EXIT]."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "REC",
+          "MARK",
+          "EXIT"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "[START/END] включает и выключает воспроизведение записанных движений эффекта.",
+        "en": "[START/END] turns playback of the recorded effect moves on or off."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "START/END"
+        ]
+      }
+    },
+    {
+      "kind": "concept",
+      "text": {
+        "ru": "Короткая пауза перед сильной долей (убрать бочку на такт) часто работает лучше любого эффекта.",
+        "en": "A short gap before a strong beat (drop the kick for a bar) often works better than any effect."
+      },
+      "tryIt": {
+        "ru": "Запиши ролл снейра в последние 4 шага и пусти фильтр на последний такт.",
+        "en": "Record a snare roll in the last 4 steps and run a filter over the last bar."
+      }
+    }
+  ],
+  "prerequisites": [
+    "zero-20-make-a-variation"
+  ]
+}

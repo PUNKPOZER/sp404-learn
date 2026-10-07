@@ -1,0 +1,75 @@
+{
+  "id": "am-08-arrangement",
+  "type": "lesson",
+  "title": {
+    "ru": "Ambient: Аранжировка",
+    "en": "Ambient: Arrangement"
+  },
+  "summary": {
+    "ru": "Структура медленных волн.",
+    "en": "A structure of slow waves."
+  },
+  "category": "genre-ambient",
+  "tags": [
+    "lesson",
+    "genre:ambient",
+    "path:genre-ambient",
+    "slot:arrangement"
+  ],
+  "difficulty": "intermediate",
+  "durationMin": 12,
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Playing back patterns in order (PATTERN CHAIN)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v500/en-US/7925133978493323.html",
+        "note": "v5"
+      }
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  "objectives": [
+    {
+      "ru": "Составить план из слоёв",
+      "en": "Plan from layers"
+    }
+  ],
+  "steps": [
+    {
+      "kind": "concept",
+      "text": {
+        "ru": "План: текстура одна (16 тактов) → + дрон (16) → + пэд (32) → пауза (8) → возврат текстуры (16).",
+        "en": "A plan: texture alone (16 bars) → + drone (16) → + pad (32) → a gap (8) → the texture returns (16)."
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Цепочка: [PATTERN SELECT] → удерживая [HOLD], нажми пэд цепочки → пэды паттернов по порядку → [EXIT].",
+        "en": "Chain: [PATTERN SELECT] → hold [HOLD] and press a chain pad → the patterns' pads in order → [EXIT]."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "PATTERN SELECT",
+          "HOLD",
+          "EXIT"
+        ]
+      }
+    },
+    {
+      "kind": "concept",
+      "text": {
+        "ru": "Каждая часть длиннее, чем кажется нужным.",
+        "en": "Every part is longer than it feels it should be."
+      },
+      "tryIt": {
+        "ru": "Запиши цепочку из четырёх паттернов по 16 тактов каждый.",
+        "en": "Record a chain of four 16-bar patterns."
+      }
+    }
+  ],
+  "prerequisites": [
+    "am-07-variation"
+  ]
+}

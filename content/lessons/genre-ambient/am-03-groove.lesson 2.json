@@ -1,0 +1,74 @@
+{
+  "id": "am-03-groove",
+  "type": "lesson",
+  "title": {
+    "ru": "Ambient: Грув",
+    "en": "Ambient: Groove"
+  },
+  "summary": {
+    "ru": "Свободное время без квантайза.",
+    "en": "Free time without quantizing."
+  },
+  "category": "genre-ambient",
+  "tags": [
+    "lesson",
+    "genre:ambient",
+    "path:genre-ambient",
+    "slot:groove"
+  ],
+  "difficulty": "intermediate",
+  "durationMin": 12,
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Recording samples by looping (LOOPER)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/8584103589852939.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  "objectives": [
+    {
+      "ru": "Играть без сетки",
+      "en": "Play without a grid"
+    }
+  ],
+  "steps": [
+    {
+      "kind": "concept",
+      "text": {
+        "ru": "Сетка здесь не нужна: ноты приходят, когда им «пора».",
+        "en": "You don't need a grid: notes arrive when it feels right."
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Для «свободного» лупа: на экране записи [CTRL 1] — MEAS = Free (режим Looper), конец записи — руками.",
+        "en": "For a free loop: on the Looper screen [CTRL 1] is MEAS = Free; you end the recording by hand."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "MARK",
+          "CTRL 1"
+        ]
+      }
+    },
+    {
+      "kind": "concept",
+      "text": {
+        "ru": "Разные длины лупов (3, 5, 7 тактов) со временем «расходятся» и не повторяются.",
+        "en": "Loops of different lengths (3, 5, 7 bars) drift apart over time and never repeat."
+      },
+      "tryIt": {
+        "ru": "Запусти два зацикленных пэда разной длины и послушай минуту.",
+        "en": "Run two looped pads of different lengths and listen for a minute."
+      }
+    }
+  ],
+  "prerequisites": [
+    "am-02-drums"
+  ]
+}

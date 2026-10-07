@@ -1,0 +1,111 @@
+{
+  "id": "tc-04-bass",
+  "type": "lesson",
+  "title": {
+    "ru": "Techno: Бас",
+    "en": "Techno: Bass"
+  },
+  "summary": {
+    "ru": "«Рамбл»: гул сразу после бочки.",
+    "en": "The rumble: a hum right after the kick."
+  },
+  "category": "genre-techno",
+  "tags": [
+    "lesson",
+    "genre:techno",
+    "path:genre-techno",
+    "slot:bass"
+  ],
+  "difficulty": "intermediate",
+  "durationMin": 12,
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Creating bass and other sounds (SOUND GENERATOR)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/8584218789853707.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — MFX List — Filter+Drive",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7974004378548619.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — Creating a new pattern (TR-REC)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7921805978489483.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  "objectives": [
+    {
+      "ru": "Сделать рамбл-бас между бочками",
+      "en": "Make a rumble bass between kicks"
+    }
+  ],
+  "steps": [
+    {
+      "kind": "concept",
+      "text": {
+        "ru": "Рамбл — низкий гул на офф-битах, приглушённый и тёмный.",
+        "en": "The rumble is a low hum on the off-beats, muted and dark."
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "[SHIFT] + [RECORD SETTING] — SOUND GENERATOR. [CTRL 1] — Type (Sine…), [CTRL 2] — Freq, [CTRL 3] — Level; [REC] и пэд сохраняют звук.",
+        "en": "[SHIFT] + [RECORD SETTING] — SOUND GENERATOR. [CTRL 1] is Type (Sine…), [CTRL 2] Freq, [CTRL 3] Level; [REC] and a pad save the sound."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "SHIFT",
+          "RECORD SETTING",
+          "CTRL 1",
+          "CTRL 2",
+          "CTRL 3",
+          "REC"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Удерживая [SUB PAD], выбери бас и нажми пэды шагов 2, 6, 10, 14: пэд = шаг.",
+        "en": "Holding [SUB PAD], pick the bass and press the step pads 2, 6, 10, 14: pad = step."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "SUB PAD"
+        ],
+        "pads": [
+          2,
+          6,
+          10,
+          14
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Затемни: [FILTER+DRIVE], FLT TYPE LPF, CUTOFF вниз; DRIVE добавляет «зерно».",
+        "en": "Darken it: [FILTER+DRIVE], FLT TYPE LPF, CUTOFF down; DRIVE adds grain."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "FILTER+DRIVE"
+        ]
+      },
+      "tryIt": {
+        "ru": "Сравни басы на шагах 2, 6, 10, 14 и 4, 8, 12, 16.",
+        "en": "Compare bass on steps 2, 6, 10, 14 and 4, 8, 12, 16."
+      }
+    }
+  ],
+  "prerequisites": [
+    "tc-03-groove"
+  ]
+}

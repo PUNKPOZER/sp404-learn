@@ -1,0 +1,102 @@
+{
+  "id": "am-05-chops",
+  "type": "lesson",
+  "title": {
+    "ru": "Ambient: Нарезки и музыкальный материал",
+    "en": "Ambient: Chops and musical material"
+  },
+  "summary": {
+    "ru": "Длинные сэмплы, питч и слои.",
+    "en": "Long samples, pitch and layers."
+  },
+  "category": "genre-ambient",
+  "tags": [
+    "lesson",
+    "genre:ambient",
+    "path:genre-ambient",
+    "slot:chops"
+  ],
+  "difficulty": "intermediate",
+  "durationMin": 12,
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Changing the pitch or playback speed of a sample (PITCH/SPEED)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7914381978479499.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — Setting the playback and loop regions (START/END)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7909287578475659.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — Playing back samples repeatedly (LOOP)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7888500378452619.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — Playing back multiple pads at the same time (PAD LINK GROUPS)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7895130778458763.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  "objectives": [
+    {
+      "ru": "Собрать пэд из длинных звуков",
+      "en": "Build a pad from long sounds"
+    }
+  ],
+  "steps": [
+    {
+      "kind": "concept",
+      "text": {
+        "ru": "Возьми длинный звук (струны, вокал, синтез) и растяни его — медленной скоростью и лупом.",
+        "en": "Take a long sound (strings, voice, synth) and stretch it — with a slower speed and a loop."
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "[PITCH/SPEED]: уменьши SPEED ([CTRL 1]) — звук ниже и длиннее. [START/END]: поставь точку цикла ([CTRL 2], [LOOP] включён).",
+        "en": "[PITCH/SPEED]: lower SPEED ([CTRL 1]) — lower and longer. [START/END]: set the loop point ([CTRL 2], [LOOP] on)."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "PITCH/SPEED",
+          "CTRL 1",
+          "START/END",
+          "CTRL 2",
+          "LOOP"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Слои: PAD LINK — [SHIFT] + пэд [7], группа A–J, до четырёх пэдов; один пэд запускает все.",
+        "en": "Layers: PAD LINK — [SHIFT] + pad [7], a group A–J, up to four pads; one pad triggers them all."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "SHIFT",
+          "VALUE",
+          "EXIT"
+        ],
+        "pads": [
+          7
+        ]
+      },
+      "tryIt": {
+        "ru": "Сложи пэд из трёх звуков и сыграй один аккорд.",
+        "en": "Layer a pad from three sounds and play a single chord."
+      }
+    }
+  ],
+  "prerequisites": [
+    "am-04-bass"
+  ]
+}

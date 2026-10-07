@@ -1,0 +1,112 @@
+{
+  "id": "zero-13-quantize",
+  "type": "lesson",
+  "title": {
+    "ru": "Квантайз",
+    "en": "Quantize"
+  },
+  "summary": {
+    "ru": "Выровняй неточно сыгранные ноты по сетке.",
+    "en": "Snap loosely played notes to a grid."
+  },
+  "category": "zero",
+  "tags": [
+    "lesson",
+    "path:sp404-from-zero",
+    "skill:sequencing"
+  ],
+  "difficulty": "beginner",
+  "durationMin": 8,
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Aligning the playback timing of samples inputted to a pattern (QUANTIZE)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7930714778501003.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — Copying the pattern of a pad",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7932327578503307.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  "objectives": [
+    {
+      "ru": "Квантизовать записанный паттерн",
+      "en": "Quantize a recorded pattern"
+    }
+  ],
+  "steps": [
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "[PATTERN SELECT] → [PATTERN EDIT] → выбери паттерн пэдом [1]–[16].",
+        "en": "[PATTERN SELECT] → [PATTERN EDIT] → choose the pattern with a pad [1]–[16]."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "PATTERN SELECT",
+          "PATTERN EDIT"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Нажми [RECORD SETTING] — экран квантайза. Выбери пэды сэмплов, которые нужно выровнять.",
+        "en": "Press [RECORD SETTING] for the quantize screen. Choose the pads of the samples to correct."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "RECORD SETTING"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "[CTRL 2] — QTZ (сетка: GRID 32 … GRID 4 или SHUFFLE 16/8), [CTRL 3] — STR (сила 0–100 %: 100 % выравнивает полностью).",
+        "en": "[CTRL 2] is QTZ (grid: GRID 32 … GRID 4, or SHUFFLE 16/8) and [CTRL 3] is STR (strength 0–100 %: 100 % corrects fully)."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "CTRL 2",
+          "CTRL 3"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Нажми [VALUE], в сообщении «Quantize Pattern» выбери OK и нажми [VALUE].",
+        "en": "Press [VALUE], choose OK in the “Quantize Pattern” message and press [VALUE]."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "VALUE"
+        ]
+      }
+    },
+    {
+      "kind": "concept",
+      "text": {
+        "ru": "Квантайз нельзя отменить — сначала сохрани копию паттерна кнопкой [COPY]. Сила STR 50–80 % оставляет живость.",
+        "en": "Quantize can't be undone — copy the pattern with [COPY] first. A strength of 50–80 % keeps some life in the groove."
+      },
+      "why": {
+        "ru": "Полное выравнивание делает ритм механическим.",
+        "en": "Full quantizing makes a rhythm mechanical."
+      },
+      "tryIt": {
+        "ru": "Скопируй паттерн, квантизуй копию на 70 % и сравни со звуком оригинала.",
+        "en": "Copy a pattern, quantize the copy at 70 % and compare it with the original."
+      }
+    }
+  ],
+  "prerequisites": [
+    "zero-11-tr-rec"
+  ]
+}

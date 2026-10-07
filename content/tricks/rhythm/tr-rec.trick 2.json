@@ -1,0 +1,136 @@
+{
+  "id": "tr-rec",
+  "type": "trick",
+  "title": {
+    "ru": "TR-REC: паттерн по шагам",
+    "en": "TR-REC: a pattern step by step"
+  },
+  "summary": {
+    "ru": "Построй паттерн так, как в драм-машине: пэды [1]–[16] — это шаги.",
+    "en": "Build a pattern like on a drum machine: pads [1]–[16] are the steps."
+  },
+  "category": "rhythm",
+  "categoryGroup": "rhythm",
+  "topic": "TR-REC",
+  "tags": [
+    "trick",
+    "topic:TR-REC"
+  ],
+  "difficulty": "beginner",
+  "durationMin": 8,
+  "related": [],
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Creating a new pattern (TR-REC)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7921805978489483.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-06"
+  },
+  "steps": [
+    {
+      "text": {
+        "ru": "Нажми [PATTERN SELECT].",
+        "en": "Press [PATTERN SELECT]."
+      },
+      "kind": "hardware",
+      "deviceHighlight": {
+        "controls": [
+          "PATTERN SELECT"
+        ]
+      }
+    },
+    {
+      "text": {
+        "ru": "Нажми [REC]. Пустые пэды, где нет паттернов, мигают красным.",
+        "en": "Press [REC]. Empty pads with no patterns blink red."
+      },
+      "kind": "hardware",
+      "deviceHighlight": {
+        "controls": [
+          "REC"
+        ]
+      }
+    },
+    {
+      "text": {
+        "ru": "Нажми красный пэд [1]–[16] — сюда запишется паттерн. Откроется экран RECORD SETTING.",
+        "en": "Press a red pad [1]–[16] — the pattern will be recorded here. The RECORD SETTING screen opens."
+      },
+      "kind": "hardware"
+    },
+    {
+      "text": {
+        "ru": "Нажми [REMAIN] — способ записи переключится на «TR-REC».",
+        "en": "Press [REMAIN] — the recording method switches to “TR-REC”."
+      },
+      "kind": "hardware",
+      "deviceHighlight": {
+        "controls": [
+          "REMAIN"
+        ]
+      }
+    },
+    {
+      "text": {
+        "ru": "Нажми [REC] — запись TR-REC началась.",
+        "en": "Press [REC] — TR-REC recording has started."
+      },
+      "kind": "hardware",
+      "deviceHighlight": {
+        "controls": [
+          "REC"
+        ]
+      }
+    },
+    {
+      "text": {
+        "ru": "Удерживая [SUB PAD], нажми пэд с нужным сэмплом.",
+        "en": "Holding [SUB PAD], press the pad with the sample you need."
+      },
+      "kind": "hardware",
+      "deviceHighlight": {
+        "controls": [
+          "SUB PAD"
+        ]
+      }
+    },
+    {
+      "text": {
+        "ru": "Нажми пэды [1]–[16], на которые попадает сэмпл: пэд = шаг (момент) в паттерне.",
+        "en": "Press the pads [1]–[16] where the sample hits: pad = step (moment) in the pattern."
+      },
+      "kind": "hardware",
+      "deviceHighlight": {
+        "pads": [
+          1,
+          5,
+          9,
+          13
+        ]
+      }
+    },
+    {
+      "text": {
+        "ru": "Горящие пэды — звучащие шаги. Нажми горящий пэд, чтобы убрать шаг.",
+        "en": "Lit pads are sounding steps. Press a lit pad to remove the step."
+      },
+      "kind": "hardware"
+    },
+    {
+      "text": {
+        "ru": "Закончив, дважды нажми [EXIT] — паттерн сохранится на пэде.",
+        "en": "When done, press [EXIT] twice — the pattern is saved on the pad."
+      },
+      "kind": "hardware",
+      "deviceHighlight": {
+        "controls": [
+          "EXIT"
+        ]
+      }
+    }
+  ]
+}

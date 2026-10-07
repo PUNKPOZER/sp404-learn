@@ -1,0 +1,65 @@
+{
+  "id": "lo-fi-texture",
+  "type": "trick",
+  "title": {
+    "ru": "Lo-fi текстура",
+    "en": "Lo-fi texture"
+  },
+  "summary": {
+    "ru": "Кассета и винил из списка MFX.",
+    "en": "Cassette and vinyl from the MFX list."
+  },
+  "category": "fx",
+  "categoryGroup": "fx",
+  "topic": "lo-fi texture",
+  "tags": [
+    "trick",
+    "group:fx"
+  ],
+  "difficulty": "beginner",
+  "durationMin": 3,
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Using the MFX effects",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7900737178465675.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  "steps": [
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Удерживая [MFX], вращай [VALUE] и найди Lo-fi, Cassette Sim или VinylSim; отпусти [MFX].",
+        "en": "Hold [MFX] and turn [VALUE] to find Lo-fi, Cassette Sim or VinylSim; release [MFX]."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "MFX",
+          "VALUE"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Правь параметры [CTRL 1]–[CTRL 3].",
+        "en": "Edit the parameters with [CTRL 1]–[CTRL 3]."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "CTRL 1",
+          "CTRL 2",
+          "CTRL 3"
+        ]
+      },
+      "tryIt": {
+        "ru": "Обработай аккордовый луп Cassette Sim и запеки ресэмплом.",
+        "en": "Run a chord loop through Cassette Sim and bake it with a resample."
+      }
+    }
+  ]
+}

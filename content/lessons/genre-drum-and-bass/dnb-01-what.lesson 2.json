@@ -1,0 +1,88 @@
+{
+  "id": "dnb-01-what",
+  "type": "lesson",
+  "title": {
+    "ru": "Drum & Bass: Что делает жанр жанром",
+    "en": "Drum & Bass: What makes it sound like this?"
+  },
+  "summary": {
+    "ru": "Быстрый «двухшаговый» ритм 170–180 BPM и мощный бас.",
+    "en": "A fast two-step rhythm at 170–180 BPM with a powerful bass."
+  },
+  "category": "genre-drum-and-bass",
+  "tags": [
+    "lesson",
+    "genre:drum_and_bass",
+    "path:genre-drum-and-bass",
+    "slot:what"
+  ],
+  "difficulty": "intermediate",
+  "durationMin": 12,
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Setting the tempo for a bank or project",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7936372378508683.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  "objectives": [
+    {
+      "ru": "Назвать приметы drum & bass",
+      "en": "Name the traits of drum & bass"
+    },
+    {
+      "ru": "Увидеть, как счёт 174 превращается в «полу»-ощущение",
+      "en": "See how 174 turns into a half-time feel"
+    }
+  ],
+  "steps": [
+    {
+      "kind": "concept",
+      "text": {
+        "ru": "Drum & bass вырос из jungle и держится около 170–180 BPM. Барабаны чище и жёстче, а бас часто сложнее.",
+        "en": "Drum & bass grew out of jungle and sits around 170–180 BPM. The drums are cleaner and harder, and the bass is often more elaborate."
+      }
+    },
+    {
+      "kind": "concept",
+      "text": {
+        "ru": "Три приметы: бочка на 1 и «и» третьей доли, снейр на 2 и 4, быстрые хэты и бас на двух слоях (саб + середина).",
+        "en": "Three traits: kick on 1 and the “and” of beat 3, snare on 2 and 4, fast hats, and a bass in two layers (sub + mids)."
+      }
+    },
+    {
+      "kind": "concept",
+      "text": {
+        "ru": "Поэтому танцуют на полтемпа: бочка-снейр чувствуются как 87 BPM.",
+        "en": "That's why people move at half speed: kick-snare feels like 87 BPM."
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Темп проекта 174: [SHIFT] + пэд [11], [VALUE].",
+        "en": "Project tempo 174: [SHIFT] + pad [11], then [VALUE]."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "SHIFT",
+          "VALUE"
+        ],
+        "pads": [
+          11
+        ]
+      },
+      "tryIt": {
+        "ru": "Простучи 174 и 87 и убедись, что рисунок бочка-снейр живёт в обоих.",
+        "en": "Tap 174 and 87 and check the kick-snare shape lives in both."
+      }
+    }
+  ],
+  "prerequisites": [
+    "zero-11-tr-rec"
+  ]
+}

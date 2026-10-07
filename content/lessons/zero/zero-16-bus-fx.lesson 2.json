@@ -1,0 +1,144 @@
+{
+  "id": "zero-16-bus-fx",
+  "type": "lesson",
+  "title": {
+    "ru": "Эффекты BUS FX",
+    "en": "BUS FX"
+  },
+  "summary": {
+    "ru": "Включай эффекты и правь их ручками.",
+    "en": "Turn effects on and edit them with the knobs."
+  },
+  "category": "zero",
+  "tags": [
+    "lesson",
+    "path:sp404-from-zero",
+    "skill:fx"
+  ],
+  "difficulty": "beginner",
+  "durationMin": 9,
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Adding effects to a sample (BUS FX)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7899047578463371.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — Assigning effects to BUS 1 and BUS 2",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7899713178464139.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — Editing the effects",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7901249178466443.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — Turning Effects on/off at the desired timing",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7902733978467211.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — Temporarily output only the effect sound (MUTE BUS)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7903245978467979.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  "objectives": [
+    {
+      "ru": "Включить эффект и править параметры",
+      "en": "Turn an effect on and edit it"
+    },
+    {
+      "ru": "Переключать шины BUS 1 и BUS 2",
+      "en": "Switch between BUS 1 and BUS 2"
+    }
+  ],
+  "steps": [
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Нажми кнопку эффекта ([FILTER+DRIVE], [RESONATOR], [DELAY], [ISOLATOR], [DJFX LOOPER] или [MFX]) — эффект включён. Играй пэдами.",
+        "en": "Press an effect button ([FILTER+DRIVE], [RESONATOR], [DELAY], [ISOLATOR], [DJFX LOOPER] or [MFX]) — the effect is on. Play the pads."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "FILTER+DRIVE",
+          "RESONATOR",
+          "DELAY",
+          "ISOLATOR",
+          "DJFX LOOPER",
+          "MFX"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "[CTRL 1]–[CTRL 3] меняют основные параметры. Удерживая [VALUE], крути ручки — получишь дополнительные параметры.",
+        "en": "[CTRL 1]–[CTRL 3] change the main parameters. Hold [VALUE] and turn the knobs to reach the sub-parameters."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "CTRL 1",
+          "CTRL 2",
+          "CTRL 3",
+          "VALUE"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "[BUS FX] переключает шину: горит оранжевым — BUS 1, мигает — BUS 2. Затем кнопкой эффекта назначь эффект на шину.",
+        "en": "[BUS FX] switches the bus: lit orange is BUS 1, blinking is BUS 2. Then assign an effect to that bus with an effect button."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "BUS FX"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Эффект только на время нажатия: удерживая [VALUE], нажми кнопку эффекта (EFFECT GRAB).",
+        "en": "An effect only while pressed: hold [VALUE] and press an effect button (EFFECT GRAB)."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "VALUE",
+          "FILTER+DRIVE"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "[SHIFT] + [BUS FX] — MUTE BUS: звук отправляется только в эффект, слышно один эффект. Повтори, чтобы выключить.",
+        "en": "[SHIFT] + [BUS FX] is MUTE BUS: the dry signal is cut off and you hear the effect alone. Repeat to turn it off."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "SHIFT",
+          "BUS FX"
+        ]
+      },
+      "tryIt": {
+        "ru": "Включи [FILTER+DRIVE] на лупе и покрути [CTRL 1]–[CTRL 3], глядя на экран.",
+        "en": "Turn on [FILTER+DRIVE] over a loop and turn [CTRL 1]–[CTRL 3] while watching the screen."
+      }
+    }
+  ],
+  "prerequisites": [
+    "zero-04-playing-samples"
+  ],
+  "related": [
+    "djfx-looper",
+    "filter-drive"
+  ]
+}

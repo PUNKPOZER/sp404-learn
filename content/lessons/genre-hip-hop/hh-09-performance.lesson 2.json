@@ -1,0 +1,89 @@
+{
+  "id": "hh-09-performance",
+  "type": "lesson",
+  "title": {
+    "ru": "Hip-Hop / Boom Bap: Исполнение",
+    "en": "Hip-Hop / Boom Bap: Performance"
+  },
+  "summary": {
+    "ru": "Играй бит руками.",
+    "en": "Play the beat by hand."
+  },
+  "category": "genre-hip-hop",
+  "tags": [
+    "lesson",
+    "genre:hip_hop",
+    "path:genre-hip-hop",
+    "slot:performance"
+  ],
+  "difficulty": "intermediate",
+  "durationMin": 12,
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Playing back only while a pad is pressed (GATE)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7887245978451083.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — Muting the playback of a sample (Pad MUTE)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7894388378457995.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  "objectives": [
+    {
+      "ru": "Исполнять куски и барабаны вживую",
+      "en": "Play pieces and drums live"
+    }
+  ],
+  "steps": [
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Играй куски сэмпла пэдами с [GATE]; барабаны оставь в паттерне.",
+        "en": "Play the sample pieces on pads with [GATE]; leave the drums in the pattern."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "GATE"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Mute пэда вживую: [SHIFT] + [REVERSE] + пэд (красный). Повтор — вернуть.",
+        "en": "Live pad mute: [SHIFT] + [REVERSE] + a pad (turns red). Repeat to bring it back."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "SHIFT",
+          "REVERSE"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Удерживай [HOLD] и нажми пэд — длинный сэмпл продолжает звучать.",
+        "en": "Hold a pad and press [HOLD] — a long sample keeps sounding."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "HOLD"
+        ]
+      },
+      "tryIt": {
+        "ru": "Исполни 32 такта: меняй куски сэмпла каждые 4 такта.",
+        "en": "Perform 32 bars: change the sample piece every 4 bars."
+      }
+    }
+  ],
+  "prerequisites": [
+    "hh-08-arrangement"
+  ]
+}

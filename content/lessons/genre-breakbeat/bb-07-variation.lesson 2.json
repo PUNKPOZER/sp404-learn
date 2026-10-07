@@ -1,0 +1,86 @@
+{
+  "id": "bb-07-variation",
+  "type": "lesson",
+  "title": {
+    "ru": "Breakbeat: Вариации",
+    "en": "Breakbeat: Variation"
+  },
+  "summary": {
+    "ru": "Меняй бочку, снейр-подхваты и хук.",
+    "en": "Change the kick, snare pickups and hook."
+  },
+  "category": "genre-breakbeat",
+  "tags": [
+    "lesson",
+    "genre:breakbeat",
+    "path:genre-breakbeat",
+    "slot:variation"
+  ],
+  "difficulty": "intermediate",
+  "durationMin": 12,
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Copying the pattern of a pad",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7932327578503307.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — Creating a new pattern (TR-REC)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7921805978489483.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  "objectives": [
+    {
+      "ru": "Сделать вариацию с «перекувырком»",
+      "en": "Make a variation with a tumble"
+    }
+  ],
+  "steps": [
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Вариация: [COPY] → пэд паттерна → пэд назначения → [VALUE] или [COPY] (паттерн назначения перезапишется).",
+        "en": "Variation: [COPY] → the pattern's pad → the destination pad → [VALUE] or [COPY] (the destination pattern is overwritten)."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "COPY",
+          "VALUE"
+        ]
+      }
+    },
+    {
+      "kind": "concept",
+      "text": {
+        "ru": "Классический приём: добавь бочку на 7 — ритм «перекувыркнётся».",
+        "en": "A classic move: add a kick on 7 — the rhythm tumbles over."
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Правь копию в TR-REC и сравни A и B.",
+        "en": "Edit the copy in TR-REC and compare A and B."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "PATTERN SELECT",
+          "REC",
+          "REMAIN"
+        ]
+      },
+      "tryIt": {
+        "ru": "Сделай B с бочкой на 7.",
+        "en": "Make B with a kick on 7."
+      }
+    }
+  ],
+  "prerequisites": [
+    "bb-06-fx"
+  ]
+}

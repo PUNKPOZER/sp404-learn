@@ -1,0 +1,105 @@
+{
+  "id": "hs-06-fx",
+  "type": "lesson",
+  "title": {
+    "ru": "House: Эффекты",
+    "en": "House: FX"
+  },
+  "summary": {
+    "ru": "Свипы фильтра, реверб и «накачка».",
+    "en": "Filter sweeps, reverb and pumping."
+  },
+  "category": "genre-house",
+  "tags": [
+    "lesson",
+    "genre:house",
+    "path:genre-house",
+    "slot:fx"
+  ],
+  "difficulty": "beginner",
+  "durationMin": 12,
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — MFX List — Filter+Drive",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7974004378548619.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — Using the MFX effects",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7900737178465675.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — MFX List — Reverb",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7986753178564747.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  "objectives": [
+    {
+      "ru": "Открывать и закрывать фильтр на фразах",
+      "en": "Open and close the filter over phrases"
+    }
+  ],
+  "steps": [
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Нажми [FILTER+DRIVE]: медленно крути [CTRL 1]–[CTRL 3] и найди CUTOFF; закрывай фильтр на 8 тактов, открывай на дропе.",
+        "en": "Press [FILTER+DRIVE]: slowly turn [CTRL 1]–[CTRL 3] to find CUTOFF; close the filter for 8 bars and open it at the drop."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "FILTER+DRIVE",
+          "CTRL 1",
+          "CTRL 2",
+          "CTRL 3"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Эффект из MFX: удерживая [MFX], вращай [VALUE], пока не появится «Reverb»; отпусти [MFX].",
+        "en": "An MFX effect: hold [MFX] and turn [VALUE] until “Reverb” appears, then release [MFX]."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "MFX",
+          "VALUE"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Эффект из MFX: удерживая [MFX], вращай [VALUE], пока не появится «Compressor»; отпусти [MFX].",
+        "en": "An MFX effect: hold [MFX] and turn [VALUE] until “Compressor” appears, then release [MFX]."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "MFX",
+          "VALUE"
+        ]
+      }
+    },
+    {
+      "kind": "concept",
+      "text": {
+        "ru": "Compressor ([MFX]) сглаживает громкость — добавляет плотности лупу.",
+        "en": "Compressor ([MFX]) smooths the level — it adds density to a loop."
+      },
+      "tryIt": {
+        "ru": "Закрой фильтр на 7 тактов и открой на 8-м.",
+        "en": "Close the filter for 7 bars and open it on the 8th."
+      }
+    }
+  ],
+  "prerequisites": [
+    "hs-05-chops"
+  ]
+}

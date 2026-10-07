@@ -1,0 +1,103 @@
+{
+  "id": "dnb-06-fx",
+  "type": "lesson",
+  "title": {
+    "ru": "Drum & Bass: Эффекты",
+    "en": "Drum & Bass: FX"
+  },
+  "summary": {
+    "ru": "Свипы фильтра, реверб и «подъём» перед дропом.",
+    "en": "Filter sweeps, reverb and a riser before the drop."
+  },
+  "category": "genre-drum-and-bass",
+  "tags": [
+    "lesson",
+    "genre:drum_and_bass",
+    "path:genre-drum-and-bass",
+    "slot:fx"
+  ],
+  "difficulty": "intermediate",
+  "durationMin": 12,
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — MFX List — Filter+Drive",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7974004378548619.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — Using the MFX effects",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7900737178465675.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — MFX List — Reverb",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7986753178564747.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — Playing back samples in detailed steps (ROLL)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7889831578454155.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  "objectives": [
+    {
+      "ru": "Сделать подъём фильтром и роллом",
+      "en": "Make a riser with the filter and a roll"
+    }
+  ],
+  "steps": [
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Нажми [FILTER+DRIVE] и медленно крути [CTRL 1]–[CTRL 3], глядя на экран — найди CUTOFF.",
+        "en": "Press [FILTER+DRIVE] and slowly turn [CTRL 1]–[CTRL 3] while watching the screen — find CUTOFF."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "FILTER+DRIVE",
+          "CTRL 1",
+          "CTRL 2",
+          "CTRL 3"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Эффект из MFX: удерживая [MFX], вращай [VALUE], пока не появится «Reverb»; отпусти [MFX].",
+        "en": "An MFX effect: hold [MFX] and turn [VALUE] until “Reverb” appears, then release [MFX]."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "MFX",
+          "VALUE"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Подъём: ролл снейра ([ROLL] + пэд), и вращай [VALUE] по часовой, сокращая интервал.",
+        "en": "A riser: a snare roll ([ROLL] + pad) and turn [VALUE] clockwise to shorten the interval."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "ROLL",
+          "VALUE"
+        ]
+      },
+      "tryIt": {
+        "ru": "Сделай 8-тактовый подъём фильтром и роллом.",
+        "en": "Make an 8-bar riser with the filter and a roll."
+      }
+    }
+  ],
+  "prerequisites": [
+    "dnb-05-chops"
+  ]
+}

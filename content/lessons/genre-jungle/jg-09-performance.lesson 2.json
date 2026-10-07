@@ -1,0 +1,96 @@
+{
+  "id": "jg-09-performance",
+  "type": "lesson",
+  "title": {
+    "ru": "Jungle: Исполнение",
+    "en": "Jungle: Performance"
+  },
+  "summary": {
+    "ru": "Mute саба, перемотки и ролл.",
+    "en": "Sub mutes, rewinds and a roll."
+  },
+  "category": "genre-jungle",
+  "tags": [
+    "lesson",
+    "genre:jungle",
+    "path:genre-jungle",
+    "slot:performance"
+  ],
+  "difficulty": "intermediate",
+  "durationMin": 12,
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Muting the playback of a sample (Pad MUTE)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7894388378457995.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — Playing back samples in detailed steps (ROLL)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7889831578454155.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — Setting the roll interval",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7890497178454923.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  "objectives": [
+    {
+      "ru": "Играть паттерн вживую с мьютами и перемоткой",
+      "en": "Perform a pattern with mutes and rewinds"
+    }
+  ],
+  "steps": [
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Mute пэда вживую: [SHIFT] + [REVERSE] + пэд (красный). Повтор — вернуть.",
+        "en": "Live pad mute: [SHIFT] + [REVERSE] + a pad (turns red). Repeat to bring it back."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "SHIFT",
+          "REVERSE"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Убери саб на 4 такта и верни одновременно с барабанами — это «дроп» руками.",
+        "en": "Drop the sub for 4 bars and bring it back together with the drums — a drop by hand."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "SHIFT",
+          "REVERSE"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Ролл: [ROLL] + пэд; интервал ускоряется вращением [VALUE] по часовой при зажатом [ROLL].",
+        "en": "Roll: [ROLL] + pad; speed it up by turning [VALUE] clockwise while holding [ROLL]."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "ROLL",
+          "VALUE"
+        ]
+      },
+      "tryIt": {
+        "ru": "Исполни 16 тактов: убери саб на последних 4 и верни с роллом.",
+        "en": "Perform 16 bars: drop the sub for the last 4 and bring it back with a roll."
+      }
+    }
+  ],
+  "prerequisites": [
+    "jg-08-arrangement"
+  ]
+}

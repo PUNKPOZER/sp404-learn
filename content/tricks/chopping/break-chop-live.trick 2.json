@@ -1,0 +1,72 @@
+{
+  "id": "break-chop-live",
+  "type": "trick",
+  "title": {
+    "ru": "Нарезка брейка на лету",
+    "en": "Chop a break on the fly"
+  },
+  "summary": {
+    "ru": "Ставь маркеры, пока луп играет.",
+    "en": "Place markers while the loop plays."
+  },
+  "category": "chopping",
+  "categoryGroup": "chopping",
+  "topic": "break chopping",
+  "tags": [
+    "trick",
+    "group:chopping"
+  ],
+  "difficulty": "intermediate",
+  "durationMin": 4,
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Marking and splitting samples (MARK)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7911540378477195.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  "steps": [
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Открой экран маркеров ([SHIFT] + [START/END]) для пэда с брейком.",
+        "en": "Open the marker screen ([SHIFT] + [START/END]) for the break's pad."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "SHIFT",
+          "START/END"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Нажми пэд [1] — сэмпл играет. Нажимай мигающие синие пэды [2]–[16] в нужные моменты — каждый ставит маркер.",
+        "en": "Press pad [1] to play the sample. Tap the blinking blue pads [2]–[16] at the right moments — each places a marker."
+      },
+      "deviceHighlight": {
+        "pads": [
+          1,
+          2,
+          3
+        ]
+      }
+    },
+    {
+      "kind": "concept",
+      "text": {
+        "ru": "Нажимай чуть раньше удара: маркер лучше поставить до атаки, чем после.",
+        "en": "Tap slightly ahead of the hit: a marker is better placed before the attack than after it."
+      },
+      "tryIt": {
+        "ru": "Нарежь 6 ударов брейка так и сыграй их на пэдах.",
+        "en": "Chop six hits of a break this way and play them on the pads."
+      }
+    }
+  ]
+}

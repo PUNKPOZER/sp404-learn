@@ -1,0 +1,76 @@
+{
+  "id": "humanized-hats",
+  "type": "trick",
+  "title": {
+    "ru": "Живые хэты",
+    "en": "Humanized hats"
+  },
+  "summary": {
+    "ru": "Humanize и Groove убирают машинность.",
+    "en": "Humanize and Groove remove the machine feel."
+  },
+  "category": "rhythm",
+  "categoryGroup": "rhythm",
+  "topic": "humanized hats",
+  "tags": [
+    "trick",
+    "group:rhythm"
+  ],
+  "difficulty": "intermediate",
+  "durationMin": 4,
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Adding unique rhythmic character to a sample (Groove)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/8591783590384523.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — Creating a new pattern (TR-REC)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7921805978489483.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  "steps": [
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "[PITCH/SPEED] → [ROLL] — параметры groove для хэт-лупа.",
+        "en": "[PITCH/SPEED] → [ROLL] for the groove parameters of a hat loop."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "PITCH/SPEED",
+          "ROLL"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "[CTRL 1] Humanize: поставь Low или Mid. [CTRL 3] Groove: попробуй 16<.",
+        "en": "[CTRL 1] Humanize: set Low or Mid. [CTRL 3] Groove: try 16<."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "CTRL 1",
+          "CTRL 3"
+        ]
+      }
+    },
+    {
+      "kind": "concept",
+      "text": {
+        "ru": "Дополни разной громкостью: чередуй сильные и слабые хэты (VELOCITY в TR-REC).",
+        "en": "Add varied volume: alternate strong and weak hats (VELOCITY in TR-REC)."
+      },
+      "tryIt": {
+        "ru": "Включи Humanize Mid на хэте и послушай разницу с Off.",
+        "en": "Turn Humanize Mid on a hat and hear the difference from Off."
+      }
+    }
+  ]
+}

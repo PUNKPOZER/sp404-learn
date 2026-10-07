@@ -1,0 +1,117 @@
+{
+  "id": "zero-09-resampling",
+  "type": "lesson",
+  "title": {
+    "ru": "Ресэмплинг",
+    "en": "Resampling"
+  },
+  "summary": {
+    "ru": "Запиши то, что звучит на приборе, в новый сэмпл.",
+    "en": "Record what the unit is playing into a new sample."
+  },
+  "category": "zero",
+  "tags": [
+    "lesson",
+    "path:sp404-from-zero",
+    "skill:resampling"
+  ],
+  "difficulty": "beginner",
+  "durationMin": 8,
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Resampling a sample (RESAMPLE)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7907213978473355.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — Configuring the sampling settings (RECORD SETTING)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7904269978469515.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  "objectives": [
+    {
+      "ru": "Записать звучание пэдов вместе с эффектами в новый сэмпл",
+      "en": "Record pads together with effects into a new sample"
+    }
+  ],
+  "steps": [
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Нажми [RESAMPLE]. Ручкой [CTRL 2] задай длину сэмпла (1–32 такта или ∞).",
+        "en": "Press [RESAMPLE]. Set the sample length with [CTRL 2] (1–32 measures or ∞)."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "RESAMPLE",
+          "CTRL 2"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Нажми [RECORD SETTING] и [CTRL 2] выставь ROUTING = Mix (записывается то, что звучит на приборе).",
+        "en": "Press [RECORD SETTING] and set ROUTING = Mix with [CTRL 2] (what the unit plays gets recorded)."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "RECORD SETTING",
+          "CTRL 2"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Нажми [EXIT] (или [RESAMPLE]), выбери мигающий красный пэд — сюда сохранится результат — и следуй подсказке на экране «Press Pad to START».",
+        "en": "Press [EXIT] (or [RESAMPLE]), choose a blinking red pad as the destination and follow the on-screen “Press Pad to START” prompt."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "EXIT",
+          "RESAMPLE"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Играй нужные пэды; остановить запись можно нажатием пэда или [REC] — сэмпл сохраняется на пэд.",
+        "en": "Play the pads you want; stop recording with a pad press or [REC] — the sample is saved to the pad."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "REC"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Если ROUTING = ExtIn, записывается только внешний звук, без звучания самих сэмплов. [EXIT] отменяет запись.",
+        "en": "If ROUTING = ExtIn, only external audio is recorded, not the samples themselves. [EXIT] cancels."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "EXIT"
+        ]
+      },
+      "tryIt": {
+        "ru": "Включи [FILTER+DRIVE], сыграй луп и ресэмпли его — получишь «запечённый» эффект.",
+        "en": "Turn on [FILTER+DRIVE], play a loop and resample it — you get the effect baked in."
+      }
+    }
+  ],
+  "prerequisites": [
+    "zero-04-playing-samples"
+  ],
+  "related": [
+    "inter-02-resampling-workflows"
+  ]
+}

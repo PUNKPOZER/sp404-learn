@@ -1,0 +1,81 @@
+{
+  "id": "sp-as-external-fx",
+  "type": "trick",
+  "title": {
+    "ru": "SP как внешний процессор эффектов",
+    "en": "SP as an external FX processor"
+  },
+  "summary": {
+    "ru": "Пропусти чужой звук через эффекты SP.",
+    "en": "Run outside audio through the SP's effects."
+  },
+  "category": "external",
+  "categoryGroup": "external",
+  "topic": "SP as an external FX processor",
+  "tags": [
+    "trick",
+    "group:external"
+  ],
+  "difficulty": "intermediate",
+  "durationMin": 4,
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Inputting sound from an electronic musical instrument, mic or guitar",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7943233178517131.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — Sending the audio input from the INPUT jack to a bus",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7957645978536331.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  "steps": [
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Подключи источник к LINE IN (синтезатор) на задней панели или микрофон/гитару к INPUT на передней.",
+        "en": "Connect the source to the rear LINE IN (synth) or a mic/guitar to the front INPUT."
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Нажми [EXT SOURCE] — кнопка горит. [SHIFT] + [EXT SOURCE] — настройки входа; [CTRL 3] — громкость входа, [EXIT] — готово.",
+        "en": "Press [EXT SOURCE] — the button lights. [SHIFT] + [EXT SOURCE] opens input settings; [CTRL 3] sets the input volume, [EXIT] finishes."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "EXT SOURCE",
+          "SHIFT",
+          "CTRL 3",
+          "EXIT"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Чтобы вход шёл через эффекты шин: [SHIFT] + пэд [13] → EFX SET → OTHER → Input Bus: DRY, BUS1 или BUS2.",
+        "en": "To send the input through the bus effects: [SHIFT] + pad [13] → EFX SET → OTHER → Input Bus: DRY, BUS1 or BUS2."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "SHIFT",
+          "VALUE"
+        ],
+        "pads": [
+          13
+        ]
+      },
+      "tryIt": {
+        "ru": "Пропусти синтезатор через [DELAY] и запиши результат ресэмплом.",
+        "en": "Run a synth through [DELAY] and capture it with a resample."
+      }
+    }
+  ]
+}

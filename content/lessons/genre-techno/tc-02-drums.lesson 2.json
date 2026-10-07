@@ -1,0 +1,207 @@
+{
+  "id": "tc-02-drums",
+  "type": "lesson",
+  "title": {
+    "ru": "Techno: Барабаны",
+    "en": "Techno: Drums"
+  },
+  "summary": {
+    "ru": "Бочка в четыре, хэты на «и», редкий клэп.",
+    "en": "Four-on-the-floor kick, off-beat hats, a rare clap."
+  },
+  "category": "genre-techno",
+  "tags": [
+    "lesson",
+    "genre:techno",
+    "path:genre-techno",
+    "slot:drums"
+  ],
+  "difficulty": "intermediate",
+  "durationMin": 12,
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Creating a new pattern (TR-REC)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7921805978489483.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  "objectives": [
+    {
+      "ru": "Собрать барабаны техно",
+      "en": "Build the techno drums"
+    }
+  ],
+  "steps": [
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Запусти TR-REC: [PATTERN SELECT] → [REC] → красный пэд → [REMAIN] (метод TR-REC) → [REC].",
+        "en": "Start TR-REC: [PATTERN SELECT] → [REC] → a red pad → [REMAIN] (method TR-REC) → [REC]."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "PATTERN SELECT",
+          "REC",
+          "REMAIN"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Удерживая [SUB PAD], выбери бочку и нажми пэды шагов 1, 5, 9, 13: пэд = шаг.",
+        "en": "Holding [SUB PAD], pick the kick and press the step pads 1, 5, 9, 13: pad = step."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "SUB PAD"
+        ],
+        "pads": [
+          1,
+          5,
+          9,
+          13
+        ]
+      },
+      "stepPattern": {
+        "voices": {
+          "KICK": [
+            1,
+            5,
+            9,
+            13
+          ]
+        }
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Удерживая [SUB PAD], выбери закрытый хэт и нажми пэды шагов 3, 7, 11, 15: пэд = шаг.",
+        "en": "Holding [SUB PAD], pick the closed hat and press the step pads 3, 7, 11, 15: pad = step."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "SUB PAD"
+        ],
+        "pads": [
+          3,
+          7,
+          11,
+          15
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Удерживая [SUB PAD], выбери открытый хэт и нажми пэды шагов 4, 12: пэд = шаг.",
+        "en": "Holding [SUB PAD], pick the open hat and press the step pads 4, 12: pad = step."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "SUB PAD"
+        ],
+        "pads": [
+          4,
+          12
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Удерживая [SUB PAD], выбери клэп и нажми пэды шагов 13: пэд = шаг.",
+        "en": "Holding [SUB PAD], pick the clap and press the step pads 13: pad = step."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "SUB PAD"
+        ],
+        "pads": [
+          13
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Удерживая [SUB PAD], выбери перкуссию и нажми пэды шагов 8, 16: пэд = шаг.",
+        "en": "Holding [SUB PAD], pick the percussion and press the step pads 8, 16: pad = step."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "SUB PAD"
+        ],
+        "pads": [
+          8,
+          16
+        ]
+      }
+    },
+    {
+      "kind": "concept",
+      "text": {
+        "ru": "Клэп бьёт редко — один-два раза на такт или не на каждой доле.",
+        "en": "The clap hits rarely — once or twice per bar, or not on every beat."
+      },
+      "tryIt": {
+        "ru": "Добавь клэп на 5 в паттерне B.",
+        "en": "Add a clap on 5 in pattern B."
+      },
+      "stepPattern": {
+        "voices": {
+          "KICK": [
+            1,
+            5,
+            9,
+            13
+          ],
+          "CLOSED_HAT": [
+            3,
+            7,
+            11,
+            15
+          ],
+          "OPEN_HAT": [
+            4,
+            12
+          ],
+          "CLAP": [
+            13
+          ],
+          "PERCUSSION": [
+            8,
+            16
+          ],
+          "BASS": [
+            2,
+            6,
+            10,
+            14
+          ]
+        }
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Закончив, нажми [EXIT] два раза — паттерн сохранится на пэде.",
+        "en": "When done, press [EXIT] twice — the pattern is saved on the pad."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "EXIT"
+        ]
+      }
+    }
+  ],
+  "prerequisites": [
+    "tc-01-what"
+  ],
+  "exercise": "ex-techno"
+}

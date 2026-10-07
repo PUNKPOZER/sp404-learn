@@ -1,0 +1,92 @@
+{
+  "id": "jg-01-what",
+  "type": "lesson",
+  "title": {
+    "ru": "Jungle: Что делает жанр жанром",
+    "en": "Jungle: What makes it sound like this?"
+  },
+  "summary": {
+    "ru": "Нарезанные и переставленные брейки на 160–170 BPM поверх глубокого саба.",
+    "en": "Chopped and rearranged breaks at 160–170 BPM over deep sub bass."
+  },
+  "category": "genre-jungle",
+  "tags": [
+    "lesson",
+    "genre:jungle",
+    "path:genre-jungle",
+    "slot:what"
+  ],
+  "difficulty": "intermediate",
+  "durationMin": 12,
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Setting the tempo for a bank or project",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7936372378508683.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  "objectives": [
+    {
+      "ru": "Описать звук jungle тремя приметами",
+      "en": "Describe jungle by three traits"
+    },
+    {
+      "ru": "Понять, чем он отличается от drum & bass",
+      "en": "See how it differs from drum & bass"
+    }
+  ],
+  "steps": [
+    {
+      "kind": "concept",
+      "text": {
+        "ru": "Jungle родился в Великобритании в начале 1990-х: ускоренные брейкбиты, нарезанные и переставленные по ударам, и глубокий саб в духе даба и регги.",
+        "en": "Jungle emerged in the UK in the early 1990s: sped-up breakbeats chopped and rearranged by hit, with deep sub bass in the spirit of dub and reggae."
+      }
+    },
+    {
+      "kind": "concept",
+      "text": {
+        "ru": "Три приметы: живая «рваная» барабанная партия из кусков брейка, длинный чистый саб, вокальные сэмплы и сирены.",
+        "en": "Three traits: a lively, jagged drum part from break pieces, a long clean sub, vocal samples and sirens."
+      },
+      "why": {
+        "ru": "Барабаны здесь — не паттерн из одиночных ударов, а переложенный брейк.",
+        "en": "The drums aren't a pattern of single hits but a rearranged break."
+      }
+    },
+    {
+      "kind": "concept",
+      "text": {
+        "ru": "Темп — примерно 160–170 BPM; ощущение «в два раза медленнее» от бочки и снейра остаётся.",
+        "en": "Tempo is roughly 160–170 BPM; the half-time feel of kick and snare remains."
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Темп проекта: [SHIFT] + пэд [11], [VALUE] — 165 BPM.",
+        "en": "Project tempo: [SHIFT] + pad [11], set 165 BPM with [VALUE]."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "SHIFT",
+          "VALUE"
+        ],
+        "pads": [
+          11
+        ]
+      },
+      "tryIt": {
+        "ru": "Прогони брейк на 165 и ощути «полуторное» движение.",
+        "en": "Run a break at 165 and feel the half-time motion."
+      }
+    }
+  ],
+  "prerequisites": [
+    "inter-01-advanced-chopping"
+  ]
+}

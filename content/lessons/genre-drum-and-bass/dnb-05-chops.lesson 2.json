@@ -1,0 +1,104 @@
+{
+  "id": "dnb-05-chops",
+  "type": "lesson",
+  "title": {
+    "ru": "Drum & Bass: Нарезки и музыкальный материал",
+    "en": "Drum & Bass: Chops and musical material"
+  },
+  "summary": {
+    "ru": "Аккорды, пады и вокал для «лиричного» DnB.",
+    "en": "Chords, pads and vocals for “liquid” DnB."
+  },
+  "category": "genre-drum-and-bass",
+  "tags": [
+    "lesson",
+    "genre:drum_and_bass",
+    "path:genre-drum-and-bass",
+    "slot:chops"
+  ],
+  "difficulty": "intermediate",
+  "durationMin": 12,
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Setting the playback and loop regions (START/END)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7909287578475659.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — Playing back samples repeatedly (LOOP)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7888500378452619.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — Marking and splitting samples (MARK)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7911540378477195.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — Using a marker to split and assign a sample to a pad (CHOP)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7912513178477963.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  "objectives": [
+    {
+      "ru": "Добавить гармонию и вокал над ритмом",
+      "en": "Add harmony and vocals over the rhythm"
+    }
+  ],
+  "steps": [
+    {
+      "kind": "concept",
+      "text": {
+        "ru": "Над ритмом обычно лежит один гармонический слой: аккордовый луп, пэд или короткие стабы, плюс вокальный чоп.",
+        "en": "Over the rhythm usually sits one harmonic layer: a chord loop, a pad or short stabs, plus a vocal chop."
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Для аккордового лупа: [START/END] — обрежь по длине в целые такты, включи [LOOP].",
+        "en": "For a chord loop: [START/END] — trim to whole bars and turn [LOOP] on."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "START/END",
+          "LOOP"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Нарежь сэмпл: [SHIFT] + [START/END], маркеры кнопкой [MARK] (или AUTO MARK через [VALUE]), затем [VALUE] → ASSIGN TO PAD.",
+        "en": "Chop a sample: [SHIFT] + [START/END], markers with [MARK] (or AUTO MARK via [VALUE]), then [VALUE] → ASSIGN TO PAD."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "SHIFT",
+          "START/END",
+          "MARK",
+          "VALUE"
+        ]
+      }
+    },
+    {
+      "kind": "concept",
+      "text": {
+        "ru": "Подбирай аккорды в той же тональности, что и бас.",
+        "en": "Keep the chords in the same key as the bass."
+      },
+      "tryIt": {
+        "ru": "Накрой бас двухтактным аккордовым лупом.",
+        "en": "Cover the bass with a two-bar chord loop."
+      }
+    }
+  ],
+  "prerequisites": [
+    "dnb-04-bass"
+  ]
+}

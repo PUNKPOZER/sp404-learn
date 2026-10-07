@@ -1,0 +1,97 @@
+{
+  "id": "hh-03-groove",
+  "type": "lesson",
+  "title": {
+    "ru": "Hip-Hop / Boom Bap: Грув",
+    "en": "Hip-Hop / Boom Bap: Groove"
+  },
+  "summary": {
+    "ru": "Свинг и «человеческая» неровность.",
+    "en": "Swing and human unevenness."
+  },
+  "category": "genre-hip-hop",
+  "tags": [
+    "lesson",
+    "genre:hip_hop",
+    "path:genre-hip-hop",
+    "slot:groove"
+  ],
+  "difficulty": "intermediate",
+  "durationMin": 12,
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Creating a new pattern (TR-REC)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7921805978489483.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — Aligning the playback timing of samples inputted to a pattern (QUANTIZE)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7930714778501003.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  "objectives": [
+    {
+      "ru": "Добавить свинг, как на классических сэмплерах",
+      "en": "Add swing in the way of classic samplers"
+    }
+  ],
+  "steps": [
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "SHUFFLE ([CTRL 3] в параметрах паттерна, −50…+50): +10…+16 — шаффл в духе бум-бэпа.",
+        "en": "SHUFFLE ([CTRL 3] in the pattern parameters, −50…+50): +10…+16 — a boom-bap shuffle."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "CTRL 3"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Для квантайза: SHUFFLE 16 и STR 50–70 % — сохраняет живость.",
+        "en": "For quantize: SHUFFLE 16 and STR 50–70 % — keeps the life."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "RECORD SETTING",
+          "CTRL 2",
+          "CTRL 3"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "VELOCITY ([CTRL 3] при вводе шага, 0–127): чередуй хэты 100 / 60.",
+        "en": "VELOCITY ([CTRL 3] while entering a step, 0–127): alternate hats 100 / 60."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "CTRL 3"
+        ]
+      }
+    },
+    {
+      "kind": "concept",
+      "text": {
+        "ru": "Идеально ровно — скучно. Дай хэту пару пропусков.",
+        "en": "Perfectly even is boring. Give the hat a couple of gaps."
+      },
+      "tryIt": {
+        "ru": "Убери хэт на шаге 9 и 15 и послушай, как бит «дышит».",
+        "en": "Remove the hat on 9 and 15 and hear the beat breathe."
+      }
+    }
+  ],
+  "prerequisites": [
+    "hh-02-drums"
+  ]
+}

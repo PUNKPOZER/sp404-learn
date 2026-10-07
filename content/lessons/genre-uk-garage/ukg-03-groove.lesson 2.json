@@ -1,0 +1,94 @@
+{
+  "id": "ukg-03-groove",
+  "type": "lesson",
+  "title": {
+    "ru": "UK Garage / 2-Step: Грув",
+    "en": "UK Garage / 2-Step: Groove"
+  },
+  "summary": {
+    "ru": "SHUFFLE и QTZ SHUFFLE — источник прыжка.",
+    "en": "SHUFFLE and QTZ SHUFFLE are the source of the bounce."
+  },
+  "category": "genre-uk-garage",
+  "tags": [
+    "lesson",
+    "genre:uk_garage",
+    "path:genre-uk-garage",
+    "slot:groove"
+  ],
+  "difficulty": "intermediate",
+  "durationMin": 12,
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Creating a new pattern (TR-REC)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7921805978489483.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — Aligning the playback timing of samples inputted to a pattern (QUANTIZE)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7930714778501003.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  "objectives": [
+    {
+      "ru": "Добавить свинг в паттерн двумя способами",
+      "en": "Add swing to a pattern in two ways"
+    }
+  ],
+  "steps": [
+    {
+      "kind": "concept",
+      "text": {
+        "ru": "Свинг — главный ингредиент жанра. Сдвигай каждую вторую шестнадцатую чуть позже сетки.",
+        "en": "Swing is the genre's key ingredient. Push every second sixteenth slightly behind the grid."
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "SHUFFLE ([CTRL 3] в параметрах паттерна, −50…+50): около +12…+16 — приятный шаффл.",
+        "en": "SHUFFLE ([CTRL 3] in the pattern parameters, −50…+50): around +12…+16 gives a pleasant shuffle."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "CTRL 3"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Позже: [PATTERN SELECT] → [PATTERN EDIT] → паттерн → [RECORD SETTING]: QTZ = SHUFFLE 16, [CTRL 3] (STR) 50 % — ровные интервалы, выше — «пунктирный» эффект.",
+        "en": "Later: [PATTERN SELECT] → [PATTERN EDIT] → the pattern → [RECORD SETTING]: QTZ = SHUFFLE 16, [CTRL 3] (STR) 50 % — even intervals, higher gives a dotted feel."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "PATTERN SELECT",
+          "PATTERN EDIT",
+          "RECORD SETTING",
+          "CTRL 2",
+          "CTRL 3"
+        ]
+      }
+    },
+    {
+      "kind": "concept",
+      "text": {
+        "ru": "Квантайз нельзя отменить — сначала скопируй паттерн.",
+        "en": "Quantize can't be undone — copy the pattern first."
+      },
+      "tryIt": {
+        "ru": "Скопируй паттерн, квантизуй копию SHUFFLE 16 и сравни с оригиналом.",
+        "en": "Copy the pattern, quantize the copy to SHUFFLE 16 and compare with the original."
+      }
+    }
+  ],
+  "prerequisites": [
+    "ukg-02-drums"
+  ]
+}

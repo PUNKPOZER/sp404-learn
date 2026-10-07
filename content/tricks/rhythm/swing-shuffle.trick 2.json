@@ -1,0 +1,65 @@
+{
+  "id": "swing-shuffle",
+  "type": "trick",
+  "title": {
+    "ru": "Свинг через SHUFFLE",
+    "en": "Swing with SHUFFLE"
+  },
+  "summary": {
+    "ru": "Один параметр — другой грув.",
+    "en": "One parameter — a different groove."
+  },
+  "category": "rhythm",
+  "categoryGroup": "rhythm",
+  "topic": "swing",
+  "tags": [
+    "trick",
+    "group:rhythm"
+  ],
+  "difficulty": "beginner",
+  "durationMin": 3,
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Creating a new pattern (TR-REC)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7921805978489483.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  "steps": [
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "В TR-REC ([PATTERN SELECT] → [REC] → пэд → [REMAIN] → [REC]) найди параметр SHUFFLE на [CTRL 3].",
+        "en": "In TR-REC ([PATTERN SELECT] → [REC] → a pad → [REMAIN] → [REC]) find SHUFFLE on [CTRL 3]."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "CTRL 3"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Значения −50…+50: 0 — без шаффла, около +10…+16 — приятный шаффл.",
+        "en": "Values run −50…+50: 0 is no shuffle, around +10…+16 is a pleasant shuffle."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "CTRL 3"
+        ]
+      },
+      "tryIt": {
+        "ru": "Запиши хэты с SHUFFLE +12 и сравни с 0.",
+        "en": "Record hats with SHUFFLE +12 and compare with 0."
+      }
+    }
+  ],
+  "related": [
+    "humanized-hats"
+  ]
+}

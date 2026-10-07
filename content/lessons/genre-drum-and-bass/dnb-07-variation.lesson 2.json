@@ -1,0 +1,86 @@
+{
+  "id": "dnb-07-variation",
+  "type": "lesson",
+  "title": {
+    "ru": "Drum & Bass: Вариации",
+    "en": "Drum & Bass: Variation"
+  },
+  "summary": {
+    "ru": "Двигай одну бочку и меняй рисунок баса.",
+    "en": "Move one kick and change the bass line."
+  },
+  "category": "genre-drum-and-bass",
+  "tags": [
+    "lesson",
+    "genre:drum_and_bass",
+    "path:genre-drum-and-bass",
+    "slot:variation"
+  ],
+  "difficulty": "intermediate",
+  "durationMin": 12,
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Copying the pattern of a pad",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7932327578503307.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — Creating a new pattern (TR-REC)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7921805978489483.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  "objectives": [
+    {
+      "ru": "Делать вариации паттерна на дропе",
+      "en": "Make variations of the drop pattern"
+    }
+  ],
+  "steps": [
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Вариация: [COPY] → пэд паттерна → пэд назначения → [VALUE] или [COPY] (паттерн назначения перезапишется).",
+        "en": "Variation: [COPY] → the pattern's pad → the destination pad → [VALUE] or [COPY] (the destination pattern is overwritten)."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "COPY",
+          "VALUE"
+        ]
+      }
+    },
+    {
+      "kind": "concept",
+      "text": {
+        "ru": "Типичные вариации: бочка 1, 7, 11; убрать клэп-снейр на 13; бас «наступает» на 14.",
+        "en": "Typical variations: kick 1, 7, 11; drop the snare on 13; the bass steps in on 14."
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "В копии измени шаги в TR-REC и сравни A и B подряд.",
+        "en": "Change steps in the copy in TR-REC and compare A and B back to back."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "PATTERN SELECT",
+          "REC",
+          "REMAIN"
+        ]
+      },
+      "tryIt": {
+        "ru": "Сделай B с бочкой на 7 вместо 11.",
+        "en": "Make B with the kick on 7 instead of 11."
+      }
+    }
+  ],
+  "prerequisites": [
+    "dnb-06-fx"
+  ]
+}

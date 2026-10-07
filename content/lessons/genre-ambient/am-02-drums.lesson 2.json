@@ -1,0 +1,130 @@
+{
+  "id": "am-02-drums",
+  "type": "lesson",
+  "title": {
+    "ru": "Ambient: Барабаны",
+    "en": "Ambient: Drums"
+  },
+  "summary": {
+    "ru": "Пульс — или его отсутствие.",
+    "en": "A pulse — or none."
+  },
+  "category": "genre-ambient",
+  "tags": [
+    "lesson",
+    "genre:ambient",
+    "path:genre-ambient",
+    "slot:drums"
+  ],
+  "difficulty": "intermediate",
+  "durationMin": 12,
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Creating a new pattern (TR-REC)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7921805978489483.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  "objectives": [
+    {
+      "ru": "Сделать едва заметный пульс",
+      "en": "Make a barely-there pulse"
+    }
+  ],
+  "steps": [
+    {
+      "kind": "concept",
+      "text": {
+        "ru": "Ударные в эмбиенте не обязательны. Если нужен пульс — один тихий круглый удар.",
+        "en": "Drums aren't required in ambient. If you need a pulse — one quiet, round hit."
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Запусти TR-REC: [PATTERN SELECT] → [REC] → красный пэд → [REMAIN] (метод TR-REC) → [REC].",
+        "en": "Start TR-REC: [PATTERN SELECT] → [REC] → a red pad → [REMAIN] (method TR-REC) → [REC]."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "PATTERN SELECT",
+          "REC",
+          "REMAIN"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Удерживая [SUB PAD], выбери бочку и нажми пэды шагов 1: пэд = шаг.",
+        "en": "Holding [SUB PAD], pick the kick and press the step pads 1: pad = step."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "SUB PAD"
+        ],
+        "pads": [
+          1
+        ]
+      },
+      "stepPattern": {
+        "voices": {
+          "KICK": [
+            1
+          ]
+        }
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "VELOCITY ([CTRL 3] при вводе шага, 0–127): очень тихо — 30–50.",
+        "en": "VELOCITY ([CTRL 3] while entering a step, 0–127): very quiet — 30–50."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "CTRL 3"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Удерживая [SUB PAD], выбери перкуссию и нажми пэды шагов 13: пэд = шаг.",
+        "en": "Holding [SUB PAD], pick the percussion and press the step pads 13: pad = step."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "SUB PAD"
+        ],
+        "pads": [
+          13
+        ]
+      },
+      "tryIt": {
+        "ru": "Убери перкуссию и послушай, как стало тише.",
+        "en": "Remove the percussion and hear how much quieter it gets."
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Закончив, нажми [EXIT] два раза — паттерн сохранится на пэде.",
+        "en": "When done, press [EXIT] twice — the pattern is saved on the pad."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "EXIT"
+        ]
+      }
+    }
+  ],
+  "prerequisites": [
+    "am-01-what"
+  ],
+  "exercise": "ex-sparse-pulse"
+}

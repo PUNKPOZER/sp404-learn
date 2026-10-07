@@ -1,0 +1,110 @@
+{
+  "id": "inter-07-layering",
+  "type": "lesson",
+  "title": {
+    "ru": "Слои сэмплов",
+    "en": "Sample layering"
+  },
+  "summary": {
+    "ru": "PAD LINK и SAMPLE MERGE: один пэд — несколько звуков.",
+    "en": "PAD LINK and SAMPLE MERGE: one pad, several sounds."
+  },
+  "category": "intermediate",
+  "tags": [
+    "lesson",
+    "path:sp404-intermediate",
+    "skill:sound-design"
+  ],
+  "difficulty": "intermediate",
+  "durationMin": 9,
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Playing back multiple pads at the same time (PAD LINK GROUPS)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7895130778458763.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — Merging multiple samples into a single sample (SAMPLE MERGE)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/8563623593603339.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — Shortcuts that use the [SHIFT] button",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/8003597978584715.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  "objectives": [
+    {
+      "ru": "Играть несколько пэдов одним",
+      "en": "Play several pads with one"
+    },
+    {
+      "ru": "Склеить слои в один сэмпл",
+      "en": "Merge layers into one sample"
+    }
+  ],
+  "steps": [
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "PAD LINK: [SHIFT] + пэд [7], ручкой [VALUE] выбери группу (A–J), нажми пэды сэмплов (до четырёх), [EXIT]. Теперь любой пэд группы запускает все.",
+        "en": "PAD LINK: [SHIFT] + pad [7], pick a group (A–J) with [VALUE], press the sample pads (up to four), [EXIT]. Now any pad of the group triggers them all."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "SHIFT",
+          "VALUE",
+          "EXIT"
+        ],
+        "pads": [
+          7
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "SAMPLE MERGE: [SHIFT] + [RESAMPLE], выбери до четырёх пэдов, метод SUM складывает сэмплы, MUL перемножает (модуляция).",
+        "en": "SAMPLE MERGE: [SHIFT] + [RESAMPLE], choose up to four pads; SUM adds the samples, MUL multiplies them (modulation)."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "SHIFT",
+          "RESAMPLE",
+          "CTRL 1"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Если громкость слоёв слишком велика, результат искажается — уменьшай её [CTRL 3] для каждого пэда.",
+        "en": "If the layers' volume is too high the result distorts — lower it per pad with [CTRL 3]."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "CTRL 3"
+        ]
+      }
+    },
+    {
+      "kind": "concept",
+      "text": {
+        "ru": "Слой бочки = низ + щелчок: возьми длинный глубокий звук и короткий щелчок. Подрежь щелчок огибающей ([SHIFT] + [PITCH/SPEED]).",
+        "en": "A layered kick = low end + click: take a long deep sound and a short click. Tighten the click with the envelope ([SHIFT] + [PITCH/SPEED])."
+      },
+      "tryIt": {
+        "ru": "Собери бочку из двух сэмплов через PAD LINK.",
+        "en": "Build a kick from two samples with PAD LINK."
+      }
+    }
+  ],
+  "prerequisites": [
+    "zero-04-playing-samples"
+  ]
+}

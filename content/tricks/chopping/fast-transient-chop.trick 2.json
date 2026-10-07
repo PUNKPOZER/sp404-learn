@@ -1,0 +1,87 @@
+{
+  "id": "fast-transient-chop",
+  "type": "trick",
+  "title": {
+    "ru": "Быстрая нарезка по ударам",
+    "en": "Fast transient chopping"
+  },
+  "summary": {
+    "ru": "Пусть AUTO MARK сам найдёт удары.",
+    "en": "Let AUTO MARK find the hits for you."
+  },
+  "category": "chopping",
+  "categoryGroup": "chopping",
+  "topic": "chopping",
+  "tags": [
+    "trick",
+    "group:chopping"
+  ],
+  "difficulty": "beginner",
+  "durationMin": 4,
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Marking and splitting samples (MARK)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7911540378477195.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  "steps": [
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Выбери пэд с лупом, затем [SHIFT] + [START/END] — экран маркеров.",
+        "en": "Pick the loop's pad, then [SHIFT] + [START/END] for the marker screen."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "SHIFT",
+          "START/END"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Нажми [VALUE], выбери AUTO MARK и нажми [VALUE].",
+        "en": "Press [VALUE], choose AUTO MARK and press [VALUE]."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "VALUE"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "[VALUE] или [CTRL 2] выбирают параметр, [CTRL 3] меняет его значение, [VALUE] подтверждает; выбери OK.",
+        "en": "[VALUE] or [CTRL 2] picks a parameter, [CTRL 3] edits its value, [VALUE] confirms; choose OK."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "VALUE",
+          "CTRL 2",
+          "CTRL 3"
+        ]
+      }
+    },
+    {
+      "kind": "concept",
+      "text": {
+        "ru": "Проверь результат на слух и удали лишние маркеры кнопкой [DEL].",
+        "en": "Check the result by ear and delete extra markers with [DEL]."
+      },
+      "tryIt": {
+        "ru": "Нарежь барабанный луп и удали два лишних маркера.",
+        "en": "Chop a drum loop and delete two extra markers."
+      }
+    }
+  ],
+  "related": [
+    "manual-chop"
+  ]
+}

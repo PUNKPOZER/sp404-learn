@@ -1,0 +1,152 @@
+{
+  "id": "am-10-minitrack",
+  "type": "lesson",
+  "title": {
+    "ru": "Ambient: Собери мини-трек",
+    "en": "Ambient: Build a complete mini track"
+  },
+  "summary": {
+    "ru": "Мини-трек: текстура, дрон, пэд, эхо.",
+    "en": "A mini track: texture, drone, pad, echo."
+  },
+  "category": "genre-ambient",
+  "tags": [
+    "lesson",
+    "genre:ambient",
+    "path:genre-ambient",
+    "slot:minitrack"
+  ],
+  "difficulty": "intermediate",
+  "durationMin": 12,
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Creating a new pattern (TR-REC)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7921805978489483.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — Copying the pattern of a pad",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7932327578503307.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — Playing back patterns in order (PATTERN CHAIN)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v500/en-US/7925133978493323.html",
+        "note": "v5"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — Resampling a sample (RESAMPLE)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7907213978473355.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  "objectives": [
+    {
+      "ru": "Собрать законченный эмбиент-трек",
+      "en": "Build a finished ambient track"
+    }
+  ],
+  "steps": [
+    {
+      "kind": "concept",
+      "text": {
+        "ru": "Что нужно: текстура, дрон, пэд из 2–3 слоёв, реверб, эхо.",
+        "en": "You need: a texture, a drone, a pad of 2–3 layers, reverb, echo."
+      },
+      "stepPattern": {
+        "voices": {
+          "KICK": [
+            1
+          ],
+          "TEXTURE": [
+            1
+          ],
+          "BASS": [
+            1
+          ],
+          "CHOP": [
+            1,
+            9
+          ],
+          "PERCUSSION": [
+            13
+          ]
+        }
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Запусти TR-REC: [PATTERN SELECT] → [REC] → красный пэд → [REMAIN] (метод TR-REC) → [REC].",
+        "en": "Start TR-REC: [PATTERN SELECT] → [REC] → a red pad → [REMAIN] (method TR-REC) → [REC]."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "PATTERN SELECT",
+          "REC",
+          "REMAIN"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Удерживая [SUB PAD], выбери текстуру и нажми пэды шагов 1: пэд = шаг.",
+        "en": "Holding [SUB PAD], pick the texture and press the step pads 1: pad = step."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "SUB PAD"
+        ],
+        "pads": [
+          1
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Вариация: [COPY] → пэд паттерна → пэд назначения → [VALUE] или [COPY] (паттерн назначения перезапишется).",
+        "en": "Variation: [COPY] → the pattern's pad → the destination pad → [VALUE] or [COPY] (the destination pattern is overwritten)."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "COPY",
+          "VALUE"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Цепочка: [PATTERN SELECT] → удерживая [HOLD], нажми пэд цепочки → пэды паттернов по порядку → [EXIT].",
+        "en": "Chain: [PATTERN SELECT] → hold [HOLD] and press a chain pad → the patterns' pads in order → [EXIT]."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "PATTERN SELECT",
+          "HOLD",
+          "EXIT"
+        ]
+      }
+    },
+    {
+      "kind": "concept",
+      "text": {
+        "ru": "Запиши результат ресэмплом и послушай с закрытыми глазами: что можно убрать?",
+        "en": "Capture the result with a resample and listen with your eyes closed: what could go?"
+      },
+      "tryIt": {
+        "ru": "Сделай трек 3 минуты: текстура, дрон, пэд, пауза, текстура.",
+        "en": "Make a three-minute track: texture, drone, pad, gap, texture."
+      }
+    }
+  ],
+  "prerequisites": [
+    "am-09-performance"
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "id": "dj-style-repeat",
+  "type": "trick",
+  "title": {
+    "ru": "Повтор «как у диджея»",
+    "en": "DJ-style repeat"
+  },
+  "summary": {
+    "ru": "Зацикли последний кусочек.",
+    "en": "Loop the last slice."
+  },
+  "category": "fx",
+  "categoryGroup": "fx",
+  "topic": "DJ-style repeat",
+  "tags": [
+    "trick",
+    "group:fx"
+  ],
+  "difficulty": "intermediate",
+  "durationMin": 3,
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — MFX List — DJFX Looper",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7976359578551691.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  "steps": [
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Включи [DJFX LOOPER] и играй пэд.",
+        "en": "Turn on [DJFX LOOPER] and play a pad."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "DJFX LOOPER"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Включи LOOP SW, пока звучит сэмпл — звук зациклится на длину LENGTH; меняй LENGTH для длины цикла.",
+        "en": "Turn on LOOP SW while the sample sounds — it loops at LENGTH; change LENGTH for the loop size."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "CTRL 1",
+          "CTRL 2",
+          "CTRL 3"
+        ]
+      },
+      "tryIt": {
+        "ru": "Зацикли короткий вокальный кусок и сократи LENGTH.",
+        "en": "Loop a short vocal slice and shorten LENGTH."
+      }
+    }
+  ]
+}

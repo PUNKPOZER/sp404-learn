@@ -1,0 +1,109 @@
+{
+  "id": "inter-11-break-chopping",
+  "type": "lesson",
+  "title": {
+    "ru": "Нарезка брейка",
+    "en": "Break chopping"
+  },
+  "summary": {
+    "ru": "Режь барабанный луп по ударам и пересобирай ритм.",
+    "en": "Chop a drum loop by hits and rebuild the rhythm."
+  },
+  "category": "intermediate",
+  "tags": [
+    "lesson",
+    "path:sp404-intermediate",
+    "skill:chopping",
+    "genre:jungle",
+    "genre:breakbeat"
+  ],
+  "difficulty": "intermediate",
+  "durationMin": 12,
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Marking and splitting samples (MARK)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7911540378477195.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — Using a marker to split and assign a sample to a pad (CHOP)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7912513178477963.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — Creating a new pattern (TR-REC)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7921805978489483.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  "objectives": [
+    {
+      "ru": "Нарезать брейк по ударам",
+      "en": "Chop a break by its hits"
+    },
+    {
+      "ru": "Пересобрать ритм из кусков",
+      "en": "Rebuild a rhythm from the pieces"
+    }
+  ],
+  "steps": [
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Экран маркеров: нажми пэд [1] — луп играет, и в нужные моменты нажимай мигающие синие пэды [2]–[16], чтобы ставить маркеры в такт.",
+        "en": "On the marker screen press pad [1] to play the loop and tap the blinking blue pads [2]–[16] at the right moments to place markers in time."
+      },
+      "deviceHighlight": {
+        "pads": [
+          1,
+          2,
+          3
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Назначь куски на пэды (ASSIGN TO PAD) и включи [GATE], чтобы удары не наслаивались.",
+        "en": "Assign the pieces to pads (ASSIGN TO PAD) and turn [GATE] on so hits don't overlap."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "GATE",
+          "VALUE"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Собери новый ритм в TR-REC: выбирай куски через [SUB PAD] и ставь их на шаги.",
+        "en": "Build a new rhythm in TR-REC: pick pieces with [SUB PAD] and place them on steps."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "SUB PAD",
+          "REC"
+        ]
+      }
+    },
+    {
+      "kind": "concept",
+      "text": {
+        "ru": "Меняй порядок кусков, а не их звук: уберёшь один удар — получишь новый грув из того же брейка.",
+        "en": "Change the order of the pieces, not their sound: drop one hit and you get a new groove from the same break."
+      },
+      "tryIt": {
+        "ru": "Поставь 4 куска брейка на шаги 1, 4, 7, 11 и добавь чистую бочку на 1.",
+        "en": "Place 4 break pieces on steps 1, 4, 7, 11 and add a clean kick on 1."
+      }
+    }
+  ],
+  "prerequisites": [
+    "inter-01-advanced-chopping"
+  ]
+}

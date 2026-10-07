@@ -1,0 +1,97 @@
+{
+  "id": "tc-03-groove",
+  "type": "lesson",
+  "title": {
+    "ru": "Techno: Грув",
+    "en": "Techno: Groove"
+  },
+  "summary": {
+    "ru": "Ровная сетка и акценты через динамику.",
+    "en": "A straight grid with accents through dynamics."
+  },
+  "category": "genre-techno",
+  "tags": [
+    "lesson",
+    "genre:techno",
+    "path:genre-techno",
+    "slot:groove"
+  ],
+  "difficulty": "intermediate",
+  "durationMin": 12,
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Creating a new pattern (TR-REC)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7921805978489483.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  "objectives": [
+    {
+      "ru": "Сделать грув без свинга",
+      "en": "Make a groove without swing"
+    }
+  ],
+  "steps": [
+    {
+      "kind": "concept",
+      "text": {
+        "ru": "Техно обычно играют ровно: SHUFFLE около 0, а живость — в динамике и в тембре.",
+        "en": "Techno is usually played straight: SHUFFLE near 0, and life comes from dynamics and timbre."
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "SHUFFLE ([CTRL 3] в параметрах паттерна, −50…+50): 0…+4.",
+        "en": "SHUFFLE ([CTRL 3] in the pattern parameters, −50…+50): 0…+4."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "CTRL 3"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "VELOCITY ([CTRL 3] при вводе шага, 0–127): чередуй 3 уровня: 110 / 80 / 50.",
+        "en": "VELOCITY ([CTRL 3] while entering a step, 0–127): alternate three levels: 110 / 80 / 50."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "CTRL 3"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "SUBSTEP ([CTRL 1] при вводе шага в режиме TRIG) делит шаг на части — быстрые удары и дробь.",
+        "en": "SUBSTEP ([CTRL 1] while entering a step in TRIG mode) splits a step into parts — fast hits and flams."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "CTRL 1"
+        ]
+      }
+    },
+    {
+      "kind": "concept",
+      "text": {
+        "ru": "Акцент — это громкость, а не сдвиг.",
+        "en": "An accent is volume, not displacement."
+      },
+      "tryIt": {
+        "ru": "Поставь акцент на хэт шага 11: VELOCITY 120, остальные 70.",
+        "en": "Accent the hat on step 11: VELOCITY 120, the others 70."
+      }
+    }
+  ],
+  "prerequisites": [
+    "tc-02-drums"
+  ]
+}

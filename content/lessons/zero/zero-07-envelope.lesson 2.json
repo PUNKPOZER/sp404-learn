@@ -1,0 +1,103 @@
+{
+  "id": "zero-07-envelope",
+  "type": "lesson",
+  "title": {
+    "ru": "Огибающая (Envelope)",
+    "en": "Envelope"
+  },
+  "summary": {
+    "ru": "Атака, длина и затухание звука.",
+    "en": "The attack, length and release of a sound."
+  },
+  "category": "zero",
+  "tags": [
+    "lesson",
+    "path:sp404-from-zero"
+  ],
+  "difficulty": "beginner",
+  "durationMin": 6,
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Making fade-in/fade-out settings (ENVELOPE)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7913255578478731.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  "objectives": [
+    {
+      "ru": "Сделать звук короче или мягче",
+      "en": "Make a sound shorter or softer"
+    }
+  ],
+  "steps": [
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Удерживая [SHIFT], нажми [PITCH/SPEED] — откроется экран огибающей. Выбери пэд [1]–[16].",
+        "en": "Hold [SHIFT] and press [PITCH/SPEED] to open the envelope screen. Choose a pad [1]–[16]."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "SHIFT",
+          "PITCH/SPEED"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "[CTRL 1] — ATTACK (время нарастания, 127 = три секунды), [CTRL 2] — HOLD (какую долю длины сэмпла играть, 1–100 %), [CTRL 3] — RELEASE (затухание).",
+        "en": "[CTRL 1] is ATTACK (fade-in; 127 = three seconds), [CTRL 2] is HOLD (what share of the sample length plays, 1–100 %), [CTRL 3] is RELEASE (fade-out)."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "CTRL 1",
+          "CTRL 2",
+          "CTRL 3"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Если [GATE] включён и ты отпускаешь пэд, затухание начинается в этот момент.",
+        "en": "With [GATE] on, releasing the pad starts the fade-out at that moment."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "GATE"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Выбрать пэд без проигрывания можно, держа [MARK] и нажимая пэд.",
+        "en": "To select a pad without playing it, hold [MARK] and press the pad."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "MARK"
+        ]
+      }
+    },
+    {
+      "kind": "concept",
+      "text": {
+        "ru": "Короткий HOLD и небольшой RELEASE превращают длинный звук в щелчок для перкуссии.",
+        "en": "A short HOLD and a small RELEASE turn a long sound into a click for percussion."
+      },
+      "tryIt": {
+        "ru": "Укороти HOLD у снейра до тугого щелчка.",
+        "en": "Shorten the HOLD of a snare into a tight click."
+      }
+    }
+  ],
+  "prerequisites": [
+    "zero-06-pitch-and-speed"
+  ]
+}

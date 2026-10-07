@@ -1,0 +1,97 @@
+{
+  "id": "am-04-bass",
+  "type": "lesson",
+  "title": {
+    "ru": "Ambient: Бас",
+    "en": "Ambient: Bass"
+  },
+  "summary": {
+    "ru": "Дрон вместо баса.",
+    "en": "A drone instead of a bass."
+  },
+  "category": "genre-ambient",
+  "tags": [
+    "lesson",
+    "genre:ambient",
+    "path:genre-ambient",
+    "slot:bass"
+  ],
+  "difficulty": "intermediate",
+  "durationMin": 12,
+  "verification": {
+    "status": "verified",
+    "verifiedAgainst": [
+      {
+        "title": "SP-404MK2 Reference Manual — Creating bass and other sounds (SOUND GENERATOR)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/8584218789853707.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — Playing back samples repeatedly (LOOP)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7888500378452619.html",
+        "note": "v4"
+      },
+      {
+        "title": "SP-404MK2 Reference Manual — Making fade-in/fade-out settings (ENVELOPE)",
+        "url": "https://static.roland.com/manuals/sp-404mk2_reference_v4/en-US/7913255578478731.html",
+        "note": "v4"
+      }
+    ],
+    "verifiedOn": "2026-10-07"
+  },
+  "objectives": [
+    {
+      "ru": "Сделать низкий дрон",
+      "en": "Make a low drone"
+    }
+  ],
+  "steps": [
+    {
+      "kind": "concept",
+      "text": {
+        "ru": "Бас — это «пол»: одна низкая нота, звучащая весь такт или дольше.",
+        "en": "The bass is the floor: one low note that rings for the whole bar or longer."
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "[SHIFT] + [RECORD SETTING] — SOUND GENERATOR. [CTRL 1] — Type (Sine…), [CTRL 2] — Freq, [CTRL 3] — Level; [REC] и пэд сохраняют звук.",
+        "en": "[SHIFT] + [RECORD SETTING] — SOUND GENERATOR. [CTRL 1] is Type (Sine…), [CTRL 2] Freq, [CTRL 3] Level; [REC] and a pad save the sound."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "SHIFT",
+          "RECORD SETTING",
+          "CTRL 1",
+          "CTRL 2",
+          "CTRL 3",
+          "REC"
+        ]
+      }
+    },
+    {
+      "kind": "hardware",
+      "text": {
+        "ru": "Для длинного звука: включи [LOOP], в огибающей подними ATTACK и RELEASE ([CTRL 1], [CTRL 3]).",
+        "en": "For a long sound: turn [LOOP] on and raise ATTACK and RELEASE in the envelope ([CTRL 1], [CTRL 3])."
+      },
+      "deviceHighlight": {
+        "controls": [
+          "LOOP",
+          "SHIFT",
+          "PITCH/SPEED",
+          "CTRL 1",
+          "CTRL 3"
+        ]
+      },
+      "tryIt": {
+        "ru": "Сделай дрон Sine на низкой октаве и запусти с [LOOP].",
+        "en": "Make a low-octave Sine drone and run it with [LOOP]."
+      }
+    }
+  ],
+  "prerequisites": [
+    "am-03-groove"
+  ]
+}

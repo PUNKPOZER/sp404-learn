@@ -32,5 +32,24 @@ def build(out: Path) -> Path:
     return out
 
 
+NOW_FINAL = 1791549000                      # 2026-10-09T12:30:00Z — after DROP's last modifiedAt (2026-10-09T12:00:00Z) in drop-after-real-learn
+LESSON_DONE = ("hs-02-drums", 1791549000000)   # the deterministic LEARN-owned mutation: one more lesson finished (epoch ms)
+
+
+def build_final(src: Path, out: Path) -> Path:
+    """REAL DROP output (drop-after-real-learn.spsystem) -> one real LEARN save (progress only) -> learn-after-real-drop.spsystem.
+    DROP-owned data is not touched; LEARN's own timestamp is pinned to a realistic fixed time so the fixture is reproducible."""
+    work = out.with_suffix(".work")
+    shutil.copy(src, work)
+    _, proj = fsio.open_project(str(work))
+    proj.set_module("progress", adapters.progress_doc({LESSON_DONE[0]: LESSON_DONE[1]}, existing=proj.data("progress")))
+    fsio.save_file(proj, str(work), "save", now=NOW_FINAL, version="0.3.0")
+    shutil.move(str(work), str(out))
+    Path(str(work) + ".bak").unlink(missing_ok=True)
+    return out
+
+
 if __name__ == "__main__":
     print(build(FX / "learn-mutated.spsystem"))
+    if (FX / "drop-after-real-learn.spsystem").exists():
+        print(build_final(FX / "drop-after-real-learn.spsystem", FX / "learn-after-real-drop.spsystem"))

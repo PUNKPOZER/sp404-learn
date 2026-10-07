@@ -467,3 +467,107 @@ const fs=require(process.argv[1]); (async()=>{
     r2 = open_path(str(f))
     assert r2.package.modules["progress"].data["lessonsDone"] == {"l1": 1760000000000, "l2": 1760000500000}
     assert [a for a in r2.package.modules["pads"].data["assignments"] if a["pad"] == 4][0]["sampleId"] == "sample-03"
+
+
+# ----------------------------------------------------------------------------------------------------------- FINAL real cross-app round trip
+REAL_DROP = FX / "drop-after-real-learn.spsystem"
+REAL_DROP_SHA256 = "2047871547dbc6bb5e53cf9c824f1c045c520679fc4b200bd27d5f6d0466a49f"
+DROP_OWNED = ("project/chops.json", "project/samples.json", "project/loops.json", "project/pads.json")
+BINARY_PAYLOADS = ("audio/source.wav", "samples/sample-01.wav", "samples/sample-02.wav", "samples/sample-03.wav", "x-future/notes.bin")
+LEARN_OWNED = ("analysis/track.json", "learn/recipe.json", "learn/requirements.json", "learn/progress.json")
+
+
+def payloads(path) -> dict[str, bytes]:
+    r = open_path(str(path))
+    return {e.name: zipio.read_entry(r.package.src, e) for e in r.package.entries}
+
+
+def test_real_drop_after_real_learn_final_round_trip(tmp_path):
+    """REAL_DROP_FIXTURE -> LEARN read -> LEARN mutation (progress) -> LEARN write -> LEARN read. ZIP timestamps are NOT compared:
+    entry names, uncompressed payload bytes and canonical values are."""
+    assert hashlib.sha256(REAL_DROP.read_bytes()).hexdigest() == REAL_DROP_SHA256            # the fixture is exactly the one DROP produced
+    # ---- 1. validate
+    r = open_path(str(REAL_DROP))
+    assert r.level == "VALID_WITH_WARNINGS" and not [i for i in r.issues if i.severity == "error"]
+    assert [(i.code, i.where) for i in r.issues] == [("W_UNKNOWN_FILE", "x-future/notes.bin")]
+    m = r.manifest
+    assert (m["formatVersion"], m["id"], m["revision"], m["modifiedBy"]) == (1, UUID, 5, "sp404-drop")
+    assert {n: x.status for n, x in r.package.modules.items()} == {k: "ok" for k in ("chops", "samples", "pads", "loops", "analysis", "recipe", "progress", "requirements")}
+    # ---- 2. the DROP mutation reached LEARN
+    pads = {(a["bank"], a["pad"]): a["sampleId"] for a in r.package.modules["pads"].data["assignments"]}
+    assert pads[("A", 5)] == "sample-01" and pads[("A", 4)] == "sample-03"
+    # ---- 3. LEARN's earlier data is present, valid, and its state can be rebuilt from the files alone
+    mods = r.package.modules
+    for name in ("analysis", "recipe", "requirements", "progress"):
+        assert schemas.validate(mods[name].schema, mods[name].data) == []
+    an = mods["analysis"].data
+    assert adapters.effective(an["tempo"]) == {"bpm": 118.0} and an["tempo"]["raw"]["bpm"] == 120.0                 # raw kept beside the user's value
+    assert an["chopCandidates"][0]["state"] == "suggested" and an["x-learn-private"] == {"weights": [0.1, 0.2]}
+    assert [s["id"] for s in mods["recipe"].data["steps"]] and mods["requirements"].data["needs"] and mods["progress"].data["lessonsDone"]["hs-01-what"] == 1760000100000
+    assert (m["tempo"]["bpm"], m["tempo"]["origin"], m["tempo"]["setBy"]) == (118, "user", "sp404-learn")
+    assert m["x-learn-note"] == {"keep": "me"} and m["extensions"] == {"x-sp404-drop": {"ids": {"chop": 3, "sample": 3}}}   # unknown manifest data survived LEARN->DROP
+    # ---- 4. payloads
+    before = payloads(REAL_DROP)
+    assert before["audio/source.wav"][:4] == b"RIFF" and all(f"samples/sample-0{i}.wav" in before for i in (1, 2, 3))
+    assert before["x-future/notes.bin"] == bytes([0, 1, 2, 3, 0xFA, 0xFB, 0xFC, 0xFD])
+    assert all(n in before for n in DROP_OWNED + LEARN_OWNED)
+    assert [c["id"] for c in mods["chops"].data["chops"]] == ["chop-01", "chop-02", "chop-03"] and mods["loops"].data["loops"] == []
+
+    # ---- 5. one deterministic LEARN-owned mutation, real writer
+    f = tmp_path / "learn-after-real-drop.spsystem"
+    shutil.copy(REAL_DROP, f)
+    _, proj = fsio.open_project(str(f))
+    assert proj.revision == 5
+    proj.set_module("progress", adapters.progress_doc({"hs-02-drums": 1791549000000}, existing=proj.data("progress")))
+    out = fsio.save_file(proj, str(f), "save", now=1791549000, version="0.3.0")
+    assert out["ok"] and out["revision"] == 6 and proj.revision == 6
+
+    # ---- 6-7. everything DROP-owned and unknown survived LEARN's save
+    r2 = open_path(str(f))
+    after = payloads(f)
+    assert r2.level == "VALID_WITH_WARNINGS" and not [i for i in r2.issues if i.severity == "error"] and [i.code for i in r2.issues] == ["W_UNKNOWN_FILE"]
+    assert (r2.manifest["id"], r2.manifest["revision"], r2.manifest["modifiedBy"], r2.manifest["modifiedByVersion"]) == (UUID, 6, "sp404-learn", "0.3.0")
+    assert set(after) == set(before)
+    for n in DROP_OWNED + BINARY_PAYLOADS:
+        assert after[n] == before[n], n                                                      # not rebuilt, not normalised
+    for n in ("analysis/track.json", "learn/recipe.json", "learn/requirements.json"):
+        assert after[n] == before[n], n                                                      # LEARN modules it did not touch
+    pads2 = {(a["bank"], a["pad"]): a["sampleId"] for a in r2.package.modules["pads"].data["assignments"]}
+    assert pads2 == pads and pads2[("A", 5)] == "sample-01" and pads2[("A", 4)] == "sample-03"
+    # raw (compressed) bytes of the DROP-owned entries are identical too — copied, never re-encoded
+    ra, rb = raw_entries(REAL_DROP), raw_entries(f)
+    for n in DROP_OWNED + BINARY_PAYLOADS + ("analysis/track.json", "learn/recipe.json", "learn/requirements.json"):
+        assert ra[n] == rb[n], n
+    # ---- the LEARN mutation is there, nothing else in progress moved
+    prog = r2.package.modules["progress"].data
+    assert prog["lessonsDone"] == {"l1": 1760000000000, "hs-01-what": 1760000100000, "hs-02-drums": 1791549000000}
+    # manifest: only the save bookkeeping changed; module declarations and unknown keys intact
+    changed = {k for k in set(m) | set(r2.manifest) if m.get(k) != r2.manifest.get(k)}
+    assert changed == {"revision", "modifiedAt", "modifiedBy", "modifiedByVersion"}          # `modules` is identical: LEARN's declarations were already canonical
+    assert r2.manifest["x-learn-note"] == {"keep": "me"} and r2.manifest["tempo"] == m["tempo"] and r2.manifest["extensions"] == m["extensions"]
+    # semantic timestamps move forward only (the fixture is pinned to a realistic time after DROP's 2026-10-09T12:00:00Z)
+    assert r2.manifest["modifiedAt"] == "2026-10-09T12:30:00Z" > m["modifiedAt"]
+
+    # ---- 8. the committed final fixture is the same semantic state
+    final = FX / "learn-after-real-drop.spsystem"
+    if final.exists():
+        rf = open_path(str(final))
+        assert (rf.manifest["id"], rf.manifest["revision"], rf.manifest["modifiedBy"]) == (UUID, 6, "sp404-learn")
+        assert payloads(final) == after
+
+
+def test_semantic_timestamps_use_the_real_clock_unless_pinned(tmp_path):
+    """Guards the 'Oct 2025' finding: fixtures were generated with a pinned `now`; the writer itself uses the current clock."""
+    import time
+    f = tmp_path / "p.spsystem"
+    shutil.copy(DROP_CREATED, f)
+    _, proj = fsio.open_project(str(f))
+    proj.set_user_tempo(121.0)
+    adapters.apply_analysis(proj, track().to_dict())
+    fsio.save_file(proj, str(f))
+    r = open_path(str(f))
+    year = str(time.gmtime().tm_year)
+    assert r.manifest["modifiedAt"].startswith(year) and r.manifest["tempo"]["setAt"].startswith(year)
+    assert r.package.modules["analysis"].data["producedAt"].startswith(year)
+    zi = zipfile.ZipFile(f).getinfo("manifest.json")
+    assert zi.date_time[0] == time.localtime().tm_year                                  # ZIP entry time = DOS time of the save, not project state

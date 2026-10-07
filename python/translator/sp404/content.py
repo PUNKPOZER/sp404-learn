@@ -7,6 +7,7 @@ from __future__ import annotations
 import json
 import os
 from functools import lru_cache
+import sys
 from pathlib import Path
 
 from translator.sp404.i18n import get_lang
@@ -16,6 +17,9 @@ def content_dir() -> Path:
     env = os.environ.get("SP404LEARN_CONTENT")
     if env:
         return Path(env)
+    frozen = getattr(sys, "_MEIPASS", None)                      # PyInstaller one-dir bundle: content/ is added as data
+    if frozen:
+        return Path(frozen) / "content"
     return Path(__file__).resolve().parents[3] / "content"
 
 

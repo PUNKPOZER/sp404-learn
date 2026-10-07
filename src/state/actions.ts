@@ -6,6 +6,7 @@ import { byId, isPublishable, loc } from "../content/load";
 import type { Step } from "../content/types";
 import { getState, setState, type Screen } from "./store";
 import { t } from "../lib/i18n";
+import { prepareAndHandOff } from "../lib/dropHandoff";
 
 // ---- file helpers (desktop: Tauri dialog + Rust fs; browser dev: not supported) -------------
 async function invoke<T>(cmd: string, args: object): Promise<T> {
@@ -245,8 +246,9 @@ export async function saveProject(saveAs = false) {
   } catch (e) { setState({ error: String(e) }); }
 }
 
-/** LEARN -> DROP: write the analysed track as an SP SYSTEM package (.spsystem) and show it in Finder.
- *  Suggested regions go in as analysis candidates only — a person confirms them in DROP. DROP opens .spsystem files in its own next phase. */
+/** LEARN -> DROP: write (or update) the analysed track as an SP SYSTEM package (.spsystem), then open exactly that file in SP404 DROP.
+ *  DROP missing / not launchable -> the file is shown in Finder instead (the save still counts). A failed or conflicting save never launches DROP.
+ *  Suggested regions go in as analysis candidates only — a person confirms them in DROP. */
 export async function prepareInDrop() {
   const s = getState();
   if (!s.analysis) return;
@@ -257,13 +259,17 @@ export async function prepareInDrop() {
     const path = await save({ defaultPath: def, filters: [{ name: "SP SYSTEM project", extensions: ["spsystem"] }] });
     if (!path) return;
     setState({ busy: "spsystem", error: null, notice: null });
-    const r = await api.spsystemExport(s.analysis, path);
-    const { invoke } = await import("@tauri-apps/api/core");
-    await invoke("reveal_path", { path }).catch(() => undefined);
-    setState({ busy: null, notice: r.updated
-      ? t(`Проект SP SYSTEM обновлён (версия ${r.revision}). Данные DROP в нём не тронуты.`, `SP SYSTEM project updated (revision ${r.revision}). DROP's data in it was left untouched.`)
-      : t(`Готово: файл SP SYSTEM создан (${r.embedded ? "трек внутри" : "ссылка на трек"}, ${r.candidates} предложенных участков — в DROP их подтверждает человек). DROP откроет такие файлы в следующей версии.`,
-          `Done: SP SYSTEM file created (${r.embedded ? "track embedded" : "track referenced"}, ${r.candidates} suggested regions — a person confirms them in DROP). DROP will open such files in its next version.`) });
+    const analysis = s.analysis;
+    const { saved: r, handoff } = await prepareAndHandOff(() => api.spsystemExport(analysis, path), {
+      openInDrop: (p) => invoke<void>("open_in_drop", { path: p }),
+      reveal: (p) => invoke<void>("reveal_path", { path: p }),
+    });
+    const what = r.updated ? t(`обновлён (ревизия ${r.revision})`, `updated (revision ${r.revision})`)
+      : t(`создан (${r.embedded ? "трек внутри" : "ссылка на трек"}, ${r.candidates} предложенных участков)`, `created (${r.embedded ? "track embedded" : "track referenced"}, ${r.candidates} suggested regions)`);
+    const notice = handoff.via === "drop" ? t(`Проект ${what} и открыт в SP404 DROP.`, `Project ${what} and opened in SP404 DROP.`)
+      : handoff.via === "finder" ? t(`SP404 DROP не найден. Проект сохранён и показан в Finder (${what}).`, `SP404 DROP was not found. The project is saved and shown in Finder (${what}).`)
+      : t(`Проект сохранён (${what}), но SP404 DROP открыть не удалось.`, `The project is saved (${what}), but SP404 DROP could not be opened.`);
+    setState({ busy: null, notice });
   } catch (e) { setState({ busy: null, error: String((e as Error).message ?? e) }); }
 }
 

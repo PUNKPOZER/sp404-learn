@@ -185,6 +185,52 @@ fn reveal_path(path: String) -> Result<(), String> {
     r.map(|_| ()).map_err(|e| e.to_string())
 }
 
+/// The app that "Prepare in DROP" launches. The front-end cannot choose it; a user may point it elsewhere (name or full path of an .app)
+/// with the environment variable SP404LEARN_DROP_APP, e.g. to test with another build or to simulate DROP being unavailable.
+fn drop_app() -> String {
+    std::env::var("SP404LEARN_DROP_APP").ok().filter(|v| !v.trim().is_empty()).unwrap_or_else(|| "SP404 DROP".to_string())
+}
+
+/// Only an existing, absolute .spsystem file may be handed to another application.
+fn check_handoff_path(path: &str) -> Result<(), String> {
+    let p = std::path::Path::new(path);
+    if !p.is_absolute() {
+        return Err(format!("{path}: not an absolute path"));
+    }
+    if !path.to_lowercase().ends_with(".spsystem") {
+        return Err(format!("{path}: not a .spsystem file"));
+    }
+    if !p.is_file() {
+        return Err(format!("{path}: not found"));
+    }
+    Ok(())
+}
+
+/// Arguments for `open`: `-a <app> <path>` as separate argv entries (never a shell string, so spaces, quotes and Unicode in the path are inert).
+fn open_args(app: &str, path: &str) -> Vec<std::ffi::OsString> {
+    vec!["-a".into(), app.into(), path.into()]
+}
+
+/// Open a saved .spsystem in SP404 DROP (macOS `open -a`). Err = DROP missing or could not be launched (the caller falls back to Finder).
+#[tauri::command]
+fn open_in_drop(path: String) -> Result<(), String> {
+    check_handoff_path(&path)?;
+    #[cfg(target_os = "macos")]
+    {
+        let out = std::process::Command::new("open").args(open_args(&drop_app(), &path)).output().map_err(|e| e.to_string())?;
+        if out.status.success() {
+            Ok(())
+        } else {
+            Err(String::from_utf8_lossy(&out.stderr).trim().to_string())
+        }
+    }
+    #[cfg(not(target_os = "macos"))]
+    {
+        let _ = open_args(&drop_app(), &path);
+        Err("opening SP404 DROP is only implemented on macOS".into())
+    }
+}
+
 #[tauri::command]
 fn path_exists(path: String) -> bool {
     std::path::Path::new(&path).exists()
@@ -211,7 +257,7 @@ pub fn run() {
             Ok(())
         })
         .invoke_handler(tauri::generate_handler![
-            sidecar_start, sidecar_send, read_text_file, write_text_file, path_exists, autotest_path, read_stem_file, reveal_path, app_ready
+            sidecar_start, sidecar_send, read_text_file, write_text_file, path_exists, autotest_path, read_stem_file, reveal_path, open_in_drop, app_ready
         ])
         .build(tauri::generate_context!())
         .expect("error while building SP-404 LEARN")
@@ -253,11 +299,56 @@ mod tests {
     }
 
     #[test]
+    fn drop_is_launched_with_the_exact_path_as_one_argument() {
+        for path in ["/Users/me/Documents/SP404 DROP/Projects/Jungle — break.spsystem", "/tmp/a \"quoted\" $(rm -rf x); `y`.spsystem", "/tmp/日本語 ✓.spsystem"] {
+            let a = open_args("SP404 DROP", path);
+            assert_eq!(a.len(), 3, "never split or joined into a shell string");
+            assert_eq!(a[0], "-a");
+            assert_eq!(a[1], "SP404 DROP");
+            assert_eq!(a[2], std::ffi::OsString::from(path), "the path is passed through unchanged");
+        }
+    }
+
+    #[test]
+    fn only_an_existing_absolute_spsystem_file_may_be_handed_over() {
+        let dir = std::env::temp_dir().join(format!("sp404learn-handoff-{}", std::process::id()));
+        std::fs::create_dir_all(&dir).unwrap();
+        let ok = dir.join("Projekt ünï.spsystem");
+        std::fs::write(&ok, b"x").unwrap();
+        assert!(check_handoff_path(ok.to_str().unwrap()).is_ok());
+        assert!(check_handoff_path("relative/p.spsystem").is_err());
+        assert!(check_handoff_path(dir.join("missing.spsystem").to_str().unwrap()).is_err());
+        let wav = dir.join("a.wav");
+        std::fs::write(&wav, b"x").unwrap();
+        assert!(check_handoff_path(wav.to_str().unwrap()).is_err());
+        let _ = std::fs::remove_dir_all(&dir);
+    }
+
+    #[test]
     fn only_project_files_are_accepted_case_insensitively() {
         let q = OpenQueue::default();
         q.offer(vec!["/x/song.wav".into(), "/x/notes.txt".into(), "/x/A.SPSYSTEM".into(), "-psn_0_12345".into(), "/x/p.spsystem.bak".into()]);
         assert_eq!(q.ready(), vec!["/x/A.SPSYSTEM"]);
         assert!(is_project_path("/Users/me/Documents/SP404 DROP/Projects/Jungle — break.spsystem"));
         assert!(!is_project_path("/x/spsystem"));
+    }
+
+    // ---- manual harness (not run by default): launches the REAL application --------------------------------------------------
+    // SP404LEARN_TEST_SPSYSTEM=/abs/path.spsystem [SP404LEARN_DROP_APP=/path/to/SP404\ DROP.app] cargo test manual_ -- --ignored --nocapture
+    #[test]
+    #[ignore = "manual: launches the real SP404 DROP"]
+    fn manual_open_in_drop() {
+        let path = std::env::var("SP404LEARN_TEST_SPSYSTEM").expect("SP404LEARN_TEST_SPSYSTEM");
+        println!("open_in_drop({path:?}) with app {:?} -> {:?}", drop_app(), open_in_drop(path.clone()));
+        open_in_drop(path).unwrap();
+    }
+
+    #[test]
+    #[ignore = "manual: needs SP404LEARN_DROP_APP pointing at a missing app"]
+    fn manual_missing_drop_is_an_error_not_a_panic() {
+        let path = std::env::var("SP404LEARN_TEST_SPSYSTEM").expect("SP404LEARN_TEST_SPSYSTEM");
+        let r = open_in_drop(path);
+        println!("{r:?}");
+        assert!(r.is_err());
     }
 }

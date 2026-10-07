@@ -148,7 +148,13 @@ class Server:
         from engine.spsystem.export import export_for_drop
         from engine.spsystem import SpError
         try:
-            return export_for_drop(p["analysis"], p["path"], app_version="0.3.0", embed=p.get("embed", True))
+            a = p["analysis"]
+            path = p.get("path")
+            if not path:                                       # no dialog: DROP's own projects folder, same-audio project is updated in place
+                from engine.spsystem.export import resolve_target
+                from pathlib import Path
+                path = resolve_target(p.get("name") or Path(a.get("filename") or "track").stem, a.get("audio_hash") or "")
+            return export_for_drop(a, path, app_version="0.3.0", embed=p.get("embed", True))
         except SpError as e:
             raise ValueError(f"{e.code}: {e.message}")
 

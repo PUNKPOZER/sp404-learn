@@ -246,7 +246,7 @@ export async function saveProject(saveAs = false) {
   } catch (e) { setState({ error: String(e) }); }
 }
 
-/** LEARN -> DROP: write (or update) the analysed track as an SP SYSTEM package (.spsystem), then open exactly that file in SP404 DROP.
+/** LEARN -> DROP in one click: write (or update) the analysed track as an SP SYSTEM package (.spsystem) in DROP's projects folder, then open exactly that file in SP404 DROP.
  *  DROP missing / not launchable -> the file is shown in Finder instead (the save still counts). A failed or conflicting save never launches DROP.
  *  Suggested regions go in as analysis candidates only — a person confirms them in DROP. */
 export async function prepareInDrop() {
@@ -254,20 +254,18 @@ export async function prepareInDrop() {
   if (!s.analysis) return;
   if (!isTauri) { setState({ error: t("Подготовка для DROP работает в десктоп-приложении.", "Preparing for DROP works in the desktop app.") }); return; }
   try {
-    const { save } = await import("@tauri-apps/plugin-dialog");
-    const def = (s.trackName ?? "track").replace(/\.[^.]+$/, "") + ".spsystem";
-    const path = await save({ defaultPath: def, filters: [{ name: "SP SYSTEM project", extensions: ["spsystem"] }] });
-    if (!path) return;
+    // one click, no dialog: the project goes to DROP's own projects folder (a project of the same audio is updated in place)
     setState({ busy: "spsystem", error: null, notice: null });
     const analysis = s.analysis;
-    const { saved: r, handoff } = await prepareAndHandOff(() => api.spsystemExport(analysis, path), {
+    const name = (s.trackName ?? "track").replace(/\.[^.]+$/, "");
+    const { saved: r, handoff } = await prepareAndHandOff(() => api.spsystemExport(analysis, undefined, true, name), {
       openInDrop: (p) => invoke<void>("open_in_drop", { path: p }),
       reveal: (p) => invoke<void>("reveal_path", { path: p }),
     });
     const what = r.updated ? t(`обновлён (ревизия ${r.revision})`, `updated (revision ${r.revision})`)
       : t(`создан (${r.embedded ? "трек внутри" : "ссылка на трек"}, ${r.candidates} предложенных участков)`, `created (${r.embedded ? "track embedded" : "track referenced"}, ${r.candidates} suggested regions)`);
     const notice = handoff.via === "drop" ? t(`Проект ${what} и открыт в SP404 DROP.`, `Project ${what} and opened in SP404 DROP.`)
-      : handoff.via === "finder" ? t(`SP404 DROP не найден. Проект сохранён и показан в Finder (${what}).`, `SP404 DROP was not found. The project is saved and shown in Finder (${what}).`)
+      : handoff.via === "finder" ? t(`SP404 DROP (версия, которая открывает .spsystem) не найден. Проект сохранён и показан в Finder (${what}).`, `SP404 DROP (a version that opens .spsystem) was not found. The project is saved and shown in Finder (${what}).`)
       : t(`Проект сохранён (${what}), но SP404 DROP открыть не удалось.`, `The project is saved (${what}), but SP404 DROP could not be opened.`);
     setState({ busy: null, notice });
   } catch (e) { setState({ busy: null, error: String((e as Error).message ?? e) }); }

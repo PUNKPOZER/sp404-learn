@@ -32,6 +32,30 @@ def section_candidates(a: dict) -> list[dict]:
     return out
 
 
+def default_projects_dir() -> Path:
+    """Where SP404 DROP keeps its projects — LEARN writes here so DROP finds the project without any file dialog."""
+    return Path(os.environ.get("SP404LEARN_DROP_PROJECTS") or Path.home() / "Documents" / "SP404 DROP" / "Projects")
+
+
+def resolve_target(stem: str, audio_hash: str, folder: Path | None = None) -> str:
+    """`<stem>.spsystem` in the projects folder. An existing project of the SAME audio is updated (DROP's data is kept); a project with the same
+    name but different audio is never touched — a numbered name is used instead."""
+    d = folder or default_projects_dir()
+    d.mkdir(parents=True, exist_ok=True)
+    safe = "".join("_" if (c in '/\\:*?"<>|' or ord(c) < 32) else c for c in stem).strip(" .") or "track"
+    safe = safe[:120]
+    for i in range(1, 100):
+        p = d / (f"{safe}.spsystem" if i == 1 else f"{safe} {i}.spsystem")
+        if not p.exists():
+            return str(p)
+        res, proj = fsio.open_project(str(p))
+        sha = ((proj.manifest.get("source") or {}).get("sha256") or "") if proj else ""
+        n = min(len(sha), len(audio_hash or ""))
+        if proj is not None and n >= 16 and sha[:n] == audio_hash[:n]:
+            return str(p)
+    raise SpError("E_NO_NAME", "too many projects with this name")
+
+
 def _sha256(path: str) -> str:
     h = hashlib.sha256()
     with open(path, "rb") as f:

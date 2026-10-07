@@ -792,3 +792,28 @@ def test_legacy_sp404learn_projects_still_round_trip():
     pf = {"format": "sp404learn", "version": 1, "trackPath": "/x/a.wav", "peaks": [[0, 1]], "analysis": d, "kit": {}, "patternEdits": {}, "minConfidence": 0.3,
           "tutorialIndex": 0, "settings": {"currentBar": 0, "activePattern": "A"}}
     assert json.loads(json.dumps(pf))["analysis"] == d and TrackAnalysis.from_dict(json.loads(json.dumps(pf))["analysis"]).to_dict() == d
+
+
+def test_resolve_target_updates_the_same_audio_and_never_touches_a_different_one(tmp_path):
+    from engine.spsystem.export import export_for_drop, resolve_target
+    w1, w2 = _audio(tmp_path), tmp_path / "other.wav"
+    shutil.copy(w1, w2)
+    w2.write_bytes(w2.read_bytes() + b"\x00\x00")                                       # a different file with the same name stem
+    folder = tmp_path / "Documents" / "SP404 DROP" / "Projects"
+
+    def analysis(w):
+        a = track().to_dict()
+        a["path"], a["filename"], a["audio_hash"] = str(w), w.name, hashlib.sha256(w.read_bytes()).hexdigest()[:32]
+        return a
+
+    a1 = analysis(w1)
+    p1 = resolve_target("My: track/1", a1["audio_hash"], folder)
+    assert p1 == str(folder / "My_ track_1.spsystem") and folder.is_dir()                      # created, unsafe characters replaced
+    export_for_drop(a1, p1)
+    assert resolve_target("My: track/1", a1["audio_hash"], folder) == p1                        # same audio -> update the same project
+    a2 = analysis(w2)
+    p2 = resolve_target("My: track/1", a2["audio_hash"], folder)
+    assert p2 == str(folder / "My_ track_1 2.spsystem")                                         # different audio -> a new, numbered file
+    before = Path(p1).read_bytes()
+    export_for_drop(a2, p2)
+    assert Path(p1).read_bytes() == before and open_path(p2).manifest["id"] != open_path(p1).manifest["id"]

@@ -185,10 +185,61 @@ fn reveal_path(path: String) -> Result<(), String> {
     r.map(|_| ()).map_err(|e| e.to_string())
 }
 
-/// The app that "Prepare in DROP" launches. The front-end cannot choose it; a user may point it elsewhere (name or full path of an .app)
-/// with the environment variable SP404LEARN_DROP_APP, e.g. to test with another build or to simulate DROP being unavailable.
-fn drop_app() -> String {
-    std::env::var("SP404LEARN_DROP_APP").ok().filter(|v| !v.trim().is_empty()).unwrap_or_else(|| "SP404 DROP".to_string())
+const DROP_BUNDLE_ID: &str = "com.sp404drop.app";
+
+/// One installed copy of SP404 DROP.
+struct DropCopy {
+    path: String,
+    opens_spsystem: bool,
+    modified: std::time::SystemTime,
+}
+
+/// The copy to launch: only builds that declare the .spsystem document type (an older DROP would start but ignore the file), newest first.
+fn choose_drop(mut copies: Vec<DropCopy>) -> Option<String> {
+    copies.retain(|c| c.opens_spsystem);
+    copies.sort_by(|a, b| b.modified.cmp(&a.modified).then(a.path.cmp(&b.path)));
+    copies.into_iter().next().map(|c| c.path)
+}
+
+#[cfg(target_os = "macos")]
+fn installed_drop_copies() -> Vec<DropCopy> {
+    use std::process::Command;
+    let mut paths: Vec<String> = Command::new("mdfind")
+        .arg(format!("kMDItemCFBundleIdentifier == '{DROP_BUNDLE_ID}'"))
+        .output()
+        .map(|o| String::from_utf8_lossy(&o.stdout).lines().map(|l| l.to_string()).collect())
+        .unwrap_or_default();
+    paths.push("/Applications/SP404 DROP.app".into());
+    if let Ok(home) = std::env::var("HOME") {
+        paths.push(format!("{home}/Applications/SP404 DROP.app"));
+    }
+    paths.sort();
+    paths.dedup();
+    paths
+        .into_iter()
+        .filter(|p| p.ends_with(".app") && std::path::Path::new(p).is_dir())
+        .map(|p| {
+            let plist = format!("{p}/Contents/Info.plist");
+            let types = Command::new("plutil").args(["-extract", "CFBundleDocumentTypes", "json", "-o", "-", &plist]).output();
+            let opens = types.map(|o| o.status.success() && String::from_utf8_lossy(&o.stdout).to_lowercase().contains("\"spsystem\"")).unwrap_or(false);
+            let modified = std::fs::metadata(&plist).and_then(|m| m.modified()).unwrap_or(std::time::UNIX_EPOCH);
+            DropCopy { path: p, opens_spsystem: opens, modified }
+        })
+        .collect()
+}
+
+/// The app that "Prepare in DROP" launches. The front-end cannot choose it. SP404LEARN_DROP_APP (name or full path of an .app, read by LEARN's own
+/// process) overrides the search — used to test another build or to simulate DROP being unavailable.
+fn drop_app() -> Result<String, String> {
+    if let Some(v) = std::env::var("SP404LEARN_DROP_APP").ok().filter(|v| !v.trim().is_empty()) {
+        return Ok(v);
+    }
+    #[cfg(target_os = "macos")]
+    {
+        return choose_drop(installed_drop_copies()).ok_or_else(|| "no SP404 DROP that can open .spsystem files was found".to_string());
+    }
+    #[allow(unreachable_code)]
+    Err("opening SP404 DROP is only implemented on macOS".into())
 }
 
 /// Only an existing, absolute .spsystem file may be handed to another application.
@@ -217,7 +268,8 @@ fn open_in_drop(path: String) -> Result<(), String> {
     check_handoff_path(&path)?;
     #[cfg(target_os = "macos")]
     {
-        let out = std::process::Command::new("open").args(open_args(&drop_app(), &path)).output().map_err(|e| e.to_string())?;
+        let app = drop_app()?;
+        let out = std::process::Command::new("open").args(open_args(&app, &path)).output().map_err(|e| e.to_string())?;
         if out.status.success() {
             Ok(())
         } else {
@@ -226,7 +278,7 @@ fn open_in_drop(path: String) -> Result<(), String> {
     }
     #[cfg(not(target_os = "macos"))]
     {
-        let _ = open_args(&drop_app(), &path);
+        let _ = open_args("SP404 DROP", &path);
         Err("opening SP404 DROP is only implemented on macOS".into())
     }
 }
@@ -307,6 +359,16 @@ mod tests {
             assert_eq!(a[1], "SP404 DROP");
             assert_eq!(a[2], std::ffi::OsString::from(path), "the path is passed through unchanged");
         }
+    }
+
+    #[test]
+    fn only_a_drop_that_can_open_spsystem_is_chosen_newest_first() {
+        use std::time::{Duration, UNIX_EPOCH};
+        let c = |p: &str, ok: bool, t: u64| DropCopy { path: p.into(), opens_spsystem: ok, modified: UNIX_EPOCH + Duration::from_secs(t) };
+        assert_eq!(choose_drop(vec![c("/Applications/SP404 DROP.app", false, 300), c("/dist/arm64/SP404 DROP.app", true, 200), c("/dist/old/SP404 DROP.app", true, 100)]).as_deref(),
+                   Some("/dist/arm64/SP404 DROP.app"), "the old /Applications copy without .spsystem support is skipped, the newest capable build wins");
+        assert_eq!(choose_drop(vec![c("/Applications/SP404 DROP.app", false, 1)]), None, "an old DROP would start and ignore the file: treated as not found");
+        assert_eq!(choose_drop(vec![]), None);
     }
 
     #[test]

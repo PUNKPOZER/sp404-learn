@@ -60,7 +60,7 @@ export function Track() {
           <h2>{t("Что нашёл анализ", "What the analysis found")} <small>{t("словами, не цифрами", "in words, not numbers")}</small></h2>
           <p className="hint">{t("Темп, жанр, структура, бас и ударные — с честной оценкой уверенности. Цифры — в «Подробностях».", "Tempo, style, structure, bass and drums — with an honest confidence level. The numbers are under Details.")}</p>
           <button className="btn primary" onClick={() => setState({ screen: "learn" })}>{t("Учить этот трек ▸", "Learn this track ▸")}</button>
-          {" "}<button className="btn" disabled={busy === "spsystem"} title={t("Сохранить трек и анализ в формате SP SYSTEM (.spsystem) для SP404 DROP", "Save the track and its analysis as an SP SYSTEM file (.spsystem) for SP404 DROP")} onClick={() => void prepareInDrop()}>{busy === "spsystem" ? t("Готовлю…", "Preparing…") : t("Подготовить в DROP →", "Prepare in DROP →")}</button>
+          {" "}<button className="btn" disabled={busy === "spsystem"} title={t("Сохранить трек и анализ как проект SP SYSTEM и сразу открыть его в SP404 DROP", "Save the track and its analysis as an SP SYSTEM project and open it in SP404 DROP right away")} onClick={() => void prepareInDrop()}>{busy === "spsystem" ? t("Готовлю…", "Preparing…") : t("Перейти в DROP →", "Go to DROP →")}</button>
           <details className="explain-details"><summary>{t("Сырые измерения (экспериментально)", "Raw measurements (experimental)")}</summary>
           <table className="kv"><tbody>
             {[[t("Бочек / такт", "Kicks / bar"), c.kick_density], [t("Снейр+клэп / такт", "Snare+clap / bar"), c.snare_density], [t("Хэтов / такт", "Hats / bar"), c.hat_density], [t("Перк. / такт", "Perc. / bar"), c.perc_density],

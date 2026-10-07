@@ -488,3 +488,10 @@ h1 { font-weight: 800; letter-spacing: -.005em; }
 .gc-all-label { display: grid; place-items: center; text-align: center; font: 800 var(--sp-text-xl, 1.4rem) var(--sp-font-ui); text-transform: uppercase; line-height: 1.05; max-width: none; }
 
 .notice { margin: var(--sp-space-1) var(--sp-space-5) var(--sp-space-2); padding: var(--sp-space-2) var(--sp-space-3); border: var(--sp-border-w) solid var(--sp-ink); border-left: 8px solid var(--sp-green); background: var(--sp-white); font-size: var(--sp-text-sm); display: flex; justify-content: space-between; gap: var(--sp-space-3); user-select: text; }
+
+/* .spsystem project screen */
+.sp-project .sp-path { margin: 0 0 var(--sp-space-3); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.sp-project .two-col { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: var(--sp-space-4); }
+.sp-pads { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
+.sp-pad { aspect-ratio: 1; border: var(--sp-border-w-thin) solid var(--sp-rule); padding: 6px; display: grid; align-content: space-between; font-size: var(--sp-text-xs, .75rem); background: var(--sp-paper-2, transparent); overflow: hidden; }
+.sp-pad.on { background: var(--sp-ink); color: var(--sp-paper, #fff); border-color: var(--sp-ink); }

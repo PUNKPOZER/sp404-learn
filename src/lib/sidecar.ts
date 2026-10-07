@@ -1,6 +1,6 @@
 // Transport to the local Python engine. In the desktop app this is Tauri IPC → child process
 // (JSON lines). In a plain browser (dev only) it talks to python/sidecar/dev_http.py on localhost.
-import type { TrackAnalysis, Recipe, Course, CourseMeta, StageInfo, ModelStatus, GenrePackStatus, GenrePrediction } from "./types";
+import type { SpLoadResult, TrackAnalysis, Recipe, Course, CourseMeta, StageInfo, ModelStatus, GenrePackStatus, GenrePrediction } from "./types";
 
 import { lang } from "./i18n";
 export const isTauri = typeof window !== "undefined" && "__TAURI_INTERNALS__" in window;
@@ -71,6 +71,11 @@ export const api = {
   genrePackDownload: () => rpc<GenrePackStatus>("genre_pack_download"),
   genrePredict: (analysis: TrackAnalysis) => rpc<GenrePrediction>("genre_predict", { analysis }),
   genreCorrect: (audio_hash: string, raw: GenrePrediction | null | undefined, user: string | null) => rpc("genre_correct", { audio_hash, raw, user }),
+  /** DROP -> LEARN: open a .spsystem READ-ONLY (validate, resolve the source audio, read DROP's data and LEARN's analysis). Writes nothing. */
+  spsystemLoad: (path: string) => rpc<SpLoadResult>("spsystem_load", { path }),
+  /** Save LEARN-owned state into the open .spsystem (same file, or a new one with mode saveAs). Rejects with 'E_CONFLICT: ...' when the file changed on disk. */
+  spsystemSave: (analysis: TrackAnalysis | null, mode: "save" | "saveAs" = "save", path?: string) => rpc<{ ok: boolean; revision: number; id: string; level: string; path: string }>("spsystem_save", { analysis, mode, path }),
+  spsystemClose: () => rpc("spsystem_close"),
   /** LEARN -> DROP: write or update a .spsystem for this track (analysis + suggested regions). */
   spsystemExport: (analysis: TrackAnalysis, path: string, embed = true) => rpc<{ path: string; id: string; revision: number; embedded: boolean; candidates: number; updated: boolean; level: string }>("spsystem_export", { analysis, path, embed }),
   /** Local corrections dataset, raw reading and the user's value kept apart (bpm.jsonl). */

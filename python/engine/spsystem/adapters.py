@@ -256,3 +256,69 @@ def apply_analysis(project: Project, a: dict, *, app_version: str = "", now: flo
     merged = merge_analysis(existing, produced)
     project.set_module("analysis", merged)
     return merged
+
+
+# ---------------------------------------------------------------------------------------------- analysis/track.json -> LEARN TrackAnalysis
+def effective_bpm(doc: dict | None, manifest: dict) -> tuple[float | None, float | None]:
+    """(effective bpm, engine's raw bpm). Effective = userOverride ?? raw; per spec §12 a newer user tempo in the manifest (set in another app) counts as the
+    user's override too — in memory only, nothing is written on open."""
+    tempo = (doc or {}).get("tempo") or {}
+    raw = (tempo.get("raw") or {}).get("bpm")
+    eff = (tempo.get("userOverride") or {}).get("bpm", raw)
+    mt = manifest.get("tempo") or {}
+    if mt.get("origin") == "user" and mt.get("bpm") and mt.get("setBy") != APP:
+        produced = (doc or {}).get("producedAt") or ""
+        if (mt.get("setAt") or "") > produced and (eff is None or abs(mt["bpm"] - eff) > 0.01):
+            eff = mt["bpm"]
+    if raw is None:
+        raw = mt.get("bpm")
+        eff = eff if eff is not None else raw
+    return eff, raw
+
+
+def track_from_analysis(doc: dict | None, manifest: dict, source_path: str, info: dict, peaks: list | None = None) -> dict | None:
+    """Rebuild LEARN's TrackAnalysis (as a dict) from the package's analysis/track.json — or None when the file is not a complete LEARN analysis
+    (e.g. only a tempo and some candidates), in which case the caller shows the project and offers to analyse. No engine code runs here."""
+    if not isinstance(doc, dict):
+        return None
+    tempo = doc.get("tempo") or {}
+    raw = tempo.get("raw") or {}
+    drums = ((doc.get("drums") or {}).get("raw") or {}).get("events")
+    secs = ((doc.get("structure") or {}).get("raw") or {}).get("sections")
+    eff, engine_bpm = effective_bpm(doc, manifest)
+    if not eff or not (drums or secs):
+        return None
+    mt = manifest.get("tempo") or {}
+    grid = {"bpm": float(eff), "origin": float(raw.get("beatOffsetSeconds") if raw.get("beatOffsetSeconds") is not None else (mt.get("beatOffsetSeconds") or 0.0)),
+            "beats_per_bar": int(((doc.get("meter") or {}).get("raw") or {}).get("beatsPerBar") or (manifest.get("meter") or {}).get("beatsPerBar") or 4),
+            "candidates": [x for x in (raw.get("alternatives") or []) if isinstance(x, (int, float))], "confidence": float(raw.get("confidence") or 0.0)}
+    a: dict[str, Any] = {
+        "path": source_path, "filename": (manifest.get("source") or {}).get("originalFilename") or os.path.basename(source_path),
+        "duration": float(info.get("duration") or (manifest.get("source") or {}).get("durationSeconds") or 0.0),
+        "sample_rate": int(info.get("sample_rate") or (manifest.get("source") or {}).get("sampleRate") or 44100),
+        "channels": int(info.get("channels") or (manifest.get("source") or {}).get("channels") or 2),
+        "audio_hash": doc.get("audioSha256") or ((manifest.get("source") or {}).get("sha256") or "")[:32], "grid": grid,
+        "events": [{"id": e["id"], "time": e["time"], "type": e["type"], "confidence": e.get("confidence") or 0.0, "velocity": e.get("velocity") or 0.0,
+                    "bar": e.get("bar") or 0, "step": e.get("step") or 0, "quantized_time": e.get("quantizedTime") or 0.0,
+                    "timing_offset": e.get("timingOffset") or 0.0, "manual": bool(e.get("manual"))} for e in (drums or [])],
+        "sections": [{"label": s["label"], "start": s["startSeconds"], "end": s["endSeconds"], "start_bar": s.get("startBar") or 0, "end_bar": s.get("endBar") or 0,
+                      "cluster": s.get("cluster") or "A", "energy": s.get("energy") or 0.0} for s in (secs or [])],
+        "bass": [{"time": b["time"], "duration": b["duration"], "midi": b["midi"], "confidence": b.get("confidence") or 0.0, "bar": b.get("bar") or 0, "step": b.get("step") or 0}
+                 for b in (((doc.get("bass") or {}).get("raw") or {}).get("notes") or [])],
+        "characteristics": ((doc.get("groove") or {}).get("raw") or {}).get("characteristics") or {},
+        "likely_styles": ((doc.get("groove") or {}).get("raw") or {}).get("likelyStyles") or [],
+        # playback of the project's own source (the engine's stems are not part of the package)
+        "stems": {"mix": {"path": source_path, "peaks": peaks or [], "activity": [], "duration": float(info.get("duration") or 0.0), "rms": 0.0}},
+        "stems_model": "",
+    }
+    g = (doc.get("genre") or {})
+    gr = g.get("raw")
+    if isinstance(gr, dict) and gr.get("candidates"):
+        a["genre"] = {"available": True, "status": gr.get("status"), "primaryGenre": gr.get("primary"), "subgenre": gr.get("subgenre"), "model": gr.get("model"),
+                      "candidates": [{"genre": c["genre"], "confidence": c.get("confidence") or 0.0} for c in gr["candidates"]], "evidence": []}
+    if (g.get("userOverride") or {}).get("genre"):
+        a["genre_user"] = g["userOverride"]["genre"]
+    if engine_bpm is not None and abs(float(eff) - float(engine_bpm)) > 1e-6:
+        a["corrections"] = {"bpm": {"raw": float(engine_bpm), "user": float(eff)}}
+    from engine.model import TrackAnalysis                     # normalise: every field LEARN's UI expects exists (stages, warnings, ...)
+    return TrackAnalysis.from_dict(a).to_dict()

@@ -17,6 +17,7 @@ const LAB: { id: Screen; label: string }[] = [
 export function Sidebar() {
   const screen = useStore((s) => s.screen);
   const has = useStore((s) => !!s.analysis);
+  const sp = useStore((s) => !!s.spsystem);
   const name = useStore((s) => s.trackName);
   const tutorialBack = useStore((s) => s.tutorial?.back);
   const effective: Screen = screen === "tutorial" ? tutorialBack ?? "courses" : screen === "practice" ? "courses" : screen;
@@ -30,10 +31,11 @@ export function Sidebar() {
     <nav className="sidebar" data-tour="sidebar" aria-label={t("Разделы", "Sections")}>
       <button className="logo" aria-label={t("SP-404 LEARN — на главную", "SP-404 LEARN — home")} onClick={() => setState({ screen: "home" })}><BrandMark className="brand-mark" /></button>
       {AREAS.map((a) => item(effective === a.id || !!a.also?.includes(effective), a.icon, a.label, () => setState({ screen: a.id }), `nav-${a.id}`, a.sub))}
-      {item(inLab, "tracklab", "Track Lab", () => setState({ screen: has ? "track" : "tracklab" }), "nav-tracklab")}
-      {(inLab || has) && (
+      {item(inLab, "tracklab", "Track Lab", () => setState({ screen: has ? "track" : sp ? "spproject" : "tracklab" }), "nav-tracklab")}
+      {(inLab || has || sp) && (
         <div className="nav-subgroup">
           {name && <div className="trackname" title={name}>{name}</div>}
+          {sp && <button data-tour="nav-spproject" className={`nav sub ${effective === "spproject" ? "on" : ""}`} onClick={() => setState({ screen: "spproject" })}>{t("Проект", "Project")}</button>}
           {LAB.map((i) => (
             <button key={i.id} data-tour={`nav-${i.id}`} className={`nav sub ${effective === i.id ? "on" : ""}`} disabled={!has} onClick={() => setState({ screen: i.id })}>{i.label}</button>
           ))}

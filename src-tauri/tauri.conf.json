@@ -40,6 +40,26 @@
     "macOS": {
       "signingIdentity": "-",
       "minimumSystemVersion": "12.0"
-    }
+    },
+    "fileAssociations": [
+      {
+        "ext": [
+          "spsystem"
+        ],
+        "name": "SP SYSTEM project",
+        "description": "SP SYSTEM project (SP404 DROP / SP-404 LEARN)",
+        "role": "Editor",
+        "mimeType": "application/x-sp-system+zip"
+      },
+      {
+        "ext": [
+          "sp404learn"
+        ],
+        "name": "SP-404 LEARN project",
+        "description": "SP-404 LEARN project",
+        "role": "Editor",
+        "mimeType": "application/x-sp404learn+json"
+      }
+    ]
   }
 }

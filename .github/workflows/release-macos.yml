@@ -38,6 +38,9 @@ jobs:
           npm test
           .venv/bin/python -m pytest python/tests -q -k "not sidecar"
 
+      - name: Rust tests (open-request queue, cold and warm start)
+        run: cargo test --manifest-path src-tauri/Cargo.toml --lib
+
       - name: Freeze the analysis engine
         run: npm run sidecar
 

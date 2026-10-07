@@ -152,6 +152,32 @@ class Server:
         except SpError as e:
             raise ValueError(f"{e.code}: {e.message}")
 
+    # ---- .spsystem projects (DROP <-> LEARN) -----------------------------------------------------
+    sp = None            # the one .spsystem project that is open (its baseline revision / fingerprint live here)
+
+    def m_spsystem_load(self, p, rid):
+        """Open a .spsystem READ-ONLY: validates, resolves the source audio (embedded -> cache), reads DROP's data and LEARN's analysis. Writes nothing."""
+        from engine.spsystem import session
+        proj, payload = session.load(p["path"], str(self.cache.root / "spsystem"),
+                                     probe=lambda f: (lambda i: {"duration": i.duration, "sample_rate": i.sample_rate, "channels": i.channels})(decode.probe(f)),
+                                     peaks=lambda f: decode.peaks(decode.decode(f, 11025), 2400))
+        Server.sp = proj
+        return payload
+
+    def m_spsystem_save(self, p, rid):
+        """Save LEARN-owned state into the open project (same file by default). Conflict -> error 'E_CONFLICT: ...' and nothing is written."""
+        from engine.spsystem import session, SpError
+        if Server.sp is None:
+            raise ValueError("E_NO_PROJECT: no .spsystem project is open")
+        try:
+            return session.save(Server.sp, p.get("analysis"), mode=p.get("mode", "save"), path=p.get("path"), version="0.3.0")
+        except SpError as e:
+            raise ValueError(f"{e.code}: {e.message}")
+
+    def m_spsystem_close(self, p, rid):
+        Server.sp = None
+        return {"ok": True}
+
     def m_cache_clear(self, p, rid):
         self.cache.clear()
         return {"ok": True}

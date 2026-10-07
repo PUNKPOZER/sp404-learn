@@ -4,7 +4,7 @@ import { Inspector } from "./components/Inspector";
 import { Sidebar } from "./components/Sidebar";
 import { Transport } from "./components/Transport";
 import { isTauri } from "./lib/sidecar";
-import { isAudioPath, openProject, openTrack, pickTrack, saveProject } from "./state/actions";
+import { isAudioPath, openExternalProject, openTrack, pickProject, pickTrack, projectKind, saveProject } from "./state/actions";
 import { getState, setState, useStore } from "./state/store";
 import { Analyzing } from "./screens/Analyzing";
 import { Bass } from "./screens/Bass";
@@ -21,6 +21,7 @@ import { TrackLabHome } from "./screens/TrackLabHome";
 import { Recipe } from "./screens/Recipe";
 import { Settings } from "./screens/Settings";
 import { SearchScreen } from "./screens/SearchScreen";
+import { SpProject } from "./screens/SpProject";
 import { SearchBox } from "./components/SearchBox";
 import { Onboarding } from "./components/Onboarding";
 import { Structure } from "./screens/Structure";
@@ -35,7 +36,7 @@ import { seenTours, tourForScreen } from "./lib/tours";
 
 const SCREENS = { home: HomeLearn, courses: Courses, fxlab: FxLab, fx: FxDetail, tricks: Tricks, trick: TrickDetail, reference: Reference,
   tracklab: TrackLabHome, analyzing: Analyzing, track: Track, stems: Stems, drums: Drums, bass: Bass, structure: Structure, recipe: Recipe,
-  tutorial: Tutorial, practice: Practice, learn: LearnThisTrack, search: SearchScreen, settings: Settings };
+  tutorial: Tutorial, practice: Practice, learn: LearnThisTrack, search: SearchScreen, spproject: SpProject, settings: Settings };
 
 export function App() {
   const { screen, error, notice, analysis, dirty, projectPath, busy } = useStore((s) => s);
@@ -54,6 +55,21 @@ export function App() {
   const tutorialMode = useStore((s) => s.tutorial?.mode);
   const showTransport = ["track", "stems", "drums", "bass", "recipe"].includes(screen) || (screen === "tutorial" && (tutorialMode === "course" || tutorialMode === "track"));
 
+  // OS "open this project" requests (Finder double-click, `open -a`, DROP's "Open in LEARN"): listen first, then ask for anything queued during startup
+  useEffect(() => {
+    if (!isTauri) return;
+    let un: (() => void) | undefined, dead = false;
+    void (async () => {
+      const { listen } = await import("@tauri-apps/api/event");
+      const { invoke } = await import("@tauri-apps/api/core");
+      un = await listen<string>("open-path", (e) => { void openExternalProject(e.payload); });
+      if (dead) { un(); return; }
+      const queued = await invoke<string[]>("app_ready");
+      if (queued.length) await openExternalProject(queued[queued.length - 1]);
+    })();
+    return () => { dead = true; un?.(); };
+  }, []);
+
   useEffect(() => {
     if (isTauri) {
       let un: (() => void) | undefined;
@@ -61,8 +77,8 @@ export function App() {
         un = await getCurrentWebview().onDragDropEvent((e) => {
           if (e.payload.type !== "drop") return;
           const p = e.payload.paths.find(isAudioPath);
-          const proj = e.payload.paths.find((x) => x.endsWith(".sp404learn"));
-          if (p) void openTrack(p); else if (proj) void openProject(proj);
+          const proj = e.payload.paths.find((x) => !!projectKind(x));
+          if (p) void openTrack(p); else if (proj) void openExternalProject(proj);
           else setState({ error: t("Неподдерживаемый файл. Перетащи WAV, AIFF, MP3, FLAC или M4A.", "Unsupported file. Drop WAV, AIFF, MP3, FLAC or M4A.") });
         });
       });
@@ -89,7 +105,7 @@ export function App() {
       <main className="main">
         <div className="topbar">
           <button className="btn sm" onClick={pickTrack}>{t("Открыть трек", "Open track")}</button>
-          <button className="btn sm" onClick={() => openProject()}>{t("Открыть проект", "Open project")}</button>
+          <button className="btn sm" onClick={() => void pickProject()}>{t("Открыть проект", "Open project")}</button>
           <button className="btn sm" disabled={!analysis} onClick={() => saveProject(false)}>{t("Сохранить", "Save")}{dirty ? " ●" : ""}</button>
           <button className="btn sm" disabled={!analysis} onClick={() => saveProject(true)}>{t("Сохранить как", "Save as")}</button>
           <span className="mono dim">{projectPath ?? ""}</span>

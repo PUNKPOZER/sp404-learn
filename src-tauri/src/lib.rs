@@ -7,6 +7,68 @@ use std::process::{Child, ChildStdin, Command, Stdio};
 use std::sync::Mutex;
 use tauri::{AppHandle, Emitter, Manager, State};
 
+/// Files the OS asked us to open (.spsystem / .sp404learn). The OS event can arrive before the web view is ready (cold start),
+/// so paths are queued until the front-end calls `app_ready`; afterwards they are emitted as `open-path` events (warm start).
+#[derive(Default)]
+struct OpenQueue {
+    inner: Mutex<OpenState>,
+}
+
+#[derive(Default)]
+struct OpenState {
+    ready: bool,
+    queue: Vec<String>,
+}
+
+fn is_project_path(p: &str) -> bool {
+    let l = p.to_lowercase();
+    l.ends_with(".spsystem") || l.ends_with(".sp404learn")
+}
+
+impl OpenQueue {
+    /// Project paths only. Returns the paths to emit right now (front-end ready) — otherwise they are queued and an empty list is returned.
+    fn offer(&self, paths: Vec<String>) -> Vec<String> {
+        let paths: Vec<String> = paths.into_iter().filter(|p| is_project_path(p)).collect();
+        let mut st = self.inner.lock().unwrap();
+        if st.ready {
+            paths
+        } else {
+            st.queue.extend(paths);
+            Vec::new()
+        }
+    }
+
+    /// The front-end can handle open requests from now on: everything queued so far, in order.
+    fn ready(&self) -> Vec<String> {
+        let mut st = self.inner.lock().unwrap();
+        st.ready = true;
+        std::mem::take(&mut st.queue)
+    }
+}
+
+/// Route project paths to the front-end (or queue them) and bring the window forward.
+fn handle_open(app: &AppHandle, paths: Vec<String>) {
+    let had_projects = paths.iter().any(|p| is_project_path(p));
+    let now = app.state::<OpenQueue>().offer(paths);
+    if !had_projects {
+        return;
+    }
+    for p in now {
+        let _ = app.emit("open-path", p);
+    }
+    if let Some(w) = app.get_webview_window("main") {
+        let _ = w.unminimize();
+        let _ = w.show();
+        let _ = w.set_focus();
+    }
+}
+
+/// Called once by the front-end when it can handle open requests: returns everything queued so far.
+#[tauri::command]
+fn app_ready(state: State<OpenQueue>) -> Vec<String> {
+    state.ready()
+}
+
 #[derive(Default)]
 struct Sidecar {
     child: Mutex<Option<Child>>,
@@ -90,8 +152,9 @@ fn read_stem_file(app: AppHandle, path: String) -> Result<tauri::ipc::Response, 
     let cache = app.path().app_cache_dir().map_err(|e| e.to_string())?.join("analysis");
     let canon = std::fs::canonicalize(&path).map_err(|e| format!("{path}: {e}"))?;
     let root = std::fs::canonicalize(&cache).map_err(|e| e.to_string())?;
-    if !canon.starts_with(&root) || canon.extension().and_then(|e| e.to_str()) != Some("wav") {
-        return Err("not a stem file".into());
+    let ext = canon.extension().and_then(|e| e.to_str()).unwrap_or("").to_lowercase();
+    if !canon.starts_with(&root) || !["wav", "mp3", "flac", "m4a", "aif", "aiff", "ogg"].contains(&ext.as_str()) {
+        return Err("not an analysis-cache audio file".into());
     }
     std::fs::read(&canon).map(tauri::ipc::Response::new).map_err(|e| e.to_string())
 }
@@ -128,19 +191,73 @@ fn path_exists(path: String) -> bool {
 }
 
 pub fn run() {
-    tauri::Builder::default()
+    let mut builder = tauri::Builder::default();
+    // A second launch (Windows/Linux, or an explicit second process) hands its arguments to the running instance instead of opening another window.
+    // On macOS `open -a` / double-click already reach the running app as an Opened event (below).
+    #[cfg(desktop)]
+    {
+        builder = builder.plugin(tauri_plugin_single_instance::init(|app, argv, _cwd| {
+            handle_open(app, argv.into_iter().skip(1).collect());
+        }));
+    }
+    builder
         .plugin(tauri_plugin_dialog::init())
         .manage(Sidecar::default())
+        .manage(OpenQueue::default())
+        .setup(|app| {
+            // cold start with a path on the command line (dev, Windows/Linux): queue it for the front-end
+            let args: Vec<String> = std::env::args().skip(1).collect();
+            handle_open(app.handle(), args);
+            Ok(())
+        })
         .invoke_handler(tauri::generate_handler![
-            sidecar_start, sidecar_send, read_text_file, write_text_file, path_exists, autotest_path, read_stem_file, reveal_path
+            sidecar_start, sidecar_send, read_text_file, write_text_file, path_exists, autotest_path, read_stem_file, reveal_path, app_ready
         ])
         .build(tauri::generate_context!())
         .expect("error while building SP-404 LEARN")
-        .run(|app, event| {
-            if let tauri::RunEvent::Exit = event {
+        .run(|app, event| match event {
+            tauri::RunEvent::Exit => {
                 if let Some(mut c) = app.state::<Sidecar>().child.lock().unwrap().take() {
                     let _ = c.kill();
                 }
             }
+            // macOS: Finder double-click, `open -a "SP-404 LEARN" file`, drag onto the Dock icon — cold start and warm start alike
+            #[cfg(any(target_os = "macos", target_os = "ios"))]
+            tauri::RunEvent::Opened { urls } => {
+                let paths = urls.into_iter().filter_map(|u| u.to_file_path().ok()).map(|p| p.to_string_lossy().into_owned()).collect();
+                handle_open(app, paths);
+            }
+            _ => {}
         });
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn cold_start_queues_until_the_front_end_is_ready() {
+        let q = OpenQueue::default();
+        assert!(q.offer(vec!["/p/a.spsystem".into()]).is_empty(), "nothing is emitted before the web view is ready");
+        assert!(q.offer(vec!["/p/b.sp404learn".into()]).is_empty());
+        assert_eq!(q.ready(), vec!["/p/a.spsystem", "/p/b.sp404learn"], "the startup events are not lost, order kept");
+        assert!(q.ready().is_empty(), "the queue is drained once");
+    }
+
+    #[test]
+    fn warm_start_is_delivered_immediately_without_queueing() {
+        let q = OpenQueue::default();
+        q.ready();
+        assert_eq!(q.offer(vec!["/p/new revision.spsystem".into()]), vec!["/p/new revision.spsystem"]);
+        assert!(q.ready().is_empty());
+    }
+
+    #[test]
+    fn only_project_files_are_accepted_case_insensitively() {
+        let q = OpenQueue::default();
+        q.offer(vec!["/x/song.wav".into(), "/x/notes.txt".into(), "/x/A.SPSYSTEM".into(), "-psn_0_12345".into(), "/x/p.spsystem.bak".into()]);
+        assert_eq!(q.ready(), vec!["/x/A.SPSYSTEM"]);
+        assert!(is_project_path("/Users/me/Documents/SP404 DROP/Projects/Jungle — break.spsystem"));
+        assert!(!is_project_path("/x/spsystem"));
+    }
 }

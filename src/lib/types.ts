@@ -53,3 +53,22 @@ export interface Course {
   steps: TutorialStep[]; lessons: { n: number; title: string; summary: string }[]; patterns: Pattern[];
   kit: Recipe["kit"];
 }
+
+/** A .spsystem project opened from disk (SP SYSTEM interchange). Identity + what DROP/LEARN stored; LEARN's own analysis lives in the normal `analysis` state. */
+export interface SpIssue { severity: "warning" | "error"; code: string; message: string; where: string | null }
+export interface SpChop { id: string; name?: string; startSeconds: number; endSeconds: number; type: string }
+export interface SpSample { id: string; file: string; name?: string; durationSeconds: number; category?: string }
+export interface SpPad { bank: string; pad: number; sampleId: string | null; label?: string }
+export interface SpLoop { id: string; name?: string; startSeconds: number; endSeconds: number; bars?: number; bpm?: number }
+export interface SpState {
+  path: string; level: string; issues: SpIssue[];
+  project: { id: string; revision: number; formatVersion: number; title?: string; createdBy?: string; modifiedBy?: string; modifiedAt?: string;
+    tempo?: { bpm: number; origin?: string; setBy?: string; confidence?: number } | null; meter?: { beatsPerBar: number } | null; sourceMode?: string };
+  source: { state: string; path: string | null; durationSeconds?: number | null };
+  chops: SpChop[]; samples: SpSample[]; pads: SpPad[]; loops: SpLoop[]; hasAnalysis: boolean;
+  tempo: { effective: number | null; raw: number | null };
+}
+export interface SpLoadResult extends Partial<SpState> {
+  ok: boolean; code?: string | null; message?: string; level: string; issues: SpIssue[]; path: string;
+  source?: SpState["source"] & { peaks: number[][] }; track?: TrackAnalysis | null;
+}

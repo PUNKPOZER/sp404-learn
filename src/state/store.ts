@@ -1,18 +1,20 @@
 import { useSyncExternalStore } from "react";
-import type { Course, CourseMeta, Recipe, StageInfo, StepMap, TrackAnalysis, TutorialStep } from "../lib/types";
+import type { Course, CourseMeta, Recipe, SpState, StageInfo, StepMap, TrackAnalysis, TutorialStep } from "../lib/types";
 import { DEFAULT_KIT } from "../lib/voices";
 import { loadDone, loadProgress, type CourseProgress } from "../lib/progress";
 
-export type Screen = "home" | "courses" | "fxlab" | "fx" | "tricks" | "trick" | "reference" | "tracklab" | "analyzing" | "track" | "stems" | "drums" | "bass" | "structure" | "recipe" | "tutorial" | "practice" | "learn" | "search" | "settings";
+export type Screen = "home" | "courses" | "fxlab" | "fx" | "tricks" | "trick" | "reference" | "tracklab" | "analyzing" | "track" | "stems" | "drums" | "bass" | "structure" | "recipe" | "tutorial" | "practice" | "learn" | "search" | "spproject" | "settings";
 
 /** Screens that belong to TRACK LAB (the full analysis workflow). */
-export const TRACK_LAB_SCREENS: Screen[] = ["tracklab", "analyzing", "track", "stems", "drums", "bass", "structure", "recipe", "learn"];
+export const TRACK_LAB_SCREENS: Screen[] = ["spproject", "tracklab", "analyzing", "track", "stems", "drums", "bass", "structure", "recipe", "learn"];
 
 export interface AppState {
   screen: Screen;
   busy: string | null;
   error: string | null;
   notice: string | null;
+  /** the .spsystem project that is open (null = a plain track or a legacy .sp404learn project) */
+  spsystem: SpState | null;
   trackPath: string | null;
   trackName: string | null;
   peaks: number[][];
@@ -57,7 +59,7 @@ export interface AppState {
 }
 
 const initial: AppState = {
-  screen: "home", busy: null, error: null, notice: null, trackPath: null, trackName: null, peaks: [], analysis: null, stages: [],
+  screen: "home", busy: null, error: null, notice: null, spsystem: null, trackPath: null, trackName: null, peaks: [], analysis: null, stages: [],
   recipe: null, kit: { ...DEFAULT_KIT }, patternEdits: {}, minConfidence: 0.3, selectedEventId: null, selectedPad: null,
   currentBar: 0, activePattern: "A", tutorial: null, progress: loadProgress(), lessonsDone: loadDone(), practiceId: null, fxId: null, coursesTab: null, searchQuery: "", onboarding: false, searchBack: "home", trickId: null, course: null, courseList: [], projectPath: null, dirty: false,
   playing: false, playStep: -1, loop: true, resumeIndex: 0, stemMute: {}, stemSolo: null, stemTime: 0, stemPlaying: false, stemLoading: false, audioTag: null, tour: null, previewBpm: null, previewSource: "pattern",

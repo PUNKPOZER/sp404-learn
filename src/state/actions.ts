@@ -23,11 +23,12 @@ export async function pickTrack() {
 }
 
 // ---- analysis ------------------------------------------------------------------------------
-export async function openTrack(path: string, useCache = true) {
+export async function openTrack(path: string, useCache = true, opts: { keepProject?: boolean } = {}) {
   if (!isAudioPath(path)) { setState({ error: t(`Неподдерживаемый тип файла. Подходят: ${AUDIO_EXT.join(", ").toUpperCase()}.`, `Unsupported file type. Supported: ${AUDIO_EXT.join(", ").toUpperCase()}.`) }); return; }
   const name = path.split(/[\\/]/).pop() ?? path;
   setState({ screen: "analyzing", error: null, trackPath: path, trackName: name, stages: [], analysis: null, recipe: null,
-    patternEdits: {}, selectedEventId: null, currentBar: 0, projectPath: null, dirty: false, busy: "analyze" });
+    patternEdits: {}, selectedEventId: null, currentBar: 0, busy: "analyze",
+    ...(opts.keepProject ? {} : { projectPath: null, dirty: false, spsystem: null }) });
   try {
     const info = await api.probe(path);
     setState({ peaks: info.peaks });
@@ -225,6 +226,7 @@ interface ProjectFile {
 
 export async function saveProject(saveAs = false) {
   const s = getState();
+  if (s.spsystem) return saveSpsystem(saveAs);
   if (!s.analysis || !s.trackPath) return;
   if (!isTauri) { setState({ error: t("Сохранение проектов работает в десктоп-приложении.", "Saving projects works in the desktop app.") }); return; }
   let path = s.projectPath;
@@ -263,6 +265,101 @@ export async function prepareInDrop() {
       : t(`Готово: файл SP SYSTEM создан (${r.embedded ? "трек внутри" : "ссылка на трек"}, ${r.candidates} предложенных участков — в DROP их подтверждает человек). DROP откроет такие файлы в следующей версии.`,
           `Done: SP SYSTEM file created (${r.embedded ? "track embedded" : "track referenced"}, ${r.candidates} suggested regions — a person confirms them in DROP). DROP will open such files in its next version.`) });
   } catch (e) { setState({ busy: null, error: String((e as Error).message ?? e) }); }
+}
+
+// ---- ONE open pipeline for every project file ------------------------------------------------
+export type ProjectKind = "spsystem" | "sp404learn";
+export const projectKind = (p: string): ProjectKind | null => {
+  const e = p.split(".").pop()?.toLowerCase();
+  return e === "spsystem" ? "spsystem" : e === "sp404learn" ? "sp404learn" : null;
+};
+
+/** Open a project from anywhere (OS file-open event, File → Open, drag & drop): .spsystem → the SP SYSTEM reader, .sp404learn → the legacy reader.
+ *  Opening is read-only: revision, files and the project's identity stay as they were saved. */
+export async function openExternalProject(path: string) {
+  const kind = projectKind(path);
+  if (!kind) { setState({ error: t(`Неизвестный тип проекта: ${path}`, `Unknown project type: ${path}`) }); return; }
+  const s = getState();
+  if (s.dirty && isTauri) {
+    const { ask } = await import("@tauri-apps/plugin-dialog");
+    const go = await ask(t("В открытом проекте есть несохранённые изменения. Открыть другой проект без сохранения?", "The open project has unsaved changes. Open another project without saving?"),
+      { title: "SP-404 LEARN", kind: "warning", okLabel: t("Открыть", "Open"), cancelLabel: t("Отмена", "Cancel") });
+    if (!go) return;
+  }
+  if (kind === "spsystem") await openSpsystem(path); else { setState({ spsystem: null }); await openProject(path); }
+}
+
+export async function pickProject() {
+  if (!isTauri) { setState({ error: t("Открытие проектов работает в десктоп-приложении.", "Opening projects works in the desktop app.") }); return; }
+  const { open } = await import("@tauri-apps/plugin-dialog");
+  const p = await open({ multiple: false, filters: [{ name: "SP-404 LEARN / SP SYSTEM", extensions: ["spsystem", "sp404learn"] }] });
+  if (typeof p === "string") await openExternalProject(p);
+}
+
+const SP_FAIL: Record<string, [string, string]> = {
+  E_NO_FILE: ["Файл проекта не найден", "Project file not found"],
+  E_NOT_ZIP: ["Это не пакет SP SYSTEM (файл повреждён или не тот формат)", "This is not an SP SYSTEM package (damaged or wrong format)"],
+  E_NO_MANIFEST: ["В пакете нет manifest.json — проект повреждён", "The package has no manifest.json — the project is damaged"],
+  E_MANIFEST_INVALID: ["manifest.json не соответствует формату SP SYSTEM", "manifest.json does not match the SP SYSTEM format"],
+  E_UNSUPPORTED_VERSION: ["Проект создан более новой версией SP SYSTEM; эта версия LEARN его не откроет (ничего не изменено)", "This project was made by a newer version of SP SYSTEM; this LEARN cannot open it (nothing was changed)"],
+};
+
+/** DROP → LEARN: open a .spsystem. Never writes. A complete LEARN analysis in the package is restored; otherwise the project screen is shown and
+ *  the user decides whether to analyse (no automatic analysis). */
+export async function openSpsystem(path: string) {
+  setState({ busy: "open", error: null, notice: null });
+  try {
+    const r = await api.spsystemLoad(path);
+    if (!r.ok || !r.project || !r.source) {
+      const m = SP_FAIL[r.code ?? ""];
+      setState({ busy: null, error: `${m ? t(...m) : r.message ?? t("Не удалось открыть проект", "Could not open the project")} — ${path.split(/[\\/]/).pop()}` });
+      return;
+    }
+    const sp = { path, level: r.level, issues: r.issues, project: r.project, source: r.source, chops: r.chops ?? [], samples: r.samples ?? [], pads: r.pads ?? [],
+      loops: r.loops ?? [], hasAnalysis: !!r.hasAnalysis, tempo: r.tempo ?? { effective: null, raw: null } };
+    const name = r.project.title ?? path.split(/[\\/]/).pop() ?? "project";
+    const warn = r.issues.filter((i) => i.severity === "warning" && i.code !== "W_UNKNOWN_FILE");
+    const notice = r.source.state === "external-moved" || r.source.state === "external-changed" ? t("Исходный файл трека не найден или изменён — проект открыт без звука.", "The source file was not found or has changed — the project opened without audio.")
+      : warn.length ? t(`Проект открыт с предупреждениями: ${warn.map((i) => i.code).join(", ")}`, `Opened with warnings: ${warn.map((i) => i.code).join(", ")}`) : null;
+    const base = { spsystem: sp, projectPath: path, trackPath: r.source.path, trackName: name, peaks: r.source.peaks ?? [], dirty: false, busy: null, error: null, notice,
+      recipe: null, patternEdits: {}, selectedEventId: null, currentBar: 0, tutorial: null, previewBpm: null };
+    if (r.track) {
+      setState({ ...base, analysis: r.track, stages: r.track.stages ?? [], screen: "track" });
+      await refreshRecipe();
+    } else setState({ ...base, analysis: null, stages: [], screen: "spproject" });
+  } catch (e) { setState({ busy: null, error: String(e instanceof Error ? e.message : e) }); }
+}
+
+/** From the project screen: run the existing analysis on the project's own source. The result stays attached to this project (Save writes it into the package). */
+export async function analyzeProjectSource() {
+  const sp = getState().spsystem;
+  if (sp?.source.path) await openTrack(sp.source.path, true, { keepProject: true });
+}
+
+/** Save LEARN-owned state (analysis, user corrections) back into the SAME .spsystem. revision += 1 exactly once; DROP's data is copied untouched. */
+export async function saveSpsystem(saveAs = false) {
+  const s = getState();
+  if (!s.spsystem) return;
+  let path: string | undefined;
+  if (saveAs) {
+    const { save } = await import("@tauri-apps/plugin-dialog");
+    const def = (s.trackName ?? "project").replace(/\.[^.]+$/, "") + ".spsystem";
+    const p = await save({ defaultPath: def, filters: [{ name: "SP SYSTEM project", extensions: ["spsystem"] }] });
+    if (!p) return;
+    path = p;
+  }
+  setState({ busy: "save", error: null });
+  try {
+    const r = await api.spsystemSave(s.analysis, saveAs ? "saveAs" : "save", path);
+    const cur = getState().spsystem!;
+    setState({ busy: null, dirty: false, projectPath: r.path, spsystem: { ...cur, path: r.path, level: r.level, project: { ...cur.project, revision: r.revision, modifiedBy: "sp404-learn" } } });
+  } catch (e) {
+    const msg = String(e instanceof Error ? e.message : e);
+    setState({ busy: null, error: msg.startsWith("E_CONFLICT")
+      ? t("Проект изменился на диске после того, как ты его открыл (его сохранил DROP или другое приложение). LEARN ничего не перезаписал. Открой проект заново, чтобы увидеть новую версию.",
+          "The project changed on disk after you opened it (saved by DROP or another app). LEARN overwrote nothing. Open the project again to see the new version.")
+      : msg });
+  }
 }
 
 export async function openProject(path?: string) {

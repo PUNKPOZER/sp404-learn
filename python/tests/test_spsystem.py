@@ -636,3 +636,159 @@ def test_export_refuses_an_existing_file_that_is_not_a_project(tmp_path):
     with pytest.raises(SpError) as e:
         export_for_drop(track().to_dict(), str(f))
     assert e.value.code == "E_NOT_USABLE" and f.read_bytes() == b"hello"
+
+
+# ----------------------------------------------------------------------------------------------------------- DROP -> LEARN: open pipeline (session)
+def _probe(f):
+    import wave
+    with wave.open(f) as w:
+        return {"duration": w.getnframes() / w.getframerate(), "sample_rate": w.getframerate(), "channels": w.getnchannels()}
+
+
+def _open(path, cache):
+    from engine.spsystem import session
+    return session.load(str(path), str(cache), probe=_probe, peaks=lambda f: [[-0.5, 0.5]] * 4)
+
+
+def test_open_is_read_only_and_loads_everything_drop_sent(tmp_path):
+    f = tmp_path / "p.spsystem"
+    shutil.copy(DROP_CREATED, f)
+    before_bytes = f.read_bytes()
+    proj, pl = _open(f, tmp_path / "cache")
+    assert f.read_bytes() == before_bytes and sorted(os.listdir(tmp_path)) == ["cache", "p.spsystem"]       # nothing written, not even a lock/bak
+    assert pl["ok"] and pl["level"] == "VALID" and pl["path"] == str(f)
+    assert pl["project"]["id"] == UUID and pl["project"]["revision"] == 1 and pl["project"]["formatVersion"] == 1 and pl["project"]["createdBy"] == "sp404-drop"
+    assert proj.revision == 1 and proj.id == UUID and proj.path == str(f) and not proj.manifest_dirty
+    assert pl["source"]["state"] == "embedded" and Path(pl["source"]["path"]).read_bytes()[:4] == b"RIFF" and pl["source"]["peaks"]
+    assert str(tmp_path / "cache") in pl["source"]["path"]                                                  # played from the project, not from DROP's original path
+    assert pl["project"]["tempo"]["bpm"] == 120 and pl["project"]["meter"] is None
+    assert [c["id"] for c in pl["chops"]] == ["chop-01", "chop-02", "chop-03"] and len(pl["samples"]) == 3 and len(pl["pads"]) == 3 and pl["loops"] == []
+    assert pl["hasAnalysis"] is False and pl["track"] is None                                               # no auto-analysis; the UI offers it
+    assert pl["tempo"] == {"effective": 120, "raw": 120}
+
+
+def test_open_a_project_with_learn_data_restores_it_without_overwriting(tmp_path):
+    f = tmp_path / "p.spsystem"
+    shutil.copy(REAL_DROP, f)
+    raw0 = raw_entries(f)
+    proj, pl = _open(f, tmp_path / "cache")
+    assert pl["level"] == "VALID_WITH_WARNINGS" and [i["code"] for i in pl["issues"]] == ["W_UNKNOWN_FILE"]
+    assert pl["hasAnalysis"] and pl["analysis"]["x-learn-private"] == {"weights": [0.1, 0.2]}                # analysis preserved verbatim
+    assert pl["analysis"]["tempo"]["userOverride"] == {"bpm": 118.0} and pl["analysis"]["tempo"]["raw"]["bpm"] == 120.0   # override stays an override
+    assert pl["tempo"] == {"effective": 118.0, "raw": 120.0}
+    assert {(a["bank"], a["pad"]): a["sampleId"] for a in pl["pads"]}[("A", 5)] == "sample-01"
+    assert raw_entries(f) == raw0 and proj.revision == 5 and not any(m.dirty for m in proj.modules.values())
+
+
+def test_a_complete_learn_analysis_is_reconstructed_into_a_track_analysis(tmp_path):
+    f = tmp_path / "p.spsystem"
+    shutil.copy(DROP_CREATED, f)
+    _, proj = fsio.open_project(str(f))
+    a = track(corrections={"bpm": {"raw": 120.0, "user": 118.0}}, genre_user="house")
+    a.grid.bpm = 118.0
+    adapters.apply_analysis(proj, a.to_dict(), app_version="0.3.0")
+    fsio.save_file(proj, str(f))
+    _, pl = _open(f, tmp_path / "cache")
+    t = pl["track"]
+    assert t is not None and TrackAnalysis.from_dict(t).grid.bpm == 118.0                          # it is a valid LEARN model again
+    assert t["corrections"] == {"bpm": {"raw": 120.0, "user": 118.0}} and t["genre_user"] == "house"
+    assert len(t["events"]) == 6 and [s["label"] for s in t["sections"]] == ["INTRO", "DROP"] and len(t["bass"]) == 1
+    assert t["stems"]["mix"]["path"] == pl["source"]["path"] and t["path"] == pl["source"]["path"]
+    assert t["grid"]["origin"] == 0.02 and t["grid"]["candidates"] == [60.0, 240.0] and t["audio_hash"] == "1c5fedc1feaceba165ad442ce24714f6"
+
+
+def test_a_newer_user_tempo_set_in_drop_counts_as_the_override_in_memory_only(tmp_path):
+    f = tmp_path / "p.spsystem"
+    shutil.copy(DROP_CREATED, f)
+    _, proj = fsio.open_project(str(f))
+    adapters.apply_analysis(proj, track().to_dict(), now=1760000000)
+    fsio.save_file(proj, str(f), now=1760000000)
+    _, p2 = fsio.open_project(str(f))
+    p2.manifest["tempo"].update({"bpm": 130.0, "origin": "user", "setBy": "sp404-drop", "setAt": "2026-10-09T00:00:00Z"})
+    p2.manifest_dirty = True
+    fsio.save_file(p2, str(f))
+    _, pl = _open(f, tmp_path / "cache")
+    assert pl["tempo"] == {"effective": 130.0, "raw": 120.0} and pl["track"]["grid"]["bpm"] == 130.0
+    assert pl["analysis"]["tempo"].get("userOverride") is None                      # the file was not rewritten by opening
+
+
+@pytest.mark.parametrize("make,code,level", [
+    (lambda p: p.write_bytes(b"garbage"), "E_NOT_ZIP", "CORRUPTED"),
+    (lambda p: p.write_bytes(zip_with({"../x.json": b"1"})), "E_PATH_UNSAFE", "CORRUPTED"),
+    (lambda p: p.write_bytes(zip_with({}, manifest=False)), "E_NO_MANIFEST", "CORRUPTED"),
+])
+def test_open_reports_unreadable_projects_without_repairing_them(tmp_path, make, code, level):
+    f = tmp_path / "bad.spsystem"
+    make(f)
+    before = f.read_bytes()
+    proj, pl = _open(f, tmp_path / "cache")
+    assert proj is None and pl["ok"] is False and pl["code"] == code and pl["level"] == level and f.read_bytes() == before
+
+
+def test_unsupported_version_and_missing_file(tmp_path):
+    buf = io.BytesIO()
+    with zipfile.ZipFile(buf, "w") as z:
+        z.writestr("manifest.json", json.dumps({"format": "sp-system", "formatVersion": 2, "id": UUID, "createdBy": "x", "createdAt": "2026-10-07T09:00:00Z"}))
+    f = tmp_path / "v2.spsystem"
+    f.write_bytes(buf.getvalue())
+    proj, pl = _open(f, tmp_path / "cache")
+    assert proj is None and pl["level"] == "UNSUPPORTED_VERSION" and pl["code"] == "E_UNSUPPORTED_VERSION"
+    proj, pl = _open(tmp_path / "nope.spsystem", tmp_path / "cache")
+    assert proj is None and pl["code"] == "E_NO_FILE" and pl["level"] == "CORRUPTED"
+
+
+def test_open_save_increments_the_revision_exactly_once_and_keeps_drop_data(tmp_path):
+    from engine.spsystem import session
+    f = tmp_path / "p.spsystem"
+    shutil.copy(REAL_DROP, f)
+    before = payloads(f)
+    proj, pl = _open(f, tmp_path / "cache")
+    out = session.save(proj, None)                                           # nothing changed, but an explicit save is a save: +1, once
+    assert out["revision"] == 6 and proj.revision == 6 and open_path(str(f)).manifest["revision"] == 6
+    a = track(genre_user="techno")
+    a.grid.bpm = 120.0
+    out2 = session.save(proj, a.to_dict(), version="0.3.0")
+    assert out2["revision"] == 7 and open_path(str(f)).manifest["modifiedBy"] == "sp404-learn"
+    after = payloads(f)
+    for n in DROP_OWNED + BINARY_PAYLOADS:
+        assert after[n] == before[n], n
+    an = open_path(str(f)).package.modules["analysis"].data
+    assert an["genre"]["userOverride"] == {"genre": "techno"} and an["tempo"]["userOverride"] == {"bpm": 118.0}       # earlier override survived re-analysis
+    assert an["x-learn-private"] == {"weights": [0.1, 0.2]}
+
+
+def test_save_of_a_bpm_correction_updates_the_working_tempo_and_never_raw(tmp_path):
+    from engine.spsystem import session
+    f = tmp_path / "p.spsystem"
+    shutil.copy(DROP_CREATED, f)
+    proj, _ = _open(f, tmp_path / "cache")
+    a = track(corrections={"bpm": {"raw": 120.0, "user": 240.0}})
+    a.grid.bpm = 240.0
+    session.save(proj, a.to_dict())
+    r = open_path(str(f))
+    assert r.manifest["tempo"]["bpm"] == 240.0 and r.manifest["tempo"]["origin"] == "user" and r.manifest["tempo"]["setBy"] == "sp404-learn"
+    t = r.package.modules["analysis"].data["tempo"]
+    assert t["raw"]["bpm"] == 120.0 and t["userOverride"] == {"bpm": 240.0}
+
+
+def test_save_refuses_to_overwrite_a_newer_revision_written_by_drop(tmp_path):
+    from engine.spsystem import session
+    f = tmp_path / "p.spsystem"
+    shutil.copy(DROP_CREATED, f)
+    proj, _ = _open(f, tmp_path / "cache")                                      # LEARN opened revision 1
+    _, other = fsio.open_project(str(f))                                        # "DROP" saves revision 2 meanwhile
+    other.manifest["title"] = "edited in DROP"
+    other.manifest_dirty = True
+    fsio.save_file(other, str(f))
+    snapshot = f.read_bytes()
+    with pytest.raises(Conflict) as e:
+        session.save(proj, track().to_dict())
+    assert e.value.code == "E_CONFLICT" and e.value.extra["disk"]["revision"] == 2 and f.read_bytes() == snapshot
+    assert open_path(str(f)).manifest["title"] == "edited in DROP"
+
+
+def test_legacy_sp404learn_projects_still_round_trip():
+    d = track().to_dict()
+    pf = {"format": "sp404learn", "version": 1, "trackPath": "/x/a.wav", "peaks": [[0, 1]], "analysis": d, "kit": {}, "patternEdits": {}, "minConfidence": 0.3,
+          "tutorialIndex": 0, "settings": {"currentBar": 0, "activePattern": "A"}}
+    assert json.loads(json.dumps(pf))["analysis"] == d and TrackAnalysis.from_dict(json.loads(json.dumps(pf))["analysis"]).to_dict() == d

@@ -38,7 +38,7 @@ class Server:
 
     # ---- methods -----------------------------------------------------------------
     def m_ping(self, p, rid):
-        return {"ok": True, "version": "0.3.0"}
+        return {"ok": True, "version": "0.4.0"}
 
     def m_probe(self, p, rid):
         i = decode.probe(p["path"])
@@ -131,7 +131,7 @@ class Server:
 
     def m_genre_correct(self, p, rid):
         from engine.genre import corrections
-        return corrections.record(p.get("audio_hash", ""), p.get("raw"), p.get("user"), "0.3.0", p.get("kind") or "genre")
+        return corrections.record(p.get("audio_hash", ""), p.get("raw"), p.get("user"), "0.4.0", p.get("kind") or "genre")
 
     def m_spsystem_open(self, p, rid):
         """Read-only: validate a .spsystem package and summarise it (level, issues, manifest, module status). Writes nothing."""
@@ -154,7 +154,7 @@ class Server:
                 from engine.spsystem.export import resolve_target
                 from pathlib import Path
                 path = resolve_target(p.get("name") or Path(a.get("filename") or "track").stem, a.get("audio_hash") or "")
-            return export_for_drop(a, path, app_version="0.3.0", embed=p.get("embed", True))
+            return export_for_drop(a, path, app_version="0.4.0", embed=p.get("embed", True))
         except SpError as e:
             raise ValueError(f"{e.code}: {e.message}")
 
@@ -176,7 +176,7 @@ class Server:
         if Server.sp is None:
             raise ValueError("E_NO_PROJECT: no .spsystem project is open")
         try:
-            return session.save(Server.sp, p.get("analysis"), mode=p.get("mode", "save"), path=p.get("path"), version="0.3.0")
+            return session.save(Server.sp, p.get("analysis"), mode=p.get("mode", "save"), path=p.get("path"), version="0.4.0")
         except SpError as e:
             raise ValueError(f"{e.code}: {e.message}")
 
